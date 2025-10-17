@@ -1,1 +1,14 @@
-
+{{ define "main" }}
+    <h2>欢迎来到我的博客</h2>
+    <p>{{ .Site.Params.description }}</p>
+    
+    <h3>最新文章</h3>
+    <ul>
+        {{ range first 5 .Site.RegularPages }}
+        <li>
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+            <small>({{ .Date.Format "2006-01-02" }})</small>
+        </li>
+        {{ end }}
+    </ul>
+{{ end }}
