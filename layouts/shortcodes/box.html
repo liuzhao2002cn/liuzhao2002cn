@@ -1,0 +1,6 @@
+<div class="box {{ .Get "type" | default "note" }}">
+    <p class="box-title">{{ .Get "title" | default (T (.Get "type")) | humanize }}</p>
+    <div class="box-content">
+        {{ .Inner | .Page.RenderString }}
+    </div>
+</div>
