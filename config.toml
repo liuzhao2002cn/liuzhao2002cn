@@ -1,0 +1,24 @@
+# config.toml
+
+baseURL = "https://liuzhao2002cn.github.io/" # 网站最终访问地址
+languageCode = "zh-cn" # 网站语言
+title = "竱肇的个人博客" # 网站标题
+theme = "my-theme" # 我们将要创建的主题名称
+
+[params]
+  author = "肇"
+  description = "这里是关于我博客的描述..."
+
+[menu]
+  [[menu.main]]
+    name = "首页"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "文章"
+    url = "/posts/"
+    weight = 2
+  [[menu.main]]
+    name = "关于"
+    url = "/about/"
+    weight = 3
