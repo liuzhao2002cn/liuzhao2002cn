@@ -34,15 +34,16 @@ jobs:
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: "${{ env.HUGO_VERSION }}"
-# --- 新增的调试步骤 ---
-      - name: Debug Show Config File
+
+
+      - name: Debug Project Structure and Config
         run: |
-         echo "--- Current Directory Files ---"
-         ls -la
-         echo "--- Content of hugo.toml ---"
+         echo ">>> Listing all files in the repository:"
+         find . -print
+         echo " "
+         echo ">>> Displaying content of hugo.toml:"
          cat hugo.toml
-         echo "--- End of hugo.toml ---"
-  # --- 调试步骤结束 ---
+         echo " "
       - name: Build
         run: hugo --minify
 
