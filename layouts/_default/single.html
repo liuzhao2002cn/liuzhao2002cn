@@ -1,7 +1,7 @@
 {{ define "main" }}
     <article>
         <h2>{{ .Title }}</h2>
-        <p>发布于: {{ .Date.Format "2006-01-02" }}</p>
+        <p class="date">发布于: {{ .Date.Format "2006-01-02" }}</p>
         <div>
             {{ .Content }}
         </div>
