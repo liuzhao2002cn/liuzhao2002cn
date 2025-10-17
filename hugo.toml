@@ -1,0 +1,21 @@
+baseURL = 'https://liuzhao2002cn.github.io/'
+languageCode = 'zh-cn'
+title = '竱肇的个人博客'
+
+[params]
+  author = '肇'
+  description = '这里是关于我博客的描述...'
+
+[menu]
+  [[menu.main]]
+    name = '首页'
+    url = '/'
+    weight = 1
+  [[menu.main]]
+    name = '文章'
+    url = '/posts/'
+    weight = 2
+  [[menu.main]]
+    name = '关于'
+    url = '/about/'
+    weight = 3
