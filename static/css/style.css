@@ -19,7 +19,53 @@
 * {
     box-sizing: border-box;
 }
+/* ====== 6. 自定义 Box 样式 ====== */
+.box {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: var(--color-white);
+    border-left: 5px solid; /* 左边框作为类型指示 */
+}
 
+.box-title {
+    font-weight: bold;
+    margin-top: 0;
+    font-size: 1.1rem;
+}
+
+.box-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* 不同类型的 Box 颜色 */
+.box.note {
+    border-color: #6c757d; /* 灰色 */
+}
+.box.note .box-title {
+    color: #6c757d;
+}
+
+.box.theorem {
+    border-color: var(--color-light-blue); /* 使用你的主题蓝色 */
+}
+.box.theorem .box-title {
+    color: var(--color-light-blue);
+}
+
+.box.definition {
+    border-color: var(--color-light-pink); /* 使用你的主题粉色 */
+}
+.box.definition .box-title {
+    color: var(--color-light-pink);
+}
+
+.box.warning {
+    border-color: #ffc107; /* 黄色 */
+}
+.box.warning .box-title {
+    color: #ffc107;
+}
 body {
     font-family: var(--font-body);
     line-height: 1.8;
