@@ -1,3 +1,29 @@
-<footer>
-    <p>&copy; {{ now.Year }} {{ .Site.Params.author }}. All rights reserved.</p>
+<footer class="site-footer">
+    <div class="footer-content">
+        <p>
+            &copy; {{ now.Format "2006" }} {{ .Site.Title }}. 
+            {{ with .Site.Params.license }}基于 {{ . | safeHTML }} 许可。{{ end }}
+        </p>
+        
+        <div class="footer-links">
+            {{ with .Site.Params.github }}
+            <a href="{{ . }}" target="_blank" rel="noopener">GitHub</a>
+            {{ end }}
+            
+            {{ with .Site.Params.email }}
+            <a href="mailto:{{ . }}">联系我</a>
+            {{ end }}
+            
+            {{ with .Site.Params.twitter }}
+            <a href="{{ . }}" target="_blank" rel="noopener">Twitter</a>
+            {{ end }}
+        </div>
+        
+        <p class="powered-by">
+            由 <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> 强力驱动
+            {{ with .Site.Params.theme }}
+            • 主题 <a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>
+            {{ end }}
+        </p>
+    </div>
 </footer>
