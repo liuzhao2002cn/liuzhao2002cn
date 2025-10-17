@@ -1,1 +1,8 @@
-
+body { font-family: sans-serif; line-height: 1.6; margin: 0; }
+.container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+header { border-bottom: 1px solid #ccc; margin-bottom: 2rem; }
+header h1 { margin: 0; }
+header h1 a { text-decoration: none; color: #333; }
+header nav a { margin-right: 1rem; }
+footer { border-top: 1px solid #ccc; margin-top: 2rem; padding-top: 1rem; text-align: center; color: #666; }
+article h2 { margin-top: 0; }
