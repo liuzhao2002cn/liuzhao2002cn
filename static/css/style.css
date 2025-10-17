@@ -1,4 +1,15 @@
-body { font-family: sans-serif; line-height: 1.6; margin: 0; }
+h1, h2, h3, h4, h5, h6 { 
+    font-family: 'Source Han Serif CN', '思源宋体 CN', '仿宋', serif; /* 正文使用思源宋体 */
+    line-height: 1.8; 
+    margin: 0; 
+}
+
+body{
+    font-family: 'LXGW WenKai TC', '霞鹜文楷', sans-serif; /* 标题使用霞鹜文楷 */
+}
+p.english-text {
+    font-family: 'Times New Roman', serif;
+}
 .container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
 header { border-bottom: 1px solid #ccc; margin-bottom: 2rem; }
 header h1 { margin: 0; }
