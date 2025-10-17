@@ -1,0 +1,61 @@
+# .github/workflows/deploy.yml
+
+name: Deploy Hugo Site to Pages # 工作流名称
+
+on:
+  push:
+    branches:
+      - main # 当 main 分支有 push 操作时触发
+  workflow_dispatch: # 允许你手动触发
+
+# 设置 GITHUB_TOKEN 的权限，以便部署到 gh-pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 只允许一个并发部署，跳过排队中的运行
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+# 默认使用 Hugo 构建
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.119.0 # 指定需要的 Hugo 版本
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true  # 如果主题是作为 git submodule 添加的，需要
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "${{ env.HUGO_VERSION }}"
+          # extended: true # 如果 SCSS/SASS 需要，就取消注释
+
+      - name: Build
+        run: hugo --minify # 运行 hugo 命令构建网站，--minify 会压缩文件
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./public # Hugo 生成的网站文件默认在 public 目录
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
