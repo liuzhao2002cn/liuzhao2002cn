@@ -1,14 +1,41 @@
 {{ define "main" }}
-    <h2>欢迎来到我的博客</h2>
-    <p>{{ .Site.Params.description }}</p>
-    
-    <h3>最新文章</h3>
-    <ul>
+<section class="hero">
+    <h1>{{ .Site.Title }}</h1>
+    <p class="tagline">{{ .Site.Params.tagline | default "欢迎来到我的园地" }}</p>
+</section>
+
+<section class="featured-posts">
+    <h2>精选文章</h2>
+    <div class="post-grid">
+        {{ range first 3 (where .Site.RegularPages "Params.featured" true) }}
+        <article class="post-card">
+            <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+            <p class="post-meta">{{ .Date.Format "2006-01-02" }}</p>
+            <p class="post-summary">{{ .Summary | truncate 100 }}</p>
+        </article>
+        {{ else }}
+        <!-- 如果没有标记精选，显示最新3篇 -->
+        {{ range first 3 .Site.RegularPages }}
+        <article class="post-card">
+            <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+            <p class="post-meta">{{ .Date.Format "2006-01-02" }}</p>
+            <p class="post-summary">{{ .Summary | truncate 100 }}</p>
+        </article>
+        {{ end }}
+        {{ end }}
+    </div>
+</section>
+
+<section class="recent-posts">
+    <h2>最新文章</h2>
+    <ul class="post-list">
         {{ range first 5 .Site.RegularPages }}
         <li>
             <a href="{{ .Permalink }}">{{ .Title }}</a>
-            <small>({{ .Date.Format "2006-01-02" }})</small>
+            <span class="post-meta">({{ .Date.Format "2006-01-02" }})</span>
         </li>
         {{ end }}
     </ul>
+    <p><a href="/posts/">查看所有文章 &rarr;</a></p>
+</section>
 {{ end }}
