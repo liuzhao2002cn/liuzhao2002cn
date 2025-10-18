@@ -8,7 +8,9 @@ canonifyURLs = true
   description = '这里是关于我博客的描述...'
   github = "https://github.com/liuzhao2002cn"
   email = "your-email@example.com"
-
+[params.theme]
+  name = "肇自定义主题" 
+  url = "https://github.com/liuzhao2002cn/liuzhao2002cn"
 # 菜单配置
 [menu]
   [[menu.main]]
