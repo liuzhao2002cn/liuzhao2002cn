@@ -48,15 +48,19 @@
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <body>
     <a href="#main-content" class="skip-link">跳到主页</a>
-    <div class="container">
-        {{ partial "header.html" . }}
 
+    <!-- 1. 页眉现在是独立的顶级元素 -->
+    {{ partial "header.html" . }}
+
+    <!-- 2. 主内容区现在被一个独立的 container 包裹 -->
+    <div class="container">
         <main class="main-content" id="main-content">
             {{ block "main" . }}{{ end }}
         </main>
-        
-        {{ partial "footer.html" . }}
     </div>
+
+    <!-- 3. 页脚也是独立的顶级元素 -->
+    {{ partial "footer.html" . }}
 
 
     <script src="{{ "/js/main.js" | relURL }}" defer></script> 
