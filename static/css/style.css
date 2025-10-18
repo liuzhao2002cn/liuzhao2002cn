@@ -155,8 +155,7 @@ a {
     border-bottom: 2px solid transparent;
 }
 
-a:hover， 
-/* 改进焦点样式 */
+a:hover,
 a:focus, button:focus {
   outline: 2px solid var(--blue);
   outline-offset: 2px;
