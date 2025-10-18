@@ -306,7 +306,7 @@ pre code {
     border: 1px solid var(--border-color);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(0，0,0,0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%; /* 确保卡片等高 */
     display: flex;
@@ -823,7 +823,7 @@ body {
     margin: 0;
     font-size: 1.8rem;
     font-family: var(--font-heading);
-    background: linear-gradient(135deg, var(--blue), var(--pink));
+    background: linear-gradient(135deg， var(--blue), var(--pink));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -919,7 +919,7 @@ body {
     left: 10%;
     right: 10%;
     height: 2px;
-    background: linear-gradient(90deg, var(--blue), var(--pink));
+    background: linear-gradient(90deg， var(--blue), var(--pink));
     border-radius: 2px;
 }
 
@@ -948,7 +948,7 @@ body {
 .sun-icon,
 .moon-icon {
     position: absolute;
-    transition: all 0.3s ease;
+    transition: 全部 0.3s ease;
 }
 
 .sun-icon {
@@ -990,7 +990,7 @@ body.dark-mode .moon-icon {
     height: 3px;
     background: var(--text-color);
     border-radius: 3px;
-    transition: all 0.3s ease;
+    transition: 全部 0.3s ease;
 }
 
 .mobile-menu-toggle.active span:nth-child(1) {
@@ -1002,7 +1002,7 @@ body.dark-mode .moon-icon {
 }
 
 .mobile-menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(8px, -8px);
+    transform: rotate(-45deg) translate(8px， -8px);
 }
 
 /* --- 阅读进度条 --- */
@@ -1012,7 +1012,7 @@ body.dark-mode .moon-icon {
     left: 0;
     width: 0%;
     height: 3px;
-    background: linear-gradient(90deg， var(--blue), var(--pink));
+    background: linear-gradient(90deg， var(--blue)， var(--pink));
     z-index: 101;
     transition: width 0.1s ease;
 }
@@ -1082,7 +1082,7 @@ body.dark-mode .theme-toggle:hover {
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0， 0, 0， 0.5);
         opacity: 0;
         visibility: hidden;
         transition: 全部 0.3s ease;
@@ -1142,7 +1142,7 @@ body.dark-mode .theme-toggle:hover {
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    到 { opacity: 1; transform: translateY(0); }
 }
 
 .intro-avatar {
@@ -1332,4 +1332,64 @@ body.dark-mode .toc-content {
 /* 隐藏默认的 summary 箭头 */
 .toc-title::-webkit-details-marker {
   display: none;
+}
+/* ====== 可折叠内容块 (Collapse Shortcode) 样式 ====== */
+
+.collapse-block {
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-color);
+    overflow: hidden; /* 保证内部元素不会溢出圆角 */
+}
+
+body.dark-mode .collapse-block {
+    border-color: #444;
+    background: #2a2a2a;
+}
+
+.collapse-title {
+    font-weight: 600;
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    list-style: none; /* 隐藏默认三角 */
+    display: flex;
+    align-items: center;
+    background: rgba(0,0,0,0.02);
+}
+
+body.dark-mode .collapse-title {
+    background: rgba(255,255,255,0.05);
+}
+
+.collapse-title::-webkit-details-marker {
+  display: none;
+}
+
+.collapse-title::before {
+    content: '▶';
+    font-size: 0.7em;
+    margin-right: 0.75rem;
+    color: var(--pink);
+    transition: transform 0.2s ease-in-out;
+}
+
+.collapse-block[open] > .collapse-title::before {
+    transform: rotate(90deg);
+}
+
+.collapse-content {
+    padding: 1rem 1.2rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+body.dark-mode .collapse-content {
+    border-top-color: #444;
+}
+
+/* 移除内容块中第一个元素的上边距和最后一个元素的下边距，让排版更紧凑 */
+.collapse-content > *:first-child {
+    margin-top: 0;
+}
+.collapse-content > *:last-child {
+    margin-bottom: 0;
 }
