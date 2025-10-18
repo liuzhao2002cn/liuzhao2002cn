@@ -10,10 +10,12 @@
                 throwOnError: false
             });
         });
-
+document.addEventListener('DOMContentLoaded', () => {
+  mermaid.initialize({ startOnLoad: true });
+});
 // ====== 导航栏交互功能 ======
 
-document。addEventListener('DOMContentLoaded'， function() {
+document.addEventListener('DOMContentLoaded'， function() {
     // 1. 深色模式切换
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
