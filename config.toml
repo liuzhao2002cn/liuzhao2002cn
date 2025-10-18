@@ -6,7 +6,12 @@ canonifyURLs = true
 [params]
   author = '肇'
   description = '这里是关于我博客的描述...'
+  # 新增网站参数
+  tagline = '“无穷的远方，无数的人们，都和我有关”'
+  github = "https://github.com/liuzhao2002cn"
+  email = "your-email@example.com"
 
+# 菜单配置
 [menu]
   [[menu.main]]
     name = '首页'
@@ -20,11 +25,19 @@ canonifyURLs = true
     name = '关于'
     url = '/about/'
     weight = 3
+
+# 分类和标签配置 - 只保留一个 [taxonomies] 部分
 [taxonomies]
   category = "categories"
   tag = "tags"
-  
-# 启用更多功能
+
+# 输出格式配置
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+
+# 标记配置
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
@@ -34,23 +47,24 @@ canonifyURLs = true
     startLevel = 2
     endLevel = 4
 
-# 分类和标签配置
-[taxonomies]
-  category = "categories"
-  tag = "tags"
-
 # 网站地图配置
 [sitemap]
   changefreq = "monthly"
   priority = 0.5
 
-# 额外输出格式
-[outputFormats]
-  [outputFormats.JSON]
-    mediaType = "application/json"
-    baseName = "index"
+# 服务配置
+[services]
+  # [services.googleAnalytics]
+  #   id = "G-XXXXXXXXXX"
 
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
-  page = ["HTML"]
-  section = ["HTML", "RSS"]
+# 高级功能配置（可选）
+[params.advanced]
+  enable_lazyload = true
+  mathjax = true
+  
+[params.features]
+  related_posts = true
+  reading_time = true
+  table_of_contents = true
+  dark_mode_toggle = true
+  progress_bar = true
