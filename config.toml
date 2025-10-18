@@ -23,3 +23,34 @@ canonifyURLs = true
 [taxonomies]
   category = "categories"
   tag = "tags"
+  
+# 启用更多功能
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true  # 允许在markdown中使用HTML
+
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+
+# 分类和标签配置
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+# 网站地图配置
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+
+# 额外输出格式
+[outputFormats]
+  [outputFormats.JSON]
+    mediaType = "application/json"
+    baseName = "index"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
