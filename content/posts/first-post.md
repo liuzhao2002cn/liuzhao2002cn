@@ -8,11 +8,12 @@ categories: ["技术"]
 tags: ["Hugo", "杂感", "日记"]
 ---
 
+<image: "/images/post-covers/1.jpg">
+
 # 你好，旧世界！再见，旧世界！
 
 快跑，旧世界就在你我身后！
 
 <!--more-->
 
-无
 
