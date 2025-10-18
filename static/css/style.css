@@ -150,6 +150,26 @@ header nav a {
     font-weight: bold;
 }
 
+.site-nav ul {
+    list-style: none; /* 移除项目符号（黑点） */
+    margin: 0;
+    padding: 0;
+    display: flex; /* 让列表项水平排列 */
+    justify-content: flex-start; /* 从左侧开始排列 */
+    gap: 1.5rem; /* 设置项目之间的间距 */
+}
+
+.site-nav a {
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-bottom: none; /* 移除默认的链接下划线边框 */
+}
+
+/* 当前活动菜单项的样式 */
+.site-nav a.active {
+    color: var(--blue); /* 比如用蓝色表示当前页面 */
+}
+
 /* 7. 文章列表 */
 .post-list {
     list-style: none;
