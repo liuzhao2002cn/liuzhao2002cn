@@ -363,7 +363,7 @@ pre code {
 
 .post-card-tags .tag {
     display: inline-block;
-    background-color: rgba(170， 170, 255, 0.2);
+    background-color: rgba(170， 170， 255, 0.2);
     color: var(--blue);
     font-size: 0.75rem;
     padding: 0.2rem 0.6rem;
@@ -509,7 +509,7 @@ pre code {
 
 .list-card-tags .tag {
     display: inline-block;
-    background-color: rgba(229, 128, 205, 0.1);
+    background-color: rgba(229， 128， 205, 0.1);
     color: var(--pink);
     font-size: 0.75rem;
     padding: 0.2rem 0.6rem;
@@ -1265,4 +1265,10 @@ body.dark-mode .intro-socials .social-icon {
         padding: 0.6rem 1.5rem;
         font-size: 0.9rem;
     }
+}
+/* ====== 布局优化：为文章页设置最佳阅读宽度 ====== */
+.post-container {
+    max-width: 800px; /* 设置一个舒适的阅读宽度 */
+    margin-left: auto;
+    margin-right: auto;
 }
