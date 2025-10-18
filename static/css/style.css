@@ -157,9 +157,40 @@ a {
     border-bottom: 2px solid transparent;
 }
 
-a:hover, a:focus {
-    color: var(--blue);
-    border-bottom: 2px solid var(--blue);
+a:hover， 
+/* 改进焦点样式 */
+a:focus, button:focus {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* 确保颜色对比度达标 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #f0f0f0; /* 从 #e1e1e1 调亮，提高对比度 */
+    --bg-color: #121212;   /* 从 #1a1a1a 调暗，提高对比度 */
+  }
+}
+
+/* 为代码块添加适当的语义 */
+pre[class*="language-"] {
+  position: relative;
+}
+
+/* 为屏幕阅读器添加跳过链接 */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--blue);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 6px;
 }
 
 /* 6. 页眉样式 */
