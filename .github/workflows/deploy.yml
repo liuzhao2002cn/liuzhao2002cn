@@ -21,34 +21,38 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.121.2 # 更新到 Hugo 较新的版本
+      HUGO_VERSION: 0.121.2
     steps:
       - name: Checkout
-        # 更新: 使用 v4 版本
         uses: actions/checkout@v4
         with:
           submodules: true
 
       - name: Setup Hugo
-        # 更新: 使用 v3 版本
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: "${{ env.HUGO_VERSION }}"
 
-
+      # ===============================================================
+      #  ↓↓↓ 我们最关键的调试步骤 ↓↓↓
+      # ===============================================================
       - name: Debug Project Structure and Config
         run: |
-         echo ">>> Listing all files in the repository:"
-         find . -print
-         echo " "
-         echo ">>> Displaying content of hugo.toml:"
-         cat hugo.toml
-         echo " "
+          echo ">>> Listing all files in the repository:"
+          find . -print
+          echo " "
+          echo ">>> Displaying content of hugo.toml:"
+          # We use `cat || true` in case the file doesn't exist for some reason
+          cat hugo.toml || true
+          echo " "
+          echo ">>> Displaying content of config/_default/config.toml (if it exists):"
+          cat config/_default/config.toml || true
+          echo " "
+
       - name: Build
         run: hugo --minify
 
       - name: Upload artifact
-        # 关键修复: 使用 actions/upload-pages-artifact@v3
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
@@ -62,5 +66,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        # 更新: 使用 v4 版本
         uses: actions/deploy-pages@v4
