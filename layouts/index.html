@@ -1,41 +1,66 @@
 {{ define "main" }}
 <section class="hero">
-    <h1>{{ .Site.Title }}</h1>
-    <p class="tagline">{{ .Site.Params.tagline | default "欢迎来到我的园地" }}</p>
+    <div class="hero-content">
+        <h1 class="hero-title">{{ .Site.Title }}</h1>
+        <p class="hero-tagline">{{ .Site.Params.tagline | default "欢迎来到我的园地" }}</p>
+    </div>
 </section>
 
+<!-- 筛选出所有 'posts' 类型的文章 -->
+{{ $pages := where .Site.RegularPages "Type" "posts" }}
+
 <section class="featured-posts">
-    <h2>精选文章</h2>
+    <h2 class="section-title">✨ 精选文章</h2>
     <div class="post-grid">
-        {{ range first 3 (where .Site.RegularPages "Params.featured" true) }}
-        <article class="post-card">
-            <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-            <p class="post-meta">{{ .Date.Format "2006-01-02" }}</p>
-            <p class="post-summary">{{ .Summary | truncate 100 }}</p>
-        </article>
+        <!-- 优先显示被标记为 featured 的文章 -->
+        {{ $featured := where $pages "Params.featured" true }}
+        {{ $displayPosts := $featured | default ($pages) }}
+
+        {{ range first 3 $displayPosts }}
+        <a href="{{ .Permalink }}" class="post-card-link">
+            <article class="post-card">
+                {{ with .Params.image }}
+                <div class="post-card-image-wrapper">
+                    <img src="{{ . | relURL }}" alt="{{ $.Title }}" class="post-card-image" loading="lazy">
+                </div>
+                {{ end }}
+                <div class="post-card-content">
+                    <h3 class="post-card-title">{{ .Title }}</h3>
+                    <p class="post-card-summary">{{ .Summary | plainify | truncate 100 }}</p>
+                    <div class="post-card-meta">
+                        <span class="post-card-date">{{ .Date.Format "2006-01-02" }}</span>
+                        <span class="post-card-reading-time">· {{ .ReadingTime }} 分钟阅读</span>
+                    </div>
+                    {{ with .Params.tags }}
+                    <div class="post-card-tags">
+                        {{ range . }}
+                        <span class="tag">{{ . }}</span>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                </div>
+            </article>
+        </a>
         {{ else }}
-        <!-- 如果没有标记精选，显示最新3篇 -->
-        {{ range first 3 .Site.RegularPages }}
-        <article class="post-card">
-            <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-            <p class="post-meta">{{ .Date.Format "2006-01-02" }}</p>
-            <p class="post-summary">{{ .Summary | truncate 100 }}</p>
-        </article>
-        {{ end }}
+            <p>暂无精选文章，敬请期待！</p>
         {{ end }}
     </div>
 </section>
 
 <section class="recent-posts">
-    <h2>最新文章</h2>
-    <ul class="post-list">
-        {{ range first 5 .Site.RegularPages }}
+    <h2 class="section-title">⏳ 最新发布</h2>
+    <ul class="recent-post-list">
+        {{ range first 5 $pages }}
         <li>
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
-            <span class="post-meta">({{ .Date.Format "2006-01-02" }})</span>
+            <a href="{{ .Permalink }}">
+                <span class="recent-post-title">{{ .Title }}</span>
+                <span class="recent-post-date">{{ .Date.Format "Jan 2" }}</span>
+            </a>
         </li>
         {{ end }}
     </ul>
-    <p><a href="/posts/">查看所有文章 &rarr;</a></p>
+    <div class="view-all-wrapper">
+        <a href="/posts/" class="view-all-link">查看所有文章 &rarr;</a>
+    </div>
 </section>
 {{ end }}
