@@ -22,7 +22,8 @@
                 <!-- 左侧：封面图 -->
                 {{ with .Params.image }}
                 <div class="list-card-image-wrapper">
-                    <img src="{{ . | relURL }}" alt="{{ .Title }}" class="list-card-image" loading="lazy">
+                    <!-- 修正：使用 $.Title 来引用页面的标题作为 alt 文本 -->
+                    <img src="{{ . | relURL }}" alt="{{ $.Title }}" class="list-card-image" loading="lazy">
                 </div>
                 {{ end }}
                 
