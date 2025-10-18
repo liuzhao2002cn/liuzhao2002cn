@@ -70,16 +70,7 @@
         {{ partial "footer.html" . }}
     </div>
 
-    <!-- 平滑滚动 -->
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+
+    <script src="{{ "/js/main.js" | relURL }}" defer></script> 
 </body>
 </html>
