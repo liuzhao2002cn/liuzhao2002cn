@@ -644,7 +644,7 @@ pre code {
 .table-of-contents {
     margin: 2rem auto;
     padding: 1.5rem;
-    background: rgba(170, 170, 255, 0.05);
+    background: rgba(170， 170, 255, 0.05);
     border-left: 4px solid var(--blue);
     border-radius: 5px;
     max-width: 80%;
@@ -795,7 +795,7 @@ body {
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-color);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 全部 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-header.scrolled {
@@ -935,7 +935,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: 全部 0.3s ease;
     padding: 0;
 }
 
@@ -994,7 +994,7 @@ body.dark-mode .moon-icon {
 }
 
 .mobile-menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
+    transform: rotate(45deg) translate(8px， 8px);
 }
 
 .mobile-menu-toggle.active span:nth-child(2) {
@@ -1012,14 +1012,14 @@ body.dark-mode .moon-icon {
     left: 0;
     width: 0%;
     height: 3px;
-    background: linear-gradient(90deg, var(--blue), var(--pink));
+    background: linear-gradient(90deg， var(--blue), var(--pink));
     z-index: 101;
     transition: width 0.1s ease;
 }
 
 /* ====== 深色模式适配 ====== */
 body.dark-mode .site-header {
-    background: rgba(45, 45, 45, 0.85);
+    background: rgba(45， 45， 45, 0.85);
     border-bottom-color: #444;
 }
 
@@ -1271,4 +1271,65 @@ body.dark-mode .intro-socials .social-icon {
     max-width: 800px; /* 设置一个舒适的阅读宽度 */
     margin-left: auto;
     margin-right: auto;
+}
+/* ====== 可折叠目录 (Collapsible TOC) 样式 ====== */
+
+.toc-container {
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: rgba(170, 170, 255, 0.05);
+    border-left: 4px solid var(--blue);
+    border-radius: 8px;
+    max-width: 80%;
+}
+
+body.dark-mode .toc-container {
+    background: rgba(170, 170, 255, 0.08);
+}
+
+.toc-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    font-family: var(--font-heading);
+    cursor: pointer; /* 鼠标悬停时显示为手形 */
+    list-style: none; /* 隐藏默认的下拉三角箭头 */
+    display: flex;
+    align-items: center;
+    transition: margin 0.2s ease-in-out;
+}
+
+/* 当目录折叠时，给标题增加一点下边距 */
+.toc-container:not([open]) .toc-title {
+    margin-bottom: 0;
+}
+
+/* 自定义一个漂亮的展开/折叠图标 */
+.toc-title::before {
+    content: '▼';
+    font-size: 0.8em;
+    margin-right: 0.75rem;
+    color: var(--blue);
+    transition: transform 0.2s ease-in-out;
+}
+
+.toc-container[open] > .toc-title::before {
+    transform: rotate(0deg);
+}
+
+.toc-container:not([open]) > .toc-title::before {
+    transform: rotate(-90deg);
+}
+
+.toc-content {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+body.dark-mode .toc-content {
+    border-top-color: #444;
+}
+
+/* 隐藏默认的 summary 箭头 */
+.toc-title::-webkit-details-marker {
+  display: none;
 }
