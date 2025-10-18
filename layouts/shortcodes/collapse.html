@@ -1,0 +1,9 @@
+<!-- layouts/shortcodes/collapse.html -->
+<details class="collapse-block" {{ if eq (.Get "open") "true" }}open{{ end }}>
+    <summary class="collapse-title">
+        {{ .Get "title" | default "点击查看详情" }}
+    </summary>
+    <div class="collapse-content">
+        {{ .Inner | markdownify }}
+    </div>
+</details>
