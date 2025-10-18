@@ -20,3 +20,6 @@ canonifyURLs = true
     name = '关于'
     url = '/about/'
     weight = 3
+[taxonomies]
+  category = "categories"
+  tag = "tags"
