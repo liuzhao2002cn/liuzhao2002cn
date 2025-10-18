@@ -1,30 +1,62 @@
 {{ define "main" }}
-<article class="post">
-    <div class="post-content">
-        <div class="post-body">
-            <h2>{{ .Title }}</h2>
-            <p class="date">发布于: {{ .Date.Format "2006-01-02" }}</p>
-            
-            {{ if .TableOfContents }}
-            <div class="table-of-contents">
-                <h3>目录</h3>
-                {{ .TableOfContents }}
-            </div>
-            {{ end }}
-            
-            <div>
-                {{ .Content }}
-            </div>
+<article class="post-single">
+    <!-- 1. 文章头部 -->
+    <header class="post-header">
+        {{ with .Params.image }}
+        <div class="post-cover">
+            <img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="lazy">
         </div>
+        {{ end }}
+        <h1 class="post-title">{{ .Title }}</h1>
+        <div class="post-meta">
+            <span class="meta-item">
+                <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006年1月2日" }}</time>
+            </span>
+            {{ with .Params.categories }}
+            <span class="meta-divider">·</span>
+            <span class="meta-item">
+                {{ range . }}
+                    <a href="{{ "/categories/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+                {{ end }}
+            </span>
+            {{ end }}
+            <span class="meta-divider">·</span>
+            <span class="meta-item">{{ .ReadingTime }} 分钟阅读</span>
+        </div>
+    </header>
+
+    <!-- 2. 文章目录 (如果存在) -->
+    {{ if .TableOfContents }}
+    <div class="table-of-contents" id="toc">
+        <div class="toc-title">目录</div>
+        {{ .TableOfContents }}
+    </div>
+    {{ end }}
+
+    <!-- 3. 文章正文 -->
+    <div class="post-content">
+        {{ .Content }}
     </div>
 
-    <div class="post-tags">
-        {{ if .Params.tags }}
-            <strong>标签:</strong>
-            {{ range .Params.tags }}
-                <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+    <!-- 4. 文章页脚 -->
+    <footer class="post-footer">
+        {{ with .Params.tags }}
+        <div class="post-tags">
+            {{ range . }}
+            <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag-link">#{{ . }}</a>
             {{ end }}
+        </div>
         {{ end }}
-    </div>
+        
+        <!-- 社交分享按钮 -->
+        {{ partial "share.html" . }}
+    </footer>
+
+    <!-- 5. 相关文章 -->
+    {{ partial "related.html" . }}
+
+    <!-- 6. 评论系统 -->
+    {{ partial "comments.html" . }}
+
 </article>
 {{ end }}
