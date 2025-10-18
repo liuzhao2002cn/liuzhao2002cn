@@ -28,12 +28,19 @@
     </header>
 
     <!-- 2. 文章目录 (如果存在) -->
-    {{ if .TableOfContents }}
-    <div class="table-of-contents" id="toc">
-        <div class="toc-title">目录</div>
+{{ if .TableOfContents }}
+<!-- 使用 <details> 标签包裹整个目录 -->
+<details class="toc-container" id="toc" open> <!-- "open" 属性让目录默认是展开的 -->
+    <!-- <summary> 是用户能看到并点击的标题 -->
+    <summary class="toc-title">
+        <span>目录</span>
+    </summary>
+    <!-- Hugo 生成的目录内容放在这里 -->
+    <div class="toc-content">
         {{ .TableOfContents }}
     </div>
-    {{ end }}
+</details>
+{{ end }}
 
     <!-- 3. 文章正文 -->
     <div class="post-content">
