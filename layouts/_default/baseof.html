@@ -27,6 +27,23 @@
 
     <!-- 样式表 -->
     <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}">
+            /* 当字体加载完成后应用的类 */
+        .fonts-loaded body {
+            font-family: var(--font-body);
+        }
+        
+        .fonts-loaded h1, 
+        .fonts-loaded h2, 
+        .fonts-loaded h3, 
+        .fonts-loaded h4, 
+        .fonts-loaded h5, 
+        .fonts-loaded h6 {
+            font-family: var(--font-heading);
+        }
+    </style>
+    
+    <!-- 延迟加载完整CSS -->
+    <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}" media="print" onload="this.media='all'">
     
     <!-- KaTeX 数学公式支持 -->
     <!-- KaTeX 數學公式支持 -->
