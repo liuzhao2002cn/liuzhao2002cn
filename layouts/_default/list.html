@@ -1,10 +1,24 @@
 {{ define "main" }}
     <h2>{{ .Title }}</h2>
-    <ul>
+    <ul class="post-list">
         {{ range .Pages }}
         <li>
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
-            <small>({{ .Date.Format "2006-01-02" }})</small>
+            <a href="{{ .Permalink }}" class="post-title">{{ .Title }}</a>
+            <div class="post-meta">
+                <span>{{ .Date.Format "2006-01-02" }}</span>
+                {{/* --- 显示分类 --- */}}
+                {{ with .Params.categories }}
+                &nbsp;•&nbsp;
+                <span>
+                    分类:
+                    {{ range . }}
+                        <a href="{{ "/categories/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+                    {{ end }}
+                </span>
+                {{ end }}
+            </div>
+            {{/* --- 显示摘要 --- */}}
+            <p class="post-summary">{{ .Summary }}</p>
         </li>
         {{ end }}
     </ul>
