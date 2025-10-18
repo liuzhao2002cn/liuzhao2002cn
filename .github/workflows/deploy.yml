@@ -1,5 +1,3 @@
-# .github/workflows/deploy.yml
-
 name: Deploy Hugo Site to Pages
 
 on:
@@ -21,7 +19,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.121.2
+      HUGO_VERSION: 0.121.2 # 你可以根据需要更新 Hugo 版本
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,22 +30,6 @@ jobs:
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: "${{ env.HUGO_VERSION }}"
-
-      # ===============================================================
-      #  ↓↓↓ 我们最关键的调试步骤 ↓↓↓
-      # ===============================================================
-      - name: Debug Project Structure and Config
-        run: |
-          echo ">>> Listing all files in the repository:"
-          find . -print
-          echo " "
-          echo ">>> Displaying content of hugo.toml:"
-          # We use `cat || true` in case the file doesn't exist for some reason
-          cat hugo.toml || true
-          echo " "
-          echo ">>> Displaying content of config/_default/config.toml (if it exists):"
-          cat config/_default/config.toml || true
-          echo " "
 
       - name: Build
         run: hugo --minify
