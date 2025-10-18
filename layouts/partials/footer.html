@@ -1,29 +1,511 @@
+<!-- 波浪分隔线 -->
+<div class="footer-wave">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+    </svg>
+</div>
+
 <footer class="site-footer">
     <div class="footer-content">
-        <p>
-            &copy; {{ now.Format "2006" }} {{ .Site.Title }}. 
-            {{ with .Site.Params.license }}基于 {{ . | safeHTML }} 许可。{{ end }}
-        </p>
-        
-        <div class="footer-links">
-            {{ with .Site.Params.github }}
-            <a href="{{ . }}" target="_blank" rel="noopener">GitHub</a>
+        <!-- 网站信息区 -->
+        <div class="footer-info">
+            <h3 class="footer-title">{{ .Site.Title }}</h3>
+            {{ with .Site.Params.description }}
+            <p class="footer-description">{{ . }}</p>
             {{ end }}
-            
-            {{ with .Site.Params.email }}
-            <a href="mailto:{{ . }}">联系我</a>
-            {{ end }}
-            
-            {{ with .Site.Params.twitter }}
-            <a href="{{ . }}" target="_blank" rel="noopener">Twitter</a>
-            {{ end }}
+            <p class="footer-slogan">✨ 用文字记录思考,用代码创造价值</p>
         </div>
-        
-        <p class="powered-by">
-            由 <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> 强力驱动
-            {{ with .Site.Params.theme }}
-            • 主题 <a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>
-            {{ end }}
-        </p>
+
+        <!-- 快速链接 -->
+        <div class="footer-links-section">
+            <h4 class="section-title">快速链接</h4>
+            <nav class="footer-nav">
+                {{ range .Site.Menus.main }}
+                <a href="{{ .URL }}" class="footer-link">{{ .Name }}</a>
+                {{ end }}
+                <a href="{{ "index.xml" | absURL }}" target="_blank" class="footer-link">RSS 订阅</a>
+            </nav>
+        </div>
+
+        <!-- 社交媒体 -->
+        <div class="footer-social-section">
+            <h4 class="section-title">关注我</h4>
+            <div class="social-icons">
+                {{ with .Site.Params.github }}
+                <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="GitHub" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                {{ end }}
+                
+                {{ with .Site.Params.email }}
+                <a href="mailto:{{ . }}" class="social-icon" title="邮箱" aria-label="Email">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                </a>
+                {{ end }}
+                
+                {{ with .Site.Params.twitter }}
+                <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="Twitter" aria-label="Twitter">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                    </svg>
+                </a>
+                {{ end }}
+
+                {{ with .Site.Params.bilibili }}
+                <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="哔哩哔哩" aria-label="Bilibili">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373Z"/>
+                    </svg>
+                </a>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部版权信息 -->
+    <div class="footer-bottom">
+        <div class="footer-bottom-content">
+            <div class="copyright">
+                <p>
+                    &copy; {{ now.Format "2006" }} {{ .Site.Title }}
+                    {{ with .Site.Params.license }}
+                    <span class="separator">•</span>
+                    <span>{{ . | safeHTML }}</span>
+                    {{ end }}
+                </p>
+                <p class="runtime" id="runtime">
+                    <span class="runtime-icon">⏱️</span>
+                    网站已运行 <span id="days">0</span> 天 <span id="hours">0</span> 时 <span id="minutes">0</span> 分 <span id="seconds">0</span> 秒
+                </p>
+            </div>
+            
+            <div class="powered-by">
+                由 <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> 强力驱动
+                {{ with .Site.Params.theme }}
+                <span class="separator">•</span>
+                主题 <a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>
+                {{ end }}
+            </div>
+        </div>
     </div>
 </footer>
+
+<!-- 返回顶部按钮 -->
+<button class="back-to-top" id="backToTop" aria-label="返回顶部">
+    <svg viewBox="0 0 24 24" width="24" height="24">
+        <path fill="currentColor" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+    </svg>
+</button>
+
+<style>
+/* ====== 波浪分隔线 ====== */
+.footer-wave {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    margin-bottom: -1px;
+}
+
+.footer-wave svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 80px;
+}
+
+.footer-wave path {
+    fill: var(--white);
+    filter: drop-shadow(0 -2px 8px rgba(0, 0, 0, 0.05));
+}
+
+/* ====== 页脚主体 ====== */
+.site-footer {
+    background: linear-gradient(135deg, 
+        rgba(170, 170, 255, 0.05) 0%, 
+        rgba(229, 128, 205, 0.05) 100%);
+    border-top: 1px solid var(--border-color);
+    padding: 3rem 0 1.5rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+}
+
+/* --- 网站信息区 --- */
+.footer-info {
+    max-width: 400px;
+}
+
+.footer-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin: 0 0 1rem 0;
+    background: linear-gradient(135deg, var(--blue), var(--pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer-description {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.footer-slogan {
+    font-family: var(--font-italic);
+    color: var(--pink);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* --- 快速链接 --- */
+.footer-links-section,
+.footer-social-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem 0;
+    color: var(--text-color);
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-link {
+    color: #666;
+    text-decoration: none;
+    border-bottom: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+}
+
+.footer-link::before {
+    content: '→';
+    margin-right: 0.5rem;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--pink);
+    transform: translateX(5px);
+}
+
+.footer-link:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* --- 社交图标 --- */
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 20px rgba(170, 170, 255, 0.3);
+    border-color: var(--blue);
+    background: linear-gradient(135deg, var(--blue), var(--pink));
+    color: white;
+}
+
+.social-icon svg {
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover svg {
+    transform: rotate(360deg);
+}
+
+/* --- 底部版权栏 --- */
+.footer-bottom {
+    background: rgba(0, 0, 0, 0.02);
+    border-top: 1px solid var(--border-color);
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+}
+
+.footer-bottom-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.copyright p {
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.separator {
+    margin: 0 0.5rem;
+    color: #ccc;
+}
+
+.runtime {
+    font-family: var(--font-code);
+    font-size: 0.85rem !important;
+    color: #666 !important;
+}
+
+.runtime-icon {
+    margin-right: 0.25rem;
+}
+
+.runtime span:not(.runtime-icon) {
+    color: var(--pink);
+    font-weight: 600;
+}
+
+.powered-by {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.powered-by a {
+    color: var(--blue);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--blue);
+    transition: all 0.2s ease;
+}
+
+.powered-by a:hover {
+    color: var(--pink);
+    border-bottom-color: var(--pink);
+}
+
+/* ====== 返回顶部按钮 ====== */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--blue), var(--pink));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 99;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(170, 170, 255, 0.4);
+}
+
+.back-to-top:active {
+    transform: scale(0.95);
+}
+
+/* ====== 深色模式 ====== */
+body.dark-mode .footer-wave path {
+    fill: #2d2d2d;
+    filter: drop-shadow(0 -2px 8px rgba(0, 0, 0, 0.3));
+}
+
+body.dark-mode .site-footer {
+    background: linear-gradient(135deg, 
+        rgba(170, 170, 255, 0.03) 0%, 
+        rgba(229, 128, 205, 0.03) 100%);
+}
+
+body.dark-mode .footer-description,
+body.dark-mode .footer-link {
+    color: #aaa;
+}
+
+body.dark-mode .footer-link:hover {
+    color: var(--pink);
+}
+
+body.dark-mode .social-icon {
+    background: #3a3a3a;
+    border-color: #555;
+}
+
+body.dark-mode .footer-bottom {
+    background: rgba(0, 0, 0, 0.2);
+    border-top-color: #444;
+}
+
+body.dark-mode .copyright p,
+body.dark-mode .runtime {
+    color: #aaa !important;
+}
+
+body.dark-mode .powered-by {
+    color: #aaa;
+}
+
+/* ====== 响应式设计 ====== */
+@media (max-width: 1024px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .footer-info {
+        grid-column: 1 / -1;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-wave {
+        height: 50px;
+    }
+    
+    .footer-wave svg {
+        height: 50px;
+    }
+    
+    .site-footer {
+        padding: 2rem 0 1rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 1.5rem;
+    }
+    
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 0 1.5rem;
+    }
+    
+    .back-to-top {
+        bottom: 1rem;
+        right: 1rem;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* ====== 动画效果 ====== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.site-footer {
+    animation: fadeInUp 0.8s ease;
+}
+</style>
+
+<script>
+// ====== 页脚交互功能 ======
+
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. 返回顶部按钮
+    const backToTop = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll'， () => {
+        if (window。pageYOffset > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+    
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // 2. 网站运行时长计算
+    // 设置你的网站上线日期 (格式: YYYY-MM-DD)
+    const launchDate = new Date('2024-01-01');
+    
+    function updateRuntime() {
+        const now = new Date();
+        const diff = 当前 - launchDate;
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math。floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    }
+    
+    // 初始化并每秒更新
+    updateRuntime();
+    setInterval(updateRuntime, 1000);
+
+    // 3. 为外部链接添加图标
+    document.querySelectorAll('a[target="_blank"]').forEach(link => {
+        if (!link.querySelector('svg')) {
+            link.setAttribute('rel', 'noopener noreferrer');
+        }
+    });
+});
+</script>
