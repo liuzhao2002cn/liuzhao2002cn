@@ -1,40 +1,68 @@
 {{ define "main" }}
+
+<!-- 英雄区域 -->
 <section class="hero">
+    <div class="hero-background">
+        <div class="hero-shape shape-1"></div>
+        <div class="hero-shape shape-2"></div>
+        <div class="hero-shape shape-3"></div>
+    </div>
     <div class="hero-content">
         <h1 class="hero-title">{{ .Site.Title }}</h1>
         <p class="hero-tagline">{{ .Site.Params.tagline | default "欢迎来到我的园地" }}</p>
+        <div class="hero-scroll-hint">
+            <span>向下滚动探索更多</span>
+            <svg viewBox="0 0 24 24" width="20" height="20">
+                <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+            </svg>
+        </div>
     </div>
 </section>
 
 <!-- 筛选出所有 'posts' 类型的文章 -->
 {{ $pages := where .Site.RegularPages "Type" "posts" }}
 
+<!-- 精选文章区域 -->
 <section class="featured-posts">
-    <h2 class="section-title">✨ 精选文章</h2>
+    <div class="section-header">
+        <h2 class="section-title">
+            <span class="title-icon">✨</span>
+            <span class="title-text">精选文章</span>
+            <span class="title-decoration"></span>
+        </h2>
+        <p class="section-subtitle">探索最受欢迎的内容</p>
+    </div>
+
     <div class="post-grid">
         <!-- 优先显示被标记为 featured 的文章 -->
         {{ $featured := where $pages "Params.featured" true }}
         {{ $displayPosts := $featured | default ($pages) }}
-
+        
         {{ range first 3 $displayPosts }}
         <a href="{{ .Permalink }}" class="post-card-link">
             <article class="post-card">
                 {{ with .Params.image }}
                 <div class="post-card-image-wrapper">
                     <img src="{{ . | relURL }}" alt="{{ $.Title }}" class="post-card-image" loading="lazy">
+                    <div class="image-overlay">
+                        <span class="read-more-hint">阅读全文 →</span>
+                    </div>
                 </div>
                 {{ end }}
                 <div class="post-card-content">
                     <h3 class="post-card-title">{{ .Title }}</h3>
                     <p class="post-card-summary">{{ .Summary | plainify | truncate 100 }}</p>
                     <div class="post-card-meta">
+                        <span class="meta-icon">📅</span>
                         <span class="post-card-date">{{ .Date.Format "2006-01-02" }}</span>
-                        <span class="post-card-reading-time">· {{ .ReadingTime }} 分钟阅读</span>
+                        <span class="meta-divider">·</span>
+                        <span class="meta-icon">⏱️</span>
+                        <span class="post-card-reading-time">{{ .ReadingTime }} 分钟</span>
                     </div>
                     {{ with .Params.tags }}
                     <div class="post-card-tags">
-                        {{ range . }}
-                        <span class="tag">{{ . }}</span>
+                        {{ range first 3 . }}
+                        <span class="tag">#{{ . }}</span>
                         {{ end }}
                     </div>
                     {{ end }}
@@ -42,25 +70,602 @@
             </article>
         </a>
         {{ else }}
-            <p>暂无精选文章，敬请期待！</p>
+        <div class="empty-state">
+            <div class="empty-icon">📝</div>
+            <p class="empty-text">暂无精选文章，敬请期待！</p>
+        </div>
         {{ end }}
     </div>
 </section>
 
+<!-- 最新文章区域 -->
 <section class="recent-posts">
-    <h2 class="section-title">⏳ 最新发布</h2>
+    <div class="section-header">
+        <h2 class="section-title">
+            <span class="title-icon">⏳</span>
+            <span class="title-text">最新发布</span>
+            <span class="title-decoration"></span>
+        </h2>
+        <p class="section-subtitle">最近更新的文章列表</p>
+    </div>
+
     <ul class="recent-post-list">
         {{ range first 5 $pages }}
-        <li>
-            <a href="{{ .Permalink }}">
-                <span class="recent-post-title">{{ .Title }}</span>
-                <span class="recent-post-date">{{ .Date.Format "Jan 2" }}</span>
+        <li class="recent-post-item">
+            <a href="{{ .Permalink }}" class="recent-post-link">
+                <div class="recent-post-main">
+                    <span class="recent-post-indicator"></span>
+                    <span class="recent-post-title">{{ .Title }}</span>
+                </div>
+                <div class="recent-post-info">
+                    {{ with .Params.categories }}
+                    <span class="recent-post-category">{{ index . 0 }}</span>
+                    {{ end }}
+                    <span class="recent-post-date">{{ .Date.Format "Jan 2" }}</span>
+                </div>
             </a>
         </li>
         {{ end }}
     </ul>
+
     <div class="view-all-wrapper">
-        <a href="/posts/" class="view-all-link">查看所有文章 &rarr;</a>
+        <a href="/posts/" class="view-all-link">
+            <span>查看所有文章</span>
+            <svg viewBox="0 0 24 24" width="18" height="18">
+                <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+            </svg>
+        </a>
     </div>
 </section>
+
+<style>
+/* ====== 英雄区域增强 ====== */
+.hero {
+    position: relative;
+    background: linear-gradient(135deg, 
+        rgba(170, 170, 255, 0.1) 0%, 
+        rgba(229, 128, 205, 0.1) 100%);
+    border-radius: 12px;
+    padding: 5rem 2rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.hero-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.3;
+    filter: blur(60px);
+    animation: float 20s ease-in-out infinite;
+}
+
+.hero-shape.shape-1 {
+    width: 300px;
+    height: 300px;
+    background: var(--blue);
+    top: -100px;
+    left: -100px;
+    animation-delay: 0s;
+}
+
+.hero-shape.shape-2 {
+    width: 250px;
+    height: 250px;
+    background: var(--pink);
+    bottom: -80px;
+    right: -80px;
+    animation-delay: 7s;
+}
+
+.hero-shape.shape-3 {
+    width: 200px;
+    height: 200px;
+    background: var(--blue);
+    top: 50%;
+    right: 10%;
+    animation-delay: 14s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -30px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin: 0 0 1rem 0;
+    background: linear-gradient(135deg, var(--blue), var(--pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleFadeIn 1s ease;
+    text-shadow: 0 0 40px rgba(170, 170, 255, 0.3);
+}
+
+@keyframes titleFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-tagline {
+    font-family: var(--font-italic);
+    font-size: 1.4rem;
+    color: var(--pink);
+    margin: 0 0 2rem 0;
+    animation: taglineFadeIn 1s ease 0.3s backwards;
+}
+
+@keyframes taglineFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-scroll-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: #888;
+    font-size: 0.9rem;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.hero-scroll-hint svg {
+    opacity: 0.6;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+/* ====== 区块标题增强 ====== */
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 2rem;
+    margin: 0 0 0.75rem 0;
+    position: relative;
+}
+
+.title-icon {
+    font-size: 1.8rem;
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.title-text {
+    background: linear-gradient(135deg, var(--blue), var(--pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.title-decoration {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--pink));
+    border-radius: 3px;
+}
+
+.section-subtitle {
+    color: #888;
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* ====== 精选文章卡片增强 ====== */
+.featured-posts {
+    margin-bottom: 4rem;
+}
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.post-card-link {
+    text-decoration: none;
+    color: inherit;
+    border-bottom: none;
+}
+
+.post-card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(170, 170, 255, 0.2);
+    border-color: var(--blue);
+}
+
+.post-card-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(170, 170, 255, 0.1), rgba(229, 128, 205, 0.1));
+}
+
+.post-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.post-card:hover .post-card-image {
+    transform: scale(1.1);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.post-card:hover .image-overlay {
+    opacity: 1;
+}
+
+.read-more-hint {
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+
+.post-card:hover .read-more-hint {
+    transform: translateY(0);
+}
+
+.post-card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card-title {
+    font-size: 1.4rem;
+    margin: 0 0 0.75rem 0;
+    color: var(--text-color);
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+.post-card:hover .post-card-title {
+    color: var(--blue);
+}
+
+.post-card-summary {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #666;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.post-card-meta {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+
+.meta-icon {
+    font-size: 0.9rem;
+}
+
+.meta-divider {
+    margin: 0 0.5rem;
+    opacity: 0.5;
+}
+
+.post-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.post-card-tags .tag {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(170, 170, 255, 0.15), rgba(229, 128, 205, 0.15));
+    color: var(--pink);
+    font-size: 0.8rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.post-card:hover .tag {
+    background: linear-gradient(135deg, var(--blue), var(--pink));
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ====== 空状态 ====== */
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.empty-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.empty-text {
+    color: #888;
+    font-size: 1.1rem;
+}
+
+/* ====== 最新文章列表增强 ====== */
+.recent-posts {
+    margin-bottom: 3rem;
+}
+
+.recent-post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recent-post-item {
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+
+.recent-post-item:last-child {
+    border-bottom: none;
+}
+
+.recent-post-item:hover {
+    background: linear-gradient(90deg, 
+        rgba(170, 170, 255, 0.05) 0%, 
+        transparent 100%);
+}
+
+.recent-post-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1rem;
+    text-decoration: none;
+    border-bottom: none;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.recent-post-main {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.recent-post-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--pink);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.recent-post-item:hover .recent-post-indicator {
+    background: var(--blue);
+    transform: scale(1.5);
+    box-shadow: 0 0 10px var(--blue);
+}
+
+.recent-post-title {
+    font-size: 1.15rem;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.recent-post-item:hover .recent-post-title {
+    color: var(--blue);
+}
+
+.recent-post-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.recent-post-category {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(170, 170, 255, 0.1);
+    color: var(--blue);
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.recent-post-date {
+    font-size: 0.9rem;
+    color: #999;
+    font-family: var(--font-code);
+    min-width: 50px;
+    text-align: right;
+}
+
+/* ====== 查看全部链接 ====== */
+.view-all-wrapper {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.view-all-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 2rem;
+    background: linear-gradient(135deg, var(--blue), var(--pink));
+    color: white;
+    font-weight: 600;
+    border-radius: 25px;
+    text-decoration: none;
+    border-bottom: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(170, 170, 255, 0.3);
+}
+
+.view-all-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(170, 170, 255, 0.4);
+}
+
+.view-all-link svg {
+    transition: transform 0.3s ease;
+}
+
+.view-all-link:hover svg {
+    transform: translateX(5px);
+}
+
+/* ====== 响应式设计 ====== */
+@media (max-width: 768px) {
+    .hero {
+        padding: 3rem 1.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-tagline {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .post-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .recent-post-link {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 0.75rem;
+    }
+
+    .recent-post-info {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .recent-post-title {
+        white-space: normal;
+    }
+}
+
+/* ====== 深色模式 ====== */
+body.dark-mode .hero {
+    background: linear-gradient(135deg, 
+        rgba(170, 170, 255, 0.05) 0%, 
+        rgba(229, 128, 205, 0.05) 100%);
+}
+
+body.dark-mode .post-card {
+    background-color: #2d2d2d;
+    border-color: #444;
+}
+
+body.dark-mode .post-card:hover {
+    border-color: var(--blue);
+}
+
+body.dark-mode .post-card-summary {
+    color: #aaa;
+}
+
+body.dark-mode .recent-post-item:hover {
+    background: linear-gradient(90deg, 
+        rgba(170, 170, 255, 0.08) 0%, 
+        transparent 100%);
+}
+</style>
+
 {{ end }}
