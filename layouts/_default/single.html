@@ -5,5 +5,17 @@
         <div>
             {{ .Content }}
         </div>
+
+        {{/* --- 新增代码开始 --- */}}
+        <div class="post-tags">
+            {{ if .Params.tags }}
+                <strong><i class="fas fa-tags"></i> 标签:</strong>
+                {{ range .Params.tags }}
+                    <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+                {{ end }}
+            {{ end }}
+        </div>
+        {{/* --- 新增代码结束 --- */}}
+
     </article>
 {{ end }}
