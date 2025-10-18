@@ -7,6 +7,9 @@
   font-weight: 400; /* 400 or normal */
   font-style: normal;
   font-display: swap; /* 性能优化：先显示系统字体，字体加载完后再替换 */
+   /* 新增字体描述符 */
+  ascent-override: 90%;
+  descent-override: 20%;
 }
 
 @font-face {
