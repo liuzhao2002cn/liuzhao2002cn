@@ -8,7 +8,7 @@ categories: ["技术"]
 tags: ["Hugo", "杂感", "日记"]
 ---
 
-(/images/post-covers/1.jpg)
+{{< figure src="/images/post-covers/1.jpg" title="三色旗" >}}
 
 # 你好，旧世界！再见，旧世界！
 
