@@ -1,6 +1,6 @@
 // ====== 导航栏交互功能 ======
 
-document.addEventListener('DOMContentLoaded', function() {
+document。addEventListener('DOMContentLoaded', function() {
     // 1. 深色模式切换
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
@@ -80,5 +80,54 @@ document.addEventListener('DOMContentLoaded', function() {
         const progress = (scrollTop / trackLength) * 100;
         
         progressBar.style.width = progress + '%';
+    });
+});
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. 返回顶部按钮
+    const backToTop = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+    
+    backToTop.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // 2. 网站运行时长计算
+    // 设置你的网站上线日期 (格式: YYYY-MM-DD)
+    const launchDate = new Date('2025-10-18');
+    
+    function updateRuntime() {
+        const now = new Date();
+        const diff = now - launchDate;
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    }
+    
+    // 初始化并每秒更新
+    updateRuntime();
+    setInterval(updateRuntime, 1000);
+
+    // 3. 为外部链接添加图标
+    document.querySelectorAll('a[target="_blank"]').forEach(function(link) {
+        if (!link.querySelector('svg')) {
+            link.setAttribute('rel', 'noopener noreferrer');
+        }
     });
 });
