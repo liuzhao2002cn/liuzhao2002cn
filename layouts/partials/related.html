@@ -1,0 +1,25 @@
+{{ $related := .Site.RegularPages.Related . | first 3 }}
+{{ with $related }}
+<div class="related-posts">
+    <h3 class="related-title">你可能也会喜欢</h3>
+    <div class="post-grid">
+        {{ range . }}
+        <a href="{{ .Permalink }}" class="post-card-link">
+            <article class="post-card">
+                {{ with .Params.image }}
+                <div class="post-card-image-wrapper">
+                    <img src="{{ . | relURL }}" alt="{{ .Title }}" class="post-card-image" loading="lazy">
+                </div>
+                {{ end }}
+                <div class="post-card-content">
+                    <h3 class="post-card-title">{{ .Title }}</h3>
+                    <div class="post-card-meta">
+                        <span class="post-card-date">{{ .Date.Format "2006-01-02" }}</span>
+                    </div>
+                </div>
+            </article>
+        </a>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
