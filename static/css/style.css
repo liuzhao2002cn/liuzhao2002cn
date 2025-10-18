@@ -1,3 +1,43 @@
+/* ====== 0. 自定义字体定义 (@font-face) ====== */
+
+/* --- 霞鹜文楷 --- */
+@font-face {
+  font-family: 'LXGW WenKai'; /* 我们给这个字体起的名字 */
+  src: url('/fonts/LXGWWenKai-Light.woff2') format('woff2');
+  font-weight: 400; /* 400 or normal */
+  font-style: normal;
+  font-display: swap; /* 性能优化：先显示系统字体，字体加载完后再替换 */
+}
+
+@font-face {
+  font-family: 'LXGW WenKai';
+  src: url('/fonts/LXGWWenKai-Regulr.woff2') format('woff2');
+  font-weight: 700; /* 700 or bold */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- 思源宋体 CN --- */
+@font-face {
+  font-family: 'Source Han Serif CN';
+  src: url('/fonts/SourceHanSerifCN-Light.woff2') format('woff2');
+  font-weight: 400; /* normal */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Han Serif CN';
+  src: url('/fonts/SourceHanSerifCN-Bold.woff2') format('woff2');
+  font-weight: 700; /* bold */
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* ====== 1. 定义颜色和字体变量 ====== */
+/* ... 您接下来的CSS代码 ... */
+
 /* static/css/style.css */
 /* 1. 定义颜色和字体变量 */
 :root {
@@ -10,7 +50,7 @@
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 
     /* 字体栈 */
-    --font-heading: 'LXGW WenKai TC', '霞鹜文楷', sans-serif;
+    --font-heading: 'LXGW WenKai', '霞鹜文楷', sans-serif;
     --font-body: 'Source Han Serif CN', '思源宋体 CN', serif;
     --font-english: 'Times New Roman', serif;
 }
