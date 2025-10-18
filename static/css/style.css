@@ -3,15 +3,7 @@
 /* --- 霞鹜文楷 --- */
 @font-face {
   font-family: 'LXGW WenKai';
-  src: url('/fonts/LXGWWenKai-Light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'LXGW WenKai';
-  src: url('/fonts/LXGWWenKai-Regular.ttf') format('truetype');
+  src: url('/fonts/LXGWWenKai-Medium.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -19,7 +11,7 @@
 
 @font-face {
   font-family: 'LXGW WenKai';
-  src: url('/fonts/LXGWWenKai-Bold.ttf') format('truetype');
+  src: url('/fonts/LXGWWenKai-Regular.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
