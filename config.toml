@@ -52,15 +52,10 @@ canonifyURLs = true
   changefreq = "monthly"
   priority = 0.5
 
-# 服务配置
-[services]
-  # [services.googleAnalytics]
-  #   id = "G-XXXXXXXXXX"
 
 # 高级功能配置（可选）
 [params.advanced]
   enable_lazyload = true
-  mathjax = true
   
 [params.features]
   related_posts = true
