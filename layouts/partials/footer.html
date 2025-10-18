@@ -463,15 +463,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // 1. 返回顶部按钮
     const backToTop = document.getElementById('backToTop');
     
-    window.addEventListener('scroll'， () => {
-        if (window。pageYOffset > 300) {
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
             backToTop.classList.add('visible');
         } else {
             backToTop.classList.remove('visible');
         }
     });
     
-    backToTop.addEventListener('click', () => {
+    backToTop.addEventListener('click', function() {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
@@ -484,10 +484,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function updateRuntime() {
         const now = new Date();
-        const diff = 当前 - launchDate;
+        const diff = now - launchDate;
         
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math。floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
         
@@ -502,7 +502,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(updateRuntime, 1000);
 
     // 3. 为外部链接添加图标
-    document.querySelectorAll('a[target="_blank"]').forEach(link => {
+    document.querySelectorAll('a[target="_blank"]').forEach(function(link) {
         if (!link.querySelector('svg')) {
             link.setAttribute('rel', 'noopener noreferrer');
         }
