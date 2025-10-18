@@ -1,21 +1,30 @@
 {{ define "main" }}
-    <article>
-        <h2>{{ .Title }}</h2>
-        <p class="date">发布于: {{ .Date.Format "2006-01-02" }}</p>
-        <div>
-            {{ .Content }}
-        </div>
-
-        {{/* --- 新增代码开始 --- */}}
-        <div class="post-tags">
-            {{ if .Params.tags }}
-                <strong><i class="fas fa-tags"></i> 标签:</strong>
-                {{ range .Params.tags }}
-                    <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
-                {{ end }}
+<article class="post">
+    <div class="post-content">
+        <div class="post-body">
+            <h2>{{ .Title }}</h2>
+            <p class="date">发布于: {{ .Date.Format "2006-01-02" }}</p>
+            
+            {{ if .TableOfContents }}
+            <div class="table-of-contents">
+                <h3>目录</h3>
+                {{ .TableOfContents }}
+            </div>
             {{ end }}
+            
+            <div>
+                {{ .Content }}
+            </div>
         </div>
-        {{/* --- 新增代码结束 --- */}}
+    </div>
 
-    </article>
+    <div class="post-tags">
+        {{ if .Params.tags }}
+            <strong>标签:</strong>
+            {{ range .Params.tags }}
+                <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+            {{ end }}
+        {{ end }}
+    </div>
+</article>
 {{ end }}
