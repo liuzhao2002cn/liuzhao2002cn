@@ -6,8 +6,8 @@
     --bg-color: #f8f9fa;
     --border-color: #e9ecef;
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    --font-heading: "Source Han Serif SC", "思源宋体 CN", sans-serif;
-    --font-body: "LXGW WenKai GB Screen", "PingFang SC", "Microsoft YaHei", sans-serif;
+    --font-heading: "LXGW WenKai GB Screen", "Source Han Serif SC", "思源宋体 CN", sans-serif;
+    --font-body: "LXGW WenKai GB Screen", "Source Han Serif SC", "Microsoft YaHei", sans-serif;
     --font-italic: "Smiley Sans Oblique", sans-serif;
     --font-english: 'Times New Roman', serif;
     --font-code: 'Monaco', 'Menlo', 'Consolas', monospace;
@@ -570,6 +570,24 @@ pre code {
     .list-card-image-wrapper {
         width: 100%;
         height: 180px; /* 在移动端，图片可以更高一些 */
+    }
+        .hero-tagline {
+        font-size: 1.2rem; /* 从 1.4rem 缩小 */
+    }
+
+    /* 解决区块标题过大 */
+    .section-title {
+        font-size: 1.8rem; /* 从 2rem 缩小 */
+    }
+
+    .post-card-summary {
+        font-size: 0.95rem; /* 从 1rem 缩小 */
+        line-height: 1.6; /* 也可以调整行高 */
+    }
+    
+    /* 解决“第一篇博客”文章标题过大 */
+    .post-title {
+        font-size: 2.2rem; /* 针对 single.html 的文章标题 */
     }
 }
 /* ====== 16. 文章详情页样式 (single.html) ====== */
