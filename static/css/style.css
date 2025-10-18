@@ -415,3 +415,160 @@ pre code {
 .view-all-link {
     font-weight: bold;
 }
+/* ====== 15. 文章列表页样式 (list.html) ====== */
+
+/* --- 列表页头部 --- */
+.list-page-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.page-title {
+    font-size: 2.2rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.page-title .term-name {
+    color: var(--pink);
+    font-family: var(--font-italic);
+}
+
+.page-subtitle {
+    color: #888;
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* --- 列表卡片布局 --- */
+.list-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    margin-bottom: 2rem;
+    border-bottom: none;
+}
+
+.list-card {
+    display: flex;
+    background-color: var(--white);
+    border-radius: 8px;
+    border: 1px solid transparent;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.list-card-link:hover .list-card {
+    border-color: var(--border-color);
+    box-shadow: var(--shadow);
+    transform: translateY(-3px);
+}
+
+.list-card-image-wrapper {
+    flex-shrink: 0;
+    width: 200px;
+    height: 140px;
+    background-color: var(--bg-color);
+}
+
+.list-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.list-card-content {
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-card-title {
+    font-size: 1.4rem;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.4;
+    color: var(--text-color);
+}
+
+.list-card-link:hover .list-card-title {
+    color: var(--blue);
+}
+
+.list-card-summary {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0 0 1rem 0;
+    color: #555;
+}
+
+.list-card-meta {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 0.75rem;
+}
+
+.list-card-tags .tag {
+    display: inline-block;
+    background-color: rgba(229, 128, 205, 0.1);
+    color: var(--pink);
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    margin-right: 0.5rem;
+}
+
+/* --- 分页导航 --- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.pagination-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: 0.5rem;
+}
+
+.pagination-link {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    color: var(--text-color);
+    background-color: var(--white);
+    transition: all 0.2s ease;
+    text-decoration: none;
+    border-bottom: none;
+}
+
+.pagination-link:hover {
+    background-color: var(--bg-color);
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.pagination-link.is-current {
+    background-color: var(--blue);
+    border-color: var(--blue);
+    color: var(--white);
+    font-weight: bold;
+}
+
+.pagination .disabled .pagination-link {
+    color: #ccc;
+    pointer-events: none;
+    background-color: transparent;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .list-card {
+        flex-direction: column;
+    }
+    .list-card-image-wrapper {
+        width: 100%;
+        height: 180px; /* 在移动端，图片可以更高一些 */
+    }
+}
