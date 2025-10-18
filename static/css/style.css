@@ -50,9 +50,10 @@
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 
     /* 字体栈 */
-    --font-heading: 'LXGW WenKai', '霞鹜文楷', sans-serif;
-    --font-body: 'Source Han Serif CN', '思源宋体 CN', serif;
+    --font-heading: 'Source Han Serif CN', '思源宋体 CN', sans-serif;
+    --font-body: 'LXGW WenKai', '霞鹜文楷', sans-serif;
     --font-english: 'Times New Roman', serif;
+    --font-code: 'LXGW WenKai', 'Monaco', 'Menlo', 'Consolas', monospace;
 }
 
 /* 2. 全局样式重置 */
