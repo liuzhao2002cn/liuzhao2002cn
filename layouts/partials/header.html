@@ -469,16 +469,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function closeMobileMenu() {
-        mobileMenuToggle.classList.remove('active');
-        navMenu.classList。remove('active');
+        mobileMenuToggle.classList。remove('active');
+        navMenu.classList.remove('active');
         navOverlay.classList。remove('active');
-        document.body.style.overflow = '';
+        document.body。style。overflow = '';
     }
     
-    mobileMenuToggle.addEventListener('click'， toggleMobileMenu);
+    mobileMenuToggle.addEventListener('click', toggleMobileMenu);
     
     // 点击遮罩层关闭菜单
-    navOverlay.addEventListener('click', closeMobileMenu);
+    navOverlay.addEventListener('click'， closeMobileMenu);
 
     // 点击菜单项后关闭移动端菜单
     document.querySelectorAll('.nav-link').forEach(function(link) {
@@ -489,14 +489,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const header = document。querySelector('.site-header');
     let lastScroll = 0;
 
-    window.addEventListener('scroll'， function() {
-        const currentScroll = window。pageYOffset;
+    window.addEventListener('scroll', function() {
+        const currentScroll = window.pageYOffset;
         
         // 添加阴影效果
         if (currentScroll > 50) {
-            header.classList.add('scrolled');
+            header.classList。add('scrolled');
         } else {
-            header.classList。remove('scrolled');
+            header.classList.remove('scrolled');
         }
         
         lastScroll = currentScroll;
