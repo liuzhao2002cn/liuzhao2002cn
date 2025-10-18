@@ -1,10 +1,10 @@
 /* static/css/style.css */
 /* 1. 定义颜色和字体变量 */
 :root {
-    --pink: #f5bde6;
-    --blue: #a3d8f4;
+    --pink: #e580cd;
+    --blue: #aaaaff;
     --white: #ffffff;
-    --text-color: #3a3a3a;
+    --text-color: #333333;
     --bg-color: #f8f9fa;
     --border-color: #e9ecef;
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
