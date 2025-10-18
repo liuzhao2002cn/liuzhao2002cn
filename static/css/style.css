@@ -256,3 +256,162 @@ pre code {
       border-color: #444;
   }
 }
+/* ====== 14. 首页美化样式 ====== */
+
+/* --- 英雄区域 --- */
+.hero {
+    background: linear-gradient(135deg, rgba(170, 170, 255, 0.1), rgba(229, 128, 205, 0.1));
+    border-radius: 8px;
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.hero-title {
+    font-size: 3rem;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.hero-tagline {
+    font-family: var(--font-italic); /* 使用得意黑斜体 */
+    font-size: 1.25rem;
+    color: var(--pink);
+    margin-top: 0.5rem;
+}
+
+/* --- 通用分区标题 --- */
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+/* --- 精选文章网格 --- */
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.post-card-link {
+    text-decoration: none;
+    color: inherit;
+    border-bottom: none;
+}
+
+.post-card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%; /* 确保卡片等高 */
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.post-card-image-wrapper {
+    width: 100%;
+    height: 180px; /* 固定图片高度 */
+    overflow: hidden;
+}
+
+.post-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 保证图片不变形地填满容器 */
+    transition: transform 0.3s ease;
+}
+
+.post-card:hover .post-card-image {
+    transform: scale(1.05);
+}
+
+.post-card-content {
+    padding: 1.5rem;
+    flex-grow: 1; /* 让内容区填满剩余空间 */
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card-title {
+    font-size: 1.3rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--text-color);
+}
+
+.post-card-summary {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    flex-grow: 1; /* 推开 meta 和 tags */
+}
+
+.post-card-meta {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+.post-card-tags .tag {
+    display: inline-block;
+    background-color: rgba(170, 170, 255, 0.2);
+    color: var(--blue);
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* --- 最新文章列表 --- */
+.recent-posts {
+    margin-top: 3rem;
+}
+
+.recent-post-list {
+    list-style: none;
+    padding: 0;
+}
+
+.recent-post-list li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+    border-bottom: none;
+}
+
+.recent-post-list li a:hover {
+    background-color: rgba(170， 170, 255, 0.1);
+}
+
+.recent-post-title {
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.recent-post-date {
+    font-size: 0.9rem;
+    color: #999;
+    font-family: var(--font-code); /* 用等宽字体让日期对齐更好看 */
+}
+
+.view-all-wrapper {
+    text-align: right;
+    margin-top: 1rem;
+}
+
+.view-all-link {
+    font-weight: bold;
+}
