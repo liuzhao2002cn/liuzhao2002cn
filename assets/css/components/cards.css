@@ -1,0 +1,154 @@
+/* --- 精选文章网格卡片 --- */
+.post-card-link {
+    text-decoration: none;
+    color: inherit;
+    border-bottom: none;
+}
+
+.post-card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.post-card-image-wrapper {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+}
+
+.post-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.post-card:hover .post-card-image {
+    transform: scale(1.05);
+}
+
+.post-card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card-title {
+    font-size: 1.3rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--text-color);
+}
+
+.post-card-summary {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.post-card-meta {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+.post-card-tags .tag {
+    display: inline-block;
+    background-color: rgba(170, 170, 255, 0.2);
+    color: var(--blue);
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* --- 列表页卡片 --- */
+.list-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    margin-bottom: 2rem;
+    border-bottom: none;
+}
+
+.list-card {
+    display: flex;
+    background-color: var(--white);
+    border-radius: 8px;
+    border: 1px solid transparent;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.list-card-link:hover .list-card {
+    border-color: var(--border-color);
+    box-shadow: var(--shadow);
+    transform: translateY(-3px);
+}
+
+.list-card-image-wrapper {
+    flex-shrink: 0;
+    width: 200px;
+    height: 140px;
+    background-color: var(--bg-color);
+}
+
+.list-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.list-card-content {
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-card-title {
+    font-size: 1.4rem;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.4;
+    color: var(--text-color);
+}
+
+.list-card-link:hover .list-card-title {
+    color: var(--blue);
+}
+
+.list-card-summary {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0 0 1rem 0;
+    color: #555;
+}
+
+.list-card-meta {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 0.75rem;
+}
+
+.list-card-tags .tag {
+    display: inline-block;
+    background-color: rgba(229, 128, 205, 0.1);
+    color: var(--pink);
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    margin-right: 0.5rem;
+}
