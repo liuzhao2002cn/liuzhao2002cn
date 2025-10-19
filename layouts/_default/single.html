@@ -5,15 +5,17 @@
     <header class="post-header">
         {{ with .Params.image }}
         <div class="post-cover">
-            {{ with .Resources.GetMatch .Params.image }}
+            {{ with $.Resources.GetMatch . }}
                 {{ $image := .Resize "1200x webp q75" }}
                 {{ $fallback := .Resize "1200x q75" }}
                 <picture>
                     <source srcset="{{ $image.RelPermalink }}" type="image/webp">
                     <img src="{{ $fallback.RelPermalink }}" width="{{ $fallback.Width }}" height="{{ $fallback.Height }}" alt="{{ $.Title }}" loading="lazy">
                 </picture>
+            {{ end }}
         </div>
         {{ end }}
+        
         <h1 class="post-title">{{ .Title }}</h1>
         <div class="post-meta">
             <span class="meta-item">
@@ -33,19 +35,19 @@
     </header>
 
     <!-- 2. 文章目录 (如果存在) -->
-{{ if .TableOfContents }}
-<!-- 使用 <details> 标签包裹整个目录 -->
-<details class="toc-container" id="toc" open> <!-- "open" 属性让目录默认是展开的 -->
-    <!-- <summary> 是用户能看到并点击的标题 -->
-    <summary class="toc-title">
-        <span>目录</span>
-    </summary>
-    <!-- Hugo 生成的目录内容放在这里 -->
-    <div class="toc-content">
-        {{ .TableOfContents }}
-    </div>
-</details>
-{{ end }}
+    {{ if .TableOfContents }}
+    <!-- 使用 <details> 标签包裹整个目录 -->
+    <details class="toc-container" id="toc" open> <!-- "open" 属性让目录默认是展开的 -->
+        <!-- <summary> 是用户能看到并点击的标题 -->
+        <summary class="toc-title">
+            <span>目录</span>
+        </summary>
+        <!-- Hugo 生成的目录内容放在这里 -->
+        <div class="toc-content">
+            {{ .TableOfContents }}
+        </div>
+    </details>
+    {{ end }}
 
     <!-- 3. 文章正文 -->
     <div class="post-content">
