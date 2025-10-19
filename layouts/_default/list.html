@@ -1,3 +1,5 @@
+# 重新创建文件，确保正确的格式
+cat > layouts/_default/list.html << 'EOF'
 {{ define "main" }}
 <div class="list-page-header">
     {{ if .IsHome }}
@@ -100,3 +102,4 @@
 {{ end }}
 
 {{ end }}
+EOF
