@@ -1,178 +1,347 @@
-/* assets/css/utilities/responsive.css */
+{{ define "main" }}
+<div class="books-container">
+    <!-- 页面头部 -->
+    <div class="books-header">
+        <h1 class="books-title">📚 译著书架</h1>
+        <p class="books-subtitle">政治哲学与经济学的深度译作</p>
+    </div>
 
+    <!-- 书籍网格 -->
+    {{ if .Pages }}
+    <div class="books-grid">
+        {{ range .Pages }}
+        <article class="book-card">
+            <a href="{{ .Permalink }}" class="book-link">
+                <!-- 书籍封面 -->
+                <div class="book-cover-wrapper">
+                    {{ if .Params.cover }}
+                        {{ with .Resources.GetMatch .Params.cover }}
+                            <img src="{{ .RelPermalink }}" 
+                                 alt="{{ $.Title }}" 
+                                 class="book-cover"
+                                 loading="lazy">
+                        {{ else }}
+                            <div class="book-cover-fallback">
+                                <span class="book-icon">📖</span>
+                                <span class="book-fallback-title">{{ .Title }}</span>
+                            </div>
+                        {{ end }}
+                    {{ else }}
+                        <div class="book-cover-fallback">
+                            <span class="book-icon">📖</span>
+                            <span class="book-fallback-title">{{ .Title }}</span>
+                        </div>
+                    {{ end }}
+                    <div class="book-overlay">
+                        <span class="read-more">查看详情 →</span>
+                    </div>
+                </div>
+
+                <!-- 书籍信息 -->
+                <div class="book-info">
+                    <h2 class="book-title">{{ .Title }}</h2>
+                    
+                    {{ with .Params.book_author }}
+                    <p class="book-author">
+                        <span class="info-label">原作者：</span>{{ . }}
+                    </p>
+                    {{ end }}
+                    
+                    {{ with .Params.translator }}
+                    <p class="book-translator">
+                        <span class="info-label">译者：</span>{{ . }}
+                    </p>
+                    {{ end }}
+                    
+                    <div class="book-meta">
+                        {{ with .Params.publisher }}
+                        <span class="meta-item">
+                            <span class="meta-icon">🏢</span>
+                            {{ . }}
+                        </span>
+                        {{ end }}
+                        
+                        {{ with .Params.year }}
+                        <span class="meta-item">
+                            <span class="meta-icon">📅</span>
+                            {{ . }}
+                        </span>
+                        {{ end }}
+                    </div>
+                    
+                    {{ with .Params.summary }}
+                    <p class="book-summary">{{ . | plainify | truncate 150 }}</p>
+                    {{ end }}
+                </div>
+            </a>
+        </article>
+        {{ end }}
+    </div>
+    {{ else }}
+    <!-- 空状态 -->
+    <div class="empty-state">
+        <div class="empty-icon">📚</div>
+        <h2 class="empty-title">书架空空如也</h2>
+        <p class="empty-description">暂时还没有译著，敬请期待</p>
+    </div>
+    {{ end }}
+</div>
+
+<style>
+.books-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* 页面头部 */
+.books-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 2rem 0;
+}
+
+.books-title {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.books-subtitle {
+    font-size: 1.25rem;
+    color: #64748b;
+    margin: 0;
+    text-align: center;
+}
+
+/* 书籍网格 */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+/* 书籍卡片 */
+.book-card {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+}
+
+.book-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+}
+
+.book-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 书籍封面 */
+.book-cover-wrapper {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.book-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.book-card:hover .book-cover {
+    transform: scale(1.05);
+}
+
+.book-cover-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+}
+
+.book-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.book-fallback-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.book-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    padding: 2rem 1.5rem 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.book-card:hover .book-overlay {
+    opacity: 1;
+}
+
+.read-more {
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* 书籍信息 */
+.book-info {
+    padding: 1.5rem;
+}
+
+.book-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 1rem 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.book-author,
+.book-translator {
+    font-size: 0.95rem;
+    color: #475569;
+    margin: 0.5rem 0;
+    line-height: 1.5;
+}
+
+.info-label {
+    color: #64748b;
+    font-weight: 500;
+    margin-right: 0.25rem;
+}
+
+.book-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    color: #64748b;
+    background: #f8fafc;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+}
+
+.meta-icon {
+    font-size: 0.875rem;
+}
+
+.book-summary {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 1rem 0 0 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* 空状态 */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.empty-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.empty-title {
+    font-size: 1.75rem;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.empty-description {
+    color: #64748b;
+    font-size: 1.125rem;
+    text-align: center;
+}
+
+/* 响应式设计 */
 @media (max-width: 768px) {
-    /* 导航覆盖层 */
-    .nav-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 150;
-        /* 默认隐藏状态 */
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
+    。books-container {
+        padding: 1.5rem 1rem;
     }
     
-    .nav-overlay.active {
-        /* 激活状态 */
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
+    。books-title {
+        font-size: 2.25rem;
     }
+    
+    。books-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+    
+    。book-cover-wrapper {
+        height: 350px;
+    }
+}
 
-    /* 导航菜单 */
-    .nav-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 280px;
-        height: 100vh;
-        background: var(--white);
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        padding: 5rem 2rem 2rem;
-        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
-        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 200;
-    }
-    
-    body.dark-mode .nav-menu {
-        background: #2d2d2d;
-    }
-    
-    .nav-menu.active {
-        right: 0;
-    }
-
-    /* 导航项 */
-    .nav-item {
-        width: 100%;
-    }
-    
-    .nav-link {
-        padding: 1rem;
-        font-size: 1.1rem;
-        border-radius: 0;
-        border-bottom: 1px solid var(--border-color);
-    }
-
-    /* 主题切换按钮 */
-    .theme-toggle {
-        position: relative;
-        z-index: 10;
-    }
-
-    /* 列表卡片 */
-    .list-card {
-        flex-direction: column;
-    }
-    
-    .list-card-image-wrapper {
-        width: 100%;
-        height: 200px;
-    }
-    
-    .list-card-content {
-        padding: 1.25rem 1.5rem;
-    }
-    
-    .list-card-title {
-        font-size: 1.3rem;
-    }
-
-    /* 列表页头部 */
-    .list-page-header {
-        padding: 1.5rem;
+@media (max-width: 480px) {
+    。books-header {
         margin-bottom: 2rem;
     }
-
-    /* 页面标题 */
-    .page-title {
+    
+    。books-title {
         font-size: 2rem;
     }
     
-    .page-subtitle {
-        font-size: 1rem;
-    }
-
-    /* Hero 区域 */
-    .hero-tagline {
-        font-size: 1.2rem;
-    }
-
-    /* 区块标题 */
-    .section-title {
-        font-size: 1.8rem;
-    }
-
-    /* 文章卡片 */
-    .post-card-summary {
-        font-size: 0.95rem;
-        line-height: 1.6;
+    。books-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
     
-    .post-title {
-        font-size: 2.2rem;
-    }
-
-    /* 头部内容 */
-    .header-content {
-        padding: 1rem 1.5rem;
+    。book-cover-wrapper {
+        height: 300px;
     }
     
-    .site-title {
-        font-size: 1.4rem;
-    }
-    
-    .site-tagline {
-        font-size: 0.75rem;
-    }
-
-    /* 个人介绍 */
-    .intro-avatar {
-        width: 100px;
-        height: 100px;
-    }
-    
-    .intro-name {
-        font-size: 2rem;
-    }
-    
-    .intro-description {
-        font-size: 1rem;
-    }
-    
-    .intro-button {
-        padding: 0.6rem 1.5rem;
-        font-size: 0.9rem;
+    .book-info {
+        padding: 1.25rem;
     }
 }
-
-/* 超小屏幕优化 */
-@media (max-width: 480px) {
-    .nav-menu {
-        width: 100%;
-        right: -100%;
-    }
-    
-    .page-title {
-        font-size: 1.75rem;
-    }
-    
-    .post-title {
-        font-size: 1.8rem;
-    }
-    
-    .hero-tagline {
-        font-size: 1rem;
-    }
-    
-    .section-title {
-        font-size: 1.5rem;
-    }
-}
+</style>
+{{ end }}
