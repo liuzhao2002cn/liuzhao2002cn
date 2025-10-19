@@ -1,5 +1,50 @@
 /* assets/css/utilities/responsive.css */
 
+/* 全局防溢出设置 */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+/* 防止所有容器溢出 */
+.container,
+.list-container,
+.books-container,
+.book-detail-container,
+.chapter-container,
+.explore-grid {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* 防止图片溢出 */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 防止预格式化文本溢出 */
+pre {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+/* 防止表格溢出 */
+table {
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
+}
+
 @media (max-width: 768px) {
     /* 导航覆盖层 */
     .nav-overlay {
@@ -39,6 +84,7 @@
         box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
         transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 200;
+        overflow-y: auto;
     }
     
     body.dark-mode .nav-menu {
@@ -59,6 +105,7 @@
         font-size: 1.1rem;
         border-radius: 0;
         border-bottom: 1px solid var(--border-color);
+        word-break: break-word;
     }
 
     /* 主题切换按钮 */
@@ -70,6 +117,7 @@
     /* 列表卡片 */
     .list-card {
         flex-direction: column;
+        max-width: 100%;
     }
     
     .list-card-image-wrapper {
@@ -78,59 +126,75 @@
     }
     
     .list-card-content {
-        padding: 1.25rem 1.5rem;
+        padding: 1.25rem 1rem;
+        width: 100%;
     }
     
     .list-card-title {
         font-size: 1.3rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     /* 列表页头部 */
     .list-page-header {
-        padding: 1.5rem;
+        padding: 1.5rem 1rem;
         margin-bottom: 2rem;
+        max-width: 100%;
     }
 
     /* 页面标题 */
     .page-title {
         font-size: 2rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     
     .page-subtitle {
         font-size: 1rem;
+        word-wrap: break-word;
     }
 
     /* Hero 区域 */
     .hero-tagline {
         font-size: 1.2rem;
+        word-wrap: break-word;
+        padding: 0 1rem;
     }
 
     /* 区块标题 */
     .section-title {
         font-size: 1.8rem;
+        word-wrap: break-word;
     }
 
     /* 文章卡片 */
     .post-card-summary {
         font-size: 0.95rem;
         line-height: 1.6;
+        word-wrap: break-word;
     }
     
     .post-title {
         font-size: 2.2rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     /* 头部内容 */
     .header-content {
-        padding: 1rem 1.5rem;
+        padding: 1rem 1rem;
+        width: 100%;
     }
     
     .site-title {
         font-size: 1.4rem;
+        word-wrap: break-word;
     }
     
     .site-tagline {
         font-size: 0.75rem;
+        word-wrap: break-word;
     }
 
     /* 个人介绍 */
@@ -141,31 +205,184 @@
     
     .intro-name {
         font-size: 2rem;
+        word-wrap: break-word;
     }
     
     .intro-description {
         font-size: 1rem;
+        word-wrap: break-word;
+        padding: 0 1rem;
     }
     
     .intro-button {
         padding: 0.6rem 1.5rem;
         font-size: 0.9rem;
     }
+
+    /* 书籍网格 */
+    .books-grid,
+    .articles-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+    }
+
+    /* 书籍卡片 */
+    .book-card,
+    .article-card {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    /* 探索网格 */
+    .explore-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+    }
+
+    .explore-card {
+        max-width: 100%;
+    }
+
+    /* 书籍详情头部 */
+    .book-detail-header {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 1.5rem 1rem;
+    }
+
+    .book-cover-section {
+        max-width: 250px;
+        margin: 0 auto;
+    }
+
+    .book-detail-title {
+        font-size: 1.75rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* 信息行 */
+    .info-row {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+
+    .info-label {
+        min-width: auto;
+    }
+
+    .info-value {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* 章节容器 */
+    .chapter-container {
+        padding: 1.5rem 1rem;
+        max-width: 100%;
+    }
+
+    .chapter-title {
+        font-size: 1.75rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .chapter-content {
+        padding: 2rem 1rem;
+        font-size: 1rem;
+        line-height: 1.8;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* 章节导航 */
+    .chapter-navigation {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .nav-button {
+        justify-self: stretch !important;
+    }
+
+    .nav-link {
+        min-width: auto;
+        max-width: 100%;
+    }
+
+    .nav-title {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* 面包屑导航 */
+    .breadcrumb-nav {
+        font-size: 0.85rem;
+        padding: 0.75rem 0.5rem;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* 元信息 */
+    .meta-primary,
+    .chapter-meta {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    /* 内容区域 */
+    .book-summary-section,
+    .book-content-section,
+    .book-chapters-section {
+        padding: 1.5rem 1rem;
+        max-width: 100%;
+    }
+
+    .content-wrapper {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* 章节列表 */
+    .chapter-link {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+
+    .chapter-title {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .chapter-arrow {
+        align-self: flex-end;
+    }
 }
 
 /* 超小屏幕优化 */
 @media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
     .nav-menu {
         width: 100%;
         right: -100%;
+        padding: 4rem 1rem 2rem;
     }
     
     .page-title {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
     }
     
     .post-title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
     
     .hero-tagline {
@@ -174,5 +391,56 @@
     
     .section-title {
         font-size: 1.5rem;
+    }
+
+    .book-detail-title,
+    .chapter-title {
+        font-size: 1.5rem;
+    }
+
+    /* 更小的内边距 */
+    .list-container,
+    .books-container,
+    .book-detail-container,
+    .chapter-container {
+        padding: 1rem 0.5rem;
+    }
+
+    .book-summary-section,
+    .book-content-section,
+    .book-chapters-section,
+    .chapter-content {
+        padding: 1rem 0.75rem;
+    }
+
+    /* 更紧凑的章节导航 */
+    .chapter-navigation {
+        gap: 0.75rem;
+    }
+
+    .chapter-link {
+        padding: 0.75rem;
+    }
+
+    /* 更紧凑的卡片 */
+    .book-card,
+    .article-card {
+        margin: 0;
+    }
+
+    .book-info,
+    .article-content {
+        padding: 1rem;
+    }
+
+    /* 面包屑更紧凑 */
+    .breadcrumb-nav {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    /* 减小图标大小 */
+    .meta-icon {
+        font-size: 0.75rem;
     }
 }
