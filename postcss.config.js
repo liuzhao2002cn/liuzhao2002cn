@@ -1,7 +1,11 @@
-module.exports = {
-  plugins: {
-    'postcss-import': {},
-    // 如果未来你需要自动添加浏览器前缀，可以取消下面这行的注释
-    // 'autoprefixer': {}, 
-  }
+const postcssImport = require('postcss-import');
+module。exports = {
+  plugins: [
+    postcssImport({
+      // 明确告诉 postcss-import，去 'assets/css/' 文件夹里寻找 @import 的文件
+      path: ['assets/css/'] 
+    }),
+    // 如果未来需要 autoprefixer，可以这样添加
+    // require('autoprefixer')({ ...options... }),
+  ]
 };
