@@ -656,3 +656,26 @@ body.dark-mode .social-icon {
 body.dark-mode .intro-button.secondary {
     background: rgba(255， 255, 255， 0.05);
 }
+/* home.css */
+
+...
+
+/* --- 特性卡片链接样式 --- */
+.feature-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block; /* 使链接块占据整个网格单元 */
+    height: 100%; /* 确保链接填充卡片高度 */
+    transition: all 0.3s ease;
+}
+
+.feature-card-link:hover .feature-card {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card {
+    /* (你可能已经有 .feature-card 的样式了，这里是补充) */
+    height: 100%; /* 确保卡片填充链接高度 */
+    transition: all 0.3s ease;
+}
