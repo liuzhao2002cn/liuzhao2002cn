@@ -10,7 +10,7 @@
                 throwOnError: false
             });
         });
-document。addEventListener('DOMContentLoaded'， () => {
+document.addEventListener('DOMContentLoaded', () => {
   mermaid.initialize({ startOnLoad: true });
 });
 // ====== 导航栏交互功能 ======
