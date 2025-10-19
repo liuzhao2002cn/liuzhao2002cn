@@ -61,6 +61,10 @@
     {{ partial "footer.html" . }}
 
 
-    <script src="{{ "/js/main.js" | relURL }}" defer></script> 
+    {{ $js := resources.Get "js/main.js" }}
+    {{ if hugo.IsProduction }}
+      {{ $js = $js | minify | fingerprint }}
+    {{ end }}
+    <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script> 
 </body>
 </html>
