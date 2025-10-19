@@ -1,0 +1,118 @@
+.post-single { padding-top: 1rem; }
+
+/* --- 文章头部 --- */
+.post-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.post-cover {
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    overflow: hidden;
+    max-height: 400px;
+}
+
+.post-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.post-title {
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin: 0 0 1rem 0;
+}
+
+.post-meta {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.post-meta a {
+    color: #888;
+    border-bottom: 1px dotted #ccc;
+}
+
+.post-meta a:hover {
+    color: var(--pink);
+    border-bottom-color: var(--pink);
+}
+
+.meta-divider { margin: 0 0.5rem; }
+
+/* --- 文章正文排版 --- */
+.post-content {
+    font-size: 1.1rem;
+    line-height: 1.9;
+}
+.post-content h2, .post-content h3 {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
+.post-content a { border-bottom: 2px solid rgba(229, 128, 205, 0.3); }
+.post-content a:hover { border-bottom-color: var(--pink); }
+
+.post-content blockquote {
+    margin: 2rem 0;
+    padding: 1rem 1.5rem;
+    border-left: 4px solid var(--pink);
+    background-color: rgba(229, 128, 205, 0.05);
+    color: #555;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 2rem auto;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+}
+
+/* --- 文章页脚 --- */
+.post-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.post-tags { margin-bottom: 2rem; }
+
+.tag-link {
+    display: inline-block;
+    margin-right: 0.75rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--bg-color);
+    border-radius: 20px;
+    color: #555;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    border: 1px solid var(--border-color);
+    border-bottom: none;
+}
+.tag-link:hover {
+    background-color: var(--pink);
+    color: var(--white);
+    border-color: var(--pink);
+}
+
+/* --- 相关文章 --- */
+.related-posts {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+.related-title {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* --- 评论区 --- */
+.comments-container {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
