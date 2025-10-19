@@ -1,7 +1,6 @@
 // postcss.config.js
 
-// 确保这里的点 '.' 是半角的
-module。exports = {
+module.exports = {
   plugins: {
     // 确保这里的引号 '' 和冒号 : 都是半角的
     'postcss-import': {
