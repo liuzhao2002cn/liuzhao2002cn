@@ -26,6 +26,10 @@ canonifyURLs = true
     name = '文章'
     url = '/posts/'
     weight = 2
+    [[menu.main]]
+    name = '书籍'
+    url = '/books/'  
+    weight = 3
   [[menu.main]]
     name = '关于'
     url = '/about/'
