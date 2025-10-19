@@ -7,10 +7,9 @@
         <div class="hero-shape shape-2"></div>
         <div class="hero-shape shape-3"></div>
     </div>
-        <div class="hero-content personal-intro">
+    <div class="hero-content personal-intro">
         <!-- 1. 个人头像 -->
         <img src="/images/avatar.png" alt="个人头像" class="intro-avatar"> 
-        <!-- (请确保在 static/images/ 目录下放置一张名为 avatar.png 的图片) -->
 
         <!-- 2. 名字或昵称 -->
         <h1 class="intro-name">{{ .Site.Params.author | default .Site.Title }}</h1>
@@ -26,7 +25,7 @@
             {{ with .Site.Params.email }}
             <a href="mailto:{{ . }}" class="social-icon" title="邮箱"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
             {{ end }}
-             {{ with .Site.Params.bilibili }}
+            {{ with .Site.Params.bilibili }}
             <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="Bilibili"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373Z"/></svg></a>
             {{ end }}
         </div>
@@ -63,7 +62,25 @@
             <article class="post-card">
                 {{ with .Params.image }}
                 <div class="post-card-image-wrapper">
-                    <img src="{{ . | relURL }}" alt="{{ $.Title }}" class="post-card-image" loading="lazy">
+                    {{ with $.Resources.GetMatch . }}
+                        {{ $image := .Resize "800x webp q75" }}
+                        {{ $fallback := .Resize "800x q75" }}
+                        <picture>
+                            <source srcset="{{ $image.RelPermalink }}" type="image/webp">
+                            <img src="{{ $fallback.RelPermalink }}" 
+                                 width="{{ $fallback.Width }}" 
+                                 height="{{ $fallback.Height }}" 
+                                 alt="{{ $.Title }}" 
+                                 class="post-card-image" 
+                                 loading="lazy">
+                        </picture>
+                    {{ else }}
+                        <!-- 如果资源处理失败,回退到直接使用路径 -->
+                        <img src="{{ . | relURL }}" 
+                             alt="{{ $.Title }}" 
+                             class="post-card-image" 
+                             loading="lazy">
+                    {{ end }}
                     <div class="image-overlay">
                         <span class="read-more-hint">阅读全文 →</span>
                     </div>
@@ -92,7 +109,7 @@
         {{ else }}
         <div class="empty-state">
             <div class="empty-icon">📝</div>
-            <p class="empty-text">暂无精选文章，敬请期待！</p>
+            <p class="empty-text">暂无精选文章,敬请期待!</p>
         </div>
         {{ end }}
     </div>
@@ -358,6 +375,12 @@
     height: 200px;
     overflow: hidden;
     background: linear-gradient(135deg, rgba(170, 170, 255, 0.1), rgba(229, 128, 205, 0.1));
+}
+
+.post-card-image-wrapper picture {
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
 .post-card-image {
