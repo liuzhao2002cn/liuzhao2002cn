@@ -4,7 +4,7 @@ date: 2025-10-18T10:00:00+08:00
 draft: false
 featured: true  
 image: "cover.jpg" 
-categories: ["测试"]
+categories: ["笔记", "观点", "生活"]
 tags: ["Hugo", "杂感", "测试"]
 ---
 
