@@ -1,12 +1,12 @@
 {
-  "name": "liuzhao2002cn-blog",
+  "name": "zhaos-blog",
   "version": "1.0.0",
-  "description": "Personal blog for liuzhao2002cn",
-  "main": "index.js",
+  "description": "竱肇的个人博客的资源配置文件",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Zhao Liu",
+  "author": "肇 (https://github.com/liuzhao2002cn)",
   "license": "ISC",
   "devDependencies": {
     "postcss-cli": "^11.0.0",
