@@ -3,7 +3,7 @@ title: "第一篇博客"
 date: 2025-10-18T10:00:00+08:00
 draft: false
 featured: true  
-image: "content/posts/first-post/cover.jpg" 
+image: "blob/main/content/posts/first-post/cover.jpg" 
 categories: ["技术"]
 tags: ["Hugo", "杂感", "日记"]
 ---
