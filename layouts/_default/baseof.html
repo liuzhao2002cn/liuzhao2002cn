@@ -28,7 +28,17 @@
         {{ end }}
     </title>
     
-    <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}">
+{{/* --- CSS Pipeline (简化版，用于调试) --- */}}
+{{ $css := resources.Get "css/style.css" }}
+{{ if $css }}
+  {{ if hugo.IsProduction }}
+    {{ $css = $css | minify | fingerprint }}
+  {{ end }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{ else }}
+  {{/* 如果找不到 css/style.css，在这里输出一条错误信息，方便调试 */}}
+  <!-- Hugo Warning: Could not find assets/css/style.css -->
+{{ end }}
     
     <!-- KaTeX 数学公式支持 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
