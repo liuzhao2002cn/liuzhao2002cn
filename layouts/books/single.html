@@ -9,16 +9,14 @@
     <!-- 书籍头部 -->
     <div class="book-detail-header">
         <div class="book-cover-section">
-            {{ if .Params.cover }}
-                {{ with .Resources.GetMatch .Params.cover }}
-                    <img src="{{ .RelPermalink }}" 
-                         alt="{{ $.Title }}" 
-                         class="book-detail-cover">
-                {{ else }}
-                    <div class="book-detail-cover-fallback">
-                        <span class="cover-icon">📖</span>
-                    </div>
-                {{ end }}
+            {{/* 查找并显示封面图片 */}}
+            {{ with .Resources.GetMatch (.Params.cover | default "cover.jpg") }}
+                {{ $image := .Resize "400x" }}
+                <img src="{{ $image.RelPermalink }}" 
+                     alt="{{ $.Title }} 封面" 
+                     class="book-detail-cover"
+                     width="{{ $image.Width }}" 
+                     height="{{ $image.Height }}">
             {{ else }}
                 <div class="book-detail-cover-fallback">
                     <span class="cover-icon">📖</span>
@@ -75,11 +73,41 @@
     {{ end }}
 
     <!-- 书籍正文内容 -->
+    {{ if .Content }}
     <div class="book-content-section">
+        <h2 class="section-title">关于本书</h2>
         <div class="content-wrapper">
             {{ .Content }}
         </div>
     </div>
+    {{ end }}
+
+    <!-- 章节目录 -->
+    {{ if .Pages }}
+    <div class="book-chapters-section">
+        <h2 class="section-title">📚 章节目录</h2>
+        <ol class="chapters-list">
+            {{/* 遍历这本书下的所有章节页面，并按 weight 排序 */}}
+            {{ range .Pages.ByWeight }}
+            <li class="chapter-item">
+                <a href="{{ .Permalink }}" class="chapter-link">
+                    <span class="chapter-number">{{ .Weight | default "•" }}</span>
+                    <div class="chapter-info">
+                        <span class="chapter-title">{{ .Title }}</span>
+                        <span class="chapter-meta">
+                            <span class="chapter-reading-time">⏱️ {{ .ReadingTime }} 分钟</span>
+                            {{ with .Date }}
+                            <span class="chapter-date">📅 {{ .Format "2006.01.02" }}</span>
+                            {{ end }}
+                        </span>
+                    </div>
+                    <span class="chapter-arrow">→</span>
+                </a>
+            </li>
+            {{ end }}
+        </ol>
+    </div>
+    {{ end }}
 </div>
 
 <style>
@@ -196,12 +224,19 @@
     flex: 1;
 }
 
-/* 书籍简介 */
-.book-summary-section {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(236, 72, 153, 0.05));
+/* 通用区块样式 */
+.book-summary-section,
+.book-content-section,
+.book-chapters-section {
+    background: white;
     padding: 2rem;
     border-radius: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.book-summary-section {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(236, 72, 153, 0.05));
     border-left: 4px solid #8b5cf6;
 }
 
@@ -212,6 +247,7 @@
     margin: 0 0 1.5rem 0;
 }
 
+/* 书籍简介 */
 .summary-content {
     font-size: 1.05rem;
     line-height: 1.8;
@@ -219,13 +255,6 @@
 }
 
 /* 书籍内容 */
-.book-content-section {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
 .content-wrapper {
     font-size: 1.05rem;
     line-height: 1.8;
@@ -233,7 +262,7 @@
 }
 
 .content-wrapper h2 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #1e293b;
     margin: 2rem 0 1rem 0;
@@ -242,7 +271,7 @@
 }
 
 .content-wrapper h3 {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     font-weight: 600;
     color: #334155;
     margin: 1.5rem 0 1rem 0;
@@ -262,35 +291,82 @@
     margin: 0.5rem 0;
 }
 
-.content-wrapper blockquote {
-    border-left: 4px solid #8b5cf6;
-    padding-left: 1.5rem;
-    margin: 1.5rem 0;
-    color: #64748b;
-    font-style: italic;
-}
-
-.content-wrapper code {
-    background: #f1f5f9;
-    padding: 0.2rem 0.4rem;
-    border-radius: 0.25rem;
-    font-size: 0.9em;
-    color: #e11d48;
-}
-
-.content-wrapper pre {
-    background: #1e293b;
-    color: #e2e8f0;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    overflow-x: auto;
-    margin: 1.5rem 0;
-}
-
-.content-wrapper pre code {
-    background: none;
-    color: inherit;
+/* 章节目录 */
+.chapters-list {
+    list-style: none;
     padding: 0;
+    margin: 0;
+    counter-reset: chapter-counter;
+}
+
+.chapter-item {
+    margin-bottom: 0.75rem;
+}
+
+.chapter-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: #f8fafc;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+}
+
+.chapter-link:hover {
+    background: white;
+    border-color: #8b5cf6;
+    transform: translateX(8px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
+}
+
+.chapter-number {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #8b5cf6;
+    min-width: 2rem;
+    text-align: center;
+}
+
+.chapter-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.chapter-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.chapter-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+.chapter-reading-time,
+.chapter-date {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.chapter-arrow {
+    font-size: 1.5rem;
+    color: #cbd5e1;
+    transition: all 0.3s ease;
+}
+
+.chapter-link:hover .chapter-arrow {
+    color: #8b5cf6;
+    transform: translateX(4px);
 }
 
 /* 响应式设计 */
@@ -310,22 +386,22 @@
         padding: 1.5rem 1rem;
     }
     
-    。book-detail-header {
+    .book-detail-header {
         grid-template-columns: 1fr;
         gap: 2rem;
         padding: 1.5rem;
     }
     
-    。book-cover-section {
+    .book-cover-section {
         max-width: 300px;
         margin: 0 auto;
     }
     
-    。book-detail-title {
+    .book-detail-title {
         font-size: 1.75rem;
     }
     
-    。info-row {
+    .info-row {
         flex-direction: column;
         gap: 0.5rem;
     }
@@ -335,12 +411,23 @@
     }
     
     。book-summary-section,
-    。book-content-section {
+    。book-content-section,
+    。book-chapters-section {
         padding: 1.5rem;
     }
     
     。section-title {
         font-size: 1.5rem;
+    }
+    
+    。chapter-link {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    
+    。chapter-arrow {
+        align-self: flex-end;
     }
 }
 
@@ -349,8 +436,14 @@
         font-size: 1.5rem;
     }
     
-    。back-link {
+    .back-link {
         margin-bottom: 1rem;
+    }
+    
+    .chapter-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
     }
 }
 </style>
