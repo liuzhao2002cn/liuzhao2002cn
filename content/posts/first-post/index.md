@@ -3,17 +3,21 @@ title: "第一篇博客"
 date: 2025-10-18T10:00:00+08:00
 draft: false
 featured: true  
-image: "blob/main/content/posts/first-post/cover.jpg" 
-categories: ["技术"]
-tags: ["Hugo", "杂感", "日记"]
+image: "cover.jpg" 
+categories: ["测试"]
+tags: ["Hugo", "杂感", "测试"]
 ---
-# 你好，旧世界！再见，旧世界！
-{{< figure src="cover.jpg" title="三色旗" >}}
+
+
+# 这是一个示例文档
+
+## 你好，旧世界！再见，旧世界！
+{{< figure src="cover.jpg">}}
 
 
 
-快跑，旧世界就在你我身后！
+## 快跑，旧世界就在你身后！
 
-<!--more-->
+
 
 
