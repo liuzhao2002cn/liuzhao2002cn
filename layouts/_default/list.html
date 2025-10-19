@@ -1,3 +1,86 @@
+{{ define "main" }}
+<main class="main container">
+
+  {{/* 列表页的头部，显示标题等信息 */}}
+  <header class="list-page-header">
+    <h1 class="page-title">
+      {{ .Title }}
+      {{ with .Site.GetPage (printf "/%s" .Section) }}
+        <a href="{{ .RelPermalink }}" class="section-badge">{{ .Title }}</a>
+      {{ end }}
+    </h1>
+    <p class="page-description">{{ .Content }}</p>
+  </header>
+
+  {{/* 文章卡片列表 */}}
+  <div class="list-card-container">
+    {{ $paginator := .Paginate .Pages }}
+    {{ range $paginator.Pages }}
+    
+      {{/* 每一个卡片都是一个指向文章的链接 */}}
+      <a href="{{ .RelPermalink }}" class="list-card-link">
+        <article class="list-card">
+
+          {{/* --- 这是最关键的图片调用逻辑 --- */}}
+          {{/* 检查文章 Front Matter 是否设置了 image 参数 */}}
+          {{ if .Params.image }}
+            {{/* 如果有图片，就查找并处理它 */}}
+            {{ with .Resources.GetMatch .Params.image }}
+              {{/* 使用 Hugo Pipes 对图片进行裁剪，保证尺寸统一 */}}
+              {{ $image := .Fill "400x300 smart" }}
+              <div class="list-card-image-wrapper">
+                <img src="{{ $image.RelPermalink }}" alt="{{ .Title }}" class="list-card-image" loading="lazy">
+                <div class="image-overlay">
+                  <div class="read-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </div>
+                </div>
+              </div>
+            {{ end }}
+          {{ else }}
+            {{/* 如果没有图片，就显示占位符 */}}
+            <div class="list-card-image-wrapper no-image">
+              <div class="placeholder-pattern">
+                 <span class="placeholder-icon">🏞️</span>
+              </div>
+            </div>
+          {{ end }}
+          {{/* --- 图片逻辑结束 --- */}}
+
+          {{/* 卡片右侧的内容区域 */}}
+          <div class="list-card-content">
+            <header class="card-header">
+              {{ with .Params.categories }}
+                <span class="card-category">{{ index . 0 }}</span>
+              {{ end }}
+              <time class="card-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+            </header>
+            <h2 class="list-card-title">{{ .Title }}</h2>
+            <p class="list-card-summary">{{ .Summary }}</p>
+            <footer class="card-footer">
+              {{ with .Params.tags }}
+              <div class="list-card-tags">
+                {{ range . }}
+                  <span class="tag">#{{ . }}</span>
+                {{ end }}
+              </div>
+              {{ end }}
+              <div class="read-more">
+                <span>Read More</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+              </div>
+            </footer>
+          </div>
+        </article>
+      </a>
+      
+    {{ end }}
+  </div>
+
+  {{/* 分页导航 */}}
+  {{ partial "pagination.html" . }}
+
+</main>
 .list-card:hover .image-overlay {
     opacity: 1;
 }
