@@ -1,0 +1,50 @@
+/* 个人简介区按钮 */
+.intro-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.intro-button {
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.intro-button.primary {
+    background: linear-gradient(135deg, var(--blue), var(--pink));
+    color: white;
+    box-shadow: 0 4px 20px rgba(170, 170, 255, 0.4);
+}
+.intro-button.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(170, 170, 255, 0.5);
+}
+
+.intro-button.secondary {
+    background-color: transparent;
+    color: var(--pink);
+    border-color: var(--pink);
+}
+
+.intro-button.secondary:hover {
+    background-color: var(--pink);
+    color: white;
+}
+
+/* 分享按钮 */
+.share-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.share-title { font-weight: bold; }
+.share-buttons a {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-decoration: none;
+}
