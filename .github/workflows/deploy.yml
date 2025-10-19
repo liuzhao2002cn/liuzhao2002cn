@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-在-progress: true
+  cancel-in-progress: true
 
 jobs:
   build:
