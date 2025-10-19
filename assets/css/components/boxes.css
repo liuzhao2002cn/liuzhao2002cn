@@ -1,0 +1,26 @@
+.box {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: var(--white);
+    border-left: 5px solid;
+}
+
+.box-title {
+    font-weight: bold;
+    margin-top: 0;
+    font-size: 1.1rem;
+}
+
+.box-content p:last-child {
+    margin-bottom: 0;
+}
+
+.box.note { border-color: #6c757d; }
+.box.note .box-title { color: #6c757d; }
+.box.theorem { border-color: var(--blue); }
+.box.theorem .box-title { color: var(--blue); }
+.box.definition { border-color: var(--pink); }
+.box.definition .box-title { color: var(--pink); }
+.box.warning { border-color: #ffc107; }
+.box.warning .box-title { color: #ffc107; }
