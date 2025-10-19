@@ -1,0 +1,54 @@
+/* 可折叠目录 (Collapsible TOC) 样式 */
+.toc-container {
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: rgba(170, 170, 255, 0.05);
+    border-left: 4px solid var(--blue);
+    border-radius: 8px;
+    max-width: 80%;
+}
+
+.toc-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    font-family: var(--font-heading);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    transition: margin 0.2s ease-in-out;
+}
+.toc-title::-webkit-details-marker { display: none; }
+
+.toc-container:not([open]) .toc-title { margin-bottom: 0; }
+
+.toc-title::before {
+    content: '▼';
+    font-size: 0.8em;
+    margin-right: 0.75rem;
+    color: var(--blue);
+    transition: transform 0.2s ease-in-out;
+}
+
+.toc-container[open] > .toc-title::before { transform: rotate(0deg); }
+.toc-container:not([open]) > .toc-title::before { transform: rotate(-90deg); }
+
+.toc-content {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.toc-content ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+.toc-content li { line-height: 1.6; }
+.toc-content a {
+    text-decoration: none;
+    border-bottom: none;
+    color: #555;
+    transition: color 0.2s;
+}
+.toc-content a:hover { color: var(--blue); }
