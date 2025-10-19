@@ -5,7 +5,13 @@
     <header class="post-header">
         {{ with .Params.image }}
         <div class="post-cover">
-            <img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="lazy">
+            {{ with .Resources.GetMatch .Params.image }}
+                {{ $image := .Resize "1200x webp q75" }}
+                {{ $fallback := .Resize "1200x q75" }}
+                <picture>
+                    <source srcset="{{ $image.RelPermalink }}" type="image/webp">
+                    <img src="{{ $fallback.RelPermalink }}" width="{{ $fallback.Width }}" height="{{ $fallback.Height }}" alt="{{ $.Title }}" loading="lazy">
+                </picture>
         </div>
         {{ end }}
         <h1 class="post-title">{{ .Title }}</h1>
