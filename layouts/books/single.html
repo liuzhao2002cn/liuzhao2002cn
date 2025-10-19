@@ -1,0 +1,357 @@
+{{ define "main" }}
+<div class="book-detail-container">
+    <!-- 返回按钮 -->
+    <a href="/books/" class="back-link">
+        <span class="back-arrow">←</span>
+        返回书架
+    </a>
+
+    <!-- 书籍头部 -->
+    <div class="book-detail-header">
+        <div class="book-cover-section">
+            {{ if .Params.cover }}
+                {{ with .Resources.GetMatch .Params.cover }}
+                    <img src="{{ .RelPermalink }}" 
+                         alt="{{ $.Title }}" 
+                         class="book-detail-cover">
+                {{ else }}
+                    <div class="book-detail-cover-fallback">
+                        <span class="cover-icon">📖</span>
+                    </div>
+                {{ end }}
+            {{ else }}
+                <div class="book-detail-cover-fallback">
+                    <span class="cover-icon">📖</span>
+                </div>
+            {{ end }}
+        </div>
+
+        <div class="book-detail-info">
+            <h1 class="book-detail-title">{{ .Title }}</h1>
+            
+            {{ with .Params.book_author }}
+            <div class="info-row">
+                <span class="info-label">📝 原作者</span>
+                <span class="info-value">{{ . }}</span>
+            </div>
+            {{ end }}
+            
+            {{ with .Params.translator }}
+            <div class="info-row">
+                <span class="info-label">✍️ 译者</span>
+                <span class="info-value">{{ . }}</span>
+            </div>
+            {{ end }}
+            
+            {{ with .Params.publisher }}
+            <div class="info-row">
+                <span class="info-label">🏢 出版社</span>
+                <span class="info-value">{{ . }}</span>
+            </div>
+            {{ end }}
+            
+            {{ with .Params.year }}
+            <div class="info-row">
+                <span class="info-label">📅 出版年份</span>
+                <span class="info-value">{{ . }}</span>
+            </div>
+            {{ end }}
+            
+            <div class="info-row">
+                <span class="info-label">⏰ 翻译日期</span>
+                <span class="info-value">{{ .Date.Format "2006年01月02日" }}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 书籍简介 -->
+    {{ with .Params.summary }}
+    <div class="book-summary-section">
+        <h2 class="section-title">📖 内容简介</h2>
+        <div class="summary-content">
+            {{ . | markdownify }}
+        </div>
+    </div>
+    {{ end }}
+
+    <!-- 书籍正文内容 -->
+    <div class="book-content-section">
+        <div class="content-wrapper">
+            {{ .Content }}
+        </div>
+    </div>
+</div>
+
+<style>
+.book-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* 返回按钮 */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #64748b;
+    text-decoration: none;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.back-link:hover {
+    background: #f1f5f9;
+    color: #3b82f6;
+}
+
+.back-arrow {
+    font-size: 1.25rem;
+    transition: transform 0.2s ease;
+}
+
+.back-link:hover .back-arrow {
+    transform: translateX(-4px);
+}
+
+/* 书籍头部 */
+.book-detail-header {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.book-cover-section {
+    position: relative;
+}
+
+.book-detail-cover {
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.book-detail-cover-fallback {
+    width: 100%;
+    aspect-ratio: 2/3;
+    background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.cover-icon {
+    font-size: 5rem;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+/* 书籍信息 */
+.book-detail-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.book-detail-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 1rem 0;
+    line-height: 1.3;
+}
+
+.info-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-size: 0.95rem;
+    color: #64748b;
+    font-weight: 600;
+    min-width: 120px;
+}
+
+.info-value {
+    font-size: 1rem;
+    color: #1e293b;
+    flex: 1;
+}
+
+/* 书籍简介 */
+.book-summary-section {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(236, 72, 153, 0.05));
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+    border-left: 4px solid #8b5cf6;
+}
+
+.section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 1.5rem 0;
+}
+
+.summary-content {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #475569;
+}
+
+/* 书籍内容 */
+.book-content-section {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.content-wrapper {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #334155;
+}
+
+.content-wrapper h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 2rem 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.content-wrapper h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #334155;
+    margin: 1.5rem 0 1rem 0;
+}
+
+.content-wrapper p {
+    margin: 1rem 0;
+}
+
+.content-wrapper ul,
+.content-wrapper ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.content-wrapper li {
+    margin: 0.5rem 0;
+}
+
+.content-wrapper blockquote {
+    border-left: 4px solid #8b5cf6;
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    color: #64748b;
+    font-style: italic;
+}
+
+.content-wrapper code {
+    background: #f1f5f9;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-size: 0.9em;
+    color: #e11d48;
+}
+
+.content-wrapper pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+
+.content-wrapper pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 968px) {
+    .book-detail-header {
+        grid-template-columns: 250px 1fr;
+        gap: 2rem;
+    }
+    
+    .book-detail-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .book-detail-container {
+        padding: 1.5rem 1rem;
+    }
+    
+    。book-detail-header {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 1.5rem;
+    }
+    
+    。book-cover-section {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    。book-detail-title {
+        font-size: 1.75rem;
+    }
+    
+    。info-row {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    。info-label {
+        min-width: auto;
+    }
+    
+    。book-summary-section,
+    。book-content-section {
+        padding: 1.5rem;
+    }
+    
+    。section-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    。book-detail-title {
+        font-size: 1.5rem;
+    }
+    
+    。back-link {
+        margin-bottom: 1rem;
+    }
+}
+</style>
+{{ end }}
