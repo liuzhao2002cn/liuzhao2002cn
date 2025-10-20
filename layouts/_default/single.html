@@ -1,7 +1,5 @@
 {{ define "main" }}
-<!-- layouts/_default/single.html -->
 <article class="post-single post-container">
-    <!-- 1. 文章头部 -->
     <header class="post-header">
         {{ with .Params.image }}
         <div class="post-cover">
@@ -15,64 +13,25 @@
             {{ end }}
         </div>
         {{ end }}
-        
         <h1 class="post-title">{{ .Title }}</h1>
         <div class="post-meta">
-            <span class="meta-item">
-                <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006年1月2日" }}</time>
-            </span>
-            {{ with .Params.categories }}
-            <span class="meta-divider">·</span>
-            <span class="meta-item">
-                {{ range . }}
-                    <a href="{{ "/categories/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
-                {{ end }}
-            </span>
-            {{ end }}
-            <span class="meta-divider">·</span>
-            <span class="meta-item">{{ .ReadingTime }} 分钟阅读</span>
+            <span class="meta-item"><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006年1月2日" }}</time></span>
+            {{ with .Params.categories }}<span class="meta-divider">·</span><span class="meta-item">{{ range . }}<a href="{{ "/categories/" | relURL }}{{ . | urlize }}/">{{ . }}</a>{{ end }}</span>{{ end }}
+            <span class="meta-divider">·</span><span class="meta-item">{{ .ReadingTime }} 分钟阅读</span>
         </div>
     </header>
-
-    <!-- 2. 文章目录 (如果存在) -->
     {{ if .TableOfContents }}
-    <!-- 使用 <details> 标签包裹整个目录 -->
-    <details class="toc-container" id="toc" open> <!-- "open" 属性让目录默认是展开的 -->
-        <!-- <summary> 是用户能看到并点击的标题 -->
-        <summary class="toc-title">
-            <span>目录</span>
-        </summary>
-        <!-- Hugo 生成的目录内容放在这里 -->
-        <div class="toc-content">
-            {{ .TableOfContents }}
-        </div>
+    <details class="toc-container" id="toc" open>
+        <summary class="toc-title"><span>目录</span></summary>
+        <div class="toc-content">{{ .TableOfContents }}</div>
     </details>
     {{ end }}
-
-    <!-- 3. 文章正文 -->
-    <div class="post-content">
-        {{ .Content }}
-    </div>
-
-    <!-- 4. 文章页脚 -->
+    <div class="post-content">{{ .Content }}</div>
     <footer class="post-footer">
-        {{ with .Params.tags }}
-        <div class="post-tags">
-            {{ range . }}
-            <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag-link">#{{ . }}</a>
-            {{ end }}
-        </div>
-        {{ end }}
-        
-        <!-- 社交分享按钮 -->
+        {{ with .Params.tags }}<div class="post-tags">{{ range . }}<a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag-link">#{{ . }}</a>{{ end }}</div>{{ end }}
         {{ partial "share.html" . }}
     </footer>
-
-    <!-- 5. 相关文章 -->
     {{ partial "related.html" . }}
-
-    <!-- 6. 评论系统 -->
     {{ partial "comments.html" . }}
-
 </article>
 {{ end }}
