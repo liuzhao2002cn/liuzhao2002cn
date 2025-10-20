@@ -1,77 +1,42 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode | default "en-us" }}">
 <head>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary | plainify | truncate 160 }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-    
-    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
-    <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary | plainify | truncate 160 }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-    <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
-    <meta property="og:url" content="{{ .Permalink }}">
-    {{ with .Site.Params.og_image }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
-    
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
-    <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary | plainify | truncate 160 }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=+GB+Screen&family=Noto+Serif+SC:wght@400;700&family=Smiley+Sans&display=swap" rel="stylesheet">
-
-    <title>
-        {{ if .IsHome }}
-            {{ .Site.Title }} - {{ .Site.Params.tagline | default "A Beautiful Blog" }}
-        {{ else }}
-            {{ .Title }} | {{ .Site.Title }}
-        {{ end }}
-    </title>
-    
-    {{/* --- CSS Pipeline (完整版) --- */}}
-    {{ $options := dict "targetPath" "css/style.css" }}
-    {{ $css := resources.Get "css/style.css" | postCSS $options }}
-    {{ if hugo.IsProduction }}
-      {{ $css = $css | minify | fingerprint }}
-    {{ end }}
-    <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
-    
-    <!-- KaTeX 数学公式支持 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
-
-    <!-- RSS 自动发现 -->
-    {{ with .OutputFormats.Get "rss" -}}
-        {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
-    {{ end -}}
-
-    <!-- 主题颜色 -->
-    <meta name="theme-color" content="#a3d8f4">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary | plainify | truncate 160 }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary | plainify | truncate 160 }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+{{ with .Site.Params.og_image }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary | plainify | truncate 160 }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=+GB+Screen&family=Noto+Serif+SC:wght@400;700&family=Smiley+Sans&display=swap" rel="stylesheet">
+<title>{{ if .IsHome }}{{ .Site.Title }} - {{ .Site.Params.tagline | default "A Beautiful Blog" }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+{{ $options := dict "targetPath" "css/style.css" }}
+{{ $css := resources.Get "css/style.css" | postCSS $options }}
+{{ if hugo.IsProduction }}{{ $css = $css | minify | fingerprint }}{{ end }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+{{ with .OutputFormats.Get "rss" -}}{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}{{ end -}}
+<meta name="theme-color" content="#a3d8f4">
 </head>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <body>
-    <a href="#main-content" class="skip-link">跳到主页</a>
-
-    <!-- 1. 页眉现在是独立的顶级元素 -->
-    {{ partial "header.html" . }}
-
-    <!-- 2. 主内容区现在被一个独立的 container 包裹 -->
-    <div class="container">
-        <main class="main-content" id="main-content">
-            {{ block "main" . }}{{ end }}
-        </main>
-    </div>
-
-    <!-- 3. 页脚也是独立的顶级元素 -->
-    {{ partial "footer.html" . }}
-
-
-    {{ $js := resources.Get "js/main.js" }}
-    {{ if hugo.IsProduction }}
-      {{ $js = $js | minify | fingerprint }}
-    {{ end }}
-    <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script> 
+<a href="#main-content" class="skip-link">跳到主页</a>
+{{ partial "header.html" . }}
+<div class="container">
+<main class="main-content" id="main-content">{{ block "main" . }}{{ end }}</main>
+</div>
+{{ partial "footer.html" . }}
+{{ $js := resources.Get "js/main.js" }}
+{{ if hugo.IsProduction }}{{ $js = $js | minify | fingerprint }}{{ end }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script> 
 </body>
 </html>
