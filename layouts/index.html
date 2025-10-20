@@ -598,7 +598,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 @media (max-width: 640px) {
     .hero { padding: 2rem 0; }
-    .hero-card { padding: 2rem 1.5rem 5rem; }
+    .hero-card { 
+        padding: 2rem 1.5rem 5rem; /* <-- 新增: 调整移动端内边距, 解决内容挤压 */
+    }
     .intro-avatar { width: 110px; height: 110px; }
     .intro-name { font-size: 1.5rem; }
     .intro-heading { font-size: 1.35rem; }
@@ -619,7 +621,7 @@ document.addEventListener('DOMContentLoaded', function() {
     height: 100%;
     top: 0;
     left: 0;
-    z-index: 0;
+    z-index: -1; /* <-- 修正: 从 0 改回 -1, 解决点击问题 */
 }
 
 .features-section {
@@ -952,7 +954,7 @@ document.addEventListener('DOMContentLoaded', function() {
     margin-top: 2.5rem;
 }
 
-。view-all-link {
+.view-all-link {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -988,7 +990,7 @@ document.addEventListener('DOMContentLoaded', function() {
         width: 100%;
         justify-content: space-between;
     }
-    .section-title {
+    。section-title {
         font-size: 1.5rem;
     }
     .features-section .container,
