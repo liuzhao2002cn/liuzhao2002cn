@@ -1,51 +1,17 @@
 <header class="site-header">
     <div class="header-content">
-        <!-- 左侧：站点标题 -->
         <div class="header-left">
-            <h1 class="site-title">
-                <a href="{{ .Site.BaseURL }}" title="{{ .Site.Title }}">
-                    {{ .Site.Title }}
-                </a>
-            </h1>
-            {{ if .Site.Params.tagline }}
-            <p class="site-tagline">{{ .Site.Params.tagline }}</p>
-            {{ end }}
+            <h1 class="site-title"><a href="{{ .Site.BaseURL }}" title="{{ .Site.Title }}">{{ .Site.Title }}</a></h1>
+            {{ if .Site.Params.tagline }}<p class="site-tagline">{{ .Site.Params.tagline }}</p>{{ end }}
         </div>
-
-        <!-- 右侧：导航菜单 -->
         <nav class="site-nav" id="siteNav">
             <ul class="nav-menu">
-                {{ range .Site.Menus.main }}
-                <li class="nav-item">
-                    <a href="{{ .URL }}" 
-                       class="nav-link {{ if $.IsMenuCurrent "main" . }}active{{ end }}"
-                       title="{{ .Name }}">
-                        {{ .Name }}
-                    </a>
-                </li>
-                {{ end }}
-                <li class="nav-item">
-                    <a href="{{ "index.xml" | absURL }}" 
-                       class="nav-link" 
-                       target="_blank"
-                       title="订阅 RSS">
-                        RSS
-                    </a>
-                </li>
+                {{ range .Site.Menus.main }}<li class="nav-item"><a href="{{ .URL }}" class="nav-link {{ if $.IsMenuCurrent "main" . }}active{{ end }}" title="{{ .Name }}">{{ .Name }}</a></li>{{ end }}
+                <li class="nav-item"><a href="{{ "index.xml" | absURL }}" class="nav-link" target="_blank" title="订阅 RSS">RSS</a></li>
             </ul>
-
-            <!-- 移动端汉堡菜单按钮 -->
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="打开菜单">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="打开菜单"><span></span><span></span><span></span></button>
         </nav>
     </div>
 </header>
-
-<!-- 移动端菜单遮罩层 -->
 <div class="nav-overlay" id="navOverlay"></div>
-
-<!-- 阅读进度条 -->
 <div class="reading-progress" id="readingProgress"></div>
