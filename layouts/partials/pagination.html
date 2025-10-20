@@ -2,7 +2,6 @@
 {{ if gt $paginator.TotalPages 1 }}
 <nav class="pagination" aria-label="Page navigation">
     <ul class="pagination-list">
-        <!-- "上一页" 链接 -->
         {{ if $paginator.HasPrev }}
             <li>
                 <a href="{{ $paginator.Prev.URL }}" class="pagination-link" aria-label="Go to previous page">
@@ -14,8 +13,6 @@
                 <span class="pagination-link">&laquo; 上一页</span>
             </li>
         {{ end }}
-
-        <!-- 页码 -->
         {{ range $paginator.Pagers }}
             <li>
                 <a href="{{ .URL }}" class="pagination-link {{ if eq . $paginator }}is-current{{ end }}">
@@ -23,8 +20,6 @@
                 </a>
             </li>
         {{ end }}
-
-        <!-- "下一页" 链接 -->
         {{ if $paginator.HasNext }}
             <li>
                 <a href="{{ $paginator.Next.URL }}" class="pagination-link" aria-label="Go to next page">
