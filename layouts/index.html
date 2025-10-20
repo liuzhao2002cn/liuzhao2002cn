@@ -1,9 +1,5 @@
 {{ define "main" }}
-
-<!-- 动态背景粒子 -->
 <div id="particles-js"></div>
-
-<!-- 英雄区域 -->
 <section class="hero">
     <div class="hero-background">
         <div class="hero-shape shape-1"></div>
@@ -11,23 +7,17 @@
         <div class="hero-shape shape-3"></div>
         <div class="hero-shape shape-4"></div>
     </div>
-    
     <div class="hero-content personal-intro">
-        <!-- 浮动装饰元素 -->
         <div class="floating-elements">
             <div class="floating-element element-1">✨</div>
             <div class="floating-element element-2">🚀</div>
             <div class="floating-element element-3">💫</div>
             <div class="floating-element element-4">🌟</div>
         </div>
-
-        <!-- 个人头像 -->
         <div class="avatar-container">
             <img src="/images/avatar.png" alt="个人头像" class="intro-avatar">
             <div class="avatar-glow"></div>
         </div>
-
-        <!-- 名字和头衔 -->
         <div class="name-title-wrapper">
             <h1 class="intro-name">{{ .Site.Params.author | default .Site.Title }}</h1>
             <div class="title-tags">
@@ -36,142 +26,60 @@
                 <span class="title-tag">心得</span>
             </div>
         </div>
-
-        <!-- 动态打字机效果 -->
         <div class="typewriter-container">
             <p class="intro-description" id="typewriter-text"></p>
             <span class="typewriter-cursor">|</span>
         </div>
-
-        <!-- 统计数据 -->
         <div class="stats-container">
-            <div class="stat-item">
-                <div class="stat-number" id="post-count">0</div>
-                <div class="stat-label">文章</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" id="tag-count">0</div>
-                <div class="stat-label">标签</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" id="category-count">0</div>
-                <div class="stat-label">分类</div>
-            </div>
+            <div class="stat-item"><div class="stat-number" id="post-count">0</div><div class="stat-label">文章</div></div>
+            <div class="stat-item"><div class="stat-number" id="tag-count">0</div><div class="stat-label">标签</div></div>
+            <div class="stat-item"><div class="stat-number" id="category-count">0</div><div class="stat-label">分类</div></div>
         </div>
-
-        <!-- 社交媒体链接 -->
         <div class="intro-socials">
             {{ with .Site.Params.github }}
             <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="GitHub">
-                <svg viewBox="0 0 24 24" width="24" height="24">
-                    <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-            </a>
-            {{ end }}
-            
+                <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12..."/></svg>
+            </a>{{ end }}
             {{ with .Site.Params.email }}
             <a href="mailto:{{ . }}" class="social-icon" title="邮箱">
-                <svg viewBox="0 0 24 24" width="24" height="24">
-                    <path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                </svg>
-            </a>
-            {{ end }}
-            
+                <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2..."/></svg>
+            </a>{{ end }}
             {{ with .Site.Params.bilibili }}
             <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="Bilibili">
-                <svg viewBox="0 0 24 24" width="24" height="24">
-                    <path fill="currentColor" d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373Z"/>
-                </svg>
-            </a>
-            {{ end }}
-            
+                <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M17.813 4.653h.854c1.51..."/></svg>
+            </a>{{ end }}
             {{ with .Site.Params.douban }}
             <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="豆瓣">
-                <svg viewBox="0 0 24 24" width="24" height="24">
-                    <path fill="currentColor" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.895 17.611c-1.332 0-2.419-.532-3.305-1.332-.886.8-1.973 1.332-3.305 1.332-2.665 0-4.785-2.12-4.785-4.785s2.12-4.785 4.785-4.785c1.332 0 2.419.532 3.305 1.332.886-.8 1.973-1.332 3.305-1.332 2.665 0 4.785 2.12 4.785 4.785s-2.12 4.785-4.785 4.785zM12 6.225c-3.188 0-5.775 2.587-5.775 5.775s2.587 5.775 5.775 5.775 5.775-2.587 5.775-5.775S15.188 6.225 12 6.225z"/>
-                </svg>
-            </a>
-            {{ end }}
-            
+                <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 0C5.373 0 0 5.373 0 12..."/></svg>
+            </a>{{ end }}
             {{ with .Site.Params.facebook }}
             <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="Facebook">
-                <svg viewBox="0 0 24 24" width="24" height="24">
-                    <path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-            </a>
-            {{ end }}
+                <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M24 12.073c0-6.627-5.373-12..."/></svg>
+            </a>{{ end }}
         </div>
-
-        <!-- CTA 按钮 -->
         <div class="intro-buttons">
-            <a href="/explore/" class="intro-button primary">
-                <span>探索博客</span>
-                <svg viewBox="0 0 24 24" width="18" height="18">
-                    <path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                </svg>
-            </a>
-            <a href="/about/" class="intro-button secondary">
-                <span>关于我</span>
-                <svg viewBox="0 0 24 24" width="18" height="18">
-                    <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-                </svg>
-            </a>
+            <a href="/explore/" class="intro-button primary"><span>探索博客</span><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M10 6L8.59 7.41..."/></svg></a>
+            <a href="/about/" class="intro-button secondary"><span>关于我</span><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 2C6.48 2..."/></svg></a>
         </div>
     </div>
-
-    <!-- 滚动指示器 -->
-    <div class="scroll-indicator">
-        <div class="scroll-arrow"></div>
-        <span>向下滚动</span>
-    </div>
+    <div class="scroll-indicator"><div class="scroll-arrow"></div><span>向下滚动</span></div>
 </section>
-
-<!-- 特性亮点 -->
 <section class="features-section">
     <div class="container">
         <div class="features-grid">
-            <a href="/note/" class="feature-card-link">
-            <div class="feature-card">
-                <div class="feature-icon">📚</div>
-                <h3>读书笔记</h3>
-                <p>分享最近阅读的书籍的心得、体会与评价（以及某些喜欢的作品的翻译）</p>
-            </div>
-            </a>
-            <a href="/opinion/" class="feature-card-link">
-            <div class="feature-card">
-                <div class="feature-icon">🎨</div>
-                <h3>个人评论</h3>
-                <p>分享最近个人关于世界的独立思索与想法</p>
-            </div>
-            <a href="/life/" class="feature-card-link">
-            <div class="feature-card">
-                <div class="feature-icon">🌍</div>
-                <h3>见闻感受</h3>
-                <p>分享（倾倒）生活的经历与感受</p>
-            </div>
-            </a>
+            <a href="/note/" class="feature-card-link"><div class="feature-card"><div class="feature-icon">📚</div><h3>读书笔记</h3><p>分享最近学思的心得、体会与评价（以及某些喜欢的文章的翻译）</p></div></a>
+            <a href="/opinion/" class="feature-card-link"><div class="feature-card"><div class="feature-icon">🎨</div><h3>个人评论</h3><p>分享最近个人关于世界的独立思索与想法、时闻世论个人浅见</p></div></a>
+            <a href="/life/" class="feature-card-link"><div class="feature-card"><div class="feature-icon">🌍</div><h3>见闻感受</h3><p>学习生活，分享（倾倒）有关“生活”的具身经历与琐碎感受</p></div></a>
         </div>
     </div>
 </section>
-
 {{ $pages := where .Site.RegularPages "Type" "posts" }}
-
-<!-- 精选文章区域 -->
 <section class="featured-posts">
     <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">
-                <span class="title-icon">✨</span>
-                <span class="title-text">精选文章</span>
-                <span class="title-decoration"></span>
-            </h2>
-            <p class="section-subtitle">探索最受欢迎的内容</p>
-        </div>
-
+        <div class="section-header"><h2 class="section-title"><span class="title-icon">✨</span><span class="title-text">精选文章</span><span class="title-decoration"></span></h2><p class="section-subtitle">探索最受欢迎的内容</p></div>
         <div class="post-grid">
             {{ $featured := where $pages "Params.featured" true }}
             {{ $displayPosts := $featured | default $pages }}
-            
             {{ range first 3 $displayPosts }}
             {{ $post := . }}
             <a href="{{ .Permalink }}" class="post-card-link">
@@ -179,203 +87,62 @@
                     {{ with .Params.image }}
                     <div class="post-card-image-wrapper">
                         {{ if $post.Resources.GetMatch . }}
-                            {{ with $post.Resources.GetMatch . }}
-                                {{ $image := .Resize "800x webp q75" }}
-                                {{ $fallback := .Resize "800x q75" }}
-                                <picture>
-                                    <source srcset="{{ $image.RelPermalink }}" type="image/webp">
-                                    <img src="{{ $fallback.RelPermalink }}" 
-                                         width="{{ $fallback.Width }}" 
-                                         height="{{ $fallback.Height }}" 
-                                         alt="{{ $post.Title }}" 
-                                         class="post-card-image" 
-                                         loading="lazy">
-                                </picture>
-                            {{ end }}
-                        {{ else }}
-                            <img src="{{ . | relURL }}" 
-                                 alt="{{ $post.Title }}" 
-                                 class="post-card-image" 
-                                 loading="lazy">
+                        {{ with $post.Resources.GetMatch . }}
+                        {{ $image := .Resize "800x webp q75" }}
+                        {{ $fallback := .Resize "800x q75" }}
+                        <picture><source srcset="{{ $image.RelPermalink }}" type="image/webp"><img src="{{ $fallback.RelPermalink }}" width="{{ $fallback.Width }}" height="{{ $fallback.Height }}" alt="{{ $post.Title }}" class="post-card-image" loading="lazy"></picture>
                         {{ end }}
-                        <div class="image-overlay">
-                            <span class="read-more-hint">阅读全文 →</span>
-                        </div>
+                        {{ else }}
+                        <img src="{{ . | relURL }}" alt="{{ $post.Title }}" class="post-card-image" loading="lazy">
+                        {{ end }}
+                        <div class="image-overlay"><span class="read-more-hint">阅读全文 →</span></div>
                     </div>
                     {{ end }}
                     <div class="post-card-content">
                         <h3 class="post-card-title">{{ $post.Title }}</h3>
                         <p class="post-card-summary">{{ $post.Summary | plainify | truncate 100 }}</p>
-                        <div class="post-card-meta">
-                            <span class="meta-icon">📅</span>
-                            <span class="post-card-date">{{ $post.Date.Format "2006-01-02" }}</span>
-                            <span class="meta-divider">·</span>
-                            <span class="meta-icon">⏱️</span>
-                            <span class="post-card-reading-time">{{ $post.ReadingTime }} 分钟</span>
-                        </div>
+                        <div class="post-card-meta"><span class="meta-icon">📅</span><span class="post-card-date">{{ $post.Date.Format "2006-01-02" }}</span><span class="meta-divider">·</span><span class="meta-icon">⏱️</span><span class="post-card-reading-time">{{ $post.ReadingTime }} 分钟</span></div>
                         {{ with $post.Params.tags }}
-                        <div class="post-card-tags">
-                            {{ range first 3 . }}
-                            <span class="tag">#{{ . }}</span>
-                            {{ end }}
-                        </div>
+                        <div class="post-card-tags">{{ range first 3 . }}<span class="tag">#{{ . }}</span>{{ end }}</div>
                         {{ end }}
                     </div>
                 </article>
             </a>
             {{ else }}
-            <div class="empty-state">
-                <div class="empty-icon">📝</div>
-                <p class="empty-text">暂无精选文章,敬请期待!</p>
-            </div>
+            <div class="empty-state"><div class="empty-icon">📝</div><p class="empty-text">暂无精选文章,敬请期待!</p></div>
             {{ end }}
         </div>
     </div>
 </section>
-
-<!-- 最新文章区域 -->
 <section class="recent-posts">
     <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">
-                <span class="title-icon">⏳</span>
-                <span class="title-text">最新发布</span>
-                <span class="title-decoration"></span>
-            </h2>
-            <p class="section-subtitle">最近更新的文章列表</p>
-        </div>
-
+        <div class="section-header"><h2 class="section-title"><span class="title-icon">⏳</span><span class="title-text">最新发布</span><span class="title-decoration"></span></h2><p class="section-subtitle">最近更新的文章列表</p></div>
         <ul class="recent-post-list">
             {{ range first 5 $pages }}
             <li class="recent-post-item">
                 <a href="{{ .Permalink }}" class="recent-post-link">
-                    <div class="recent-post-main">
-                        <span class="recent-post-indicator"></span>
-                        <span class="recent-post-title">{{ .Title }}</span>
-                    </div>
+                    <div class="recent-post-main"><span class="recent-post-indicator"></span><span class="recent-post-title">{{ .Title }}</span></div>
                     <div class="recent-post-info">
-                        {{ with .Params.categories }}
-                        <span class="recent-post-category">{{ index . 0 }}</span>
-                        {{ end }}
+                        {{ with .Params.categories }}<span class="recent-post-category">{{ index . 0 }}</span>{{ end }}
                         <span class="recent-post-date">{{ .Date.Format "Jan 2" }}</span>
                     </div>
                 </a>
             </li>
             {{ end }}
         </ul>
-
-        <div class="view-all-wrapper">
-            <a href="/posts/" class="view-all-link">
-                <span>查看所有文章</span>
-                <svg viewBox="0 0 24 24" width="18" height="18">
-                    <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
-                </svg>
-            </a>
-        </div>
+        <div class="view-all-wrapper"><a href="/posts/" class="view-all-link"><span>查看所有文章</span><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41..."/></svg></a></div>
     </div>
 </section>
-
-
-
 <script>
-// 粒子背景配置
-document.addEventListener('DOMContentLoaded', function() {
-    // 加载 particles.js
-    if (typeof particlesJS !== 'undefined') {
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: "#6C63FF" },
-                shape: { type: "circle" },
-                opacity: { value: 0.5, random: true },
-                size: { value: 3, random: true },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: "#6C63FF",
-                    opacity: 0.2,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: { enable: true, mode: "repulse" },
-                    onclick: { enable: true, mode: "push" },
-                    resize: true
-                }
-            }
-        });
-    }
-
-    // 打字机效果
-    const typewriterText = document.getElementById('typewriter-text');
-    const texts = [
-        "{{ .Site.Params.description }}",
-        "分享技术与生活感悟",
-        "探索数字世界的无限可能",
-        "记录成长的每一个瞬间"
-    ];
-    
-    let textIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    
-    function typeWriter() {
-        const currentText = texts[textIndex];
-        
-        if (isDeleting) {
-            typewriterText.textContent = currentText.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            typewriterText.textContent = currentText.substring(0, charIndex + 1);
-            charIndex++;
-        }
-        
-        if (!isDeleting && charIndex === currentText.length) {
-            setTimeout(() => isDeleting = true, 2000);
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            textIndex = (textIndex + 1) % texts.length;
-        }
-        
-        setTimeout(typeWriter, isDeleting ? 50 : 100);
-    }
-    
-    // 启动打字机效果
-    setTimeout(typeWriter, 1000);
-
-    // 数字动画
-    function animateNumber(element, target, duration = 2000) {
-        let start = 0;
-        const increment = target / (duration / 16);
-        const timer = setInterval(() => {
-            start += increment;
-            if (start >= target) {
-                element.textContent = target;
-                clearInterval(timer);
-            } else {
-                element.textContent = Math.floor(start);
-            }
-        }, 16);
-    }
-
-    // 模拟统计数据（实际使用时应该从Hugo获取真实数据）
-    setTimeout(() => {
-        animateNumber(document.getElementById('post-count'), {{ len $pages }});
-        animateNumber(document.getElementById('tag-count'), 15);
-        animateNumber(document.getElementById('category-count'), 8);
-    }, 1500);
+document.addEventListener('DOMContentLoaded',function(){
+    if(typeof particlesJS!=='undefined'){particlesJS('particles-js',{particles:{number:{value:80,density:{enable:true,value_area:800}},color:{value:"#6C63FF"},shape:{type:"circle"},opacity:{value:0.5,random:true},size:{value:3,random:true},line_linked:{enable:true,distance:150,color:"#6C63FF",opacity:0.2,width:1},move:{enable:true,speed:2,direction:"none",random:true,straight:false,out_mode:"out",bounce:false}},interactivity:{detect_on:"canvas",events:{onhover:{enable:true,mode:"repulse"},onclick:{enable:true,mode:"push"},resize:true}}});}
+    const typewriterText=document.getElementById('typewriter-text');
+    const texts=["{{ .Site.Params.description }}","储存思想与生活感悟","记录探索与坚持历程","分享求知与学习经验"];
+    let textIndex=0,charIndex=0,isDeleting=false;
+    function typeWriter(){const currentText=texts[textIndex];if(isDeleting){typewriterText.textContent=currentText.substring(0,charIndex-1);charIndex--;}else{typewriterText.textContent=currentText.substring(0,charIndex+1);charIndex++;}if(!isDeleting&&charIndex===currentText.length){setTimeout(()=>isDeleting=true,2000);}else if(isDeleting&&charIndex===0){isDeleting=false;textIndex=(textIndex+1)%texts.length;}setTimeout(typeWriter,isDeleting?50:100);}
+    setTimeout(typeWriter,1000);
+    function animateNumber(element,target,duration=2000){let start=0;const increment=target/(duration/16);const timer=setInterval(()=>{start+=increment;if(start>=target){element.textContent=target;clearInterval(timer);}else{element.textContent=Math.floor(start);}},16);}
+    setTimeout(()=>{animateNumber(document.getElementById('post-count'),{{ len $pages }});animateNumber(document.getElementById('tag-count'),15);animateNumber(document.getElementById('category-count'),8);},1500);
 });
 </script>
-
 {{ end }}
