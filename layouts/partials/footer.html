@@ -1,13 +1,10 @@
-<!-- 波浪分隔线 -->
 <div class="footer-wave">
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
         <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
     </svg>
 </div>
-
 <footer class="site-footer">
     <div class="footer-content">
-        <!-- 网站信息区 -->
         <div class="footer-info">
             <h3 class="footer-title">{{ .Site.Title }}</h3>
             {{ with .Site.Params.description }}
@@ -15,8 +12,6 @@
             {{ end }}
             <p class="footer-slogan">✨ 记录思考,心得与生活感受</p>
         </div>
-
-        <!-- 快速链接 -->
         <div class="footer-links-section">
             <h4 class="section-title">快速链接</h4>
             <nav class="footer-nav">
@@ -26,8 +21,6 @@
                 <a href="{{ "index.xml" | absURL }}" target="_blank" class="footer-link">RSS 订阅</a>
             </nav>
         </div>
-
-        <!-- 社交媒体 -->
         <div class="footer-social-section">
             <h4 class="section-title">关注我</h4>
             <div class="social-icons">
@@ -65,8 +58,6 @@
             </div>
         </div>
     </div>
-
-    <!-- 底部版权信息 -->
     <div class="footer-bottom">
         <div class="footer-bottom-content">
             <div class="copyright">
@@ -93,8 +84,6 @@
         </div>
     </div>
 </footer>
-
-<!-- 返回顶部按钮 -->
 <button class="back-to-top" id="backToTop" aria-label="返回顶部">
     <svg viewBox="0 0 24 24" width="24" height="24">
         <path fill="currentColor" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
