@@ -1,7 +1,7 @@
 {
   "name": "zhaos-blog",
   "version": "1.0.0",
-  "description": "竱肇的个人博客的资源配置文件",
+  "description": "竱肇文档站的资源配置文件",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
