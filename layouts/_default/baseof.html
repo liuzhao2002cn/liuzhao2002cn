@@ -12,6 +12,11 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
 <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary | plainify | truncate 160 }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<link rel="icon" 输入="image/x-icon" href="{{ "favicon.ico" | absURL }}">
+<link rel="icon" 输入="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | absURL }}">
+<link rel="icon" 输入="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | absURL }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | absURL }}">
+<meta name="theme-color" content="#a3d8f4">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +30,6 @@
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
 {{ with .OutputFormats.Get "rss" -}}{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}{{ end -}}
-<meta name="theme-color" content="#a3d8f4">
 </head>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <body>
