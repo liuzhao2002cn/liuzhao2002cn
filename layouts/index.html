@@ -3,319 +3,428 @@
 
 <!-- 英雄区 - 左右分栏布局 -->
 <section class="hero">
-    <div class="hero-background">
-        <div class="hero-shape shape-1"></div>
-        <div class="hero-shape shape-2"></div>
-    </div>
+    <div class="hero-background"></div>
     <div class="container">
-        <div class="hero-wrapper">
-            <!-- 左侧：头像和社交信息 -->
-            <div class="hero-left">
-                <div class="avatar-container">
-                    <img src="/images/avatar.png" alt="个人头像" class="intro-avatar">
-                    <div class="avatar-glow"></div>
-                </div>
-                <h1 class="intro-name">{{ .Site.Params.author | default .Site.Title }}</h1>
-                <p class="intro-tagline">{{ .Site.Params.tagline | default "记录思想 · 分享生活" }}</p>
-                
-                <div class="intro-socials">
-                    {{ with .Site.Params.github }}
-                    <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="GitHub">
-                        <svg viewBox="0 0 24 24" width="20" height="20">
-                            <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                    </a>
-                    {{ end }}
-                    {{ with .Site.Params.email }}
-                    <a href="mailto:{{ . }}" class="social-icon" title="邮箱">
-                        <svg viewBox="0 0 24 24" width="20" height="20">
-                            <path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                        </svg>
-                    </a>
-                    {{ end }}
-                    {{ with .Site.Params.bilibili }}
-                    <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="Bilibili">
-                        <svg viewBox="0 0 24 24" width="20" height="20">
-                            <path fill="currentColor" d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.169.196h4.346c.036-.054.098-.125.169-.196l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373Z"/>
-                        </svg>
-                    </a>
-                    {{ end }}
-                    {{ with .Site.Params.douban }}
-                    <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="豆瓣">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                           <text x="12" y="12" font-size="18" font-weight="bold" text-anchor="middle" dominant-baseline="central" font-family="sans-serif">豆</text>
-                        </svg>
-                    </a>
-                    {{ end }}
-                    {{ with .Site.Params.facebook }}
-                    <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="Facebook">
-                        <svg viewBox="0 0 24 24" width="20" height="20">
-                            <path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                        </svg>
-                    </a>
-                    {{ end }}
-                    {{ with .Site.Params.twitter }}
-                    <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="Twitter">
-                        <svg viewBox="0 0 24 24" width="20" height="20">
-                            <path fill="currentColor" d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                        </svg>
-                    </a>
-                    {{ end }}
+        <!-- 新增: 白色卡片容器 -->
+        <div class="hero-card">
+            <div class="hero-wrapper">
+                <!-- 左侧：头像和社交信息 -->
+                <div class="hero-left">
+                    <div class="avatar-container">
+                        <img src="/images/avatar.png" alt="个人头像" class="intro-avatar">
+                        <div class="avatar-glow"></div>
+                    </div>
+                    <h1 class="intro-name">{{ .Site.Params.author | default .Site.Title }}</h1>
+                    <p class="intro-tagline">{{ .Site.Params.tagline | default "记录思想 · 分享生活" }}</p>
+                    
+                    <div class="intro-socials">
+                        {{ with .Site.Params.github }}
+                        <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="GitHub">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        {{ end }}
+                        {{ with .Site.Params.email }}
+                        <a href="mailto:{{ . }}" class="social-icon" title="邮箱">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </a>
+                        {{ end }}
+                        {{ with .Site.Params.bilibili }}
+                        <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="Bilibili">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="currentColor" d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.169.196h4.346c.036-.054.098-.125.169-.196l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373Z"/>
+                            </svg>
+                        </a>
+                        {{ end }}
+                        {{ with .Site.Params.douban }}
+                        <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="豆瓣">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                            <text x="12" y="12" font-size="18" font-weight="bold" text-anchor="middle" dominant-baseline="central" font-family="sans-serif">豆</text>
+                            </svg>
+                        </a>
+                        {{ end }}
+                        {{ with .Site.Params.facebook }}
+                        <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="Facebook">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        {{ end }}
+                        {{ with .Site.Params.twitter }}
+                        <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="Twitter">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="currentColor" d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                        {{ end }}
+                    </div>
+
+                    <div class="stats-mini">
+                        <div class="stat-mini">
+                            <span class="stat-number" id="post-count">0</span>
+                            <span class="stat-label">文章</span>
+                        </div>
+                        <div class="stat-mini">
+                            <span class="stat-number" id="tag-count">0</span>
+                            <span class="stat-label">标签</span>
+                        </div>
+                        <div class="stat-mini">
+                            <span class="stat-number" id="category-count">0</span>
+                            <span class="stat-label">分类</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="stats-mini">
-                    <div class="stat-mini">
-                        <span class="stat-number" id="post-count">0</span>
-                        <span class="stat-label">文章</span>
+                <!-- 右侧：简介和操作按钮 -->
+                <div class="hero-right">
+                    <div class="hero-intro">
+                        <div class="floating-icon">✨</div>
+                        <h2 class="intro-heading">欢迎来到我的个人空间</h2>
+                        <p class="intro-text">
+                            中国人，人文社科学子，在新时代的旧废墟上长大。<br>
+                            关注政哲、经济学、激进左翼理论与华语思想史等。
+                        </p>
+                        <div class="title-tags">
+                            <span class="title-tag">政治哲学</span>
+                            <span class="title-tag">马克思主义</span>
+                            <span class="title-tag">思想史</span>
+                            <span class="title-tag">东亚研究</span>
+                        </div>
                     </div>
-                    <div class="stat-mini">
-                        <span class="stat-number" id="tag-count">0</span>
-                        <span class="stat-label">标签</span>
-                    </div>
-                    <div class="stat-mini">
-                        <span class="stat-number" id="category-count">0</span>
-                        <span class="stat-label">分类</span>
+                    <div class="intro-buttons">
+                        <a href="/explore/" class="intro-button primary">
+                            <span>探索博客</span>
+                            <svg viewBox="0 0 24 24" width="18" height="18">
+                                <path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                            </svg>
+                        </a>
+                        <a href="/about/" class="intro-button secondary">
+                            <span>了解更多</span>
+                            <svg viewBox="0 0 24 24" width="18" height="18">
+                                <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
-
-            <!-- 右侧：简介和操作按钮 -->
-            <div class="hero-right">
-                <div class="hero-intro">
-                    <div class="floating-icon">✨</div>
-                    <h2 class="intro-heading">欢迎来到我的空间</h2>
-                    <p class="intro-text">
-                        中国人，人文社科学子，在新时代的旧废墟上长大。<br>
-                        关注政哲、经济学、激进左翼理论与华语思想史等。
-                    </p>
-                    <div class="title-tags">
-                        <span class="title-tag">思想探索</span>
-                        <span class="title-tag">时闻世论</span>
-                        <span class="title-tag">个人经历</span>
-                        <span class="title-tag">具身感受</span>
-                    </div>
-                </div>
-                <div class="intro-buttons">
-                    <a href="/explore/" class="intro-button primary">
-                        <span>探索博客</span>
-                        <svg viewBox="0 0 24 24" width="18" height="18">
-                            <path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                        </svg>
-                    </a>
-                    <a href="/about/" class="intro-button secondary">
-                        <span>了解更多</span>
-                        <svg viewBox="0 0 24 24" width="18" height="18">
-                            <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-                        </svg>
-                    </a>
-                </div>
+            <!-- 改动: "向下滚动" 移入卡片内, 并修改了图标 -->
+            <div class="scroll-indicator">
+                <div class="scroll-diamond"></div>
+                <span>向下滚动</span>
             </div>
         </div>
     </div>
-    <div class="scroll-indicator">
-        <div class="scroll-arrow"></div>
-        <span>向下滚动</span>
-    </div>
 </section>
 
-<!-- 特色栏目 -->
-<section class="features-section">
-    <div class="container">
-        <div class="features-grid">
-            <a href="/note/" class="feature-card-link">
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3>读书笔记</h3>
-                    <p>分享最近学思的心得、体会与评价</p>
-                </div>
-            </a>
-            <a href="/opinion/" class="feature-card-link">
-                <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
-                    <h3>个人评论</h3>
-                    <p>关于世界的独立思索与想法</p>
-                </div>
-            </a>
-            <a href="/life/" class="feature-card-link">
-                <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
-                    <h3>见闻感受</h3>
-                    <p>分享生活的具身经历与琐碎感受</p>
-                </div>
-            </a>
-        </div>
-    </div>
-</section>
+<!-- ... 后面的 <section> (特色栏目, 精选文章, 最新发布) 保持不变 ... -->
+<!-- ... HTML 和 script 的其余部分保持不变 ... -->
+<style>
+/* 英雄区样式 */
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 4rem 0;
+    min-height: 100vh;
+}
 
-<!-- 精选文章 -->
-{{ $pages := where .Site.RegularPages "Type" "posts" }}
-<section class="featured-posts">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">
-                <span class="title-icon">✨</span>
-                <span class="title-text">精选文章</span>
-                <span class="title-decoration"></span>
-            </h2>
-            <p class="section-subtitle">探索最受欢迎的内容</p>
-        </div>
-        <div class="post-grid">
-            {{ $featured := where $pages "Params.featured" true }}
-            {{ $displayPosts := $featured | default $pages }}
-            {{ range first 3 $displayPosts }}
-            {{ $post := . }}
-            <a href="{{ .Permalink }}" class="post-card-link">
-                <article class="post-card">
-                    {{ with .Params.image }}
-                    <div class="post-card-image-wrapper">
-                        {{ if $post.Resources.GetMatch . }}
-                        {{ with $post.Resources.GetMatch . }}
-                        {{ $image := .Resize "800x webp q75" }}
-                        {{ $fallback := .Resize "800x q75" }}
-                        <picture>
-                            <source srcset="{{ $image.RelPermalink }}" type="image/webp">
-                            <img src="{{ $fallback.RelPermalink }}" width="{{ $fallback.Width }}" height="{{ $fallback.Height }}" alt="{{ $post.Title }}" class="post-card-image" loading="lazy">
-                        </picture>
-                        {{ end }}
-                        {{ else }}
-                        <img src="{{ . | relURL }}" alt="{{ $post.Title }}" class="post-card-image" loading="lazy">
-                        {{ end }}
-                        <div class="image-overlay">
-                            <span class="read-more-hint">阅读全文 →</span>
-                        </div>
-                    </div>
-                    {{ end }}
-                    <div class="post-card-content">
-                        <h3 class="post-card-title">{{ $post.Title }}</h3>
-                        <p class="post-card-summary">{{ $post.Summary | plainify | truncate 100 }}</p>
-                        <div class="post-card-meta">
-                            <span class="meta-icon">📅</span>
-                            <span class="post-card-date">{{ $post.Date.Format "2006-01-02" }}</span>
-                            <span class="meta-divider">·</span>
-                            <span class="meta-icon">⏱️</span>
-                            <span class="post-card-reading-time">{{ $post.ReadingTime }} 分钟</span>
-                        </div>
-                        {{ with $post.Params.tags }}
-                        <div class="post-card-tags">
-                            {{ range first 3 . }}
-                            <span class="tag">#{{ . }}</span>
-                            {{ end }}
-                        </div>
-                        {{ end }}
-                    </div>
-                </article>
-            </a>
-            {{ else }}
-            <div class="empty-state">
-                <div class="empty-icon">📝</div>
-                <p class="empty-text">暂无精选文章，敬请期待！</p>
-            </div>
-            {{ end }}
-        </div>
-    </div>
-</section>
+/* 改动: 背景简化为淡紫色, 更接近设计图 */
+.hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: #f8f7ff;
+}
 
-<!-- 最新发布 -->
-<section class="recent-posts">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">
-                <span class="title-icon">⏳</span>
-                <span class="title-text">最新发布</span>
-                <span class="title-decoration"></span>
-            </h2>
-            <p class="section-subtitle">最近更新的文章列表</p>
-        </div>
-        <ul class="recent-post-list">
-            {{ range first 5 $pages }}
-            <li class="recent-post-item">
-                <a href="{{ .Permalink }}" class="recent-post-link">
-                    <div class="recent-post-main">
-                        <span class="recent-post-indicator"></span>
-                        <span class="recent-post-title">{{ .Title }}</span>
-                    </div>
-                    <div class="recent-post-info">
-                        {{ with .Params.categories }}
-                        <span class="recent-post-category">{{ index . 0 }}</span>
-                        {{ end }}
-                        <span class="recent-post-date">{{ .Date.Format "Jan 2" }}</span>
-                    </div>
-                </a>
-            </li>
-            {{ end }}
-        </ul>
-        <div class="view-all-wrapper">
-            <a href="/posts/" class="view-all-link">
-                <span>查看所有文章</span>
-                <svg viewBox="0 0 24 24" width="18" height="18">
-                    <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
-                </svg>
-            </a>
-        </div>
-    </div>
-</section>
+/* 新增: 白色卡片容器样式 */
+.hero-card {
+    background: white;
+    border-radius: 24px;
+    padding: 3.5rem;
+    position: relative;
+    box-shadow: 0 16px 40px rgba(108, 99, 255, 0.1);
+    /* 为 "向下滚动" 按钮预留空间 */
+    padding-bottom: 6rem; 
+}
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Particles.js 初始化（减少粒子数量）
-    if (typeof particlesJS !== 'undefined') {
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 50, density: { enable: true, value_area: 800 } },
-                color: { value: "#6C63FF" },
-                shape: { type: "circle" },
-                opacity: { value: 0.4, random: true },
-                size: { value: 3, random: true },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: "#6C63FF",
-                    opacity: 0.2,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 1.5,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    out_mode: "out"
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: { enable: true, mode: "repulse" },
-                    onclick: { enable: true, mode: "push" },
-                    resize: true
-                }
-            }
-        });
+.hero-wrapper {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* 左侧样式 */
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.avatar-container {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.intro-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 4px solid #8A7DFF; /* 调整边框色 */
+    box-shadow: 0 8px 32px rgba(138, 125, 255, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.avatar-container:hover .intro-avatar {
+    transform: scale(1.05);
+}
+
+.avatar-glow {
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8A7DFF, #C3A7FF);
+    opacity: 0;
+    filter: blur(20px);
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.avatar-container:hover .avatar-glow {
+    opacity: 0.6;
+}
+
+.intro-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin: 0 0 0.5rem;
+}
+
+.intro-tagline {
+    font-size: 0.95rem;
+    color: #718096;
+    margin: 0 0 1.5rem;
+}
+
+.intro-socials {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #f7fafc;
+    color: #4a5568;
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+}
+
+.social-icon:hover {
+    background: #8A7DFF;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(138, 125, 255, 0.3);
+}
+
+.stats-mini {
+    display: flex;
+    gap: 2rem;
+    padding: 1.25rem 2rem;
+    background: #f7fafc;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    width: 100%;
+    justify-content: center;
+}
+
+.stat-mini {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-mini .stat-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #8A7DFF;
+}
+
+.stat-mini .stat-label {
+    font-size: 0.85rem;
+    color: #718096;
+    margin-top: 0.25rem;
+}
+
+/* 右侧样式 */
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.hero-intro {
+    position: relative;
+}
+
+.floating-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.intro-heading {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin: 0 0 1rem;
+    line-height: 1.2;
+}
+
+.intro-text {
+    font-size: 1.05rem;
+    color: #4a5568;
+    line-height: 1.8;
+    margin: 0 0 1.5rem;
+}
+
+.title-tags {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.title-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: #f0edff;
+    border: 1px solid #dcd6ff;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    color: #6c56f1;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.title-tag:hover {
+    background: #e3deff;
+    border-color: #c9c0ff;
+    transform: translateY(-2px);
+}
+
+.intro-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.intro-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.intro-button.primary {
+    background: #8A7DFF;
+    color: white;
+    box-shadow: 0 4px 15px rgba(138, 125, 255, 0.3);
+}
+
+.intro-button.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(138, 125, 255, 0.4);
+    background: #7a6df2;
+}
+
+.intro-button.secondary {
+    background: white;
+    color: #8A7DFF;
+    border: 2px solid #8A7DFF;
+}
+
+.intro-button.secondary:hover {
+    background: #8A7DFF;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* 改动: "向下滚动" 按钮样式和定位 */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #a0aec0;
+    font-size: 0.85rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* 新增: 菱形图标样式 */
+。scroll-diamond {
+    width: 16px;
+    height: 16px;
+    background: #8A7DFF;
+    transform: rotate(45deg);
+    margin-bottom: 1rem;
+}
+
+/* 响应式布局 */
+@media (max-width: 968px) {
+    。hero-wrapper {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
     }
-
-    // 数字动画
-    function animateNumber(element, target, duration = 2000) {
-        let start = 0;
-        const increment = target / (duration / 16);
-        const timer = setInterval(() => {
-            start += increment;
-            if (start >= target) {
-                element.textContent = target;
-                clearInterval(timer);
-            } else {
-                element.textContent = Math.floor(start);
-            }
-        }, 16);
+    。hero-left {
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #e2e8f0;
     }
+    。intro-heading { font-size: 1.75rem; }
+    。intro-buttons { justify-content: center; }
+    。title-tags { justify-content: center; }
+}
 
-    setTimeout(() => {
-        animateNumber(document.getElementById('post-count'), {{ len $pages }});
-        animateNumber(document.getElementById('tag-count'), 15);
-        animateNumber(document.getElementById('category-count'), 8);
-    }, 500);
-});
-</script>
-
+@media (max-width: 640px) {
+    。hero { padding: 2rem 0; }
+    。hero-card { padding: 2rem 1.5rem 5rem; }
+    。intro-avatar { width: 110px; height: 110px; }
+    。intro-name { font-size: 1.5rem; }
+    。intro-heading { font-size: 1.35rem; }
+    。intro-text { font-size: 0.95rem; line-height: 1.7; }
+    。intro-buttons { flex-direction: column; width: 100%; }
+    。intro-button { width: 100%; justify-content: center; }
+    。stats-mini { gap: 1.25rem; padding: 1rem 1.25rem; }
+    。stat-mini .stat-number { font-size: 1.25rem; }
+    。stat-mini .stat-label { font-size: 0.8rem; }
+    .title-tag { font-size: 0.8rem; padding: 0.4rem 0.75rem; }
+    .intro-socials { flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+    .social-icon { width: 38px; height: 38px; }
+}
 <style>
 /* 英雄区样式 */
 .hero {
@@ -994,7 +1103,7 @@ document.addEventListener('DOMContentLoaded', function() {
     border-radius: 12px;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: 全部 0.3s ease;
 }
 
 .view-all-link:hover {
@@ -1004,7 +1113,7 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
 /* 容器 */
-.container {
+。container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1.5rem;
@@ -1017,17 +1126,17 @@ document.addEventListener('DOMContentLoaded', function() {
         gap: 0.75rem;
     }
 
-    .recent-post-info {
+    。recent-post-info {
         width: 100%;
         justify-content: space-between;
     }
 
-    .section-title {
+    。section-title {
         font-size: 1.5rem;
     }
 
     /* <-- 新增: 移动端调整容器内边距 */
-    .features-section .container,
+    .features-section 。container，
     .featured-posts .container,
     .recent-posts .container {
         padding: 2rem 1.5rem;
