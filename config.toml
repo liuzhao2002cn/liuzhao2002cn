@@ -4,7 +4,7 @@ title = '竱肇文档站'
 canonifyURLs = true
 [params]
   author = '肇'
-  tagline: "记录思想 · 分享生活"
+  tagline = "记录思想 · 分享生活"
   description = '分享生活与随想的个人网站'
   github = "https://github.com/liuzhao2002cn"
   douban = "https://www.douban.com/people/liuzhao2002cn/"
