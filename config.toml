@@ -1,8 +1,7 @@
 baseURL = 'https://liuzhao2002cn.github.io/liuzhao2002cn/'
 languageCode = 'zh-cn'
-title = '竱肇的个人博客'
+title = '竱肇文档站'
 canonifyURLs = true
-
 [params]
   author = '肇'
   description = '分享生活与随想的个人网站'
@@ -14,7 +13,7 @@ canonifyURLs = true
   bilibili = "https://space.bilibili.com/your-uid"
     license = '本站内容采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 国际许可协议。'
 [params.theme]
-  name = "肇自定义主题" 
+  name = "肇自定义" 
   url = "https://github.com/liuzhao2002cn/liuzhao2002cn"
 # 菜单配置
 [menu]
@@ -26,7 +25,7 @@ canonifyURLs = true
     name = '文章'
     url = '/posts/'
     weight = 2
-    [[menu.main]]
+  [[menu.main]]
     name = '书籍'
     url = '/books/'  
     weight = 3
@@ -34,38 +33,25 @@ canonifyURLs = true
     name = '关于'
     url = '/about/'
     weight = 3
-
-# 分类和标签配置 - 只保留一个 [taxonomies] 部分
 [taxonomies]
   category = "categories"
   tag = "tags"
-
-# 输出格式配置
 [outputs]
   home = ["HTML", "RSS", "JSON"]
   page = ["HTML"]
   section = ["HTML", "RSS"]
-
-# 标记配置
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
-      unsafe = true  # 允许在markdown中使用HTML
-
+      unsafe = true 
   [markup.tableOfContents]
     startLevel = 2
     endLevel = 4
-
-# 网站地图配置
 [sitemap]
   changefreq = "monthly"
   priority = 0.5
-
-
-# 高级功能配置（可选）
 [params.advanced]
   enable_lazyload = true
-  
 [params.features]
   related_posts = true
   reading_time = true
