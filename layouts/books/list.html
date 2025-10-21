@@ -1,63 +1,132 @@
 {{ define "main" }}
-<div class="books-container">
-    <div class="books-header">
-        <h1 class="books-title">📚 书架</h1>
-        <p class="books-subtitle">学习、学习、再学习</p>
-    </div>
-    
-    {{ $pages := .Pages }}
-    {{ if $pages }}
-    <div class="books-grid">
-        {{ range $pages }}
-        <article class="book-card">
-            <a href="{{ .Permalink }}" class="book-link">
-                <div class="book-cover-wrapper">
-                    {{ if .Params.cover }}
-                        {{ with .Resources.GetMatch .Params.cover }}
-                            <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" class="book-cover" loading="lazy">
+
+{{ if eq .RelPermalink (printf "/%s/" .Section) }}
+    <div class="books-container">
+        <div class="books-header">
+            <h1 class="books-title">📚 {{ .Title }}</h1>
+            <div class="books-subtitle">{{ .Content }}</div>
+        </div>
+        
+        {{ $pages := .Pages }}
+        {{ if $pages }}
+        <div class="books-grid">
+            {{ range $pages }}
+            <article class="book-card">
+                <a href="{{ .Permalink }}" class="book-link">
+                    <div class="book-cover-wrapper">
+                        {{ if .Params.cover }}
+                            {{ with .Resources.GetMatch .Params.cover }}
+                                <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" class="book-cover" loading="lazy">
+                            {{ else }}
+                                <div class="book-fallback">
+                                    <span class="book-fallback-icon">📖</span>
+                                    <span class="book-fallback-title">{{ .Title }}</span>
+                                </div>
+                            {{ end }}
                         {{ else }}
                             <div class="book-fallback">
                                 <span class="book-fallback-icon">📖</span>
                                 <span class="book-fallback-title">{{ .Title }}</span>
                             </div>
                         {{ end }}
+                    </div>
+                    <div class="book-info">
+                        <h2 class="book-title">{{ .Title }}</h2>
+                        <div class="book-meta">
+                            {{ with .Params.book_author }}
+                            <div class="book-meta-item">
+                                <span class="meta-label">作者</span>{{ . }}
+                            </div>
+                            {{ end }}
+                            {{ with .Params.year }}
+                            <div class="book-meta-item">
+                                <span class="meta-label">出版年</span>{{ . }}
+                            </div>
+                            {{ end }}
+                        </div>
+                    </div>
+                </a>
+            </article>
+            {{ end }}
+        </div>
+        {{ else }}
+        <div class="empty-state">
+            <div class="empty-icon">📚</div>
+            <h2 class="empty-title">书架空空如也</h2>
+            <p class="empty-description">暂时还没有作品, 敬请期待。</p>
+        </div>
+        {{ end }}
+    </div>
+
+{{ else }}
+
+    {{/* ************************************** */}}
+    {{/* ******* 这是单本书籍详情和章节布局 ******* */}}
+    {{/* ************************************** */}}
+    <div class="book-detail-container">
+        <div class="book-detail">
+            <div class="book-detail-header">
+                <div class="book-cover-section">
+                    {{ if .Params.cover }}
+                        {{ with .Resources.GetMatch .Params.cover }}
+                            <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" class="book-cover-large" loading="lazy">
+                        {{ else }}
+                            <div class="book-cover-placeholder">
+                                <span class="placeholder-icon">📖</span>
+                            </div>
+                        {{ end }}
                     {{ else }}
-                        <div class="book-fallback">
-                            <span class="book-fallback-icon">📖</span>
-                            <span class="book-fallback-title">{{ .Title }}</span>
+                        <div class="book-cover-placeholder">
+                            <span class="placeholder-icon">📖</span>
                         </div>
                     {{ end }}
                 </div>
-                <div class="book-info">
-                    <h2 class="book-title">{{ .Title }}</h2>
-                    <div class="book-meta">
-                        {{ with .Params.book_author }}
-                        <div class="book-meta-item">
-                            <span class="meta-label">作者</span>{{ . }}
-                        </div>
-                        {{ end }}
-                        {{ with .Params.publisher }}
-                        <div class="book-meta-item">
-                            <span class="meta-label">出版社</span>{{ . }}
-                        </div>
-                        {{ end }}
-                        {{ with .Params.year }}
-                        <div class="book-meta-item">
-                            <span class="meta-label">出版年</span>{{ . }}
-                        </div>
-                        {{ end }}
+                
+                <div class="book-detail-info">
+                    <h1 class="book-detail-title">{{ .Title }}</h1>
+                    
+                    <div class="book-detail-meta">
+                        {{ with .Params.book_author }}<div class="detail-meta-item"><span class="detail-meta-label">作者</span><span class="detail-meta-value">{{ . }}</span></div>{{ end }}
+                        {{ with .Params.translator }}<div class="detail-meta-item"><span class="detail-meta-label">译者</span><span class="detail-meta-value">{{ . }}</span></div>{{ end }}
+                        {{ with .Params.publisher }}<div class="detail-meta-item"><span class="detail-meta-label">出版社</span><span class="detail-meta-value">{{ . }}</span></div>{{ end }}
+                        {{ with .Params.year }}<div class="detail-meta-item"><span class="detail-meta-label">出版年</span><span class="detail-meta-value">{{ . }}</span></div>{{ end }}
+                        {{ with .Params.pages }}<div class="detail-meta-item"><span class="detail-meta-label">页数</span><span class="detail-meta-value">{{ . }}</span></div>{{ end }}
+                        {{ with .Params.isbn }}<div class="detail-meta-item"><span class="detail-meta-label">ISBN</span><span class="detail-meta-value">{{ . }}</span></div>{{ end }}
                     </div>
+                    
+                    {{ with .Params.summary }}
+                    <div class="book-summary">
+                        <p>{{ . }}</p>
+                    </div>
+                    {{ end }}
                 </div>
-            </a>
-        </article>
+            </div>
+            {{ with .Content }}
+                <div class="book-content">{{ . }}</div>
+            {{ end }}
+        </div>
+
+        {{ $chapters := .RegularPages.ByWeight }}
+        {{ if $chapters }}
+        <div class="chapters-section">
+            <h2 class="chapters-title">目录</h2>
+            <ul class="chapters-list">
+                {{ range $chapters }}
+                <li class="chapter-item">
+                    <a href="{{ .Permalink }}" class="chapter-link">
+                        {{ with .Weight }}
+                        <span class="chapter-number">第 {{ . }} 章</span>
+                        {{ end }}
+                        <span class="chapter-title">{{ .Title }}</span>
+                        <span class="chapter-arrow">→</span>
+                    </a>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
         {{ end }}
     </div>
-    {{ else }}
-    <div class="empty-state">
-        <div class="empty-icon">📚</div>
-        <h2 class="empty-title">书架空空如也</h2>
-        <p class="empty-description">暂时还没有作品，敬请期待</p>
-    </div>
-    {{ end }}
-</div>
+
+{{ end }}
+
 {{ end }}
