@@ -5,9 +5,10 @@
         <p class="books-subtitle">学习、学习、再学习</p>
     </div>
     
-    {{ if .Pages }}
+    {{ $pages := .Sections }}
+    {{ if $pages }}
     <div class="books-grid">
-        {{ range .Pages }}
+        {{ range $pages }}
         <article class="book-card">
             <a href="{{ .Permalink }}" class="book-link">
                 <div class="book-cover-wrapper">
