@@ -1,100 +1,37 @@
 {{ define "main" }}
-
-{{ if eq .Section "books" }}
-    <!-- 如果是书籍章节页面 -->
-    <div class="chapter-content-container">
-        <nav class="breadcrumb">
-            <a href="/books/" class="breadcrumb-link">📚 书架</a>
-            <span class="breadcrumb-separator">›</span>
-            <a href="{{ .Parent.Permalink }}" class="breadcrumb-link">{{ .Parent.Title }}</a>
-            <span class="breadcrumb-separator">›</span>
-            <span class="breadcrumb-current">当前章节</span>
-        </nav>
-
-        <article class="chapter-content-page">
-            <header class="chapter-content-header">
-                <h1 class="chapter-content-title">{{ .Title }}</h1>
-                <div class="chapter-content-meta">
-                    <span class="meta-item">📖 约 {{ .ReadingTime }} 分钟阅读</span>
-                    {{ with .Date }}
-                    <span class="meta-item">📅 {{ .Format "2006年01月02日" }}</span>
-                    {{ end }}
-                    {{ with .WordCount }}
-                    <span class="meta-item">📝 约 {{ . }} 字</span>
-                    {{ end }}
-                </div>
-            </header>
-
-            <div class="chapter-text">
-                {{ .Content }}
-            </div>
-
-            <nav class="chapter-navigation">
-                <div class="nav-button prev-chapter">
-                    {{ with .PrevInSection }}
-                    <a href="{{ .Permalink }}" class="nav-link">
-                        ← 上一章
-                    </a>
-                    {{ else }}
-                    <span class="nav-link disabled">← 上一章</span>
-                    {{ end }}
-                </div>
-
-                <a href="{{ .Parent.Permalink }}" class="nav-button back-to-book">
-                    返回目录
-                </a>
-
-                <div class="nav-button next-chapter">
-                    {{ with .NextInSection }}
-                    <a href="{{ .Permalink }}" class="nav-link">
-                        下一章 →
-                    </a>
-                    {{ else }}
-                    <span class="nav-link disabled">下一章 →</span>
-                    {{ end }}
-                </div>
-            </nav>
-        </article>
-    </div>
-
-{{ else }}
-    <!-- 如果是普通文章页面（原有的样式） -->
-    <article class="post-single post-container">
-        <header class="post-header">
-            {{ with .Params.image }}
-            <div class="post-cover">
-                {{ with $.Resources.GetMatch . }}
-                    {{ $image := .Resize "1200x webp q75" }}
-                    {{ $fallback := .Resize "1200x q75" }}
-                    <picture>
-                        <source srcset="{{ $image.RelPermalink }}" type="image/webp">
-                        <img src="{{ $fallback.RelPermalink }}" width="{{ $fallback.Width }}" height="{{ $fallback.Height }}" alt="{{ $.Title }}" loading="lazy">
-                    </picture>
-                {{ end }}
-            </div>
+<article class="post-single post-container">
+    <header class="post-header">
+        {{ with .Params.image }}
+        <div class="post-cover">
+            {{ with $.Resources.GetMatch . }}
+                {{ $image := .Resize "1200x webp q75" }}
+                {{ $fallback := .Resize "1200x q75" }}
+                <picture>
+                    <source srcset="{{ $image.RelPermalink }}" type="image/webp">
+                    <img src="{{ $fallback.RelPermalink }}" width="{{ $fallback.Width }}" height="{{ $fallback.Height }}" alt="{{ $.Title }}" loading="lazy">
+                </picture>
             {{ end }}
-            <h1 class="post-title">{{ .Title }}</h1>
-            <div class="post-meta">
-                <span class="meta-item"><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006年1月2日" }}</time></span>
-                {{ with .Params.categories }}<span class="meta-divider">·</span><span class="meta-item">{{ range . }}<a href="{{ "/categories/" | relURL }}{{ . | urlize }}/">{{ . }}</a>{{ end }}</span>{{ end }}
-                <span class="meta-divider">·</span><span class="meta-item">{{ .ReadingTime }} 分钟阅读</span>
-            </div>
-        </header>
-        {{ if .TableOfContents }}
-        <details class="toc-container" id="toc" open>
-            <summary class="toc-title"><span>目录</span></summary>
-            <div class="toc-content">{{ .TableOfContents }}</div>
-        </details>
+        </div>
         {{ end }}
-        <div class="post-content">{{ .Content }}</div>
-        <footer class="post-footer">
-            {{ with .Params.tags }}<div class="post-tags">{{ range . }}<a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag-link">#{{ . }}</a>{{ end }}</div>{{ end }}
-            {{ partial "share.html" . }}
-        </footer>
-        {{ partial "related.html" . }}
-        {{ partial "comments.html" . }}
-    </article>
-
-{{ end }}
-
+        <h1 class="post-title">{{ .Title }}</h1>
+        <div class="post-meta">
+            <span class="meta-item"><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006年1月2日" }}</time></span>
+            {{ with .Params.categories }}<span class="meta-divider">·</span><span class="meta-item">{{ range . }}<a href="{{ "/categories/" | relURL }}{{ . | urlize }}/">{{ . }}</a>{{ end }}</span>{{ end }}
+            <span class="meta-divider">·</span><span class="meta-item">{{ .ReadingTime }} 分钟阅读</span>
+        </div>
+    </header>
+    {{ if .TableOfContents }}
+    <details class="toc-container" id="toc" open>
+        <summary class="toc-title"><span>目录</span></summary>
+        <div class="toc-content">{{ .TableOfContents }}</div>
+    </details>
+    {{ end }}
+    <div class="post-content">{{ .Content }}</div>
+    <footer class="post-footer">
+        {{ with .Params.tags }}<div class="post-tags">{{ range . }}<a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag-link">#{{ . }}</a>{{ end }}</div>{{ end }}
+        {{ partial "share.html" . }}
+    </footer>
+    {{ partial "related.html" . }}
+    {{ partial "comments.html" . }}
+</article>
 {{ end }}
