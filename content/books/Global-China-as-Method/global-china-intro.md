@@ -1,12 +1,12 @@
 ---
-title: '【0】导言'
+title: '导言'
 date: 2025-05-04
 draft: false
 categories: ["笔记"]
 tags: ["全球主义中国", "方法论", "中国特殊论", "比烂主义", "全球资本主义"]
 author: "竱肇"
 featured: true
-weight: 0
+weight: 1
 ---
 
 **竱肇**
