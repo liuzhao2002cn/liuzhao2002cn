@@ -1,139 +1,115 @@
 {{ define "main" }}
 <div id="particles-js"></div>
 
-<!-- 英雄区域 -->
+<!-- 英雄区 - 左右分栏布局 -->
 <section class="hero">
-    <div class="hero-background">
-        <div class="hero-gradient"></div>
-        <div class="hero-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-        </div>
-    </div>
-    
+    <div class="hero-background"></div>
     <div class="container">
-        <div class="hero-content">
-            <!-- 左侧内容 -->
-            <div class="hero-text">
-                <div class="badge-container">
-                    <span class="welcome-badge">欢迎来到我的数字空间</span>
-                </div>
-                
-                <h1 class="hero-title">
-                    <span class="title-line">探索<span class="text-blue">思想</span></span>
-                    <span class="title-line">分享<span class="text-pink">生活</span></span>
-                </h1>
-                
-                <p class="hero-description">
-                    中国人，人文社科学子，在新时代的旧废墟上长大。
-                    关注政哲、经济学、激进左翼理论与华语思想史等。
-                    在这里记录思考、分享见解、连接同道。
-                </p>
-                
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-number" id="post-count">0</div>
-                        <div class="stat-label">深度文章</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" id="tag-count">0</div>
-                        <div class="stat-label">主题标签</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" id="category-count">0</div>
-                        <div class="stat-label">知识领域</div>
-                    </div>
-                </div>
-                
-                <div class="hero-actions">
-                    <a href="/posts/" class="btn btn-primary">
-                        <span>开始阅读</span>
-                        <svg viewBox="0 0 24 24" width="18" height="18">
-                            <path fill="currentColor" d="M5 12h14m-7-7l7 7-7 7"/>
-                        </svg>
-                    </a>
-                    <a href="/about/" class="btn btn-secondary">
-                        <span>关于我</span>
-                        <svg viewBox="0 0 24 24" width="18" height="18">
-                            <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- 右侧头像卡片 -->
-            <div class="hero-visual">
-                <div class="avatar-card">
-                    <div class="avatar-wrapper">
-                        <img src="/images/avatar.png" alt="个人头像" class="hero-avatar">
-                        <div class="avatar-status"></div>
+        <!-- 新增: 白色卡片容器 -->
+        <div class="hero-card">
+            <div class="hero-wrapper">
+                <!-- 左侧：头像和社交信息 -->
+                <div class="hero-left">
+                    <div class="avatar-container">
+                        <img src="/images/avatar.png" alt="个人头像" class="intro-avatar">
                         <div class="avatar-glow"></div>
                     </div>
+                    <h1 class="intro-name">{{ .Site.Params.author | default .Site.Title }}</h1>
+                    <p class="intro-tagline">{{ .Site.Params.tagline | default "记录思想 · 分享生活" }}</p>
                     
-                    <div class="avatar-info">
-                        <h2 class="avatar-name">{{ .Site.Params.author | default .Site.Title }}</h2>
-                        <p class="avatar-bio">{{ .Site.Params.tagline | default "思想探索者 · 生活记录者" }}</p>
-                        
-                        <div class="social-links">
-                            {{ with .Site.Params.github }}
-                            <a href="{{ . }}" target="_blank" rel="noopener" class="social-link" title="GitHub">
-                                <svg viewBox="0 0 24 24" width="20" height="20">
-                                    <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                </svg>
-                            </a>
-                            {{ end }}
-                            {{ with .Site.Params.email }}
-                            <a href="mailto:{{ . }}" class="social-link" title="邮箱">
-                                <svg viewBox="0 0 24 24" width="20" height="20">
-                                    <path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                                </svg>
-                            </a>
-                            {{ end }}
-                            {{ with .Site.Params.bilibili }}
-                            <a href="{{ . }}" target="_blank" rel="noopener" class="social-link" title="Bilibili">
-                                <svg viewBox="0 0 24 24" width="20" height="20">
-                                    <path fill="currentColor" d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.169.196h4.346c.036-.054.098-.125.169-.196l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373Z"/>
-                                </svg>
-                            </a>
-                            {{ end }}
-                            {{ with .Site.Params.douban }}
-                            <a href="{{ . }}" target="_blank" rel="noopener" class="social-link" title="豆瓣">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                                <text x="12" y="12" font-size="18" font-weight="bold" text-anchor="middle" dominant-baseline="central" font-family="sans-serif">豆</text>
-                                </svg>
-                            </a>
-                            {{ end }}
-                            {{ with .Site.Params.facebook }}
-                            <a href="{{ . }}" target="_blank" rel="noopener" class="social-link" title="Facebook">
-                                <svg viewBox="0 0 24 24" width="20" height="20">
-                                    <path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                                </svg>
-                            </a>
-                            {{ end }}
-                            {{ with .Site.Params.twitter }}
-                            <a href="{{ . }}" target="_blank" rel="noopener" class="social-link" title="Twitter">
-                                <svg viewBox="0 0 24 24" width="20" height="20">
-                                    <path fill="currentColor" d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                                </svg>
-                            </a>
-                            {{ end }}
+                    <div class="intro-socials">
+                        {{ with .Site.Params.github }}
+                        <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="GitHub">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        {{ end }}
+                        {{ with .Site.Params.email }}
+                        <a href="mailto:{{ . }}" class="social-icon" title="邮箱">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </a>
+                        {{ end }}
+                        {{ with .Site.Params.bilibili }}
+                        <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="Bilibili">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="currentColor" d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.169.196h4.346c.036-.054.098-.125.169-.196l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373Z"/>
+                            </svg>
+                        </a>
+                        {{ end }}
+                        {{ with .Site.Params.douban }}
+                        <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="豆瓣">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                            <text x="12" y="12" font-size="18" font-weight="bold" text-anchor="middle" dominant-baseline="central" font-family="sans-serif">豆</text>
+                            </svg>
+                        </a>
+                        {{ end }}
+                        {{ with .Site.Params.facebook }}
+                        <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="Facebook">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        {{ end }}
+                        {{ with .Site.Params.twitter }}
+                        <a href="{{ . }}" target="_blank" rel="noopener" class="social-icon" title="Twitter">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="currentColor" d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                        {{ end }}
+                    </div>
+
+                    <div class="stats-mini">
+                        <div class="stat-mini">
+                            <span class="stat-number" id="post-count">0</span>
+                            <span class="stat-label">文章</span>
+                        </div>
+                        <div class="stat-mini">
+                            <span class="stat-number" id="tag-count">0</span>
+                            <span class="stat-label">标签</span>
+                        </div>
+                        <div class="stat-mini">
+                            <span class="stat-number" id="category-count">0</span>
+                            <span class="stat-label">分类</span>
                         </div>
                     </div>
                 </div>
-                
-                <div class="floating-elements">
-                    <div class="floating-tag" style="--delay: 0s">思想探索</div>
-                    <div class="floating-tag" style="--delay: 1s">时闻世论</div>
-                    <div class="floating-tag" style="--delay: 2s">个人经历</div>
-                    <div class="floating-tag" style="--delay: 3s">具身感受</div>
+
+                <!-- 右侧：简介和操作按钮 -->
+                <div class="hero-right">
+                    <div class="hero-intro">
+                        <div class="floating-icon">✨</div>
+                        <h2 class="intro-heading">欢迎来到我的空间</h2>
+                        <p class="intro-text">
+                            中国人，人文社科学子，在新时代的旧废墟上长大。<br>
+                            关注政哲、经济学、激进左翼理论与华语思想史等。
+                        </p>
+                        <div class="title-tags">
+                        <span class="title-tag">思想探索</span>
+                        <span class="title-tag">时闻世论</span>
+                        <span class="title-tag">个人经历</span>
+                        <span class="title-tag">具身感受</span>
+                        </div>
+                    </div>
+                    <div class="intro-buttons">
+                        <a href="/explore/" class="intro-button primary">
+                            <span>探索博客</span>
+                            <svg viewBox="0 0 24 24" width="18" height="18">
+                                <path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                            </svg>
+                        </a>
+                        <a href="/about/" class="intro-button secondary">
+                            <span>了解更多</span>
+                            <svg viewBox="0 0 24 24" width="18" height="18">
+                                <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="scroll-indicator">
-            <div class="scroll-arrow"></div>
-            <span>继续探索</span>
         </div>
     </div>
 </section>
@@ -277,29 +253,37 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // 跨性别配色的粒子效果
+    // Particles.js 初始化（减少粒子数量）
     if (typeof particlesJS !== 'undefined') {
         particlesJS('particles-js', {
             particles: {
-                number: { value: 40, density: { enable: true, value_area: 800 } },
-                color: { value: ["#5BCEFA", "#F5A9B8", "#FFFFFF"] },
+                number: { value: 50, density: { enable: true, value_area: 800 } },
+                color: { value: "#6C63FF" },
                 shape: { type: "circle" },
-                opacity: { value: 0.5, random: true },
+                opacity: { value: 0.4, random: true },
                 size: { value: 3, random: true },
                 line_linked: {
                     enable: true,
                     distance: 150,
-                    color: "#5BCEFA",
+                    color: "#6C63FF",
                     opacity: 0.2,
                     width: 1
                 },
                 move: {
                     enable: true,
-                    speed: 1,
+                    speed: 1.5,
                     direction: "none",
                     random: true,
                     straight: false,
                     out_mode: "out"
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
                 }
             }
         });
@@ -320,345 +304,110 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 16);
     }
 
-    // 滚动动画
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-            }
-        });
-    }, observerOptions);
-
-    // 观察需要动画的元素
-    document.querySelectorAll('.hero-text, .hero-visual').forEach(el => {
-        observer.observe(el);
-    });
-
     setTimeout(() => {
         animateNumber(document.getElementById('post-count'), {{ len $pages }});
         animateNumber(document.getElementById('tag-count'), 15);
         animateNumber(document.getElementById('category-count'), 8);
-    }, 1000);
+    }, 500);
 });
 </script>
 
 <style>
-/* 跨性别配色变量 */
-:root {
-    --trans-blue: #5BCEFA;    /* 浅蓝色 */
-    --trans-pink: #F5A9B8;    /* 浅粉色 */
-    --trans-white: #FFFFFF;   /* 白色 */
-    --blue-dark: #4CA1D5;     /* 深一点的蓝色 */
-    --pink-dark: #E695A3;     /* 深一点的粉色 */
-    --blue-light: rgba(91, 206, 250, 0.1);
-    --pink-light: rgba(245, 169, 184, 0.1);
-}
-
-/* 重置和基础样式 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-}
-
-/* 英雄区域样式 */
+/* 英雄区样式 */
 .hero {
     position: relative;
-    min-height: 100vh;
     display: flex;
     align-items: center;
     overflow: hidden;
+    padding: 4rem 0;
+    min-height: 100vh;
 }
 
 .hero-background {
     position: absolute;
     inset: 0;
-    z-index: -2;
+    z-index: -1;
+    background-color: #f8f7ff;
 }
 
-.hero-gradient {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, 
-        rgba(248, 250, 252, 0.95) 0%,
-        rgba(245, 249, 255, 0.9) 50%,
-        rgba(252, 248, 250, 0.85) 100%);
+.hero-card {
+    background: white;
+    border-radius: 24px;
+    padding: 3.5rem;
+    position: relative;
+    box-shadow: 0 16px 40px rgba(108, 99, 255, 0.1);
+    padding-bottom: 6rem; 
 }
 
-.hero-shapes {
-    position: absolute;
-    inset: 0;
-}
-
-.shape {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.08;
-}
-
-.shape-1 {
-    width: 300px;
-    height: 300px;
-    background: var(--trans-blue);
-    top: 10%;
-    left: 10%;
-    animation: float 6s ease-in-out infinite;
-}
-
-.shape-2 {
-    width: 200px;
-    height: 200px;
-    background: var(--trans-pink);
-    bottom: 20%;
-    right: 15%;
-    animation: float 8s ease-in-out infinite reverse;
-}
-
-.shape-3 {
-    width: 150px;
-    height: 150px;
-    background: var(--trans-white);
-    top: 50%;
-    right: 25%;
-    animation: float 10s ease-in-out infinite;
-    border: 1px solid rgba(91, 206, 250, 0.2);
-}
-
-.hero-content {
+.hero-wrapper {
     display: grid;
-    grid-template-columns: 1fr 400px;
+    grid-template-columns: 350px 1fr;
     gap: 4rem;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
 }
 
-.hero-text {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: slideUp 1s ease forwards 0.3s;
-}
-
-.badge-container {
-    margin-bottom: 1.5rem;
-}
-
-.welcome-badge {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background: var(--blue-light);
-    color: var(--blue-dark);
-    border: 1px solid rgba(91, 206, 250, 0.3);
-    border-radius: 20px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    backdrop-filter: blur(10px);
-}
-
-.hero-title {
-    font-size: 3.5rem;
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    color: #1a202c;
-}
-
-.title-line {
-    display: block;
-}
-
-.text-blue {
-    color: var(--blue-dark);
-}
-
-.text-pink {
-    color: var(--pink-dark);
-}
-
-.hero-description {
-    font-size: 1.2rem;
-    line-height: 1.7;
-    color: #4a5568;
-    margin-bottom: 2.5rem;
-    max-width: 500px;
-}
-
-.hero-stats {
+.hero-left {
     display: flex;
-    gap: 2.5rem;
-    margin-bottom: 2.5rem;
-}
-
-.stat-item {
+    flex-direction: column;
+    align-items: center;
     text-align: center;
 }
 
-.stat-number {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--blue-dark);
-    margin-bottom: 0.25rem;
-}
-
-.stat-label {
-    font-size: 0.875rem;
-    color: #718096;
-    font-weight: 500;
-}
-
-.hero-actions {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-}
-
-.btn-primary {
-    background: var(--blue-dark);
-    color: white;
-    box-shadow: 0 4px 15px rgba(76, 161, 213, 0.3);
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(76, 161, 213, 0.4);
-    background: var(--trans-blue);
-}
-
-.btn-secondary {
-    background: white;
-    color: var(--pink-dark);
-    border: 2px solid var(--pink-dark);
-}
-
-.btn-secondary:hover {
-    background: var(--pink-dark);
-    color: white;
-    transform: translateY(-2px);
-}
-
-/* 右侧头像卡片 */
-.hero-visual {
+.avatar-container {
     position: relative;
-    opacity: 0;
-    transform: translateX(30px);
-    animation: slideInRight 1s ease forwards 0.6s;
+    margin-bottom: 1.5rem;
 }
 
-.avatar-card {
-    background: white;
-    border-radius: 24px;
-    padding: 2.5rem;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    position: relative;
-    z-index: 2;
-}
-
-.avatar-wrapper {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 1.5rem;
-}
-
-.hero-avatar {
-    width: 100%;
-    height: 100%;
+.intro-avatar {
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
-    border: 4px solid var(--blue-dark);
-    box-shadow: 0 8px 32px rgba(76, 161, 213, 0.3);
+    border: 4px solid #8A7DFF;
+    box-shadow: 0 8px 32px rgba(138, 125, 255, 0.3);
     transition: transform 0.3s ease;
 }
 
-.avatar-status {
-    position: absolute;
-    bottom: 8px;
-    right: 8px;
-    width: 16px;
-    height: 16px;
-    background: #4ADE80;
-    border: 2px solid white;
-    border-radius: 50%;
+.avatar-container:hover .intro-avatar {
+    transform: scale(1.05);
 }
 
 .avatar-glow {
     position: absolute;
-    inset: -8px;
+    inset: -10px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--trans-blue), var(--trans-pink));
+    background: linear-gradient(135deg, #8A7DFF, #C3A7FF);
     opacity: 0;
     filter: blur(20px);
     transition: opacity 0.3s ease;
     z-index: -1;
 }
 
-.avatar-wrapper:hover .hero-avatar {
-    transform: scale(1.05);
-}
-
-.avatar-wrapper:hover .avatar-glow {
+.avatar-container:hover .avatar-glow {
     opacity: 0.6;
 }
 
-.avatar-info {
-    text-align: center;
-}
-
-.avatar-name {
-    font-size: 1.5rem;
+.intro-name {
+    font-size: 2rem;
     font-weight: 700;
     color: #1a202c;
-    margin-bottom: 0.5rem;
+    margin: 0 0 0.5rem;
 }
 
-.avatar-bio {
-    color: #718096;
-    margin-bottom: 1.5rem;
+.intro-tagline {
     font-size: 0.95rem;
+    color: #718096;
+    margin: 0 0 1.5rem;
 }
 
-.social-links {
+.intro-socials {
     display: flex;
-    justify-content: center;
     gap: 0.75rem;
+    margin-bottom: 2rem;
 }
 
-.social-link {
-    width: 44px;
-    height: 44px;
+.social-icon {
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -669,77 +418,227 @@ body {
     border: 1px solid #e2e8f0;
 }
 
-.social-link:hover {
-    background: var(--blue-dark);
+.social-icon:hover {
+    background: #8A7DFF;
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(76, 161, 213, 0.3);
+    box-shadow: 0 4px 12px rgba(138, 125, 255, 0.3);
 }
 
-/* 浮动标签 */
-.floating-elements {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
+.stats-mini {
+    display: flex;
+    gap: 2rem;
+    padding: 1.25rem 2rem;
+    background: #f7fafc;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    width: 100%;
+    justify-content: center;
 }
 
-.floating-tag {
-    position: absolute;
+.stat-mini {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-mini .stat-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #8A7DFF;
+}
+
+.stat-mini .stat-label {
+    font-size: 0.85rem;
+    color: #718096;
+    margin-top: 0.25rem;
+}
+
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.hero-intro {
+    position: relative;
+}
+
+.floating-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.intro-heading {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin: 0 0 1rem;
+    line-height: 1.2;
+}
+
+.intro-text {
+    font-size: 1.05rem;
+    color: #4a5568;
+    line-height: 1.8;
+    margin: 0 0 1.5rem;
+}
+
+.title-tags {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.title-tag {
+    display: inline-flex;
+    align-items: center;
     padding: 0.5rem 1rem;
-    background: white;
+    background: #f0edff;
+    border: 1px solid #dcd6ff;
     border-radius: 20px;
     font-size: 0.875rem;
+    color: #6c56f1;
     font-weight: 500;
-    color: var(--blue-dark);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    animation: floatAround 8s ease-in-out infinite;
-    animation-delay: var(--delay);
-    border: 1px solid rgba(91, 206, 250, 0.2);
+    transition: all 0.3s ease;
 }
 
-.floating-tag:nth-child(1) { top: 10%; left: 0; }
-.floating-tag:nth-child(2) { top: 30%; right: 0; background: var(--pink-light); color: var(--pink-dark); }
-.floating-tag:nth-child(3) { bottom: 40%; left: -10%; }
-.floating-tag:nth-child(4) { bottom: 10%; right: -5%; background: var(--pink-light); color: var(--pink-dark); }
+.title-tag:hover {
+    background: #e3deff;
+    border-color: #c9c0ff;
+    transform: translateY(-2px);
+}
 
-/* 滚动指示器 */
+.intro-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.intro-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.intro-button.primary {
+    background: #8A7DFF;
+    color: white;
+    box-shadow: 0 4px 15px rgba(138, 125, 255, 0.3);
+}
+
+.intro-button.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(138, 125, 255, 0.4);
+    background: #7a6df2;
+}
+
+.intro-button.secondary {
+    background: white;
+    color: #8A7DFF;
+    border: 2px solid #8A7DFF;
+}
+
+.intro-button.secondary:hover {
+    background: #8A7DFF;
+    color: white;
+    transform: translateY(-2px);
+}
+
 .scroll-indicator {
     position: absolute;
-    bottom: 2rem;
+    bottom: 2.5rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: var(--blue-dark);
-    font-size: 0.875rem;
-    animation: bounce 2s ease-in-out infinite;
+    color: #a0aec0;
+    font-size: 0.85rem;
+    animation: float 3s ease-in-out infinite;
 }
 
-.scroll-arrow {
-    width: 2px;
-    height: 20px;
-    background: var(--blue-dark);
-    margin-bottom: 0.5rem;
-    position: relative;
-}
-
-.scroll-arrow::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: -3px;
-    width: 8px;
-    height: 8px;
-    border-right: 2px solid var(--blue-dark);
-    border-bottom: 2px solid var(--blue-dark);
+.scroll-diamond {
+    width: 16px;
+    height: 16px;
+    background: #8A7DFF;
     transform: rotate(45deg);
+    margin-bottom: 1rem;
 }
 
-/* 特色栏目样式 */
+@media (max-width: 968px) {
+    .hero-wrapper {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
+    .hero-left {
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    .intro-heading { font-size: 1.75rem; }
+    .intro-buttons { justify-content: center; }
+    .title-tags { justify-content: center; }
+}
+
+@media (max-width: 640px) {
+    .hero { padding: 2rem 0; }
+    .hero-card { 
+        padding: 2rem 1.5rem 5rem; /* <-- 新增: 调整移动端内边距, 解决内容挤压 */
+    }
+    .intro-avatar { width: 110px; height: 110px; }
+    .intro-name { font-size: 1.5rem; }
+    .intro-heading { font-size: 1.35rem; }
+    .intro-text { font-size: 0.95rem; line-height: 1.7; }
+    .intro-buttons { flex-direction: column; width: 100%; }
+    .intro-button { width: 100%; justify-content: center; }
+    .stats-mini { gap: 1.25rem; padding: 1rem 1.25rem; }
+    .stat-mini .stat-number { font-size: 1.25rem; }
+    .stat-mini .stat-label { font-size: 0.8rem; }
+    .title-tag { font-size: 0.8rem; padding: 0.4rem 0.75rem; }
+    .intro-socials { flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+    .social-icon { width: 38px; height: 38px; }
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1; /* <-- 修正: 从 0 改回 -1, 解决点击问题 */
+}
+
 .features-section {
-    padding: 5rem 0;
-    background: linear-gradient(135deg, var(--blue-light) 0%, var(--pink-light) 100%);
+    padding: 3rem 0;
+}
+
+.features-section .container,
+.featured-posts .container,
+.recent-posts .container {
+    padding: 3.5rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+.features-section .container,
+.recent-posts .container {
+    background-color: #f0f8ff;
+}
+
+.featured-posts .container {
+    background-color: #fff0f5;
 }
 
 .features-grid {
@@ -755,44 +654,42 @@ body {
 
 .feature-card {
     background: white;
-    border-radius: 20px;
+    border-radius: 16px;
     padding: 2.5rem;
     text-align: center;
     transition: all 0.3s ease;
-    border: 1px solid rgba(91, 206, 250, 0.2);
+    border: 1px solid #e2e8f0;
     height: 100%;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .feature-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    border-color: var(--blue-dark);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-color: #6C63FF;
 }
 
 .feature-icon {
-    font-size: 3.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 3rem;
+    margin-bottom: 1rem;
 }
 
 .feature-card h3 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: #1a202c;
-    margin: 0 0 1rem;
+    margin: 0 0 0.75rem;
 }
 
 .feature-card p {
     color: #718096;
     line-height: 1.6;
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
-/* 精选文章样式 */
-.featured-posts {
-    padding: 5rem 0;
-    background: white;
+.featured-posts,
+.recent-posts {
+    padding: 3rem 0;
 }
 
 .section-header {
@@ -805,32 +702,32 @@ body {
     align-items: center;
     justify-content: center;
     gap: 1.25rem;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #1a202c;
     margin: 0 0 0.5rem;
 }
 
 .title-icon {
-    font-size: 2rem;
+    font-size: 1.75rem;
 }
 
 .title-decoration {
     width: 60px;
     height: 4px;
-    background: linear-gradient(90deg, var(--trans-blue), var(--trans-pink));
+    background: linear-gradient(90deg, #667eea, #764ba2);
     border-radius: 2px;
 }
 
 .section-subtitle {
     color: #718096;
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin: 0;
 }
 
 .post-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
@@ -848,13 +745,11 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .post-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    border-color: var(--blue-dark);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .post-card-image-wrapper {
@@ -949,8 +844,8 @@ body {
 
 .post-card-tags .tag {
     padding: 0.25rem 0.75rem;
-    background: var(--blue-light);
-    color: var(--blue-dark);
+    background: #edf2f7;
+    color: #6C63FF;
     border-radius: 12px;
     font-size: 0.8rem;
     font-weight: 500;
@@ -973,12 +868,6 @@ body {
     font-size: 1.1rem;
 }
 
-/* 最新发布样式 */
-.recent-posts {
-    padding: 5rem 0;
-    background: linear-gradient(135deg, var(--pink-light) 0%, var(--blue-light) 100%);
-}
-
 .recent-post-list {
     list-style: none;
     padding: 0;
@@ -993,13 +882,11 @@ body {
     border-radius: 12px;
     border: 1px solid #e2e8f0;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .recent-post-item:hover {
-    border-color: var(--blue-dark);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
+    border-color: #6C63FF;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .recent-post-link {
@@ -1023,7 +910,7 @@ body {
 .recent-post-indicator {
     width: 8px;
     height: 8px;
-    background: var(--blue-dark);
+    background: #6C63FF;
     border-radius: 50%;
     flex-shrink: 0;
 }
@@ -1046,8 +933,8 @@ body {
 
 .recent-post-category {
     padding: 0.25rem 0.75rem;
-    background: var(--blue-light);
-    color: var(--blue-dark);
+    background: #edf2f7;
+    color: #6C63FF;
     border-radius: 12px;
     font-size: 0.8rem;
     font-weight: 500;
@@ -1069,157 +956,47 @@ body {
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
     background: white;
-    color: var(--blue-dark);
-    border: 2px solid var(--blue-dark);
+    color: #6C63FF;
+    border: 2px solid #6C63FF;
     border-radius: 12px;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: 全部 0.3s ease;
 }
 
-.view-all-link:hover {
-    background: var(--blue-dark);
+。view-all-link:hover {
+    background: #6C63FF;
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(76, 161, 213, 0.3);
 }
 
-/* 粒子容器 */
-#particles-js {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
-
-/* 动画关键帧 */
-@keyframes slideUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideInRight {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(180deg); }
-}
-
-@keyframes floatAround {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(10px, -15px) rotate(5deg); }
-    50% { transform: translate(-5px, -25px) rotate(-5deg); }
-    75% { transform: translate(-10px, -15px) rotate(5deg); }
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-    40% { transform: translateX(-50%) translateY(-10px); }
-    60% { transform: translateX(-50%) translateY(-5px); }
-}
-
-/* 响应式设计 */
-@media (max-width: 968px) {
-    .hero-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        text-align: center;
-    }
-    
-    .hero-title {
-        font-size: 2.5rem;
-    }
-    
-    .hero-description {
-        font-size: 1.1rem;
-    }
-    
-    .hero-stats {
-        justify-content: center;
-    }
-    
-    .floating-tag {
-        display: none;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .post-grid {
-        grid-template-columns: 1fr;
-    }
+。container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
 }
 
 @media (max-width: 640px) {
-    .hero-content {
-        padding: 0 1rem;
-    }
-    
-    .hero-title {
-        font-size: 2rem;
-    }
-    
-    .hero-stats {
-        gap: 1.5rem;
-    }
-    
-    .stat-number {
-        font-size: 1.5rem;
-    }
-    
-    .hero-actions {
-        flex-direction: column;
-        width: 100%;
-    }
-    
-    。btn {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    。avatar-card {
-        padding: 2rem 1.5rem;
-    }
-    
     。recent-post-link {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.75rem;
     }
-    
     。recent-post-info {
         width: 100%;
         justify-content: space-between;
     }
-    
     。section-title {
         font-size: 1.5rem;
     }
-    
-    。features-section,
-    。featured-posts,
-    。recent-posts {
-        padding: 3rem 0;
-    }
-    
-    .container {
-        padding: 0 1rem;
+    .features-section .container,
+    .featured-posts .container,
+    .recent-posts .container {
+        padding: 2rem 1.5rem;
     }
 }
 </style>
 
 {{ end }}
+
+我对这个主页的设置感到相对而言的不满，特别是英雄区域觉得有很大优化空间
