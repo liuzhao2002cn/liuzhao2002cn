@@ -1,25 +1,24 @@
 ---
-title: "-"
+title: "从伊万·伊利奇的视角看待当前疫情的几点问题（2020）"
 date: 2025-04-08
 author: "竱肇"
-original_author: "-"
+original_author: "大卫·凯利 David Cayley（2020/04/08）"
 featured: true
 readingTime: 10
 categories: ["笔记", "书评"]
 tags: [-]
 ---
 
-# 从伊万·伊利奇的视角看待当前疫情的几点问题（2020）
+# 
 
 **竱肇**  
 
 > 2021年02月于中华人民共和国“清零政策”期间，在封控与解封的循环中翻译，2021年03月07日首发于豆瓣
-![**Ivan Illich（1926-2002）**](illich.jpg)
 
 
 ---
+![**Ivan Illich（1926-2002）**](illich.jpg)
 
-**作者：大卫·凯利 David Cayley（2020/04/08）**
 
 凱利博客的原文鏈接：
 [https://www.davidcayley.com/blog/2020/4/8/questions-about-the-current-pandemic-from-the-point-of-view-of-ivan-illich-1](https://www.davidcayley.com/blog/2020/4/8/questions-about-the-current-pandemic-from-the-point-of-view-of-ivan-illich-1)
