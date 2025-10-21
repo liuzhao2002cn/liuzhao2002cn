@@ -1,12 +1,12 @@
 ---
-title: '【1】全球视角下的中国劳工'
+title: '全球视角下的中国劳工'
 date: 2025-05-05
 draft: false
 categories: ["笔记"]
 tags: ["全球主义中国", "劳工权利", "新自由主义", "社会运动"]
 author: "竱肇"
 featured: true
-weight: 1
+weight: 2
 ---
 
 _43 min read · May 5, 2025_
