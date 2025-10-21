@@ -1,13 +1,12 @@
 ---
-title: '「全球主义中国」作为方法（1）全球视角下的中国劳工'
+title: '【1】全球视角下的中国劳工'
 date: 2025-05-05
 draft: false
-categories: ["读书笔记"]
-tags: ["全球主义中国", "劳工权利", "新自由主义", "社会运动", "翻译"]
-author: "Ivan Franceschini/（译）竱肇"
-description: "探讨中国劳工问题如何与全球资本主义体系紧密交织，以及劳工运动在新自由主义时代面临的困境"
-image: "/images/china-labour.jpg"
+categories: ["笔记"]
+tags: ["全球主义中国", "劳工权利", "新自由主义", "社会运动"]
+author: "竱肇"
 featured: true
+weight: 1
 ---
 
 _43 min read · May 5, 2025_
