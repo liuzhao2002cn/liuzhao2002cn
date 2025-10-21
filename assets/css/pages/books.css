@@ -7,7 +7,671 @@
 }
 
 /* 书架头部 */
+.books-header {/* ====== 书架列表页样式 ====== */
+
+.books-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
 .books-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.books-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 0.5rem 0;
+}
+
+.books-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.book-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.book-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.book-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.book-cover-wrapper {
+    width: 100%;
+    height: 380px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.book-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.book-card:hover .book-cover {
+    transform: scale(1.05);
+}
+
+.book-fallback {
+    text-align: center;
+    padding: 2rem;
+    color: white;
+}
+
+.book-fallback-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.book-fallback-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.4;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.book-info {
+    padding: 1.5rem;
+}
+
+.book-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.book-meta {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.book-meta-item {
+    margin-bottom: 0.25rem;
+}
+
+.meta-label {
+    color: #999;
+    margin-right: 0.5rem;
+}
+
+/* 空状态 */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.empty-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.empty-title {
+    font-size: 1.75rem;
+    color: #1a1a1a;
+    margin: 0 0 0.5rem 0;
+}
+
+.empty-description {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* ====== 书籍详情页样式 ====== */
+
+.book-detail-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.book-detail {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.book-detail-header {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.book-cover-section {
+    display: flex;
+    justify-content: center;
+}
+
+.book-cover-large {
+    width: 200px;
+    height: 280px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    object-fit: cover;
+}
+
+.book-cover-placeholder {
+    width: 200px;
+    height: 280px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.placeholder-icon {
+    font-size: 5rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.book-detail-info h1 {
+    font-size: 1.8rem;
+    margin: 0 0 1rem 0;
+    color: #1a1a1a;
+    font-weight: 700;
+}
+
+.book-detail-meta {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.detail-meta-item {
+    display: flex;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.detail-meta-label {
+    min-width: 80px;
+    color: #999;
+    flex-shrink: 0;
+}
+
+.detail-meta-value {
+    color: #333;
+}
+
+.book-summary {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #555;
+    margin-top: 1.5rem;
+}
+
+.book-summary p {
+    margin: 0;
+}
+
+/* ====== 章节列表样式 ====== */
+
+.chapters-section {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.chapters-title {
+    font-size: 1.5rem;
+    margin: 0 0 1.5rem 0;
+    color: #1a1a1a;
+    font-weight: 600;
+}
+
+.chapters-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.chapter-item {
+    margin-bottom: 0.75rem;
+}
+
+.chapter-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    background: #f8f8f8;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.chapter-link:hover {
+    background: #667eea;
+    color: white;
+    transform: translateX(4px);
+}
+
+.chapter-number {
+    font-size: 0.85rem;
+    color: #999;
+    margin-right: 0.75rem;
+    min-width: 60px;
+    flex-shrink: 0;
+}
+
+.chapter-link:hover .chapter-number {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.chapter-title {
+    flex: 1;
+    font-size: 1rem;
+}
+
+.chapter-arrow {
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    margin-left: 0.5rem;
+}
+
+.chapter-link:hover .chapter-arrow {
+    opacity: 1;
+}
+
+.empty-chapters {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.empty-chapters .empty-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.4;
+}
+
+.empty-chapters .empty-text {
+    color: #999;
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* ====== 章节内容页样式 ====== */
+
+.chapter-content-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: #f8f8f8;
+    border-radius: 8px;
+}
+
+.breadcrumb-link {
+    color: #667eea;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb-link:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+.breadcrumb-separator {
+    color: #ccc;
+}
+
+.breadcrumb-current {
+    color: #999;
+}
+
+.chapter-content-page {
+    background: white;
+    border-radius: 12px;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.chapter-content-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.chapter-content-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 1rem 0;
+    line-height: 1.3;
+}
+
+.chapter-content-meta {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.9rem;
+    color: #666;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* 章节正文样式 */
+.chapter-text {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #333;
+}
+
+.chapter-text p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.chapter-text h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 2.5rem 0 1.5rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.chapter-text h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    margin: 2rem 0 1rem 0;
+}
+
+.chapter-text h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #555;
+    margin: 1.5rem 0 0.75rem 0;
+}
+
+.chapter-text ul,
+.chapter-text ol {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+}
+
+.chapter-text li {
+    margin: 0.5rem 0;
+}
+
+.chapter-text blockquote {
+    margin: 2rem 0;
+    padding: 1.5rem 2rem;
+    border-left: 4px solid #667eea;
+    background: #f8f9fa;
+    color: #555;
+    font-style: italic;
+}
+
+.chapter-text img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 2rem auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.chapter-text code {
+    background: #f4f4f4;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+}
+
+.chapter-text pre {
+    background: #2d2d2d;
+    color: #f8f8f8;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 2rem 0;
+}
+
+.chapter-text pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+}
+
+/* 章节导航 */
+.chapter-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e5e5e5;
+    gap: 1rem;
+}
+
+.nav-button {
+    flex: 1;
+}
+
+.prev-chapter {
+    text-align: left;
+}
+
+.next-chapter {
+    text-align: right;
+}
+
+.back-to-book {
+    flex: 0 0 auto;
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #f8f8f8;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.nav-link:hover {
+    background: #667eea;
+    color: white;
+}
+
+.nav-link.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+/* ====== 响应式设计 ====== */
+
+@media (max-width: 768px) {
+    .books-container,
+    .book-detail-container,
+    .chapter-content-container {
+        padding: 1.5rem 1rem;
+    }
+
+    .books-title {
+        font-size: 2rem;
+    }
+
+    .books-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .book-cover-wrapper {
+        height: 320px;
+    }
+
+    .book-detail-header {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .book-cover-section {
+        justify-content: center;
+    }
+
+    .book-cover-large,
+    .book-cover-placeholder {
+        width: 180px;
+        height: 252px;
+    }
+
+    .detail-meta-label {
+        min-width: 70px;
+    }
+
+    .book-detail,
+    .chapters-section {
+        padding: 1.5rem;
+    }
+
+    .chapter-content-page {
+        padding: 2rem 1.5rem;
+    }
+
+    .chapter-content-title {
+        font-size: 1.6rem;
+    }
+
+    .chapter-text {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+    .chapter-navigation {
+        flex-direction: column;
+    }
+
+    .nav-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-link {
+        display: block;
+        width: 100%;
+    }
+
+    .breadcrumb {
+        font-size: 0.85rem;
+        padding: 0.75rem;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .books-container,
+    .book-detail-container,
+    .chapter-content-container {
+        padding: 1rem 0.75rem;
+    }
+
+    .books-title {
+        font-size: 1.75rem;
+    }
+
+    .book-cover-wrapper {
+        height: 280px;
+    }
+
+    .book-info {
+        padding: 1.25rem;
+    }
+
+    .book-detail-info h1 {
+        font-size: 1.5rem;
+    }
+
+    .chapters-section {
+        padding: 1.25rem;
+    }
+
+    .chapters-title {
+        font-size: 1.3rem;
+    }
+
+    .chapter-link {
+        padding: 0.875rem 1rem;
+    }
+
+    .chapter-number {
+        min-width: 50px;
+        font-size: 0.8rem;
+    }
+
+    .chapter-content-page {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .chapter-content-title {
+        font-size: 1.4rem;
+    }
+
+    .chapter-text {
     text-align: center;
     margin-bottom: 5rem;
     padding: 3rem 2rem;
