@@ -1,17 +1,107 @@
 <header class="site-header">
     <div class="header-content">
-        <div class="header-left">
-            <h1 class="site-title"><a href="{{ .Site.BaseURL }}" title="{{ .Site.Title }}">{{ .Site.Title }}</a></h1>
-            {{ if .Site.Params.tagline }}<p class="site-tagline">{{ .Site.Params.tagline }}</p>{{ end }}
+        <!-- 左侧：网站名称和签名 -->
+        <div class="header-brand">
+            <h1 class="site-title">
+                <a href="{{ .Site.BaseURL }}" title="{{ .Site.Title }}">
+                    {{ .Site.Title }}
+                </a>
+            </h1>
+            {{ if .Site.Params.tagline }}
+            <p class="site-tagline">{{ .Site.Params.tagline }}</p>
+            {{ end }}
         </div>
-        <nav class="site-nav" id="siteNav">
-            <ul class="nav-menu">
-                {{ range .Site.Menus.main }}<li class="nav-item"><a href="{{ .URL }}" class="nav-link {{ if $.IsMenuCurrent "main" . }}active{{ end }}" title="{{ .Name }}">{{ .Name }}</a></li>{{ end }}
-                <li class="nav-item"><a href="{{ "index.xml" | absURL }}" class="nav-link" target="_blank" title="订阅 RSS">RSS</a></li>
-            </ul>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="打开菜单"><span></span><span></span><span></span></button>
-        </nav>
+
+        <!-- 右侧：折叠菜单按钮 -->
+        <div class="header-actions">
+            <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-expanded="false">
+                <span class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span class="menu-text">菜单</span>
+            </button>
+        </div>
     </div>
+
+    <!-- 折叠菜单 -->
+    <nav class="dropdown-menu" id="dropdownMenu" aria-hidden="true">
+        <div class="menu-container">
+            <ul class="menu-list">
+                {{ range .Site.Menus.main }}
+                <li class="menu-item">
+                    <a href="{{ .URL }}" 
+                       class="menu-link {{ if $.IsMenuCurrent "main" . }}active{{ end }}" 
+                       title="{{ .Name }}">
+                        <span class="link-icon">{{ .Pre | safeHTML }}</span>
+                        <span class="link-text">{{ .Name }}</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                </li>
+                {{ end }}
+                <li class="menu-item">
+                    <a href="{{ "index.xml" | absURL }}" 
+                       class="menu-link" 
+                       target="_blank" 
+                       title="订阅 RSS">
+                        <span class="link-icon">📡</span>
+                        <span class="link-text">RSS 订阅</span>
+                        <span class="link-arrow">→</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 遮罩层 -->
+    <div class="menu-overlay" id="menuOverlay"></div>
 </header>
-<div class="nav-overlay" id="navOverlay"></div>
+
 <div class="reading-progress" id="readingProgress"></div>
+
+<script>
+(function() {
+    const menuToggle = document.getElementById('menuToggle');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    
+    if (!menuToggle || !dropdownMenu || !menuOverlay) return;
+    
+    function toggleMenu() {
+        const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+        
+        menuToggle.setAttribute('aria-expanded', !isOpen);
+        dropdownMenu.setAttribute('aria-hidden', isOpen);
+        menuToggle.classList.toggle('active');
+        dropdownMenu.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        document.body.style.overflow = isOpen ? '' : 'hidden';
+    }
+    
+    function closeMenu() {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        dropdownMenu.setAttribute('aria-hidden', 'true');
+        menuToggle.classList.remove('active');
+        dropdownMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    menuToggle.addEventListener('click', toggleMenu);
+    menuOverlay.addEventListener('click', closeMenu);
+    
+    // 点击菜单项后关闭菜单
+    const menuLinks = dropdownMenu.querySelectorAll('.menu-link');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+    
+    // ESC 键关闭菜单
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
+            closeMenu();
+        }
+    });
+})();
+</script>
