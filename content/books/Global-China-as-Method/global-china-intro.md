@@ -1,12 +1,10 @@
 ---
-title: '“全球主义中国”（Global China）作为方法（0）导言'
+title: '【0】导言'
 date: 2025-05-04
 draft: false
-categories: ["学术翻译", "理论探讨"]
+categories: ["笔记"]
 tags: ["全球主义中国", "方法论", "中国特殊论", "比烂主义", "全球资本主义"]
 author: "竱肇"
-description: "本文是《Global China as Method》一书的导言，批判了将中国视为外部“他者”的三种主流分析框架（本质主义、助产术、比烂主义），并提出“全球主义中国”作为一种替代性方法论。该方法主张将中国理解为当代全球资本主义体系一个内在且不可或缺的组成部分，强调中国与全球动态的深度交织和相互建构关系。"
-image: "/images/global-capitalism.jpg"
 featured: true
 weight: 0
 ---
