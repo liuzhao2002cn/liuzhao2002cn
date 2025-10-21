@@ -3,10 +3,11 @@ title: "-"
 date: 2025-04-08
 author: "竱肇"
 original_author: "-"
+featured: true
 readingTime: 10
 categories: ["笔记", "书评"]
 tags: [-]
-image: "cover.jpg"
+image: "cover.png"
 ---
 
 # 从伊万·伊利奇的视角看待当前疫情的几点问题（2020）
