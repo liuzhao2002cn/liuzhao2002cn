@@ -2,6 +2,7 @@
 title: "丁声镇：卡尔·马克思在北京"
 date: 2025-04-08
 author: "竱肇"
+featured: true
 original_author: "丁声镇（정성진，Seongjin Jeong）" 
 readingTime: 10 # 预计阅读时间（分钟）
 categories: ["笔记", "书评"]
