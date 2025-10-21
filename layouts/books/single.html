@@ -1,106 +1,57 @@
 {{ define "main" }}
-<div class="book-detail-container">
-    <!-- 书籍完整信息 -->
-    <div class="book-detail">
-        <div class="book-detail-header">
-            <div class="book-cover-section">
-                {{ if .Params.cover }}
-                    {{ with .Resources.GetMatch .Params.cover }}
-                        <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" class="book-cover-large" loading="lazy">
-                    {{ else }}
-                        <div class="book-cover-placeholder">
-                            <span class="placeholder-icon">📖</span>
-                        </div>
-                    {{ end }}
-                {{ else }}
-                    <div class="book-cover-placeholder">
-                        <span class="placeholder-icon">📖</span>
-                    </div>
-                {{ end }}
-            </div>
-            
-            <div class="book-detail-info">
-                <h1 class="book-detail-title">{{ .Title }}</h1>
-                
-                <div class="book-detail-meta">
-                    {{ with .Params.book_author }}
-                    <div class="detail-meta-item">
-                        <span class="detail-meta-label">作者</span>
-                        <span class="detail-meta-value">{{ . }}</span>
-                    </div>
-                    {{ end }}
-                    
-                    {{ with .Params.translator }}
-                    <div class="detail-meta-item">
-                        <span class="detail-meta-label">译者</span>
-                        <span class="detail-meta-value">{{ . }}</span>
-                    </div>
-                    {{ end }}
-                    
-                    {{ with .Params.publisher }}
-                    <div class="detail-meta-item">
-                        <span class="detail-meta-label">出版社</span>
-                        <span class="detail-meta-value">{{ . }}</span>
-                    </div>
-                    {{ end }}
-                    
-                    {{ with .Params.year }}
-                    <div class="detail-meta-item">
-                        <span class="detail-meta-label">出版年</span>
-                        <span class="detail-meta-value">{{ . }}</span>
-                    </div>
-                    {{ end }}
-                    
-                    {{ with .Params.pages }}
-                    <div class="detail-meta-item">
-                        <span class="detail-meta-label">页数</span>
-                        <span class="detail-meta-value">{{ . }}</span>
-                    </div>
-                    {{ end }}
-                    
-                    {{ with .Params.isbn }}
-                    <div class="detail-meta-item">
-                        <span class="detail-meta-label">ISBN</span>
-                        <span class="detail-meta-value">{{ . }}</span>
-                    </div>
-                    {{ end }}
-                </div>
-                
-                {{ with .Params.summary }}
-                <div class="book-summary">
-                    <p>{{ . }}</p>
-                </div>
-                {{ end }}
-            </div>
-        </div>
-    </div>
+<!-- 这个文件专门用于章节内容页 -->
+<div class="chapter-content-container">
+    <nav class="breadcrumb">
+        <a href="/books/" class="breadcrumb-link">📚 书架</a>
+        <span class="breadcrumb-separator">›</span>
+        <a href="{{ .Parent.Permalink }}" class="breadcrumb-link">{{ .Parent.Title }}</a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-current">当前章节</span>
+    </nav>
 
-    <!-- 章节列表 -->
-    {{ $chapters := .Pages.ByWeight }}
-    {{ if $chapters }}
-    <div class="chapters-section">
-        <h2 class="chapters-title">目录</h2>
-        <ul class="chapters-list">
-            {{ range $chapters }}
-            <li class="chapter-item">
-                <a href="{{ .Permalink }}" class="chapter-link">
-                    {{ with .Weight }}
-                    <span class="chapter-number">第 {{ . }} 章</span>
-                    {{ end }}
-                    <span class="chapter-title">{{ .Title }}</span>
-                    <span class="chapter-arrow">→</span>
-                </a>
-            </li>
-            {{ end }}
-        </ul>
-    </div>
-    {{ else }}
-    <div class="chapters-section">
-        <div class="empty-chapters">
-            <div class="empty-icon">📑</div>
-            <p class="empty-text">暂无章节内容</p>
+    <article class="chapter-content-page">
+        <header class="chapter-content-header">
+            <h1 class="chapter-content-title">{{ .Title }}</h1>
+            <div class="chapter-content-meta">
+                <span class="meta-item">📖 约 {{ .ReadingTime }} 分钟阅读</span>
+                {{ with .Date }}
+                <span class="meta-item">📅 {{ .Format "2006年01月02日" }}</span>
+                {{ end }}
+                {{ with .WordCount }}
+                <span class="meta-item">📝 约 {{ . }} 字</span>
+                {{ end }}
+            </div>
+        </header>
+
+        <div class="chapter-text">
+            {{ .Content }}
         </div>
-    </div>
-    {{ end }}
+
+        <nav class="chapter-navigation">
+            <div class="nav-button prev-chapter">
+                {{ with .PrevInSection }}
+                <a href="{{ .Permalink }}" class="nav-link">
+                    ← 上一章
+                </a>
+                {{ else }}
+                <span class="nav-link disabled">← 上一章</span>
+                {{ end }}
+            </div>
+
+            <a href="{{ .Parent.Permalink }}" class="nav-button back-to-book nav-link">
+                返回目录
+            </a>
+
+            <div class="nav-button next-chapter">
+                {{ with .NextInSection }}
+                <a href="{{ .Permalink }}" class="nav-link">
+                    下一章 →
+                </a>
+                {{ else }}
+                <span class="nav-link disabled">下一章 →</span>
+                {{ end }}
+            </div>
+        </nav>
+    </article>
 </div>
 {{ end }}
