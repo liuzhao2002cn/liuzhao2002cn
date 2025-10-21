@@ -1,11 +1,11 @@
 ---
-title: ""全球主义中国"作为方法（0）导言"
+title: '「全球主义中国」作为方法（0）导言'
 date: 2025-05-04
 draft: false
 categories: ["读书笔记"]
 tags: ["全球主义中国", "方法论", "资本主义", "国际关系", "翻译"]
 author: "竱肇"
-description: "探讨如何将中国理解为当代全球资本主义体系的内在组成部分，而非孤立的外部'他者'"
+description: "探讨如何将中国理解为当代全球资本主义体系的内在组成部分，而非孤立的外部他者"
 image: "/images/global-china-intro.jpg"
 ---
 
