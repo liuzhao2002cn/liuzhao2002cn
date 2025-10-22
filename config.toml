@@ -4,8 +4,10 @@ title = '竱肇文档站'
 canonifyURLs = true
 [params]
   author = '肇'
-  avatar = "/images/lpip.jpg" 
-  tagline = "记录思想 · 分享生活"
+  avatar = "/images/lpip.jpg"
+  tagline = "“诚之者，择善而固执之者也”——《礼记·中庸》"
+  bio = "中国人，人文学术民工，东北工人家庭的子女，在新时代的废墟上长大的人。
+  志趣：左翼理论研究（包括但不限于政治哲学和经济学）、近世以来华语与东亚的思想与社会。 "
   description = '分享生活与随想的个人网站'
   github = "https://github.com/liuzhao2002cn"
   douban = "https://www.douban.com/people/liuzhao2002cn/"
