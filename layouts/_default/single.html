@@ -1,37 +1,109 @@
 {{ define "main" }}
-<article class="post-single post-container">
-    <header class="post-header">
-        {{ with .Params.image }}
-        <div class="post-cover">
-            {{ with $.Resources.GetMatch . }}
-                {{ $image := .Resize "1200x webp q75" }}
-                {{ $fallback := .Resize "1200x q75" }}
-                <picture>
-                    <source srcset="{{ $image.RelPermalink }}" type="image/webp">
-                    <img src="{{ $fallback.RelPermalink }}" width="{{ $fallback.Width }}" height="{{ $fallback.Height }}" alt="{{ $.Title }}" loading="lazy">
-                </picture>
+<article class="post-single">
+    <div class="container">
+        <div class="content-wrapper">
+            <!-- 文章头部 -->
+            <header class="post-header">
+                <h1 class="post-title">{{ .Title }}</h1>
+                
+                <div class="post-meta">
+                    <span class="meta-item">
+                        <span class="meta-icon">📅</span>
+                        <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                            {{ .Date.Format "2006年1月2日" }}
+                        </time>
+                    </span>
+                    
+                    {{ with .Params.categories }}
+                    <span class="meta-divider">·</span>
+                    <span class="meta-item">
+                        <span class="meta-icon">📁</span>
+                        {{ range . }}
+                        <a href="{{ "/categories/" | relURL }}{{ . | urlize }}/" class="meta-link">{{ . }}</a>
+                        {{ end }}
+                    </span>
+                    {{ end }}
+                    
+                    <span class="meta-divider">·</span>
+                    <span class="meta-item">
+                        <span class="meta-icon">⏱️</span>
+                        {{ .ReadingTime }} 分钟
+                    </span>
+                    
+                    {{ if .WordCount }}
+                    <span class="meta-divider">·</span>
+                    <span class="meta-item">
+                        <span class="meta-icon">📝</span>
+                        {{ .WordCount }} 字
+                    </span>
+                    {{ end }}
+                </div>
+            </header>
+
+            <!-- 目录（折叠式） -->
+            {{ if .TableOfContents }}
+            <details class="toc-container" id="toc" open>
+                <summary class="toc-title">
+                    <span class="toc-icon">📑</span>
+                    <span class="toc-text">目录</span>
+                    <span class="toc-toggle">▼</span>
+                </summary>
+                <div class="toc-content">
+                    {{ .TableOfContents }}
+                </div>
+            </details>
             {{ end }}
+
+            <!-- 文章正文 -->
+            <div class="post-content">
+                {{ .Content }}
+            </div>
+
+            <!-- 文章底部 -->
+            <footer class="post-footer">
+                <!-- 标签 -->
+                {{ with .Params.tags }}
+                <div class="post-tags">
+                    <span class="tags-label">标签：</span>
+                    {{ range . }}
+                    <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag-link">#{{ . }}</a>
+                    {{ end }}
+                </div>
+                {{ end }}
+
+                <!-- 分享按钮 -->
+                {{ partial "share.html" . }}
+
+                <!-- 上一篇/下一篇 -->
+                <nav class="post-navigation">
+                    {{ with .PrevInSection }}
+                    <a href="{{ .Permalink }}" class="nav-link nav-prev" title="{{ .Title }}">
+                        <span class="nav-arrow">←</span>
+                        <span class="nav-text">
+                            <span class="nav-label">上一篇</span>
+                            <span class="nav-title">{{ .Title }}</span>
+                        </span>
+                    </a>
+                    {{ end }}
+                    
+                    {{ with .NextInSection }}
+                    <a href="{{ .Permalink }}" class="nav-link nav-next" title="{{ .Title }}">
+                        <span class="nav-text">
+                            <span class="nav-label">下一篇</span>
+                            <span class="nav-title">{{ .Title }}</span>
+                        </span>
+                        <span class="nav-arrow">→</span>
+                    </a>
+                    {{ end }}
+                </nav>
+            </footer>
         </div>
-        {{ end }}
-        <h1 class="post-title">{{ .Title }}</h1>
-        <div class="post-meta">
-            <span class="meta-item"><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006年1月2日" }}</time></span>
-            {{ with .Params.categories }}<span class="meta-divider">·</span><span class="meta-item">{{ range . }}<a href="{{ "/categories/" | relURL }}{{ . | urlize }}/">{{ . }}</a>{{ end }}</span>{{ end }}
-            <span class="meta-divider">·</span><span class="meta-item">{{ .ReadingTime }} 分钟阅读</span>
-        </div>
-    </header>
-    {{ if .TableOfContents }}
-    <details class="toc-container" id="toc" open>
-        <summary class="toc-title"><span>目录</span></summary>
-        <div class="toc-content">{{ .TableOfContents }}</div>
-    </details>
-    {{ end }}
-    <div class="post-content">{{ .Content }}</div>
-    <footer class="post-footer">
-        {{ with .Params.tags }}<div class="post-tags">{{ range . }}<a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="tag-link">#{{ . }}</a>{{ end }}</div>{{ end }}
-        {{ partial "share.html" . }}
-    </footer>
+    </div>
+
+    <!-- 相关文章 -->
     {{ partial "related.html" . }}
+
+    <!-- 评论 -->
     {{ partial "comments.html" . }}
 </article>
 {{ end }}
