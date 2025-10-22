@@ -7,7 +7,6 @@ original_author: "丁声镇（정성진，Seongjin Jeong）"
 readingTime: 10 # 预计阅读时间（分钟）
 categories: ["笔记", "书评"]
 tags: ["乔万尼·阿里吉", "马克思主义", "世界体系理论", "中国模式"]
-image: "cover.jpg" 
 ---
 
 **丁声镇 (정성진，Seongjin Jeong)**
