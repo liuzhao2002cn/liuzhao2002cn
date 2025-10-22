@@ -4,20 +4,14 @@
   "description": "竱肇文档站的资源配置文件",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "hugo && pagefind --source public"
   },
   "author": "肇 (https://github.com/liuzhao2002cn)",
   "license": "ISC",
   "devDependencies": {
     "postcss-cli": "^11.0.0",
-    "postcss-import": "^16.1.0"
-  }
-}
-{
-  "scripts": {
-    "build": "hugo && pagefind --source public"
-  },
-  "devDependencies": {
+    "postcss-import": "^16.1.0",
     "@pagefind/default-ui": "^1.0.0"
   }
 }
