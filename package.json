@@ -13,3 +13,11 @@
     "postcss-import": "^16.1.0"
   }
 }
+{
+  "scripts": {
+    "build": "hugo && pagefind --source public"
+  },
+  "devDependencies": {
+    "@pagefind/default-ui": "^1.0.0"
+  }
+}
