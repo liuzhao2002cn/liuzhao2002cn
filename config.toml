@@ -74,5 +74,3 @@ canonifyURLs = true
   categoryId = "DIC_kwDOQEhL8c4CwyYF"       
 [build]
   writeStats = true
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
