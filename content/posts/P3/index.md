@@ -6,7 +6,7 @@ original_author: "大卫·凯利 David Cayley（2020/04/08）"
 featured: true
 readingTime: 10
 categories: ["笔记", "书评"]
-tags: [-]
+tags: ["note"]
 ---
 
 # 
