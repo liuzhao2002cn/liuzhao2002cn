@@ -1,0 +1,42 @@
+{{ define "main" }}
+<article class="download-detail">
+    <div class="container">
+        <header class="download-header">
+            <h1 class="download-title">{{ .Title }}</h1>
+            
+            <div class="download-meta">
+                {{ with .Params.fileSize }}
+                <span class="meta-item">📦 {{ . }}</span>
+                {{ end }}
+                {{ with .Params.format }}
+                <span class="meta-item">📄 {{ . }}</span>
+                {{ end }}
+                <span class="meta-item">📅 {{ .Date.Format "2006-01-02" }}</span>
+            </div>
+
+            <!-- 下载按钮 -->
+            <div class="download-actions">
+                {{ with .Params.onedrive }}
+                <a href="{{ . }}" class="download-button onedrive" target="_blank">
+                    OneDrive 下载
+                </a>
+                {{ end }}
+                {{ with .Params.googledrive }}
+                <a href="{{ . }}" class="download-button googledrive" target="_blank">
+                    Google Drive 下载
+                </a>
+                {{ end }}
+                {{ with .Params.chinadrive }}
+                <a href="{{ . }}" class="download-button chinadrive" target="_blank">
+                    国内网盘下载
+                </a>
+                {{ end }}
+            </div>
+        </header>
+
+        <div class="download-content">
+            {{ .Content }}
+        </div>
+    </div>
+</article>
+{{ end }}
