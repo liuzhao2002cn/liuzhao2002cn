@@ -3,7 +3,6 @@
 {{- $lifePages := where site.RegularPages "Section" "life" -}}
 {{- $bookPages := where site.RegularPages "Section" "books" -}}
 
-<!-- layouts/partials/hero-card.html -->
 <section class="hero-card-section">
     <!-- 背景装饰 -->
     <div class="hero-background">
@@ -18,42 +17,54 @@
 
     <!-- 主卡片容器 -->
     <div class="hero-card-container">
-        <div class="profile-card">
-            <!-- 卡片装饰顶部 -->
-            <div class="card-decoration-top">
-                <div class="deco-line"></div>
-                <div class="deco-stars">✦✦✦</div>
-                <div class="deco-line"></div>
+        <div class="profile-card" id="profile-card">
+            <!-- 新增: 左右分栏结构 -->
+            <div class="card-column-left">
+                <!-- 头像区域 -->
+                <div class="avatar-wrapper">
+                    <div class="avatar-glow"></div>
+                    <div class="avatar-border">
+                        <img src="{{ .Site.Params.avatar | default "/images/avatar.jpg" }}" 
+                             alt="{{ .Site.Title }}" 
+                             class="avatar-image">
+                    </div>
+                    <div class="avatar-decoration">
+                        <span class="sparkle sparkle-1">✨</span>
+                        <span class="sparkle sparkle-2">💫</span>
+                    </div>
+                </div>
+
+                <!-- 社交链接 (移到左侧) -->
+                <div class="profile-social">
+                    {{ with .Site.Params.github }}
+                    <a href="{{ . }}" target="_blank" rel="noopener" class="social-link" title="GitHub">
+                        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    {{ end }}
+                    {{ with .Site.Params.douban }}
+                    <a href="{{ . }}" target="_blank" rel="noopener" class="social-link" title="豆瓣">
+                        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M15.371 5.407h-8.24V2.594h8.24v2.813zm.968 2.187H6.39v6.426h9.949V7.594zm-1.455 5.156H7.844V8.938h6.878v3.812zM5.902 17.25l-.808 3.516h12.786l-.808-3.516H5.902zm13.662-1.031c0-.516-.437-.938-1-.938H4.155c-.518 0-.968.422-.968.938v.906h16.377v-.906z"/></svg>
+                    </a>
+                    {{ end }}
+                    {{ with .Site.Params.bilibili }}
+                    <a href="{{ . }}" target="_blank" rel="noopener" class="social-link" title="哔哩哔哩">
+                        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373Z"/></svg>
+                    </a>
+                    {{ end }}
+                </div>
             </div>
 
-            <!-- 头像区域 -->
-            <div class="avatar-wrapper">
-                <div class="avatar-glow"></div>
-                <div class="avatar-border">
-                    <img src="{{ .Site.Params.avatar | default "/images/avatar.jpg" }}" 
-                         alt="{{ .Site.Title }}" 
-                         class="avatar-image">
+            <div class="card-column-right">
+                <!-- 个人信息 -->
+                <div class="profile-info">
+                    <h1 class="profile-name">{{ .Site.Title }}</h1>
+                    {{ with .Site.Params.tagline }}
+                    <p class="profile-tagline">{{ . }}</p>
+                    {{ end }}
+                    {{ with .Site.Params.bio }}
+                    <p class="profile-bio">{{ . }}</p>
+                    {{ end }}
                 </div>
-                <div class="avatar-decoration">
-                    <span class="sparkle sparkle-1">✨</span>
-                    <span class="sparkle sparkle-2">💫</span>
-                    <span class="sparkle sparkle-3">⭐</span>
-                </div>
-            </div>
-
-            <!-- 个人信息 -->
-            <div class="profile-info">
-                <h1 class="profile-name">
-                    {{ .Site.Title }}
-                </h1>
-                
-                {{ with .Site.Params.tagline }}
-                <p class="profile-tagline">{{ . }}</p>
-                {{ end }}
-
-                {{ with .Site.Params.bio }}
-                <p class="profile-bio">{{ . }}</p>
-                {{ end }}
 
                 <!-- 标签云 -->
                 <div class="profile-tags">
@@ -61,136 +72,78 @@
                     <span class="tag">{{ . }}</span>
                     {{ end }}
                 </div>
-            </div>
 
-            <!-- 社交链接（小图标） -->
-            <div class="profile-social">
-                {{ with .Site.Params.github }}
-                <a href="{{ . }}" target="_blank" rel="noopener" class="social-link" title="GitHub">
-                    <svg viewBox="0 0 24 24" width="20" height="20">
-                        <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                </a>
-                {{ end }}
-
-                {{ with .Site.Params.douban }}
-                <a href="{{ . }}" target="_blank" rel="noopener" class="social-link" title="豆瓣">
-                    <svg viewBox="0 0 24 24" width="20" height="20">
-                        <path fill="currentColor" d="M15.371 5.407h-8.24V2.594h8.24v2.813zm.968 2.187H6.39v6.426h9.949V7.594zm-1.455 5.156H7.844V8.938h6.878v3.812zM5.902 17.25l-.808 3.516h12.786l-.808-3.516H5.902zm13.662-1.031c0-.516-.437-.938-1-.938H4.155c-.518 0-.968.422-.968.938v.906h16.377v-.906z"/>
-                    </svg>
-                </a>
-                {{ end }}
-
-                {{ with .Site.Params.bilibili }}
-                <a href="{{ . }}" target="_blank" rel="noopener" class="social-link" title="哔哩哔哩">
-                    <svg viewBox="0 0 24 24" width="20" height="20">
-                        <path fill="currentColor" d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373Z"/>
-                    </svg>
-                </a>
-                {{ end }}
-
-                {{ with .Site.Params.weibo }}
-                <a href="{{ . }}" target="_blank" rel="noopener" class="social-link" title="微博">
-                    <svg viewBox="0 0 24 24" width="20" height="20">
-                        <path fill="currentColor" d="M10.098 20.323c-3.977.391-7.414-1.406-7.672-4.02-.259-2.609 2.759-5.047 6.74-5.441 3.979-.394 7.413 1.404 7.671 4.018.259 2.609-2.759 5.049-6.739 5.443z"/>
-                    </svg>
-                </a>
-                {{ end }}
-            </div>
-
-            <!-- 统计数据（可选） -->
-            {{ if .Site.Params.showStats }}
-            <div class="profile-stats">
-                <div class="stat-item">
-                    <div class="stat-value" data-target="{{ len (where .Site.RegularPages "Type" "note") }}">0</div>
-                    <div class="stat-label">笔记</div>
+                <!-- 统计数据 -->
+                {{ if .Site.Params.showStats }}
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">{{ len (where .Site.RegularPages "Type" "note") }}</div>
+                        <div class="stat-label">笔记</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-value">{{ len (where .Site.RegularPages "Type" "opinion") }}</div>
+                        <div class="stat-label">评论</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-value">{{ len .Site.RegularPages }}</div>
+                        <div class="stat-label">总计</div>
+                    </div>
                 </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <div class="stat-value" data-target="{{ len (where .Site.RegularPages "Type" "opinion") }}">0</div>
-                    <div class="stat-label">评论</div>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <div class="stat-value" data-target="{{ len .Site.RegularPages }}">0</div>
-                    <div class="stat-label">总计</div>
-                </div>
-            </div>
-            {{ end }}
-
-            <!-- 卡片装饰底部 -->
-            <div class="card-decoration-bottom">
-                <div class="deco-wave"></div>
+                {{ end }}
             </div>
         </div>
     </div>
 
-    <!-- 向下箭头（可选） -->
-    <a href="#content" class="scroll-indicator">
-        <svg viewBox="0 0 24 24" width="32" height="32">
-            <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-        </svg>
+    <!-- 向下箭头 (保持不变) -->
+    <a href="#content-sections" class="scroll-indicator">
+        <svg viewBox="0 0 24 24" width="32" height="32"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
     </a>
 </section>
-<!-- 内容分类卡片区 -->
-<section id="featured-content" class="content-sections">
-    <div class="container">
-        <div class="sections-grid">
-            <!-- 读书笔记 -->
-            <a href="/note/" class="section-card">
-                <div class="card-background"></div>
-                <div class="card-content">
-                    <div class="card-icon">📚</div>
-                    <h3 class="card-title">读书笔记</h3>
-                    <p class="card-description">阅读思考与知识沉淀</p>
-                    <div class="card-meta">
-                        <span class="card-count">{{ len $notePages }} 篇</span>
-                    </div>
-                </div>
-                <div class="card-hover-effect"></div>
-            </a>
 
-            <!-- 个人评论 -->
-            <a href="/opinion/" class="section-card">
-                <div class="card-background"></div>
-                <div class="card-content">
-                    <div class="card-icon">🎨</div>
-                    <h3 class="card-title">个人评论</h3>
-                    <p class="card-description">独立思考与观点表达</p>
-                    <div class="card-meta">
-                        <span class="card-count">{{ len $opinionPages }} 篇</span>
-                    </div>
-                </div>
-                <div class="card-hover-effect"></div>
-            </a>
-
-            <!-- 见闻感受 -->
-            <a href="/life/" class="section-card">
-                <div class="card-background"></div>
-                <div class="card-content">
-                    <div class="card-icon">🌍</div>
-                    <h3 class="card-title">见闻感受</h3>
-                    <p class="card-description">生活体验与情感记录</p>
-                    <div class="card-meta">
-                        <span class="card-count">{{ len $lifePages }} 篇</span>
-                    </div>
-                </div>
-                <div class="card-hover-effect"></div>
-            </a>
-
-            <!-- 我的书籍 -->
-            <a href="/books/" class="section-card">
-                <div class="card-background"></div>
-                <div class="card-content">
-                    <div class="card-icon">📖</div>
-                    <h3 class="card-title">我的书籍</h3>
-                    <p class="card-description">翻译作品与原创书籍</p>
-                    <div class="card-meta">
-                        <span class="card-count">{{ len $bookPages }} 本</span>
-                    </div>
-                </div>
-                <div class="card-hover-effect"></div>
-            </a>
-        </div>
+<!-- ==========================
+     内容分类卡片区 (保持不变)
+     ========================== -->
+<section id="content-sections" class="content-sections">
+    <div class="sections-grid">
+        <a href="/note/" class="section-card">
+            <div class="card-content"><div class="card-icon">📚</div><h3 class="card-title">读书笔记</h3><p class="card-description">阅读思考与知识沉淀</p><div class="card-meta"><span>{{ len $notePages }} 篇</span></div></div><div class="card-hover-effect"></div>
+        </a>
+        <a href="/opinion/" class="section-card">
+            <div class="card-content"><div class="card-icon">🎨</div><h3 class="card-title">个人评论</h3><p class="card-description">独立思考与观点表达</p><div class="card-meta"><span>{{ len $opinionPages }} 篇</span></div></div><div class="card-hover-effect"></div>
+        </a>
+        <a href="/life/" class="section-card">
+            <div class="card-content"><div class="card-icon">🌍</div><h3 class="card-title">见闻感受</h3><p class="card-description">生活体验与情感记录</p><div class="card-meta"><span>{{ len $lifePages }} 篇</span></div></div><div class="card-hover-effect"></div>
+        </a>
+        <a href="/books/" class="section-card">
+            <div class="card-content"><div class="card-icon">📖</div><h3 class="card-title">我的书籍</h3><p class="card-description">翻译作品与原创书籍</p><div class="card-meta"><span>{{ len $bookPages }} 本</span></div></div><div class="card-hover-effect"></div>
+        </a>
     </div>
 </section>
+
+<!-- JS: 实现3D悬停效果 (直接放在HTML模板底部即可) -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const card = document.getElementById('profile-card');
+    if (!card) return;
+
+    const maxRotate = 15; // 最大倾斜角度
+
+    card.addEventListener('mousemove', function(e) {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const { width, height } = rect;
+
+        const rotateX = maxRotate * ((y / height) - 0.5) * -1; // Y轴移动 -> X轴旋转
+        const rotateY = maxRotate * ((x / width) - 0.5);       // X轴移动 -> Y轴旋转
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+    });
+
+    card.addEventListener('mouseleave', function() {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+    });
+});
+</script>
