@@ -1,3 +1,4 @@
+<!-- layouts/partials/header.html -->
 <header class="site-header">
     <div class="header-content">
         <!-- 左侧：网站名称和签名 -->
@@ -12,50 +13,88 @@
             {{ end }}
         </div>
 
-        <!-- 右侧：折叠菜单按钮 -->
+        <!-- 右侧：功能按钮 -->
         <div class="header-actions">
-            <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-expanded="false">
-                <span class="menu-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-                <span class="menu-text">菜单</span>
+            <button class="search-toggle" id="searchToggle" aria-label="搜索" title="搜索">
+                <svg class="icon-search" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+            </button>
+            
+            <button class="sidebar-toggle" id="sidebarToggle" aria-label="菜单" title="打开菜单">
+                <svg class="icon-menu" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                </svg>
             </button>
         </div>
     </div>
 
-    <!-- 折叠菜单 -->
-    <nav class="dropdown-menu" id="dropdownMenu" aria-hidden="true">
-        <div class="menu-container">
-            <ul class="menu-list">
+    <!-- 侧边栏菜单 -->
+    <nav class="sidebar-menu" id="sidebarMenu" aria-hidden="true">
+        <!-- 关闭按钮 -->
+        <button class="sidebar-close" id="sidebarClose" aria-label="关闭菜单">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+                <path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+        </button>
+
+        <div class="sidebar-container">
+            <!-- 侧边栏头部 -->
+            <div class="sidebar-header">
+                <h2 class="sidebar-title">导航菜单</h2>
+            </div>
+
+            <!-- 菜单列表 -->
+            <ul class="sidebar-list">
                 {{ range .Site.Menus.main }}
-                <li class="menu-item">
+                <li class="sidebar-item">
                     <a href="{{ .URL }}" 
-                       class="menu-link {{ if $.IsMenuCurrent "main" . }}active{{ end }}" 
+                       class="sidebar-link {{ if $.IsMenuCurrent "main" . }}active{{ end }}" 
                        title="{{ .Name }}">
                         <span class="link-icon">{{ .Pre | safeHTML }}</span>
                         <span class="link-text">{{ .Name }}</span>
-                        <span class="link-arrow">→</span>
+                        <span class="link-arrow">
+                            <svg viewBox="0 0 24 24" width="16" height="16">
+                                <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
+                            </svg>
+                        </span>
                     </a>
                 </li>
                 {{ end }}
-                <li class="menu-item">
-                    <a href="{{ "index.xml" | absURL }}" 
-                       class="menu-link" 
-                       target="_blank" 
-                       title="订阅 RSS">
-                        <span class="link-icon">📡</span>
-                        <span class="link-text">RSS 订阅</span>
-                        <span class="link-arrow">→</span>
+                
+                <!-- 分隔线 -->
+                <li class="sidebar-divider"></li>
+
+                <!-- 可选：关于页面 -->
+                {{ if .Site.GetPage "/about" }}
+                <li class="sidebar-item">
+                    <a href="/about/" 
+                       class="sidebar-link" 
+                       title="关于">
+                        <span class="link-icon">👤</span>
+                        <span class="link-text">关于我</span>
+                        <span class="link-arrow">
+                            <svg viewBox="0 0 24 24" width="16" height="16">
+                                <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
+                            </svg>
+                        </span>
                     </a>
                 </li>
+                {{ end }}
             </ul>
+
+            <!-- 侧边栏底部信息 -->
+            <div class="sidebar-footer">
+                <p class="sidebar-info">
+                    {{ with .Site.Params.copyright }}
+                    {{ . | safeHTML }}
+                    {{ else }}
+                    © {{ now.Year }} {{ .Site.Title }}
+                    {{ end }}
+                </p>
+            </div>
         </div>
     </nav>
-
-    <!-- 遮罩层 -->
-    <div class="menu-overlay" id="menuOverlay"></div>
 </header>
 
 <div class="reading-progress" id="readingProgress"></div>
