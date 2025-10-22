@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{{ partial "search.html" . }}
 <html lang="{{ .Site.LanguageCode | default "en-us" }}">
 <head>
 <meta charset="UTF-8">
@@ -42,5 +43,6 @@
 {{ $js := resources.Get "js/main.js" }}
 {{ if hugo.IsProduction }}{{ $js = $js | minify | fingerprint }}{{ end }}
 <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script> 
+<script src="{{ "js/header.js" | relURL }}"></script>
 </body>
 </html>
