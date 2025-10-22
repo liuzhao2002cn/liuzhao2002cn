@@ -1,8 +1,3 @@
-/* ===================================
-   跨性别主题风格个人卡片英雄区
-   assets/css/components/hero-card.css
-   =================================== */
-
 /* --- 颜色变量定义 --- */
 :root {
     --trans-blue: #5BCEFA;
@@ -10,9 +5,9 @@
     --trans-white: #FFFFFF;
     --text-primary: #333;
     --text-secondary: #777;
-    --card-bg: rgba(255, 255, 255, 0.85); /* 降低不透明度, 增强通透感 */
-    --shadow-color-1: rgba(91, 206, 250, 0.2);
-    --shadow-color-2: rgba(245, 169, 184, 0.2);
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --shadow-color-1: rgba(91, 206, 250, 0.3);
+    --shadow-color-2: rgba(245, 169, 184, 0.3);
 }
 
 /* --- 英雄区容器 --- */
@@ -24,1199 +19,142 @@
     justify-content: center;
     padding: 4rem 2rem;
     overflow: hidden;
-    /* 更新为蓝粉渐变背景 */
     background: linear-gradient(135deg, #f0f8ff 0%, #fff0f5 100%);
 }
 
-/* --- 背景装饰 --- */
-.hero-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 0;
-}
-
-/* 渐变光球 */
-.gradient-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px); /* 增加模糊, 使其更柔和 */
-    opacity: 0.5;
-    animation: float 20s ease-in-out infinite;
-}
-
-.orb-1 {
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, var(--trans-pink), transparent);
-    top: -200px;
-    right: -200px;
-    animation-delay: 0s;
-}
-
-.orb-2 {
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, var(--trans-blue), transparent);
-    bottom: -150px;
-    left: -150px;
-    animation-delay: 7s;
-}
-
-.orb-3 {
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, var(--trans-white), transparent);
-    top: 50%;
-    left: 50%;
-    opacity: 0.4;
-    transform: translate(-50%, -50%);
-    animation-delay: 14s;
-}
-
-@keyframes float {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    25% { transform: translate(30px, -30px) scale(1.1); }
-    50% { transform: translate(-20px, 20px) scale(0.9); }
-    75% { transform: translate(40px, 10px) scale(1.05); }
-}
-
-/* 漂浮星星 */
-.floating-stars {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        radial-gradient(2px 2px at 20% 30%, var(--trans-white), transparent),
-        radial-gradient(2px 2px at 60% 70%, var(--trans-white), transparent),
-        radial-gradient(1px 1px at 50% 50%, var(--trans-white), transparent),
-        radial-gradient(1px 1px at 80% 10%, var(--trans-white), transparent),
-        radial-gradient(2px 2px at 90% 60%, var(--trans-white), transparent),
-        radial-gradient(1px 1px at 33% 80%, var(--trans-white), transparent);
-    background-size: 200% 200%;
-    animation: starsMove 60s linear infinite;
-}
-
-@keyframes starsMove {
-    from { background-position: 0% 0%; }
-    to { background-position: 100% 100%; }
-}
-
-/* --- 粒子容器 --- */
-#hero-particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
+/* --- 背景装饰 (保持不变) --- */
+.hero-background { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0; }
+.gradient-orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.5; animation: float 20s ease-in-out infinite; }
+.orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, var(--trans-pink), transparent); top: -200px; right: -200px; animation-delay: 0s; }
+.orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, var(--trans-blue), transparent); bottom: -150px; left: -150px; animation-delay: 7s; }
+.orb-3 { width: 300px; height: 300px; background: radial-gradient(circle, var(--trans-white), transparent); top: 50%; left: 50%; opacity: 0.4; transform: translate(-50%, -50%); animation-delay: 14s; }
+@keyframes float { 0%, 100% { transform: translate(0, 0) scale(1); } 25% { transform: translate(30px, -30px) scale(1.1); } 50% { transform: translate(-20px, 20px) scale(0.9); } 75% { transform: translate(40px, 10px) scale(1.05); } }
+.floating-stars { position: absolute; width: 100%; height: 100%; background-image: radial-gradient(2px 2px at 20% 30%, var(--trans-white), transparent), radial-gradient(2px 2px at 60% 70%, var(--trans-white), transparent), radial-gradient(1px 1px at 50% 50%, var(--trans-white), transparent), radial-gradient(1px 1px at 80% 10%, var(--trans-white), transparent), radial-gradient(2px 2px at 90% 60%, var(--trans-white), transparent), radial-gradient(1px 1px at 33% 80%, var(--trans-white), transparent); background-size: 200% 200%; animation: starsMove 60s linear infinite; }
+@keyframes starsMove { from { background-position: 0% 0%; } to { background-position: 100% 100%; } }
+#hero-particles { position: absolute; width: 100%; height: 100%; z-index: 1; }
 
 /* --- 卡片容器 --- */
 .hero-card-container {
     position: relative;
     z-index: 10;
-    max-width: 480px;
+    max-width: 900px; /* 增加最大宽度以容纳左右布局 */
     width: 100%;
 }
 
-/* --- 个人卡片 --- */
+/* --- 个人卡片 (核心修改) --- */
 .profile-card {
-    position: relative;
+    display: flex; /* 启用Flexbox实现左右布局 */
+    align-items: center; /* 垂直居中对齐 */
+    gap: 2.5rem; /* 左右栏间距 */
     background: var(--card-bg);
     backdrop-filter: blur(25px);
     border-radius: 32px;
-    padding: 3rem 2.5rem;
-    box-shadow: 
-        0 8px 32px var(--shadow-color-1),
-        0 16px 64px var(--shadow-color-2),
-        inset 0 1px 1px rgba(255, 255, 255, 0.9);
+    padding: 3rem;
+    box-shadow: 0 16px 48px var(--shadow-color-2);
     border: 2px solid rgba(255, 255, 255, 0.7);
     animation: cardAppear 0.8s ease-out;
-    transition: all 0.3s ease;
+    /* 新增: 3D悬停效果的过渡 */
+    transition: transform 0.1s linear, box-shadow 0.3s ease;
+    transform-style: preserve-3d; /* 开启3D空间 */
 }
-
 .profile-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 
-        0 12px 48px var(--shadow-color-1),
-        0 20px 80px var(--shadow-color-2),
-        inset 0 1px 1px rgba(255, 255, 255, 0.9);
+    box-shadow: 0 20px 64px var(--shadow-color-1);
 }
+@keyframes cardAppear { from { opacity: 0; transform: translateY(30px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
-@keyframes cardAppear {
-    from { opacity: 0; transform: translateY(30px) scale(0.95); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-/* --- 卡片顶部装饰 --- */
-.card-decoration-top {
+/* 新增: 卡片左右分栏 */
+.card-column-left {
+    flex-shrink: 0; /* 左栏不收缩 */
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: 1.5rem;
+}
+.card-column-right {
+    flex-grow: 1; /* 右栏占据剩余空间 */
+    text-align: left; /* 右栏文本左对齐 */
 }
 
-.deco-line {
-    flex: 1;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--trans-pink), transparent);
-}
-
-.deco-stars {
-    color: var(--trans-pink);
-    font-size: 0.8rem;
-    letter-spacing: 0.5rem;
-    animation: sparkle 3s ease-in-out infinite;
-}
-
-@keyframes sparkle {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-}
-
-/* --- 头像区域 --- */
-.avatar-wrapper {
-    position: relative;
-    width: 160px;
-    height: 160px;
-    margin: 0 auto 2rem;
-}
-
-/* 头像光晕 */
-.avatar-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 180px;
-    height: 180px;
-    background: linear-gradient(135deg, var(--trans-pink), var(--trans-blue));
-    border-radius: 50%;
-    filter: blur(30px);
-    opacity: 0.6;
-    animation: glowPulse 3s ease-in-out infinite;
-}
-
-@keyframes glowPulse {
-    0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
-    50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1); }
-}
-
-/* 头像边框 */
-.avatar-border {
-    position: relative;
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    padding: 5px;
-    background: linear-gradient(135deg, var(--trans-blue), var(--trans-white), var(--trans-pink));
-    animation: rotateBorder 10s linear infinite;
-    z-index: 2;
-}
-
-@keyframes rotateBorder {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.avatar-image {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--trans-white);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    animation: avatarFloat 4s ease-in-out infinite;
-}
-
-@keyframes avatarFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-/* 头像装饰 */
-.avatar-decoration {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-.sparkle {
-    position: absolute;
-    font-size: 1.5rem;
-    animation: sparkleFloat 3s ease-in-out infinite;
-}
-
+/* --- 头像区域 (移除旋转动画) --- */
+.avatar-wrapper { position: relative; width: 160px; height: 160px; }
+.avatar-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 180px; height: 180px; background: linear-gradient(135deg, var(--trans-pink), var(--trans-blue)); border-radius: 50%; filter: blur(30px); opacity: 0.6; animation: glowPulse 3s ease-in-out infinite; }
+@keyframes glowPulse { 0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1); } }
+.avatar-border { position: relative; width: 160px; height: 160px; border-radius: 50%; padding: 5px; background: linear-gradient(135deg, var(--trans-blue), var(--trans-white), var(--trans-pink)); z-index: 2; }
+.avatar-image { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid var(--trans-white); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); animation: avatarFloat 4s ease-in-out infinite; }
+@keyframes avatarFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.avatar-decoration { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+.sparkle { position: absolute; font-size: 1.5rem; animation: sparkleFloat 3s ease-in-out infinite; }
 .sparkle-1 { top: 0; right: 10px; animation-delay: 0s; }
 .sparkle-2 { bottom: 10px; left: 0; animation-delay: 1s; }
-.sparkle-3 { top: 20px; left: -10px; animation-delay: 2s; }
-
-@keyframes sparkleFloat {
-    0%, 100% { opacity: 1; transform: translateY(0) rotate(0deg); }
-    50% { opacity: 0.5; transform: translateY(-15px) rotate(180deg); }
-}
+@keyframes sparkleFloat { 0%, 100% { opacity: 1; transform: translateY(0) rotate(0deg); } 50% { opacity: 0.5; transform: translateY(-15px) rotate(180deg); } }
 
 /* --- 个人信息 --- */
-.profile-info {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.profile-name {
-    font-size: 2.5rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, var(--trans-blue), var(--trans-pink));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
-    animation: nameGlow 3s ease-in-out infinite;
-}
-
-@keyframes nameGlow {
-    0%, 100% { filter: drop-shadow(0 2px 8px var(--shadow-color-1)); }
-    50% { filter: drop-shadow(0 2px 16px var(--shadow-color-2)); }
-}
-
-.profile-tagline {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    margin: 0.5rem 0 1rem;
-    font-weight: 500;
-}
-
-.profile-bio {
-    font-size: 0.95rem;
-    color: var(--text-primary);
-    line-height: 1.6;
-    margin: 1rem 0;
-}
+.profile-info { margin-bottom: 2rem; }
+.profile-name { font-size: 3rem; font-weight: 900; background: linear-gradient(135deg, var(--trans-blue), var(--trans-pink)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; line-height: 1.2; animation: nameGlow 3s ease-in-out infinite; }
+@keyframes nameGlow { 0%, 100% { filter: drop-shadow(0 2px 8px var(--shadow-color-1)); } 50% { filter: drop-shadow(0 2px 16px var(--shadow-color-2)); } }
+.profile-tagline { font-size: 1.2rem; color: var(--text-secondary); margin: 0.5rem 0 1.5rem; font-weight: 500; }
+.profile-bio { font-size: 1rem; color: var(--text-primary); line-height: 1.7; margin: 1rem 0; }
 
 /* 标签云 */
-.profile-tags {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1.5rem;
-}
-
-.tag {
-    display: inline-block;
-    padding: 0.4rem 1rem;
-    background: linear-gradient(135deg, rgba(91, 206, 250, 0.1), rgba(245, 169, 184, 0.1));
-    border: 1px solid rgba(245, 169, 184, 0.3);
-    border-radius: 20px;
-    font-size: 0.85rem;
-    color: #f06292; /* A slightly deeper pink for readability */
-    font-weight: 600;
-    transition: all 0.3s ease;
-    cursor: default;
-}
-
-.tag:hover {
-    background: linear-gradient(135deg, rgba(91, 206, 250, 0.2), rgba(245, 169, 184, 0.2));
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px var(--shadow-color-2);
-}
+.profile-tags { display: flex; flex-wrap: wrap; justify-content: flex-start; /* 左对齐 */ gap: 0.75rem; margin-bottom: 2rem; }
+.tag { display: inline-block; padding: 0.4rem 1rem; background: linear-gradient(135deg, rgba(91, 206, 250, 0.1), rgba(245, 169, 184, 0.1)); border: 1px solid rgba(245, 169, 184, 0.3); border-radius: 20px; font-size: 0.85rem; color: #f06292; font-weight: 600; transition: all 0.3s ease; cursor: default; }
+.tag:hover { background: linear-gradient(135deg, rgba(91, 206, 250, 0.2), rgba(245, 169, 184, 0.2)); transform: translateY(-2px); box-shadow: 0 4px 12px var(--shadow-color-2); }
 
 /* --- 社交链接 --- */
-.profile-social {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin: 2rem 0;
-}
-
-.social-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(91, 206, 250, 0.1), rgba(245, 169, 184, 0.1));
-    border: 2px solid rgba(245, 169, 184, 0.2);
-    color: var(--trans-pink);
-    transition: all 0.3s ease;
-}
-
-.social-link:hover {
-    background: linear-gradient(135deg, var(--trans-blue), var(--trans-pink));
-    border-color: transparent;
-    color: var(--trans-white);
-    transform: translateY(-4px) scale(1.1);
-    box-shadow: 0 8px 20px var(--shadow-color-2);
-}
+.profile-social { display: flex; justify-content: center; gap: 1rem; }
+.social-link { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, rgba(91, 206, 250, 0.1), rgba(245, 169, 184, 0.1)); border: 2px solid rgba(245, 169, 184, 0.2); color: var(--trans-pink); transition: all 0.3s ease; }
+.social-link:hover { background: linear-gradient(135deg, var(--trans-blue), var(--trans-pink)); border-color: transparent; color: var(--trans-white); transform: translateY(-4px) scale(1.1); box-shadow: 0 8px 20px var(--shadow-color-2); }
 
 /* --- 统计数据 --- */
-.profile-stats {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr auto 1fr;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: linear-gradient(135deg, rgba(91, 206, 250, 0.05), rgba(245, 169, 184, 0.05));
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.8);
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-value {
-    font-size: 2rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, var(--trans-blue), var(--trans-pink));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    line-height: 1;
-}
-
-.stat-label {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-top: 0.5rem;
-    font-weight: 600;
-}
-
-.stat-divider {
-    width: 2px;
-    height: 40px;
-    background: linear-gradient(180deg, transparent, rgba(245, 169, 184, 0.4), transparent);
-}
-
-/* --- 底部装饰 --- */
-.card-decoration-bottom {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 2px solid rgba(255, 255, 255, 0.6);
-}
-
-.deco-wave {
-    height: 20px;
-    background: linear-gradient(90deg, 
-        transparent 0%,
-        rgba(91, 206, 250, 0.2) 25%,
-        rgba(245, 169, 184, 0.2) 75%,
-        transparent 100%);
-    border-radius: 10px;
-    animation: wave 3s ease-in-out infinite;
-}
-
-@keyframes wave {
-    0%, 100% { transform: scaleX(1); opacity: 0.5; }
-    50% { transform: scaleX(0.8); opacity: 0.8; }
-}
+.profile-stats { display: flex; /* 改为 flex 布局 */ justify-content: space-around; /* 均匀分布 */ gap: 1rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.6); }
+.stat-item { text-align: center; }
+.stat-value { font-size: 2.2rem; font-weight: 900; background: linear-gradient(135deg, var(--trans-blue), var(--trans-pink)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+.stat-label { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; font-weight: 600; }
+.stat-divider { width: 2px; background: linear-gradient(180deg, transparent, rgba(245, 169, 184, 0.4), transparent); }
 
 /* --- 向下箭头 --- */
-.scroll-indicator {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    color: var(--trans-pink);
-    border: 2px solid rgba(245, 169, 184, 0.3);
-    transition: all 0.3s ease;
-    animation: bounce 2s ease-in-out infinite;
-    z-index: 10;
-}
+.scroll-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); color: var(--trans-pink); border: 2px solid rgba(245, 169, 184, 0.3); transition: all 0.3s ease; animation: bounce 2s ease-in-out infinite; z-index: 10; }
+.scroll-indicator:hover { background: var(--trans-pink); color: var(--trans-white); transform: translateX(-50%) translateY(-4px); }
+@keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(10px); } }
 
-.scroll-indicator:hover {
-    background: var(--trans-pink);
-    color: var(--trans-white);
-    transform: translateX(-50%) translateY(-4px);
-}
-
-@keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(10px); }
-}
-
-/* --- 响应式设计 (保持不变) --- */
+/* --- 响应式设计 (核心修改) --- */
 @media (max-width: 768px) {
     .hero-card-section {
         min-height: auto;
-        padding: 3rem 1rem;
+        padding: 4rem 1rem;
     }
-
     .profile-card {
+        flex-direction: column; /* 垂直堆叠 */
         padding: 2.5rem 2rem;
-        border-radius: 24px;
+        gap: 1.5rem;
     }
-
-    .avatar-wrapper {
-        width: 140px;
-        height: 140px;
+    /* 修正: 移动端所有文本内容居中 */
+    .card-column-right {
+        text-align: center;
     }
-
-    .avatar-border {
-        width: 140px;
-        height: 140px;
+    .profile-tags {
+        justify-content: center; /* 标签居中 */
     }
-
-    .profile-name {
-        font-size: 2rem;
-    }
-
-    .profile-tagline {
-        font-size: 1rem;
-    }
-
-    .profile-stats {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .stat-divider {
-        display: none;
-    }
-
-    .stat-item {
-        padding: 0.5rem 0;
-    }
-
-    .stat-item:not(:last-child) {
-        border-bottom: 1px solid rgba(245, 169, 184, 0.2);
-    }
-
-    .scroll-indicator {
-        bottom: 1rem;
-    }
-
-    .orb-1, .orb-2, .orb-3 {
-        filter: blur(60px);
-        opacity: 0.4;
-    }
+    .profile-name { font-size: 2.5rem; }
+    .profile-tagline { font-size: 1.1rem; }
 }
 
 @media (max-width: 480px) {
-    .profile-card {
-        padding: 2rem 1.5rem;
-    }
-
-    .avatar-wrapper {
-        width: 120px;
-        height: 120px;
-    }
-
-    .avatar-border {
-        width: 120px;
-        height: 120px;
-    }
-
-    .profile-name {
-        font-size: 1.75rem;
-    }
-
-    .profile-social {
-        gap: 0.75rem;
-    }
-
-    .social-link {
-        width: 40px;
-        height: 40px;
-    }
-}
-
-/* --- 打印样式 (保持不变) --- */
-@media print {
-    .hero-card-section {
-        min-height: auto;
-        background: white;
-    }
-
-    .hero-background,
-    #hero-particles,
-    .scroll-indicator {
-        display: none;
-    }
-
-    .profile-card {
-        box-shadow: none;
-        border: 2px solid #e0e0e0;
-    }
-
-    .avatar-glow,
-    .avatar-decoration {
-        display: none;
-    }
-}
-
-/* ===================================
-   内容分类卡片区
-   =================================== */
-.content-sections {
-    padding: 4rem 0;
-    background-color: #fdfcff; /* 一个非常浅的粉紫色, 与上方衔接 */
-}
-
-.sections-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-.section-card {
-    position: relative;
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    background: var(--trans-white);
-    border-radius: 24px;
-    padding: 2rem;
-    box-shadow: 0 8px 30px rgba(245, 169, 184, 0.15);
-    transition: all 0.3s ease-out;
-    overflow: hidden;
-    border: 1px solid rgba(0,0,0,0.05);
-}
-
-.section-card:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 16px 40px rgba(91, 206, 250, 0.2);
-}
-
-.section-card .card-content {
-    position: relative;
-    z-index: 2;
-}
-
-.section-card .card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    line-height: 1;
-}
-
-.section-card .card-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin: 0 0 0.5rem;
-    color: var(--text-primary);
-}
-
-.section-card .card-description {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-}
-
-.section-card .card-meta {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--trans-pink);
-    border-top: 1px solid #eee;
-    padding-top: 1rem;
-}
-
-.section-card .card-hover-effect {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(91, 206, 250, 0.15) 0%, rgba(245, 169, 184, 0.15) 100%);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    transform-origin: center center;
-    z-index: 1;
-}
-
-.section-card:hover .card-hover-effect {
-    opacity: 1;
-}/* ===================================
-   二次元风格个人卡片英雄区
-   assets/css/components/hero-card.css
-   =================================== */
-
-/* --- 英雄区容器 --- */
-.hero-card-section {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4rem 2rem;
-    overflow: hidden;
-    background: linear-gradient(135deg, #fef5fc 0%, #f0f4ff 50%, #fef9fd 100%);
-}
-
-/* --- 背景装饰 --- */
-.hero-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 0;
-}
-
-/* 渐变光球 */
-.gradient-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.3;
-    animation: float 20s ease-in-out infinite;
-}
-
-.orb-1 {
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, #e580cd, transparent);
-    top: -200px;
-    right: -200px;
-    animation-delay: 0s;
-}
-
-.orb-2 {
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, #aaaaff, transparent);
-    bottom: -150px;
-    left: -150px;
-    animation-delay: 7s;
-}
-
-.orb-3 {
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, #ffb6e8, transparent);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation-delay: 14s;
-}
-
-@keyframes float {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    25% { transform: translate(30px, -30px) scale(1.1); }
-    50% { transform: translate(-20px, 20px) scale(0.9); }
-    75% { transform: translate(40px, 10px) scale(1.05); }
-}
-
-/* 漂浮星星 */
-.floating-stars {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        radial-gradient(2px 2px at 20% 30%, white, transparent),
-        radial-gradient(2px 2px at 60% 70%, white, transparent),
-        radial-gradient(1px 1px at 50% 50%, white, transparent),
-        radial-gradient(1px 1px at 80% 10%, white, transparent),
-        radial-gradient(2px 2px at 90% 60%, white, transparent),
-        radial-gradient(1px 1px at 33% 80%, white, transparent);
-    background-size: 200% 200%;
-    animation: starsMove 60s linear infinite;
-}
-
-@keyframes starsMove {
-    from { background-position: 0% 0%; }
-    to { background-position: 100% 100%; }
-}
-
-/* --- 粒子容器 --- */
-#hero-particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
-
-/* --- 卡片容器 --- */
-.hero-card-container {
-    position: relative;
-    z-index: 10;
-    max-width: 480px;
-    width: 100%;
-}
-
-/* --- 个人卡片 --- */
-.profile-card {
-    position: relative;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    border-radius: 32px;
-    padding: 3rem 2.5rem;
-    box-shadow: 
-        0 8px 32px rgba(229, 128, 205, 0.2),
-        0 16px 64px rgba(170, 170, 255, 0.15),
-        inset 0 1px 1px rgba(255, 255, 255, 0.9);
-    border: 2px solid rgba(255, 255, 255, 0.8);
-    animation: cardAppear 0.8s ease-out;
-    transition: all 0.3s ease;
-}
-
-.profile-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 
-        0 12px 48px rgba(229, 128, 205, 0.25),
-        0 20px 80px rgba(170, 170, 255, 0.2),
-        inset 0 1px 1px rgba(255, 255, 255, 0.9);
-}
-
-@keyframes cardAppear {
-    from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-/* --- 卡片顶部装饰 --- */
-.card-decoration-top {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.deco-line {
-    flex: 1;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #e580cd, transparent);
-}
-
-.deco-stars {
-    color: #e580cd;
-    font-size: 0.8rem;
-    letter-spacing: 0.5rem;
-    animation: sparkle 3s ease-in-out infinite;
-}
-
-@keyframes sparkle {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-}
-
-/* --- 头像区域 --- */
-.avatar-wrapper {
-    position: relative;
-    width: 160px;
-    height: 160px;
-    margin: 0 auto 2rem;
-}
-
-/* 头像光晕 */
-.avatar-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 180px;
-    height: 180px;
-    background: linear-gradient(135deg, #e580cd, #aaaaff);
-    border-radius: 50%;
-    filter: blur(30px);
-    opacity: 0.4;
-    animation: glowPulse 3s ease-in-out infinite;
-}
-
-@keyframes glowPulse {
-    0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
-    50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
-}
-
-/* 头像边框 */
-.avatar-border {
-    position: relative;
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    padding: 5px;
-    background: linear-gradient(135deg, #e580cd, #aaaaff, #ffb6e8);
-    animation: rotateBorder 10s linear infinite;
-    z-index: 2;
-}
-
-@keyframes rotateBorder {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.avatar-image {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid white;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    animation: avatarFloat 4s ease-in-out infinite;
-}
-
-@keyframes avatarFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-/* 头像装饰 */
-.avatar-decoration {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-.sparkle {
-    position: absolute;
-    font-size: 1.5rem;
-    animation: sparkleFloat 3s ease-in-out infinite;
-}
-
-.sparkle-1 {
-    top: 0;
-    right: 10px;
-    animation-delay: 0s;
-}
-
-.sparkle-2 {
-    bottom: 10px;
-    left: 0;
-    animation-delay: 1s;
-}
-
-.sparkle-3 {
-    top: 20px;
-    left: -10px;
-    animation-delay: 2s;
-}
-
-@keyframes sparkleFloat {
-    0%, 100% {
-        opacity: 1;
-        transform: translateY(0) rotate(0deg);
-    }
-    50% {
-        opacity: 0.5;
-        transform: translateY(-15px) rotate(180deg);
-    }
-}
-
-/* --- 个人信息 --- */
-.profile-info {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.profile-name {
-    font-size: 2.5rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, #e580cd, #aaaaff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
-    animation: nameGlow 3s ease-in-out infinite;
-}
-
-@keyframes nameGlow {
-    0%, 100% { filter: drop-shadow(0 2px 8px rgba(229, 128, 205, 0.3)); }
-    50% { filter: drop-shadow(0 2px 16px rgba(170, 170, 255, 0.4)); }
-}
-
-.profile-tagline {
-    font-size: 1.1rem;
-    color: #888;
-    margin: 0.5rem 0 1rem;
-    font-weight: 500;
-}
-
-.profile-bio {
-    font-size: 0.95rem;
-    color: #666;
-    line-height: 1.6;
-    margin: 1rem 0;
-}
-
-/* 标签云 */
-.profile-tags {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1.5rem;
-}
-
-.tag {
-    display: inline-block;
-    padding: 0.4rem 1rem;
-    background: linear-gradient(135deg, rgba(229, 128, 205, 0.1), rgba(170, 170, 255, 0.1));
-    border: 1px solid rgba(229, 128, 205, 0.3);
-    border-radius: 20px;
-    font-size: 0.85rem;
-    color: #e580cd;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    cursor: default;
-}
-
-.tag:hover {
-    background: linear-gradient(135deg, rgba(229, 128, 205, 0.2), rgba(170, 170, 255, 0.2));
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(229, 128, 205, 0.2);
-}
-
-/* --- 社交链接 --- */
-.profile-social {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin: 2rem 0;
-}
-
-.social-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(229, 128, 205, 0.1), rgba(170, 170, 255, 0.1));
-    border: 2px solid rgba(229, 128, 205, 0.2);
-    color: #e580cd;
-    transition: all 0.3s ease;
-}
-
-.social-link:hover {
-    background: linear-gradient(135deg, #e580cd, #aaaaff);
-    border-color: transparent;
-    color: white;
-    transform: translateY(-4px) scale(1.1);
-    box-shadow: 0 8px 20px rgba(229, 128, 205, 0.3);
-}
-
-/* --- 统计数据 --- */
-.profile-stats {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr auto 1fr;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: linear-gradient(135deg, rgba(229, 128, 205, 0.05), rgba(170, 170, 255, 0.05));
-    border-radius: 16px;
-    border: 1px solid rgba(229, 128, 205, 0.2);
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-value {
-    font-size: 2rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, #e580cd, #aaaaff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    line-height: 1;
-}
-
-.stat-label {
-    font-size: 0.85rem;
-    color: #888;
-    margin-top: 0.5rem;
-    font-weight: 600;
-}
-
-.stat-divider {
-    width: 2px;
-    height: 40px;
-    background: linear-gradient(180deg, transparent, rgba(229, 128, 205, 0.3), transparent);
-}
-
-/* --- 底部装饰 --- */
-.card-decoration-bottom {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 2px solid rgba(229, 128, 205, 0.1);
-}
-
-.deco-wave {
-    height: 20px;
-    background: linear-gradient(90deg, 
-        transparent 0%,
-        rgba(229, 128, 205, 0.2) 25%,
-        rgba(170, 170, 255, 0.2) 50%,
-        rgba(229, 128, 205, 0.2) 75%,
-        transparent 100%);
-    border-radius: 10px;
-    animation: wave 3s ease-in-out infinite;
-}
-
-@keyframes wave {
-    0%, 100% { transform: scaleX(1); opacity: 0.5; }
-    50% { transform: scaleX(0.8); opacity: 0.8; }
-}
-
-/* --- 向下箭头 --- */
-.scroll-indicator {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    color: #e580cd;
-    border: 2px solid rgba(229, 128, 205, 0.3);
-    transition: all 0.3s ease;
-    animation: bounce 2s ease-in-out infinite;
-    z-index: 10;
-}
-
-.scroll-indicator:hover {
-    background: rgba(229, 128, 205, 0.9);
-    color: white;
-    transform: translateX(-50%) translateY(-4px);
-}
-
-@keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(10px); }
-}
-
-/* --- 响应式设计 --- */
-@media (max-width: 768px) {
-    .hero-card-section {
-        min-height: auto;
-        padding: 3rem 1rem;
-    }
-
-    .profile-card {
-        padding: 2.5rem 2rem;
-        border-radius: 24px;
-    }
-
-    .avatar-wrapper {
-        width: 140px;
-        height: 140px;
-    }
-
-    .avatar-border {
-        width: 140px;
-        height: 140px;
-    }
-
-    .profile-name {
-        font-size: 2rem;
-    }
-
-    .profile-tagline {
-        font-size: 1rem;
-    }
-
-    .profile-stats {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .stat-divider {
-        display: none;
-    }
-
-    .stat-item {
-        padding: 0.5rem 0;
-    }
-
-    .stat-item:not(:last-child) {
-        border-bottom: 1px solid rgba(229, 128, 205, 0.2);
-    }
-
-    .scroll-indicator {
-        bottom: 1rem;
-    }
-
-    .orb-1, .orb-2, .orb-3 {
-        filter: blur(60px);
-        opacity: 0.2;
-    }
-}
-
-@media (max-width: 480px) {
-    .profile-card {
-        padding: 2rem 1.5rem;
-    }
-
-    .avatar-wrapper {
-        width: 120px;
-        height: 120px;
-    }
-
-    .avatar-border {
-        width: 120px;
-        height: 120px;
-    }
-
-    .profile-name {
-        font-size: 1.75rem;
-    }
-
-    .profile-social {
-        gap: 0.75rem;
-    }
-
-    .social-link {
-        width: 40px;
-        height: 40px;
-    }
-}
-
-/* --- 打印样式 --- */
-@media print {
-    .hero-card-section {
-        min-height: auto;
-        background: white;
-    }
-
-    .hero-background,
-    #hero-particles,
-    .scroll-indicator {
-        display: none;
-    }
-
-    .profile-card {
-        box-shadow: none;
-        border: 2px solid #e0e0e0;
-    }
-
-    .avatar-glow,
-    .avatar-decoration {
-        display: none;
-    }
-}
+    .profile-card { padding: 2rem 1.5rem; }
+    .avatar-wrapper, .avatar-border { width: 120px; height: 120px; }
+    .profile-name { font-size: 2rem; }
+}
+
+/* --- 内容分类卡片区 CSS (保持不变) --- */
+.content-sections { padding: 4rem 0; background-color: #fdfcff; }
+.sections-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+.section-card { position: relative; display: block; text-decoration: none; color: inherit; background: var(--trans-white); border-radius: 24px; padding: 2rem; box-shadow: 0 8px 30px rgba(245, 169, 184, 0.15); transition: all 0.3s ease-out; overflow: hidden; border: 1px solid rgba(0,0,0,0.05); }
+.section-card:hover { transform: translateY(-10px) scale(1.03); box-shadow: 0 16px 40px rgba(91, 206, 250, 0.2); }
+.section-card .card-content { position: relative; z-index: 2; }
+.section-card .card-icon { font-size: 2.5rem; margin-bottom: 1rem; line-height: 1; }
+.section-card .card-title { font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem; color: var(--text-primary); }
+.section-card .card-description { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem; }
+.section-card .card-meta { font-size: 0.9rem; font-weight: 600; color: var(--trans-pink); border-top: 1px solid #eee; padding-top: 1rem; }
+.section-card .card-hover-effect { position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(91, 206, 250, 0.15) 0%, rgba(245, 169, 184, 0.15) 100%); opacity: 0; transition: opacity 0.5s ease; transform-origin: center center; z-index: 1; }
+.section-card:hover .card-hover-effect { opacity: 1; }
+</style>
