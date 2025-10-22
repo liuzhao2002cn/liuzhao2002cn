@@ -17,26 +17,33 @@ canonifyURLs = true
   name = "肇自定义" 
   url = "https://github.com/liuzhao2002cn/liuzhao2002cn"
 # 菜单配置
+[taxonomies]
+  tag = "tags"
 [menu]
   [[menu.main]]
-    name = '首页'
-    url = '/'
+    name = "首页"
+    url = "/"
     weight = 1
   [[menu.main]]
-    name = '文章'
-    url = '/posts/'
+    name = "📚 笔记"
+    url = "/note/"
     weight = 2
   [[menu.main]]
-    name = '书籍'
-    url = '/books/'  
+    name = "🎨 评论"
+    url = "/opinion/"
     weight = 3
   [[menu.main]]
-    name = '关于'
-    url = '/about/'
-    weight = 3
-[taxonomies]
-  category = "categories"
-  tag = "tags"
+    name = "🌍 生活"
+    url = "/life/"
+    weight = 4
+  [[menu.main]]
+    name = "📖 书籍"
+    url = "/books/"
+    weight = 5
+  [[menu.main]]
+    name = "📥 下载"
+    url = "/downloads/"
+    weight = 6
 [outputs]
   home = ["HTML", "RSS", "JSON"]
   page = ["HTML"]
