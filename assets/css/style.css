@@ -14,6 +14,7 @@
 @import 'components/buttons.css';
 @import 'components/toc.css';
 @import 'components/collapse.css';
+@import 'components/hero-enhanced.css';
 
 /* 4. Pages */
 @import 'pages/home.css';
