@@ -72,3 +72,7 @@ canonifyURLs = true
   repoId = "R_kgDOQEhL8Q"              
   category = "Announcements"           
   categoryId = "DIC_kwDOQEhL8c4CwyYF"       
+[build]
+  writeStats = true
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
