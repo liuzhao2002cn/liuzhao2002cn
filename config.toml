@@ -1,12 +1,14 @@
 baseURL = 'https://liuzhao2002cn.github.io/liuzhao2002cn/'
 languageCode = 'zh-cn'
-title = '竱肇文档站'
+title = '竱肇'
 canonifyURLs = true
 [params]
   author = '肇'
   avatar = "images/lpip.jpg"
-  tagline = "“诚之者，择善而固执之”"
-  bio = """中国人，人文学术民工，东北工人家庭的子女，在新时代的废墟上长大的人。
+  tagline = "文档站"
+  bio = """“诚之者，择善而固执之者也。”——《礼记• 中庸》
+           “你能砍掉所有的鲜花，但你不能阻止春天的到来。”——巴勃罗·聂鲁达.
+        中国人，人文学术民工，东北工人家庭的子女，在新时代的旧废墟上长大的人。
         志趣：左翼理论研究（包括但不限于政治哲学和经济学）、近世以来华语与东亚的思想与社会。"""
   description = '分享生活与随想的个人网站'
   github = "https://github.com/liuzhao2002cn"
