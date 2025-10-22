@@ -1,0 +1,148 @@
+<!-- 华丽化英雄区 -->
+<section class="hero-enhanced">
+    <!-- 3D 背景层 -->
+    <div class="hero-background">
+        <!-- 渐变网格 -->
+        <div class="gradient-mesh"></div>
+        <!-- 流动粒子 -->
+        <div id="particles-js"></div>
+        <!-- 装饰性几何图形 -->
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </div>
+
+    <div class="hero-content">
+        <div class="container">
+            <!-- 主标题 -->
+            <div class="hero-title-wrapper">
+                <h1 class="hero-title">
+                    <span class="title-line title-line-1">刘兆的</span>
+                    <span class="title-line title-line-2">数字花园</span>
+                </h1>
+                <div class="title-decoration">
+                    <span class="decoration-line"></span>
+                    <span class="decoration-dot"></span>
+                    <span class="decoration-line"></span>
+                </div>
+            </div>
+
+            <!-- 动态打字机副标题 -->
+            <div class="hero-subtitle-wrapper">
+                <p class="hero-subtitle">
+                    <span class="typing-text" data-words='["在这里记录思考、分享知识、表达观点", "探索文学、哲学与生活的交织", "翻译作品、书写思想、传递价值"]'></span>
+                    <span class="typing-cursor">|</span>
+                </p>
+            </div>
+
+            <!-- CTA 按钮组 -->
+            <div class="hero-cta">
+                <a href="#featured-content" class="cta-button cta-primary">
+                    <span class="button-text">探索内容</span>
+                    <span class="button-icon">→</span>
+                </a>
+                <a href="/about/" class="cta-button cta-secondary">
+                    <span class="button-text">了解更多</span>
+                    <span class="button-icon">↗</span>
+                </a>
+            </div>
+
+            <!-- 动态统计数据 -->
+            <div class="hero-stats">
+                {{ $notePages := where .Site.RegularPages "Section" "note" }}
+                {{ $opinionPages := where .Site.RegularPages "Section" "opinion" }}
+                {{ $lifePages := where .Site.RegularPages "Section" "life" }}
+                {{ $bookPages := where .Site.RegularPages "Section" "books" }}
+                {{ $totalPages := len .Site.RegularPages }}
+                
+                <div class="stat-item">
+                    <div class="stat-number" data-target="{{ $totalPages }}">0</div>
+                    <div class="stat-label">篇文章</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="4">0</div>
+                    <div class="stat-label">个分类</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="{{ len $bookPages }}">0</div>
+                    <div class="stat-label">本书籍</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 滚动指示器 -->
+    <div class="scroll-indicator">
+        <div class="scroll-mouse">
+            <div class="scroll-wheel"></div>
+        </div>
+        <span class="scroll-text">向下探索</span>
+    </div>
+</section>
+
+<!-- 内容分类卡片区 -->
+<section id="featured-content" class="content-sections">
+    <div class="container">
+        <div class="sections-grid">
+            <!-- 读书笔记 -->
+            <a href="/note/" class="section-card">
+                <div class="card-background"></div>
+                <div class="card-content">
+                    <div class="card-icon">📚</div>
+                    <h3 class="card-title">读书笔记</h3>
+                    <p class="card-description">阅读思考与知识沉淀</p>
+                    <div class="card-meta">
+                        <span class="card-count">{{ len $notePages }} 篇</span>
+                    </div>
+                </div>
+                <div class="card-hover-effect"></div>
+            </a>
+
+            <!-- 个人评论 -->
+            <a href="/opinion/" class="section-card">
+                <div class="card-background"></div>
+                <div class="card-content">
+                    <div class="card-icon">🎨</div>
+                    <h3 class="card-title">个人评论</h3>
+                    <p class="card-description">独立思考与观点表达</p>
+                    <div class="card-meta">
+                        <span class="card-count">{{ len $opinionPages }} 篇</span>
+                    </div>
+                </div>
+                <div class="card-hover-effect"></div>
+            </a>
+
+            <!-- 见闻感受 -->
+            <a href="/life/" class="section-card">
+                <div class="card-background"></div>
+                <div class="card-content">
+                    <div class="card-icon">🌍</div>
+                    <h3 class="card-title">见闻感受</h3>
+                    <p class="card-description">生活体验与情感记录</p>
+                    <div class="card-meta">
+                        <span class="card-count">{{ len $lifePages }} 篇</span>
+                    </div>
+                </div>
+                <div class="card-hover-effect"></div>
+            </a>
+
+            <!-- 我的书籍 -->
+            <a href="/books/" class="section-card">
+                <div class="card-background"></div>
+                <div class="card-content">
+                    <div class="card-icon">📖</div>
+                    <h3 class="card-title">我的书籍</h3>
+                    <p class="card-description">翻译作品与原创书籍</p>
+                    <div class="card-meta">
+                        <span class="card-count">{{ len $bookPages }} 本</span>
+                    </div>
+                </div>
+                <div class="card-hover-effect"></div>
+            </a>
+        </div>
+    </div>
+</section>
