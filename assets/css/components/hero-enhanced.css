@@ -1,3 +1,7 @@
+/* ===================================
+   assets/css/components/hero-enhanced.css
+   =================================== */
+
 /* --- 颜色变量定义 --- */
 :root {
     --trans-blue: #5BCEFA;
@@ -22,7 +26,7 @@
     background: linear-gradient(135deg, #f0f8ff 0%, #fff0f5 100%);
 }
 
-/* --- 背景装饰 (保持不变) --- */
+/* --- 背景装饰 --- */
 .hero-background { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0; }
 .gradient-orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.5; animation: float 20s ease-in-out infinite; }
 .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, var(--trans-pink), transparent); top: -200px; right: -200px; animation-delay: 0s; }
@@ -37,15 +41,15 @@
 .hero-card-container {
     position: relative;
     z-index: 10;
-    max-width: 900px; /* 增加最大宽度以容纳左右布局 */
+    max-width: 900px;
     width: 100%;
 }
 
-/* --- 个人卡片 (核心修改) --- */
+/* --- 个人卡片 --- */
 .profile-card {
-    display: flex; /* 启用Flexbox实现左右布局 */
-    align-items: center; /* 垂直居中对齐 */
-    gap: 2.5rem; /* 左右栏间距 */
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
     background: var(--card-bg);
     backdrop-filter: blur(25px);
     border-radius: 32px;
@@ -53,29 +57,28 @@
     box-shadow: 0 16px 48px var(--shadow-color-2);
     border: 2px solid rgba(255, 255, 255, 0.7);
     animation: cardAppear 0.8s ease-out;
-    /* 新增: 3D悬停效果的过渡 */
     transition: transform 0.1s linear, box-shadow 0.3s ease;
-    transform-style: preserve-3d; /* 开启3D空间 */
+    transform-style: preserve-3d;
 }
 .profile-card:hover {
     box-shadow: 0 20px 64px var(--shadow-color-1);
 }
 @keyframes cardAppear { from { opacity: 0; transform: translateY(30px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
-/* 新增: 卡片左右分栏 */
+/* 卡片左右分栏 */
 .card-column-left {
-    flex-shrink: 0; /* 左栏不收缩 */
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
 }
 .card-column-right {
-    flex-grow: 1; /* 右栏占据剩余空间 */
-    text-align: left; /* 右栏文本左对齐 */
+    flex-grow: 1;
+    text-align: left;
 }
 
-/* --- 头像区域 (移除旋转动画) --- */
+/* --- 头像区域 --- */
 .avatar-wrapper { position: relative; width: 160px; height: 160px; }
 .avatar-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 180px; height: 180px; background: linear-gradient(135deg, var(--trans-pink), var(--trans-blue)); border-radius: 50%; filter: blur(30px); opacity: 0.6; animation: glowPulse 3s ease-in-out infinite; }
 @keyframes glowPulse { 0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1); } }
@@ -96,7 +99,7 @@
 .profile-bio { font-size: 1rem; color: var(--text-primary); line-height: 1.7; margin: 1rem 0; }
 
 /* 标签云 */
-.profile-tags { display: flex; flex-wrap: wrap; justify-content: flex-start; /* 左对齐 */ gap: 0.75rem; margin-bottom: 2rem; }
+.profile-tags { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 0.75rem; margin-bottom: 2rem; }
 .tag { display: inline-block; padding: 0.4rem 1rem; background: linear-gradient(135deg, rgba(91, 206, 250, 0.1), rgba(245, 169, 184, 0.1)); border: 1px solid rgba(245, 169, 184, 0.3); border-radius: 20px; font-size: 0.85rem; color: #f06292; font-weight: 600; transition: all 0.3s ease; cursor: default; }
 .tag:hover { background: linear-gradient(135deg, rgba(91, 206, 250, 0.2), rgba(245, 169, 184, 0.2)); transform: translateY(-2px); box-shadow: 0 4px 12px var(--shadow-color-2); }
 
@@ -106,7 +109,7 @@
 .social-link:hover { background: linear-gradient(135deg, var(--trans-blue), var(--trans-pink)); border-color: transparent; color: var(--trans-white); transform: translateY(-4px) scale(1.1); box-shadow: 0 8px 20px var(--shadow-color-2); }
 
 /* --- 统计数据 --- */
-.profile-stats { display: flex; /* 改为 flex 布局 */ justify-content: space-around; /* 均匀分布 */ gap: 1rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.6); }
+.profile-stats { display: flex; justify-content: space-around; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.6); }
 .stat-item { text-align: center; }
 .stat-value { font-size: 2.2rem; font-weight: 900; background: linear-gradient(135deg, var(--trans-blue), var(--trans-pink)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
 .stat-label { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; font-weight: 600; }
@@ -117,23 +120,22 @@
 .scroll-indicator:hover { background: var(--trans-pink); color: var(--trans-white); transform: translateX(-50%) translateY(-4px); }
 @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(10px); } }
 
-/* --- 响应式设计 (核心修改) --- */
+/* --- 响应式设计 --- */
 @media (max-width: 768px) {
     .hero-card-section {
         min-height: auto;
         padding: 4rem 1rem;
     }
     .profile-card {
-        flex-direction: column; /* 垂直堆叠 */
+        flex-direction: column;
         padding: 2.5rem 2rem;
         gap: 1.5rem;
     }
-    /* 修正: 移动端所有文本内容居中 */
     .card-column-right {
         text-align: center;
     }
     .profile-tags {
-        justify-content: center; /* 标签居中 */
+        justify-content: center;
     }
     .profile-name { font-size: 2.5rem; }
     .profile-tagline { font-size: 1.1rem; }
@@ -145,7 +147,7 @@
     .profile-name { font-size: 2rem; }
 }
 
-/* --- 内容分类卡片区 CSS (保持不变) --- */
+/* --- 内容分类卡片区 CSS --- */
 .content-sections { padding: 4rem 0; background-color: #fdfcff; }
 .sections-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
 .section-card { position: relative; display: block; text-decoration: none; color: inherit; background: var(--trans-white); border-radius: 24px; padding: 2rem; box-shadow: 0 8px 30px rgba(245, 169, 184, 0.15); transition: all 0.3s ease-out; overflow: hidden; border: 1px solid rgba(0,0,0,0.05); }
@@ -157,4 +159,3 @@
 .section-card .card-meta { font-size: 0.9rem; font-weight: 600; color: var(--trans-pink); border-top: 1px solid #eee; padding-top: 1rem; }
 .section-card .card-hover-effect { position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(91, 206, 250, 0.15) 0%, rgba(245, 169, 184, 0.15) 100%); opacity: 0; transition: opacity 0.5s ease; transform-origin: center center; z-index: 1; }
 .section-card:hover .card-hover-effect { opacity: 1; }
-</style>
