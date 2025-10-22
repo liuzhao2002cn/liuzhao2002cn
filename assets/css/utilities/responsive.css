@@ -344,7 +344,7 @@ table {
 
     .content-wrapper {
         max-width: 100%;
-        overflow-x: hidden;
+        margin: 0 auto;
     }
 
     /* 章节列表 */
@@ -364,7 +364,41 @@ table {
         align-self: flex-end;
     }
 }
-
+@media (min-width: 768px) {
+    .content-wrapper {
+        max-width: 800px;
+        background: var(--white);
+        border-radius: 12px;
+        padding: 2.5rem;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+}
+@media (max-width: 767px) {
+    .content-wrapper {
+        background: transparent;
+        padding: 1rem;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    
+    /* 移动端文章内容优化 */
+    .content-wrapper h1,
+    .content-wrapper h2,
+    .content-wrapper h3 {
+        font-size: 1.5rem;
+    }
+    
+    .content-wrapper p,
+    .content-wrapper li {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+    
+    /* 移除不必要的边距 */
+    .content-wrapper > *:first-child {
+        margin-top: 0;
+    }
+}
 /* 超小屏幕优化 */
 @media (max-width: 480px) {
     body {
