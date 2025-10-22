@@ -565,6 +565,31 @@ document.addEventListener('DOMContentLoaded', function() {
                 ]);
             }, 500);
         }
+            async function performSearch() {
+                const query = input.value.trim();
+                if (!query) {
+                    showInitialState();
+                    return;
+                }
+
+                showLoadingState();
+
+                const pagefind = await import("/pagefind/pagefind.js");
+                const search = await pagefind.search(query);
+                const results = await Promise.all(search.results.map(r => r.data()));
+    
+                // 应用筛选
+                const category = document.querySelector('.category-button.active').dataset.category;
+                const scope = document.querySelector('input[name="scope"]:checked').value;
+    
+                let filtered = results;
+    
+                if (category !== 'all') {
+                    filtered = filtered.filter(r => r.url.includes(`/${category}/`));
+                }
+    
+                showResults(filtered);
+            }
     }
 
     function showInitialState() {
