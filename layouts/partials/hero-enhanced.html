@@ -1,3 +1,8 @@
+{{- $notePages := where site.RegularPages "Section" "note" -}}
+{{- $opinionPages := where site.RegularPages "Section" "opinion" -}}
+{{- $lifePages := where site.RegularPages "Section" "life" -}}
+{{- $bookPages := where site.RegularPages "Section" "books" -}}
+
 <!-- layouts/partials/hero-card.html -->
 <section class="hero-card-section">
     <!-- 背景装饰 -->
