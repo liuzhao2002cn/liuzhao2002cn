@@ -41,10 +41,12 @@ jobs:
         run: npm install
         
       - name: Build
-        run: hugo --minify
+        env:
+          HUGO_ENVIRONMENT: production
+        run: hugo --minify --baseURL https://liuzhao2002cn.github.io/liuzhao2002cn/
 
       - name: Generate search index with Pagefind
-        run: npx pagefind --source public
+        run: npx pagefind --site public --base-url /liuzhao2002cn
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
