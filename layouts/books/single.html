@@ -1,9 +1,9 @@
 {{ define "main" }}
 <!-- 这个文件专门用于章节内容页 -->
-<article class="post-single">
+<article class="post-single" data-pagefind-body>
     <div class="container">
         <div class="content-wrapper">
-            <nav class="breadcrumb">
+            <nav class="breadcrumb" data-pagefind-ignore>
                 <a href="/books/" class="breadcrumb-link">📚 书架</a>
                 <span class="breadcrumb-separator">›</span>
                 <a href="{{ .Parent.Permalink }}" class="breadcrumb-link">{{ .Parent.Title }}</a>
@@ -13,7 +13,7 @@
 
             <div class="chapter-content-page">
                 <header class="chapter-content-header">
-                    <h1 class="chapter-content-title">{{ .Title }}</h1>
+                    <h1 class="chapter-content-title" data-pagefind-meta="title">{{ .Title }}</h1>
                     <div class="chapter-content-meta">
                         <span class="meta-item">📖 约 {{ .ReadingTime }} 分钟阅读</span>
                         {{ with .Date }}
