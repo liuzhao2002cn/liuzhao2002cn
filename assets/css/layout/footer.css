@@ -222,44 +222,6 @@
     border-bottom-color: rgba(236, 72, 153, 0.6);
 }
 
-/* 返回顶部按钮 */
-.back-to-top {
-    position: fixed;
-    bottom: 2.5rem;
-    right: 2.5rem;
-    width: 56px;
-    height: 56px;
-    background: linear-gradient(135deg, #6C63FF, #EC4899);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 8px 25px rgba(108, 99, 255, 0.3);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 99;
-}
-
-.back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.back-to-top:hover {
-    transform: translateY(-8px) scale(1.1);
-    box-shadow: 0 12px 35px rgba(108, 99, 255, 0.4);
-}
-
-.back-to-top:active {
-    transform: scale(0.95);
-}
-
 /* ====== 响应式设计 ====== */
 
 /* Header 响应式 */
