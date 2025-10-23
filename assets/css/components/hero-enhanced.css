@@ -181,9 +181,14 @@
 .tag:hover { background: linear-gradient(135deg, rgba(91, 206, 250, 0.2), rgba(245, 169, 184, 0.2)); transform: translateY(-2px); box-shadow: 0 4px 12px var(--shadow-color-2); }
 
 /* --- 社交链接 --- */
-.profile-social { display: flex; justify-content: center; gap: 1rem; }
+.profile-social { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
 .social-link { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, rgba(91, 206, 250, 0.1), rgba(245, 169, 184, 0.1)); border: 2px solid rgba(245, 169, 184, 0.2); color: var(--trans-pink); transition: all 0.3s ease; }
 .social-link:hover { background: linear-gradient(135deg, var(--trans-blue), var(--trans-pink)); border-color: transparent; color: var(--trans-white); transform: translateY(-4px) scale(1.1); box-shadow: 0 8px 20px var(--shadow-color-2); }
+
+/* --- 关于我按钮 --- */
+.about-me-button { display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; max-width: 200px; margin: 1rem auto 0; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, var(--trans-blue), var(--trans-pink)); color: var(--trans-white); border-radius: 25px; text-decoration: none; font-size: 0.95rem; font-weight: 600; box-shadow: 0 4px 12px rgba(245, 169, 184, 0.3); transition: all 0.3s ease; }
+.about-me-button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(245, 169, 184, 0.4); }
+.about-me-button svg { flex-shrink: 0; }
 
 /* --- 统计数据 --- */
 .profile-stats { display: flex; justify-content: space-around; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.6); }
