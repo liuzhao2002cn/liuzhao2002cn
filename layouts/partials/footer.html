@@ -47,4 +47,8 @@
         </div>
     </div>
 </footer>
-<script src="{{ "js/hero-enhanced.js" | relURL }}"></script>
+{{ $herojs := resources.Get "js/hero-enhanced.js" }}
+{{ if hugo.IsProduction }}{{ $herojs = $herojs | minify | fingerprint }}{{ end }}
+{{ if $herojs }}
+<script src="{{ $herojs.RelPermalink }}" integrity="{{ $herojs.Data.Integrity }}" defer></script>
+{{ end }}
