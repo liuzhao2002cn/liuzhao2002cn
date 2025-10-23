@@ -95,52 +95,9 @@
             </div>
         </div>
     </nav>
+
+    <!-- 侧边栏遮罩层 -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 </header>
 
 <div class="reading-progress" id="readingProgress"></div>
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-<script>  
-(function() {
-    const menuToggle = document.getElementById('menuToggle');
-    const dropdownMenu = document.getElementById('dropdownMenu');
-    const menuOverlay = document.getElementById('menuOverlay');
-    
-    if (!menuToggle || !dropdownMenu || !menuOverlay) return;
-    
-    function toggleMenu() {
-        const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
-        
-        menuToggle.setAttribute('aria-expanded', !isOpen);
-        dropdownMenu.setAttribute('aria-hidden', isOpen);
-        menuToggle.classList.toggle('active');
-        dropdownMenu.classList.toggle('active');
-        menuOverlay.classList.toggle('active');
-        document.body.style.overflow = isOpen ? '' : 'hidden';
-    }
-    
-    function closeMenu() {
-        menuToggle.setAttribute('aria-expanded', 'false');
-        dropdownMenu.setAttribute('aria-hidden', 'true');
-        menuToggle.classList.remove('active');
-        dropdownMenu.classList.remove('active');
-        menuOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-    
-    menuToggle.addEventListener('click', toggleMenu);
-    menuOverlay.addEventListener('click', closeMenu);
-    
-    // 点击菜单项后关闭菜单
-    const menuLinks = dropdownMenu.querySelectorAll('.menu-link');
-    menuLinks.forEach(link => {
-        link.addEventListener('click', closeMenu);
-    });
-    
-    // ESC 键关闭菜单
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
-            closeMenu();
-        }
-    });
-})();
-</script>
