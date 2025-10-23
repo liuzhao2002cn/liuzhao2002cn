@@ -61,8 +61,24 @@
                     {{ with .Site.Params.tagline }}
                     <p class="profile-tagline">{{ . }}</p>
                     {{ end }}
+
+                    <!-- 格言区域 -->
+                    {{ if .Site.Params.quotes }}
+                    <div class="profile-quotes">
+                        {{ range .Site.Params.quotes }}
+                        <blockquote class="hero-quote">
+                            <p class="quote-text">{{ .text }}</p>
+                            <cite class="quote-author">—— {{ .author }}</cite>
+                        </blockquote>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+
+                    <!-- 个人简介 -->
                     {{ with .Site.Params.bio }}
-                    <p class="profile-bio">{{ . }}</p>
+                    <div class="profile-bio-section">
+                        <p class="profile-bio">{{ . }}</p>
+                    </div>
                     {{ end }}
                 </div>
 

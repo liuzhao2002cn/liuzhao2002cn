@@ -1,0 +1,116 @@
+{{/*
+参考文献列表 Shortcode
+用法:
+{{< ref >}}
+- 作者1. (年份). 标题. 出版社.
+- 作者2. (年份). 标题. 链接
+{{< /ref >}}
+*/}}
+
+<div class="references-section">
+    <h2 class="references-title">
+        <span class="title-icon">📚</span>
+        <span class="title-text">参考文献</span>
+    </h2>
+    <div class="references-list">
+        {{ .Inner | markdownify }}
+    </div>
+</div>
+
+<style>
+/* 参考文献区域 */
+.references-section {
+    margin: 3rem 0 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg,
+        rgba(245, 169, 184, 0.05),
+        rgba(91, 206, 250, 0.05),
+        rgba(255, 255, 255, 0.98)
+    );
+    border-radius: 12px;
+    border: 2px solid transparent;
+    background-image:
+        linear-gradient(white, white),
+        linear-gradient(135deg, var(--trans-pink), var(--trans-blue));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.references-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--trans-blue);
+    font-weight: 700;
+    border-bottom: 2px solid var(--trans-pink);
+    padding-bottom: 0.75rem;
+}
+
+.title-icon {
+    font-size: 1.5rem;
+}
+
+.title-text {
+    background: linear-gradient(135deg, var(--trans-blue), var(--trans-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.references-list {
+    font-family: var(--font-quote);
+}
+
+.references-list ul,
+.references-list ol {
+    list-style-position: inside;
+    padding-left: 0;
+}
+
+.references-list li {
+    margin: 1rem 0;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-left: 3px solid var(--trans-pink);
+    border-radius: 4px;
+    line-height: 1.8;
+    transition: all 0.3s ease;
+}
+
+.references-list li:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(245, 169, 184, 0.2);
+}
+
+.references-list a {
+    color: var(--trans-blue);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--trans-blue);
+    transition: all 0.3s ease;
+}
+
+.references-list a:hover {
+    color: var(--trans-pink);
+    border-bottom-color: var(--trans-pink);
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    .references-section {
+        padding: 1.5rem 1rem;
+        margin: 2rem 0;
+    }
+
+    .references-title {
+        font-size: 1.3rem;
+    }
+
+    .references-list li {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+}
+</style>
