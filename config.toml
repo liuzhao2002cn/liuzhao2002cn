@@ -6,7 +6,7 @@ canonifyURLs = true
   author = '肇'
   avatar = "images/lpip.jpg"
   displayName = "竱肇"
-  tagline = "左翼思想探究者，普通中国工人的子女"
+  tagline = "求索大同世界"
   # 格言部分 - 使用数组格式
   [[params.quotes]]
     text = "诚之者，择善而固执之者也。"
