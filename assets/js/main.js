@@ -89,21 +89,9 @@ function initializeNavbar() {
 
 
 /**
- * 初始化页面增强功能，如返回顶部、网站运行时间和外部链接处理
+ * 初始化页面增强功能，如网站运行时间和外部链接处理
  */
 function initializePageEnhancements() {
-    // --- 返回顶部按钮 ---
-    const backToTop = document.getElementById('backToTop');
-    if (backToTop) {
-        window.addEventListener('scroll', () => {
-            backToTop.classList.toggle('visible', window.pageYOffset > 300);
-        });
-
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-
     // --- 网站运行时长计算 ---
     const daysEl = document.getElementById('days');
     if (daysEl) {
