@@ -283,11 +283,12 @@
 }
 
 .chapter-number {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: #999;
     margin-right: 0.75rem;
     min-width: 60px;
     flex-shrink: 0;
+    font-weight: 600;
 }
 
 .chapter-link:hover .chapter-number {
@@ -296,7 +297,7 @@
 
 .chapter-title {
     flex: 1;
-    font-size: 1rem;
+    font-size: 1.05rem;
 }
 
 .chapter-arrow {
@@ -651,12 +652,12 @@
     /* 修复移动端章节号和标题大小不平衡的问题 */
     .chapter-number {
         min-width: 65px;
-        font-size: 0.9rem; /* 从0.8rem增大到0.9rem */
-        font-weight: 600; /* 增加字重，使其更醒目 */
+        font-size: 0.95rem;
+        font-weight: 600;
     }
 
     .chapter-title {
-        font-size: 0.95rem; /* 从1rem略微减小到0.95rem */
+        font-size: 1rem;
     }
 
     .chapter-content-page {

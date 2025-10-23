@@ -57,7 +57,7 @@
             <div class="card-column-right">
                 <!-- 个人信息 -->
                 <div class="profile-info">
-                    <h1 class="profile-name">{{ .Site.Title }}</h1>
+                    <h1 class="profile-name">{{ .Site.Params.displayName | default .Site.Title }}</h1>
                     {{ with .Site.Params.tagline }}
                     <p class="profile-tagline">{{ . }}</p>
                     {{ end }}

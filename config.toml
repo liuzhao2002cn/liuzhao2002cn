@@ -1,11 +1,12 @@
 baseURL = 'https://liuzhao2002cn.github.io/liuzhao2002cn/'
 languageCode = 'zh-cn'
-title = '竱肇'
+title = '竱肇文档站'
 canonifyURLs = true
 [params]
   author = '肇'
   avatar = "images/lpip.jpg"
-  tagline = "文档站"
+  displayName = "竱肇"
+  tagline = "无穷的远方，无数的人们，都和我有关。"
   # 格言部分 - 使用数组格式
   [[params.quotes]]
     text = "诚之者，择善而固执之者也。"
