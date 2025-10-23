@@ -31,9 +31,15 @@ blockquote {
     border-radius: 8px;
     position: relative;
     color: #444;
+    font-style: normal !important;
 }
+
 blockquote p {
     margin: 0.5rem 0;
+    font-style: normal !important;
+}
+blockquote * {
+    font-style: normal !important;
 }
 blockquote::before {
     content: '"';
