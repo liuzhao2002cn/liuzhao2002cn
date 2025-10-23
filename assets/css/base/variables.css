@@ -18,4 +18,18 @@
     --font-body: "Noto Serif SC", "思源宋体", serif;        /* 正文：思源宋体 */
     --font-quote: "LXGW WenKai", "霞鹜文楷", serif;         /* 引用：文楷 */
     --font-code: 'Monaco', 'Menlo', 'Consolas', monospace;
+
+    /* 过渡动画 - Transition Timing */
+    --transition-fast: 0.2s ease;                           /* 快速交互 */
+    --transition-base: 0.3s ease;                           /* 标准过渡 */
+    --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 平滑过渡 */
+    --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);   /* 慢速过渡 */
+    --transition-width: 0.6s ease;                          /* 宽度变化 */
+
+    /* 组合过渡效果 */
+    --transition-all: all var(--transition-base);
+    --transition-all-smooth: all var(--transition-smooth);
+    --transition-all-slow: all var(--transition-slow);
+    --transition-opacity: opacity var(--transition-base), visibility var(--transition-base);
+    --transition-transform: transform var(--transition-slow);
 }
