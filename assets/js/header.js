@@ -71,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const sidebarLinks = document.querySelectorAll('.sidebar-link');
     sidebarLinks.forEach(link => {
         link.addEventListener('click', function() {
-            // 延迟关闭，让用户看到点击反馈
             setTimeout(closeSidebar, 200);
         });
     });
@@ -120,9 +119,6 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             header.classList.remove('scrolled');
         }
-        
-        // 可选：向下滚动隐藏头部，向上滚动显示（取消注释启用）
-        /*
         if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
             // 向下滚动
             header.style.transform = 'translateY(-100%)';
@@ -131,7 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
             header.style.transform = 'translateY(0)';
         }
         lastScrollTop = scrollTop;
-        */
     }
     
     // 使用节流优化滚动性能
@@ -236,23 +231,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     
-    // ========================================
-    // 7. 防止快速多次点击（通过 CSS transition 和状态检查处理）
-    // ========================================
-
-    // 注意：侧边栏切换事件已经在上方绑定（第40行），
-    // CSS transition 会自动处理动画过渡，无需额外防抖
-    
-    
-    // ========================================
-    // 8. 窗口大小改变时的处理
-    // ========================================
-    
     let resizeTimeout;
     window.addEventListener('resize', function() {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(function() {
-            // 如果窗口变大到桌面尺寸，自动关闭侧边栏
             if (window.innerWidth > 768 && sidebarMenu.classList.contains('active')) {
                 closeSidebar();
             }
@@ -294,7 +276,7 @@ window.closeSidebar = function() {
     
     if (sidebarMenu) {
         sidebarMenu.classList.remove('active');
-        sidebarMenu.setAttribute('aria-hidden'， 'true');
+        sidebarMenu.setAttribute('aria-hidden', 'true');
     }
     
     if (sidebarOverlay) {
