@@ -197,6 +197,40 @@
 .stat-label { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; font-weight: 600; }
 .stat-divider { width: 2px; background: linear-gradient(180deg, transparent, rgba(245, 169, 184, 0.4), transparent); }
 
+/* --- 英雄区底部操作按钮 --- */
+.hero-bottom-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 11;
+}
+
+.about-me-button-center {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    background: linear-gradient(135deg, #5BCEFA, #F5A9B8);
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0 6px 20px rgba(245, 169, 184, 0.4);
+    transition: all 0.3s ease;
+}
+
+.about-me-button-center:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(245, 169, 184, 0.5);
+}
+
+.about-me-button-center svg {
+    flex-shrink: 0;
+}
+
 /* --- 向下箭头 --- */
 .scroll-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); color: var(--trans-pink); border: 2px solid rgba(245, 169, 184, 0.3); transition: all 0.3s ease; animation: bounce 2s ease-in-out infinite; z-index: 10; }
 .scroll-indicator:hover { background: var(--trans-pink); color: var(--trans-white); transform: translateX(-50%) translateY(-4px); }
