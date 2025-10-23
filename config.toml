@@ -18,7 +18,6 @@ canonifyURLs = true
   email = "liuzhao2002cn@gmail.com"
   twitter = "https://x.com/liuzhao_cn"
   bilibili = "https://space.bilibili.com/your-uid"
-  siteStartDate = "2025-10-21"
   license = '本站内容采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 国际许可协议。'
 # 格言部分 - 必须放在 [params] section 之外
 [[params.quotes]]
