@@ -7,10 +7,11 @@ canonifyURLs = true
   author = '肇'
   avatar = "images/lpip.jpg"
   displayName = "竱肇"
-  tagline = "求索大同世界"
+  tagline = "LiuZhuanZhao_Home"
   bio = """中国工人的子女，在新时代的旧废墟上长大的人。
-志趣：左翼理论研究（包括但不限于政治哲学和经济学）、近世以来华语与东亚的思想与社会。"""
-  description = '分享生活与随想的个人网站'
+           志趣：左翼理论研究（包括但不限于政治哲学和经济学）、
+           近世以来华语与东亚的思想与社会。"""
+  description = '分享生活、思考与随想的个人网站'
   github = "https://github.com/liuzhao2002cn"
   douban = "https://www.douban.com/people/liuzhao2002cn/"
   facebook = "https://www.facebook.com/ZhuanZhao.cn"
@@ -22,11 +23,9 @@ canonifyURLs = true
 [[params.quotes]]
   text = "诚之者，择善而固执之者也。"
   author = "《礼记·中庸》"
-
 [[params.quotes]]
-  text = "你能砍掉所有的鲜花，但你不能阻止春天的到来。"
+  text = "就算砍掉所有的鲜花，也无法阻挡春天的到来。"
   author = "巴勃罗·聂鲁达"
-
 [[params.quotes]]
   text = "无穷的远方，无数的人们，都和我有关。"
   author = "鲁迅"
