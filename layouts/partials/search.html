@@ -547,7 +547,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         try {
             // 使用 Pagefind 进行搜索
-            const pagefind = await import("/pagefind/pagefind.js");
+            const pagefind = await import("{{ "pagefind/pagefind.js" | relURL }}");
             const search = await pagefind.search(query);
             const results = await Promise.all(search.results.map(r => r.data()));
 
