@@ -22,10 +22,36 @@ p {
     text-align: justify;
 }
 
+/* 移除斜体样式，统一使用正常字体 */
 i, em {
-    font-family: var(--font-italic);
+    font-family: var(--font-body);
     font-style: normal;
+}
+
+/* 引用使用文楷字体 */
+blockquote {
+    font-family: var(--font-quote);
+    border-left: 4px solid var(--pink);
+    background: linear-gradient(135deg, rgba(245, 169, 184, 0.05), rgba(91, 206, 250, 0.05), rgba(255, 255, 255, 0.05));
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    position: relative;
+    color: #444;
+}
+
+blockquote p {
+    margin: 0.5rem 0;
+}
+
+blockquote::before {
+    content: '"';
+    font-size: 3rem;
     color: var(--pink);
+    position: absolute;
+    left: 0.5rem;
+    top: -0.5rem;
+    opacity: 0.3;
 }
 
 a {

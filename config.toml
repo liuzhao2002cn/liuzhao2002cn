@@ -50,9 +50,9 @@ canonifyURLs = true
     url = "/downloads/"
     weight = 6
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "JSON"]
   page = ["HTML"]
-  section = ["HTML", "RSS"]
+  section = ["HTML"]
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
