@@ -1,0 +1,287 @@
+/* ================================
+   跨性别三原色主题应用
+   Trans Pride Colors Theme
+   ================================ */
+
+/* 按钮和链接的三原色效果 */
+.btn, button, .nav-link, .footer-link {
+    transition: all 0.3s ease;
+}
+
+.btn:hover, button:hover {
+    background: linear-gradient(135deg, var(--trans-blue), var(--trans-pink));
+    color: white;
+    box-shadow: 0 4px 15px rgba(245, 169, 184, 0.4);
+}
+
+/* 卡片使用三原色边框 */
+.book-card, .article-card, .list-card {
+    border: 1px solid transparent;
+    background-image:
+        linear-gradient(white, white),
+        linear-gradient(135deg, var(--trans-pink), var(--trans-blue), var(--trans-white), var(--trans-blue), var(--trans-pink));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    transition: all 0.3s ease;
+}
+
+.book-card:hover, .article-card:hover, .list-card:hover {
+    box-shadow: 0 8px 25px rgba(245, 169, 184, 0.3);
+    transform: translateY(-2px);
+}
+
+/* 标签使用三原色 */
+.tag-link, .post-tags a {
+    background: linear-gradient(135deg,
+        rgba(245, 169, 184, 0.15),
+        rgba(91, 206, 250, 0.15)
+    );
+    border: 1px solid var(--trans-pink);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.tag-link:hover, .post-tags a:hover {
+    background: linear-gradient(135deg, var(--trans-pink), var(--trans-blue));
+    color: white;
+    border-color: var(--trans-blue);
+}
+
+/* 导航菜单激活项 */
+.nav-link.active, .nav-item.active .nav-link {
+    background: linear-gradient(135deg,
+        rgba(245, 169, 184, 0.2),
+        rgba(91, 206, 250, 0.2)
+    );
+    border-left: 3px solid var(--trans-pink);
+}
+
+/* 固定目录使用三原色 */
+.fixed-toc-toggle {
+    background: linear-gradient(135deg, var(--trans-pink), var(--trans-blue));
+    border: none;
+    box-shadow: 0 4px 15px rgba(245, 169, 184, 0.4);
+}
+
+.fixed-toc-toggle:hover {
+    background: linear-gradient(135deg, var(--trans-blue), var(--trans-pink));
+    box-shadow: 0 6px 20px rgba(91, 206, 250, 0.5);
+}
+
+.fixed-toc-progress-bar {
+    background: linear-gradient(90deg, var(--trans-pink), var(--trans-blue), var(--trans-pink));
+}
+
+/* 搜索框聚焦效果 */
+.search-input:focus {
+    border-color: var(--trans-pink);
+    box-shadow: 0 0 0 3px rgba(245, 169, 184, 0.2);
+}
+
+/* 代码块使用三原色边框 */
+pre code {
+    border-left: 4px solid var(--trans-blue);
+    background: linear-gradient(to right,
+        rgba(91, 206, 250, 0.03),
+        rgba(255, 255, 255, 0.97)
+    );
+}
+
+/* 表格头部使用三原色 */
+table thead {
+    background: linear-gradient(135deg,
+        rgba(245, 169, 184, 0.1),
+        rgba(91, 206, 250, 0.1)
+    );
+}
+
+table tr:hover {
+    background: linear-gradient(90deg,
+        rgba(245, 169, 184, 0.05),
+        rgba(91, 206, 250, 0.05),
+        rgba(245, 169, 184, 0.05)
+    );
+}
+
+/* 分页按钮 */
+.pagination .page-link {
+    border: 1px solid var(--trans-pink);
+    color: var(--trans-pink);
+}
+
+.pagination .page-link:hover {
+    background: linear-gradient(135deg, var(--trans-pink), var(--trans-blue));
+    color: white;
+    border-color: var(--trans-blue);
+}
+
+.pagination .page-link.active {
+    background: linear-gradient(135deg, var(--trans-blue), var(--trans-pink));
+    border-color: var(--trans-blue);
+}
+
+/* 章节导航按钮 */
+.chapter-navigation .nav-link {
+    border: 2px solid transparent;
+    background-image:
+        linear-gradient(white, white),
+        linear-gradient(135deg, var(--trans-pink), var(--trans-blue));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.chapter-navigation .nav-link:hover {
+    background: linear-gradient(135deg, var(--trans-pink), var(--trans-blue));
+    color: white;
+}
+
+/* 面包屑导航 */
+.breadcrumb-link {
+    color: var(--trans-blue);
+    transition: all 0.3s ease;
+}
+
+.breadcrumb-link:hover {
+    color: var(--trans-pink);
+}
+
+.breadcrumb-current {
+    color: var(--trans-pink);
+}
+
+/* Hero区域使用三原色渐变背景 */
+.hero, .hero-section {
+    background: linear-gradient(135deg,
+        rgba(245, 169, 184, 0.08),
+        rgba(255, 255, 255, 0.95),
+        rgba(91, 206, 250, 0.08)
+    );
+}
+
+/* 页面标题下划线 */
+.page-title, .post-title {
+    position: relative;
+}
+
+.page-title::after, .post-title::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--trans-pink), var(--trans-blue));
+    border-radius: 2px;
+}
+
+/* Meta信息图标使用三原色 */
+.meta-icon {
+    background: linear-gradient(135deg, var(--trans-pink), var(--trans-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* 加载动画使用三原色 */
+@keyframes transPride {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.loading, .spinner {
+    background: linear-gradient(270deg,
+        var(--trans-pink),
+        var(--trans-blue),
+        var(--trans-white),
+        var(--trans-blue),
+        var(--trans-pink)
+    );
+    background-size: 400% 400%;
+    animation: transPride 3s ease infinite;
+}
+
+/* 侧边栏覆盖层 */
+.sidebar-overlay, .fixed-toc-overlay {
+    background: linear-gradient(135deg,
+        rgba(245, 169, 184, 0.2),
+        rgba(91, 206, 250, 0.2)
+    );
+}
+
+/* 引用框优化（markdown > 格式） */
+blockquote {
+    border-left: 4px solid var(--trans-pink);
+    background: linear-gradient(135deg,
+        rgba(245, 169, 184, 0.08),
+        rgba(91, 206, 250, 0.05),
+        rgba(255, 255, 255, 0.95)
+    );
+    position: relative;
+    overflow: hidden;
+}
+
+blockquote::before {
+    color: var(--trans-pink);
+}
+
+/* 为blockquote添加右侧装饰条 */
+blockquote::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--trans-pink), var(--trans-blue));
+    opacity: 0.3;
+}
+
+/* 滚动条使用三原色 */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--trans-pink), var(--trans-blue));
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--trans-blue), var(--trans-pink));
+}
+
+/* 选择文本时的背景色 */
+::selection {
+    background: rgba(245, 169, 184, 0.3);
+    color: var(--text-color);
+}
+
+::-moz-selection {
+    background: rgba(245, 169, 184, 0.3);
+    color: var(--text-color);
+}
+
+/* 链接下划线使用三原色渐变 */
+.post-content a {
+    background-image: linear-gradient(90deg, var(--trans-pink), var(--trans-blue));
+    background-size: 0% 2px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    transition: background-size 0.3s ease;
+}
+
+.post-content a:hover {
+    background-size: 100% 2px;
+}
+
+/* 分割线使用三原色渐变 */
+hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg,
+        transparent,
+        var(--trans-pink),
+        var(--trans-blue),
+        var(--trans-pink),
+        transparent
+    );
+    margin: 2rem 0;
+}
