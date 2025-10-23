@@ -151,11 +151,9 @@
 }
 
 .book-detail {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
+    background: transparent;
+    padding: 2rem 0;
     margin-bottom: 2rem;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 .book-detail-header {
@@ -245,10 +243,8 @@
 /* ====== 章节列表样式 ====== */
 
 .chapters-section {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    background: transparent;
+    padding: 2rem 0;
 }
 
 .chapters-title {
@@ -371,10 +367,8 @@
 }
 
 .chapter-content-page {
-    background: white;
-    border-radius: 12px;
-    padding: 3rem 2.5rem;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    background: transparent;
+    padding: 3rem 0;
 }
 
 .chapter-content-header {

@@ -1,0 +1,374 @@
+{{ if and (gt (len .TableOfContents) 50) (.Site.Params.features.table_of_contents) }}
+<!-- 固定目录按钮 -->
+<button class="fixed-toc-toggle" id="fixedTocToggle" aria-label="目录" title="显示/隐藏目录">
+    <svg class="toc-icon" viewBox="0 0 24 24" width="20" height="20">
+        <path fill="currentColor" d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/>
+    </svg>
+</button>
+
+<!-- 固定目录面板 -->
+<aside class="fixed-toc-panel" id="fixedTocPanel" aria-hidden="true">
+    <div class="fixed-toc-header">
+        <h3 class="fixed-toc-title">
+            <svg viewBox="0 0 24 24" width="18" height="18">
+                <path fill="currentColor" d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/>
+            </svg>
+            目录
+        </h3>
+        <button class="fixed-toc-close" id="fixedTocClose" aria-label="关闭目录">
+            <svg viewBox="0 0 24 24" width="18" height="18">
+                <path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+        </button>
+    </div>
+    <nav class="fixed-toc-content" id="fixedTocContent">
+        {{ .TableOfContents }}
+    </nav>
+    <div class="fixed-toc-progress">
+        <div class="fixed-toc-progress-bar" id="fixedTocProgress"></div>
+    </div>
+</aside>
+
+<!-- 目录遮罩层 -->
+<div class="fixed-toc-overlay" id="fixedTocOverlay"></div>
+
+<style>
+/* 固定目录按钮 */
+.fixed-toc-toggle {
+    position: fixed;
+    right: 2rem;
+    bottom: 6rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 998;
+}
+
+.fixed-toc-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+.fixed-toc-toggle:active {
+    transform: scale(0.95);
+}
+
+/* 固定目录面板 */
+.fixed-toc-panel {
+    position: fixed;
+    top: 80px;
+    right: -360px;
+    width: 320px;
+    max-height: calc(100vh - 120px);
+    background: white;
+    border-radius: 16px 0 0 16px;
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+}
+
+.fixed-toc-panel.active {
+    right: 0;
+}
+
+/* 目录头部 */
+.fixed-toc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.fixed-toc-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.fixed-toc-title svg {
+    color: #667eea;
+}
+
+.fixed-toc-close {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    color: #6b7280;
+}
+
+.fixed-toc-close:hover {
+    background: #f3f4f6;
+    color: #1f2937;
+}
+
+/* 目录内容 */
+.fixed-toc-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem 1.5rem;
+}
+
+.fixed-toc-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.fixed-toc-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.fixed-toc-content::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 3px;
+}
+
+.fixed-toc-content::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+/* 目录列表样式 */
+.fixed-toc-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.fixed-toc-content li {
+    margin: 0;
+}
+
+.fixed-toc-content > nav > ul {
+    padding: 0;
+}
+
+.fixed-toc-content ul ul {
+    padding-left: 1rem;
+    margin-top: 0.25rem;
+}
+
+.fixed-toc-content a {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    color: #4b5563;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.fixed-toc-content a:hover {
+    background: #f3f4f6;
+    color: #667eea;
+    border-left-color: #667eea;
+}
+
+.fixed-toc-content a.active {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    color: #667eea;
+    border-left-color: #667eea;
+    font-weight: 600;
+}
+
+/* 阅读进度条 */
+.fixed-toc-progress {
+    height: 4px;
+    background: #e5e7eb;
+    border-radius: 0 0 0 16px;
+    overflow: hidden;
+}
+
+.fixed-toc-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    transition: width 0.1s ease;
+}
+
+/* 遮罩层 */
+.fixed-toc-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 998;
+    backdrop-filter: blur(2px);
+}
+
+.fixed-toc-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 响应式 - 移动端 */
+@media (max-width: 1024px) {
+    .fixed-toc-toggle {
+        right: 1rem;
+        bottom: 5rem;
+        width: 44px;
+        height: 44px;
+    }
+
+    .fixed-toc-panel {
+        width: 280px;
+        right: -300px;
+        top: 70px;
+    }
+}
+
+@media (max-width: 768px) {
+    .fixed-toc-toggle {
+        right: 1rem;
+        bottom: 4rem;
+    }
+
+    .fixed-toc-panel {
+        width: 85%;
+        max-width: 300px;
+        right: -100%;
+    }
+}
+</style>
+
+<script>
+// 固定目录功能
+document.addEventListener('DOMContentLoaded', function() {
+    const toggle = document.getElementById('fixedTocToggle');
+    const panel = document.getElementById('fixedTocPanel');
+    const close = document.getElementById('fixedTocClose');
+    const overlay = document.getElementById('fixedTocOverlay');
+    const content = document.getElementById('fixedTocContent');
+    const progress = document.getElementById('fixedTocProgress');
+
+    if (!toggle || !panel) return;
+
+    // 打开/关闭目录
+    function openToc() {
+        panel.classList.add('active');
+        overlay.classList.add('active');
+        panel.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeToc() {
+        panel.classList.remove('active');
+        overlay.classList.remove('active');
+        panel.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    toggle.addEventListener('click', function() {
+        if (panel.classList.contains('active')) {
+            closeToc();
+        } else {
+            openToc();
+        }
+    });
+
+    if (close) {
+        close.addEventListener('click', closeToc);
+    }
+
+    if (overlay) {
+        overlay.addEventListener('click', closeToc);
+    }
+
+    // ESC 键关闭
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && panel.classList.contains('active')) {
+            closeToc();
+        }
+    });
+
+    // 高亮当前章节
+    const headings = document.querySelectorAll('.post-content h2, .post-content h3, .post-content h4, .chapter-text h2, .chapter-text h3, .chapter-text h4');
+    const tocLinks = content.querySelectorAll('a');
+
+    function updateActiveToc() {
+        let current = '';
+        const scrollPos = window.scrollY + 100;
+
+        headings.forEach(heading => {
+            const top = heading.offsetTop;
+            if (scrollPos >= top) {
+                current = heading.id;
+            }
+        });
+
+        tocLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+                // 滚动到可见区域
+                link.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            }
+        });
+
+        // 更新阅读进度
+        if (progress) {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.scrollY;
+            const trackLength = documentHeight - windowHeight;
+            const percentage = trackLength > 0 ? (scrollTop / trackLength) * 100 : 0;
+            progress.style.width = percentage + '%';
+        }
+    }
+
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+        if (scrollTimeout) {
+            window.cancelAnimationFrame(scrollTimeout);
+        }
+        scrollTimeout = window.requestAnimationFrame(updateActiveToc);
+    });
+
+    // 初始化
+    updateActiveToc();
+
+    // 点击目录链接平滑滚动
+    tocLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // 移动端点击后关闭
+                if (window.innerWidth <= 1024) {
+                    setTimeout(closeToc, 300);
+                }
+            }
+        });
+    });
+});
+</script>
+{{ end }}
