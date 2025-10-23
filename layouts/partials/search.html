@@ -572,10 +572,21 @@ document.addEventListener('DOMContentLoaded', function() {
             showResults(filtered);
         } catch (error) {
             console.error('搜索失败:', error);
+            const errorMessage = error.message || error.toString();
+            const isIndexMissing = errorMessage.includes('pagefind') || errorMessage.includes('dynamically imported module');
+
             results.innerHTML = `
                 <div class="search-status">
                     <div class="status-icon">⚠️</div>
-                    <p class="status-text">搜索功能暂时不可用，请稍后再试</p>
+                    <p class="status-text" style="margin-bottom: 1rem;">搜索索引未生成</p>
+                    ${isIndexMissing ? `
+                        <div style="text-align: left; background: #f8f9fa; padding: 1rem; border-radius: 8px; font-size: 0.9rem; line-height: 1.6;">
+                            <p style="margin: 0 0 0.5rem; font-weight: 600;">需要先构建搜索索引：</p>
+                            <code style="display: block; background: #2d2d2d; color: #f8f8f8; padding: 0.5rem; border-radius: 4px; margin: 0.5rem 0;">npm install</code>
+                            <code style="display: block; background: #2d2d2d; color: #f8f8f8; padding: 0.5rem; border-radius: 4px; margin: 0.5rem 0;">npm run build</code>
+                            <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: #666;">部署到 GitHub Pages 后会自动生成</p>
+                        </div>
+                    ` : '<p style="font-size: 0.9rem; color: #666;">请稍后再试</p>'}
                 </div>
             `;
         }
