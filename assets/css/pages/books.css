@@ -646,18 +646,26 @@
     }
 
     .chapter-link {
-        padding: 0.875rem 1rem;
+        padding: 0.75rem 0.875rem;
+        flex-wrap: nowrap; /* 确保不换行 */
     }
 
     /* 修复移动端章节号和标题大小不平衡的问题 */
     .chapter-number {
-        min-width: 65px;
-        font-size: 0.95rem;
+        min-width: 55px;
+        font-size: 0.8rem;
         font-weight: 600;
+        margin-right: 0.5rem;
     }
 
     .chapter-title {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
+
+    .chapter-arrow {
+        font-size: 1rem;
+        margin-left: 0.25rem;
     }
 
     .chapter-content-page {
