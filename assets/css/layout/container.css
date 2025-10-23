@@ -1,8 +1,10 @@
 .container {
-    max-width: 1100px;
+    max-width: 1400px; /* 从1100px增加到1400px，让内容更宽敞 */
     margin: 4rem auto;
-    padding: 0 2rem;
-    background-color: transparent;
+    padding: 3rem 4rem;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
     transition: all 0.3s ease;
 }
 

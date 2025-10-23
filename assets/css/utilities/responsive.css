@@ -362,7 +362,7 @@ table {
 }
 @media (min-width: 768px) {
     .content-wrapper {
-        max-width: 800px;
+        max-width: 1000px; /* 从800px增加到1000px，正文更宽敞 */
         background: transparent;
         padding: 2.5rem 1rem;
     }
