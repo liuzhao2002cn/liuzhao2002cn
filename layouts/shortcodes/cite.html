@@ -1,0 +1,158 @@
+{{/*
+学术引用 Shortcode - 用于管理参考文献和引用
+用法: {{< cite id="ref1" author="作者" year="2023" title="标题" >}}
+或者: {{< cite id="ref1" >}}引用内容{{< /cite >}}
+*/}}
+
+{{ $id := .Get "id" | default (printf "cite-%d" now.Unix) }}
+{{ $author := .Get "author" | default "" }}
+{{ $year := .Get "year" | default "" }}
+{{ $title := .Get "title" | default "" }}
+{{ $url := .Get "url" | default "" }}
+{{ $type := .Get "type" | default "book" }}
+
+{{ if .Inner }}
+  {{/* 行内引用样式 */}}
+  <span class="inline-citation" id="{{ $id }}">
+    <span class="citation-content">{{ .Inner | markdownify }}</span>
+    {{ if $author }}
+    <span class="citation-meta">（{{ $author }}{{ with $year }}，{{ . }}{{ end }}）</span>
+    {{ end }}
+  </span>
+{{ else }}
+  {{/* 完整引用条目 */}}
+  <div class="citation-entry" id="{{ $id }}">
+    <div class="citation-marker">
+      <span class="citation-icon">
+        {{ if eq $type "book" }}📚{{ else if eq $type "article" }}📄{{ else if eq $type "web" }}🌐{{ else }}📖{{ end }}
+      </span>
+    </div>
+    <div class="citation-details">
+      {{ with $author }}<span class="citation-author">{{ . }}</span>{{ end }}
+      {{ with $year }}<span class="citation-year">（{{ . }}）</span>{{ end }}
+      {{ with $title }}<span class="citation-title">《{{ . }}》</span>{{ end }}
+      {{ with $url }}
+      <a href="{{ . }}" target="_blank" rel="noopener" class="citation-link">
+        <span class="link-icon">🔗</span>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+{{ end }}
+
+<style>
+/* 行内引用样式 */
+.inline-citation {
+    font-family: var(--font-quote);
+    background: linear-gradient(135deg,
+        rgba(245, 169, 184, 0.1),
+        rgba(91, 206, 250, 0.1)
+    );
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid var(--trans-pink);
+    display: inline-block;
+    margin: 0 0.25rem;
+}
+
+.citation-content {
+    font-style: normal;
+}
+
+.citation-meta {
+    font-size: 0.85em;
+    color: var(--trans-blue);
+    margin-left: 0.25rem;
+}
+
+/* 完整引用条目样式 */
+.citation-entry {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: linear-gradient(135deg,
+        rgba(245, 169, 184, 0.08),
+        rgba(91, 206, 250, 0.08),
+        rgba(255, 255, 255, 0.95)
+    );
+    border-radius: 8px;
+    border-left: 4px solid var(--trans-pink);
+    transition: all 0.3s ease;
+}
+
+.citation-entry:hover {
+    background: linear-gradient(135deg,
+        rgba(245, 169, 184, 0.12),
+        rgba(91, 206, 250, 0.12),
+        rgba(255, 255, 255, 1)
+    );
+    box-shadow: 0 4px 12px rgba(245, 169, 184, 0.2);
+}
+
+.citation-marker {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--trans-pink), var(--trans-blue));
+    border-radius: 50%;
+    font-size: 1.2rem;
+}
+
+.citation-details {
+    flex-grow: 1;
+    font-family: var(--font-quote);
+    line-height: 1.8;
+}
+
+.citation-author {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-right: 0.5rem;
+}
+
+.citation-year {
+    color: var(--trans-blue);
+    margin-right: 0.5rem;
+}
+
+.citation-title {
+    color: var(--text-primary);
+    font-style: normal;
+}
+
+.citation-link {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0.5rem;
+    color: var(--trans-pink);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.citation-link:hover {
+    color: var(--trans-blue);
+    transform: translateX(2px);
+}
+
+.link-icon {
+    font-size: 0.9rem;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    .citation-entry {
+        flex-direction: column;
+        padding: 0.75rem;
+    }
+
+    .citation-marker {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+}
+</style>

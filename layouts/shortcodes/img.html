@@ -1,0 +1,75 @@
+{{/*
+Hugo 响应式图片处理 Shortcode
+用法: {{< img src="images/photo.jpg" alt="描述" caption="图片说明" >}}
+参数:
+  - src: 图片路径（必需）
+  - alt: 替代文本（可选）
+  - caption: 图片说明（可选）
+  - class: 自定义CSS类（可选）
+  - width: 原始宽度（可选）
+  - height: 原始高度（可选）
+*/}}
+
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" | default "" }}
+{{ $caption := .Get "caption" | default "" }}
+{{ $class := .Get "class" | default "" }}
+
+{{ $image := "" }}
+{{ $imageExists := false }}
+
+{{/* 尝试从页面资源获取图片 */}}
+{{ with .Page.Resources.GetMatch $src }}
+  {{ $image = . }}
+  {{ $imageExists = true }}
+{{ else }}
+  {{/* 尝试从全局资源获取图片 */}}
+  {{ with resources.Get $src }}
+    {{ $image = . }}
+    {{ $imageExists = true }}
+  {{ end }}
+{{ end }}
+
+{{ if $imageExists }}
+  {{/* 生成不同尺寸的图片 */}}
+  {{ $small := $image.Resize "480x webp q85" }}
+  {{ $medium := $image.Resize "768x webp q85" }}
+  {{ $large := $image.Resize "1024x webp q85" }}
+  {{ $xlarge := $image.Resize "1440x webp q85" }}
+
+  <figure class="responsive-image {{ $class }}">
+    <picture>
+      <source
+        srcset="{{ $small.RelPermalink }} 480w,
+                {{ $medium.RelPermalink }} 768w,
+                {{ $large.RelPermalink }} 1024w,
+                {{ $xlarge.RelPermalink }} 1440w"
+        sizes="(max-width: 480px) 100vw,
+               (max-width: 768px) 100vw,
+               (max-width: 1024px) 100vw,
+               1440px"
+        type="image/webp">
+      <img
+        src="{{ $large.RelPermalink }}"
+        alt="{{ $alt }}"
+        loading="lazy"
+        decoding="async"
+        class="responsive-img">
+    </picture>
+    {{ with $caption }}
+    <figcaption class="image-caption">{{ . | markdownify }}</figcaption>
+    {{ end }}
+  </figure>
+{{ else }}
+  {{/* 如果图片不存在，使用原始路径 */}}
+  <figure class="responsive-image {{ $class }}">
+    <img
+      src="{{ $src | relURL }}"
+      alt="{{ $alt }}"
+      loading="lazy"
+      class="responsive-img">
+    {{ with $caption }}
+    <figcaption class="image-caption">{{ . | markdownify }}</figcaption>
+    {{ end }}
+  </figure>
+{{ end }}

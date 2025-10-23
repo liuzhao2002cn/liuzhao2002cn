@@ -1,0 +1,132 @@
+{{/*
+增强版 figure shortcode，支持响应式图片和跨性别三原色主题
+用法: {{< figure src="images/photo.jpg" alt="描述" caption="说明" link="链接" >}}
+*/}}
+
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" | default "" }}
+{{ $caption := .Get "caption" | default "" }}
+{{ $link := .Get "link" | default "" }}
+{{ $class := .Get "class" | default "" }}
+{{ $target := .Get "target" | default "_blank" }}
+
+{{ $image := "" }}
+{{ $imageExists := false }}
+
+{{/* 获取图片资源 */}}
+{{ with .Page.Resources.GetMatch $src }}
+  {{ $image = . }}
+  {{ $imageExists = true }}
+{{ else }}
+  {{ with resources.Get $src }}
+    {{ $image = . }}
+    {{ $imageExists = true }}
+  {{ end }}
+{{ end }}
+
+<figure class="enhanced-figure {{ $class }}">
+  {{ if $link }}
+  <a href="{{ $link }}" target="{{ $target }}" rel="noopener noreferrer" class="figure-link">
+  {{ end }}
+
+  {{ if $imageExists }}
+    {{/* 生成响应式图片 */}}
+    {{ $small := $image.Resize "480x webp q85" }}
+    {{ $medium := $image.Resize "768x webp q85" }}
+    {{ $large := $image.Resize "1024x webp q85" }}
+
+    <picture>
+      <source
+        srcset="{{ $small.RelPermalink }} 480w,
+                {{ $medium.RelPermalink }} 768w,
+                {{ $large.RelPermalink }} 1024w"
+        sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, 1024px"
+        type="image/webp">
+      <img
+        src="{{ $large.RelPermalink }}"
+        alt="{{ $alt }}"
+        loading="lazy"
+        decoding="async"
+        class="figure-img">
+    </picture>
+  {{ else }}
+    <img
+      src="{{ $src | relURL }}"
+      alt="{{ $alt }}"
+      loading="lazy"
+      class="figure-img">
+  {{ end }}
+
+  {{ if $link }}
+  </a>
+  {{ end }}
+
+  {{ with $caption }}
+  <figcaption class="figure-caption">{{ . | markdownify }}</figcaption>
+  {{ end }}
+</figure>
+
+<style>
+/* 增强版 figure 样式 */
+.enhanced-figure {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: linear-gradient(135deg,
+        rgba(245, 169, 184, 0.05),
+        rgba(91, 206, 250, 0.05),
+        rgba(255, 255, 255, 0.95)
+    );
+    border-radius: 12px;
+    border: 2px solid transparent;
+    background-image:
+        linear-gradient(white, white),
+        linear-gradient(135deg, var(--trans-pink), var(--trans-blue));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    transition: all 0.3s ease;
+}
+
+.enhanced-figure:hover {
+    box-shadow: 0 8px 25px rgba(245, 169, 184, 0.2);
+    transform: translateY(-2px);
+}
+
+.figure-link {
+    display: block;
+    text-decoration: none;
+}
+
+.figure-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+.figure-caption {
+    margin-top: 1rem;
+    font-family: var(--font-quote);
+    font-size: 0.9rem;
+    color: var(--trans-blue);
+    text-align: center;
+    line-height: 1.6;
+    padding: 0.5rem;
+    border-top: 2px solid var(--trans-pink);
+}
+
+.figure-caption p {
+    margin: 0;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    .enhanced-figure {
+        margin: 1.5rem 0;
+        padding: 0.75rem;
+    }
+
+    .figure-caption {
+        font-size: 0.85rem;
+    }
+}
+</style>
