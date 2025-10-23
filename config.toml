@@ -2,21 +2,12 @@ baseURL = 'https://liuzhao2002cn.github.io/liuzhao2002cn/'
 languageCode = 'zh-cn'
 title = '竱肇文档站'
 canonifyURLs = true
+
 [params]
   author = '肇'
   avatar = "images/lpip.jpg"
   displayName = "竱肇"
   tagline = "左翼思想探究者，普通中国工人的子女"
-  # 格言部分 - 使用数组格式
-  [[params.quotes]]
-    text = "诚之者，择善而固执之者也。"
-    author = "《礼记·中庸》"
-  [[params.quotes]]
-    text = "你能砍掉所有的鲜花，但你不能阻止春天的到来。"
-    author = "巴勃罗·聂鲁达"
-  [[params.quotes]]
-    text = "无穷的远方，无数的人们，都和我有关。"
-    author = "鲁迅"
   # 个人简介
   bio = """中国人，人文学术民工，东北工人家庭的子女，在新时代的旧废墟上长大的人。
 志趣：左翼理论研究（包括但不限于政治哲学和经济学）、近世以来华语与东亚的思想与社会。"""
@@ -28,6 +19,19 @@ canonifyURLs = true
   twitter = "https://x.com/liuzhao_cn"
   bilibili = "https://space.bilibili.com/your-uid"
   license = '本站内容采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 国际许可协议。'
+
+# 格言部分 - 必须放在 [params] section 之外
+[[params.quotes]]
+  text = "诚之者，择善而固执之者也。"
+  author = "《礼记·中庸》"
+
+[[params.quotes]]
+  text = "你能砍掉所有的鲜花，但你不能阻止春天的到来。"
+  author = "巴勃罗·聂鲁达"
+
+[[params.quotes]]
+  text = "无穷的远方，无数的人们，都和我有关。"
+  author = "鲁迅"
 [params.theme]
   name = "肇自定义" 
   url = "https://github.com/liuzhao2002cn/liuzhao2002cn"
