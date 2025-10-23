@@ -46,7 +46,7 @@ jobs:
         run: hugo --minify --baseURL https://liuzhao2002cn.github.io/liuzhao2002cn/
 
       - name: Generate search index with Pagefind
-        run: npx pagefind --site public --base-url /liuzhao2002cn
+        run: npx pagefind --site public
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
