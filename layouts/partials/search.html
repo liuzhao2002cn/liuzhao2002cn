@@ -534,6 +534,24 @@ document.addEventListener('DOMContentLoaded', function() {
         searchTimeout = setTimeout(performSearch, 300);
     });
 
+    // 搜索索引缓存
+    let searchIndex = null;
+
+    // 加载搜索索引
+    async function loadSearchIndex() {
+        if (searchIndex) return searchIndex;
+
+        try {
+            const response = await fetch("{{ "index.json" | relURL }}");
+            if (!response.ok) throw new Error('Failed to load search index');
+            searchIndex = await response.json();
+            return searchIndex;
+        } catch (error) {
+            console.error('加载搜索索引失败:', error);
+            throw error;
+        }
+    }
+
     // 执行搜索
     async function performSearch() {
         const query = input.value.trim();
@@ -546,50 +564,60 @@ document.addEventListener('DOMContentLoaded', function() {
         showLoadingState();
 
         try {
-            // 使用 Pagefind 进行搜索
-            const pagefind = await import("{{ "pagefind/pagefind.js" | relURL }}");
-            await pagefind.options({
-                basePath: "{{ "/" | relURL }}"
-            });
-            const search = await pagefind.search(query);
-            const results = await Promise.all(search.results.map(r => r.data()));
+            // 加载搜索索引
+            const index = await loadSearchIndex();
+            const queryLower = query.toLowerCase();
 
-            // 应用筛选
+            // 获取筛选条件
             const category = document.querySelector('.category-button.active').dataset.category;
             const scope = document.querySelector('input[name="scope"]:checked').value;
 
-            let filtered = results;
+            // 搜索并评分
+            let searchResults = index.map(item => {
+                let score = 0;
+                const titleLower = item.title.toLowerCase();
+                const contentLower = (item.content || '').toLowerCase();
+                const summaryLower = (item.summary || '').toLowerCase();
+
+                // 根据搜索范围计算分数
+                if (scope === 'title') {
+                    if (titleLower.includes(queryLower)) {
+                        score += titleLower === queryLower ? 100 : 50;
+                    }
+                } else if (scope === 'content') {
+                    const contentMatches = (contentLower.match(new RegExp(queryLower, 'g')) || []).length;
+                    score += contentMatches * 10;
+                } else {
+                    // 全部内容搜索
+                    if (titleLower.includes(queryLower)) {
+                        score += titleLower === queryLower ? 100 : 50;
+                    }
+                    const contentMatches = (contentLower.match(new RegExp(queryLower, 'g')) || []).length;
+                    score += contentMatches * 5;
+                    if (summaryLower.includes(queryLower)) {
+                        score += 20;
+                    }
+                }
+
+                return { ...item, score };
+            }).filter(item => item.score > 0);
 
             // 分类筛选
             if (category !== 'all') {
-                filtered = filtered.filter(r => r.url.includes(`/${category}/`));
+                searchResults = searchResults.filter(item => item.section === category);
             }
 
-            // 范围筛选（全部内容/仅标题/仅正文）
-            if (scope === 'title') {
-                filtered = filtered.filter(r => r.meta.title && r.meta.title.toLowerCase().includes(query.toLowerCase()));
-            } else if (scope === 'content') {
-                filtered = filtered.filter(r => r.excerpt && r.excerpt.toLowerCase().includes(query.toLowerCase()));
-            }
+            // 按分数排序
+            searchResults.sort((a, b) => b.score - a.score);
 
-            showResults(filtered);
+            showResults(searchResults);
         } catch (error) {
             console.error('搜索失败:', error);
-            const errorMessage = error.message || error.toString();
-            const isIndexMissing = errorMessage.includes('pagefind') || errorMessage.includes('dynamically imported module');
-
             results.innerHTML = `
                 <div class="search-status">
                     <div class="status-icon">⚠️</div>
-                    <p class="status-text" style="margin-bottom: 1rem;">搜索索引未生成</p>
-                    ${isIndexMissing ? `
-                        <div style="text-align: left; background: #f8f9fa; padding: 1rem; border-radius: 8px; font-size: 0.9rem; line-height: 1.6;">
-                            <p style="margin: 0 0 0.5rem; font-weight: 600;">需要先构建搜索索引：</p>
-                            <code style="display: block; background: #2d2d2d; color: #f8f8f8; padding: 0.5rem; border-radius: 4px; margin: 0.5rem 0;">npm install</code>
-                            <code style="display: block; background: #2d2d2d; color: #f8f8f8; padding: 0.5rem; border-radius: 4px; margin: 0.5rem 0;">npm run build</code>
-                            <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: #666;">部署到 GitHub Pages 后会自动生成</p>
-                        </div>
-                    ` : '<p style="font-size: 0.9rem; color: #666;">请稍后再试</p>'}
+                    <p class="status-text" style="margin-bottom: 1rem;">搜索功能暂时不可用</p>
+                    <p style="font-size: 0.9rem; color: #666;">请稍后再试或联系管理员</p>
                 </div>
             `;
         }
@@ -625,21 +653,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const html = items.map(item => {
-            // 从URL中提取分类
-            const urlParts = item.url.split('/').filter(p => p);
-            const category = urlParts.length > 0 ? urlParts[0] : '';
-
-            // 获取标题和摘录
-            const title = item.meta?.title || item.title || '无标题';
-            const excerpt = item.excerpt || item.content?.substring(0, 150) || '';
+            const title = item.title || '无标题';
+            const excerpt = item.summary || item.content?.substring(0, 150) || '暂无摘要';
+            const category = item.section || '';
 
             return `
                 <a href="${item.url}" class="search-result-item">
                     <span class="result-category">${getCategoryName(category)}</span>
                     <h3 class="result-title">${title}</h3>
-                    <p class="result-excerpt">${excerpt}...</p>
+                    <p class="result-excerpt">${excerpt}</p>
                     <div class="result-meta">
-                        <span>🔗 ${item.url}</span>
+                        <span>📅 ${item.date || ''}</span>
+                        <span style="margin-left: 1rem;">🔗 ${item.url}</span>
                     </div>
                 </a>
             `;

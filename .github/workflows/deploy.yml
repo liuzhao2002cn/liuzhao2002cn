@@ -39,14 +39,11 @@ jobs:
 
       - name: Install Node.js dependencies
         run: npm install
-        
+
       - name: Build
         env:
           HUGO_ENVIRONMENT: production
         run: hugo --minify --baseURL https://liuzhao2002cn.github.io/liuzhao2002cn/
-
-      - name: Generate search index with Pagefind
-        run: npx pagefind --site public
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
