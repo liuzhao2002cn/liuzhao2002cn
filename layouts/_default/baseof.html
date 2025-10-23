@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{{ partial "search.html" . }}
 <html lang="{{ .Site.LanguageCode | default "en-us" }}">
 <head>
 <meta charset="UTF-8">
@@ -34,15 +33,18 @@
 </head>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <body>
+{{ partial "search.html" . }}
 <a href="#main-content" class="skip-link">跳到主页</a>
 {{ partial "header.html" . }}
 <div class="container">
 <main class="main-content" id="main-content">{{ block "main" . }}{{ end }}</main>
 </div>
 {{ partial "footer.html" . }}
-{{ $js := resources.Get "js/main.js" }}
-{{ if hugo.IsProduction }}{{ $js = $js | minify | fingerprint }}{{ end }}
-<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script> 
-<script src="{{ "js/header.js" | relURL }}"></script>
+{{ $mainjs := resources.Get "js/main.js" }}
+{{ if hugo.IsProduction }}{{ $mainjs = $mainjs | minify | fingerprint }}{{ end }}
+<script src="{{ $mainjs.RelPermalink }}" integrity="{{ $mainjs.Data.Integrity }}" defer></script>
+{{ $headerjs := resources.Get "js/header.js" }}
+{{ if hugo.IsProduction }}{{ $headerjs = $headerjs | minify | fingerprint }}{{ end }}
+<script src="{{ $headerjs.RelPermalink }}" integrity="{{ $headerjs.Data.Integrity }}" defer></script>
 </body>
 </html>
