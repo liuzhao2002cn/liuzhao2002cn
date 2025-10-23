@@ -7,9 +7,8 @@ canonifyURLs = true
   author = '肇'
   avatar = "images/lpip.jpg"
   displayName = "竱肇"
-  tagline = "左翼思想探究者，普通中国工人的子女"
-  # 个人简介
-  bio = """中国人，人文学术民工，东北工人家庭的子女，在新时代的旧废墟上长大的人。
+  tagline = "求索大同世界"
+  bio = """中国工人的子女，在新时代的旧废墟上长大的人。
 志趣：左翼理论研究（包括但不限于政治哲学和经济学）、近世以来华语与东亚的思想与社会。"""
   description = '分享生活与随想的个人网站'
   github = "https://github.com/liuzhao2002cn"
@@ -19,7 +18,6 @@ canonifyURLs = true
   twitter = "https://x.com/liuzhao_cn"
   bilibili = "https://space.bilibili.com/your-uid"
   license = '本站内容采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 国际许可协议。'
-
 # 格言部分 - 必须放在 [params] section 之外
 [[params.quotes]]
   text = "诚之者，择善而固执之者也。"
