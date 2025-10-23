@@ -1,14 +1,21 @@
 :root {
-    --pink: #e580cd;
-    --blue: #aaaaff;
-    --white: #ffffff;
+    /* 跨性别三原色 - Trans Pride Colors */
+    --trans-pink: #5BCEFA;      /* 天蓝色 */
+    --trans-blue: #F5A9B8;       /* 粉色 */
+    --trans-white: #FFFFFF;      /* 白色 */
+
+    /* 主题色彩 */
+    --pink: #F5A9B8;             /* 粉色 - 用于强调和链接 */
+    --blue: #5BCEFA;             /* 蓝色 - 用于标题和按钮 */
+    --white: #FFFFFF;            /* 白色 */
     --text-color: #333333;
     --bg-color: #f8f9fa;
     --border-color: #e9ecef;
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    --font-heading: "Source Han Serif SC", "思源宋体 CN", "LXGW WenKai", sans-serif;
-    --font-body: "LXGW WenKai", "Source Han Serif SC", "Microsoft YaHei", sans-serif;
-    --font-italic: "Smiley Sans Oblique", sans-serif;
-    --font-english: 'Times New Roman', serif;
+
+    /* 字体家族 */
+    --font-heading: "Noto Serif SC", "思源宋体", serif;     /* 标题：思源宋体 */
+    --font-body: "Noto Serif SC", "思源宋体", serif;        /* 正文：思源宋体 */
+    --font-quote: "LXGW WenKai", "霞鹜文楷", serif;         /* 引用：文楷 */
     --font-code: 'Monaco', 'Menlo', 'Consolas', monospace;
 }

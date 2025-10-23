@@ -46,11 +46,19 @@ table {
 }
 
 @media (max-width: 768px) {
-    /* 移动端容器优化 - 减少内边距，增加可用空间 */
+    /* 移动端容器优化 - 最小化内边距，最大化可用空间 */
     .container {
-        margin: 1rem auto;
-        padding: 1.5rem 1rem;
-        border-radius: 0; /* 移动端去掉圆角，更充分利用空间 */
+        margin: 0.5rem 0;        /* 上下边距最小化 */
+        padding: 1rem 0.5rem;    /* 左右内边距进一步减小 */
+        border-radius: 0;         /* 移动端去掉圆角 */
+        box-shadow: none;         /* 移动端去掉阴影 */
+    }
+
+    /* 移动端blockquote优化 - 增加可读性 */
+    blockquote {
+        padding: 1rem 0.75rem;
+        margin: 1rem 0;
+        font-size: 0.95rem;
     }
 
     /* 导航覆盖层 */
@@ -377,8 +385,8 @@ table {
 @media (max-width: 767px) {
     .content-wrapper {
         background: transparent;
-        padding: 0.5rem; /* 从1rem减少到0.5rem，增加可用空间 */
-        max-width: 100%; /* 确保占满容器宽度 */
+        padding: 0.25rem; /* 进一步减少到0.25rem，最大化空间 */
+        max-width: 100%;   /* 确保占满容器宽度 */
     }
 
     /* 移动端文章内容优化 */
