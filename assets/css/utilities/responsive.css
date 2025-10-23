@@ -46,6 +46,13 @@ table {
 }
 
 @media (max-width: 768px) {
+    /* 移动端容器优化 - 减少内边距，增加可用空间 */
+    .container {
+        margin: 1rem auto;
+        padding: 1.5rem 1rem;
+        border-radius: 0; /* 移动端去掉圆角，更充分利用空间 */
+    }
+
     /* 导航覆盖层 */
     .nav-overlay {
         position: fixed;
@@ -370,22 +377,23 @@ table {
 @media (max-width: 767px) {
     .content-wrapper {
         background: transparent;
-        padding: 1rem;
+        padding: 0.5rem; /* 从1rem减少到0.5rem，增加可用空间 */
+        max-width: 100%; /* 确保占满容器宽度 */
     }
-    
+
     /* 移动端文章内容优化 */
     .content-wrapper h1,
     .content-wrapper h2,
     .content-wrapper h3 {
         font-size: 1.5rem;
     }
-    
+
     .content-wrapper p,
     .content-wrapper li {
         font-size: 1rem;
         line-height: 1.8;
     }
-    
+
     /* 移除不必要的边距 */
     .content-wrapper > *:first-child {
         margin-top: 0;
@@ -395,6 +403,16 @@ table {
 @media (max-width: 480px) {
     body {
         font-size: 14px;
+    }
+
+    /* 超小屏幕进一步优化容器 */
+    .container {
+        margin: 0.5rem auto;
+        padding: 1rem 0.75rem;
+    }
+
+    .content-wrapper {
+        padding: 0.25rem; /* 进一步减少内边距 */
     }
 
     .nav-menu {
