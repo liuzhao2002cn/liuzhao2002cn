@@ -34,7 +34,8 @@ document.addEventListener('DOMContentLoaded', function() {
             openSidebar();
         }
     }
-    
+
+
     // 绑定事件
     if (sidebarToggle) {
         sidebarToggle.addEventListener('click', toggleSidebar);
@@ -292,7 +293,7 @@ window.closeSidebar = function() {
     const sidebarOverlay = document.getElementById('sidebarOverlay');
     
     if (sidebarMenu) {
-        sidebarMenu.classList。remove('active');
+        sidebarMenu.classList.remove('active');
         sidebarMenu.setAttribute('aria-hidden'， 'true');
     }
     
@@ -305,7 +306,7 @@ window.closeSidebar = function() {
 
 // 外部调用：打开侧边栏
 window.openSidebar = function() {
-    const sidebarMenu = document。getElementById('sidebarMenu');
+    const sidebarMenu = document.getElementById('sidebarMenu');
     const sidebarOverlay = document.getElementById('sidebarOverlay');
     
     if (sidebarMenu) {
