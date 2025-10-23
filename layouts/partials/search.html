@@ -535,9 +535,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // 执行搜索
-    function performSearch() {
+    async function performSearch() {
         const query = input.value.trim();
-        
+
         if (!query) {
             showInitialState();
             return;
@@ -545,51 +545,40 @@ document.addEventListener('DOMContentLoaded', function() {
 
         showLoadingState();
 
-        // 这里集成 Pagefind 或其他搜索引擎
-        // 示例：使用 Pagefind
-        if (typeof pagefind !== 'undefined') {
-            const scope = document.querySelector('input[name="scope"]:checked').value;
+        try {
+            // 使用 Pagefind 进行搜索
+            const pagefind = await import("/pagefind/pagefind.js");
+            const search = await pagefind.search(query);
+            const results = await Promise.all(search.results.map(r => r.data()));
+
+            // 应用筛选
             const category = document.querySelector('.category-button.active').dataset.category;
-            
-            // 实际搜索逻辑
-            setTimeout(() => {
-                showResults([
-                    // 示例结果
-                    {
-                        title: '示例文章标题',
-                        category: 'note',
-                        excerpt: '这是搜索结果的摘录内容...',
-                        date: '2025-01-15',
-                        url: '/note/example/'
-                    }
-                ]);
-            }, 500);
-        }
-            async function performSearch() {
-                const query = input.value.trim();
-                if (!query) {
-                    showInitialState();
-                    return;
-                }
+            const scope = document.querySelector('input[name="scope"]:checked').value;
 
-                showLoadingState();
+            let filtered = results;
 
-                const pagefind = await import("/pagefind/pagefind.js");
-                const search = await pagefind.search(query);
-                const results = await Promise.all(search.results.map(r => r.data()));
-    
-                // 应用筛选
-                const category = document.querySelector('.category-button.active').dataset.category;
-                const scope = document.querySelector('input[name="scope"]:checked').value;
-    
-                let filtered = results;
-    
-                if (category !== 'all') {
-                    filtered = filtered.filter(r => r.url.includes(`/${category}/`));
-                }
-    
-                showResults(filtered);
+            // 分类筛选
+            if (category !== 'all') {
+                filtered = filtered.filter(r => r.url.includes(`/${category}/`));
             }
+
+            // 范围筛选（全部内容/仅标题/仅正文）
+            if (scope === 'title') {
+                filtered = filtered.filter(r => r.meta.title && r.meta.title.toLowerCase().includes(query.toLowerCase()));
+            } else if (scope === 'content') {
+                filtered = filtered.filter(r => r.excerpt && r.excerpt.toLowerCase().includes(query.toLowerCase()));
+            }
+
+            showResults(filtered);
+        } catch (error) {
+            console.error('搜索失败:', error);
+            results.innerHTML = `
+                <div class="search-status">
+                    <div class="status-icon">⚠️</div>
+                    <p class="status-text">搜索功能暂时不可用，请稍后再试</p>
+                </div>
+            `;
+        }
     }
 
     function showInitialState() {
@@ -621,16 +610,26 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        const html = items.map(item => `
-            <a href="${item.url}" class="search-result-item">
-                <span class="result-category">${getCategoryName(item.category)}</span>
-                <h3 class="result-title">${item.title}</h3>
-                <p class="result-excerpt">${item.excerpt}</p>
-                <div class="result-meta">
-                    <span>📅 ${item.date}</span>
-                </div>
-            </a>
-        `).join('');
+        const html = items.map(item => {
+            // 从URL中提取分类
+            const urlParts = item.url.split('/').filter(p => p);
+            const category = urlParts.length > 0 ? urlParts[0] : '';
+
+            // 获取标题和摘录
+            const title = item.meta?.title || item.title || '无标题';
+            const excerpt = item.excerpt || item.content?.substring(0, 150) || '';
+
+            return `
+                <a href="${item.url}" class="search-result-item">
+                    <span class="result-category">${getCategoryName(category)}</span>
+                    <h3 class="result-title">${title}</h3>
+                    <p class="result-excerpt">${excerpt}...</p>
+                    <div class="result-meta">
+                        <span>🔗 ${item.url}</span>
+                    </div>
+                </a>
+            `;
+        }).join('');
 
         results.innerHTML = html;
     }
@@ -642,7 +641,7 @@ document.addEventListener('DOMContentLoaded', function() {
             life: '🌍 生活',
             books: '📖 书籍'
         };
-        return names[category] || category;
+        return names[category] || '📄 其他';
     }
 });
 </script>

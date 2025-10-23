@@ -96,7 +96,14 @@
 .profile-name { font-size: 3rem; font-weight: 900; background: linear-gradient(135deg, var(--trans-blue), var(--trans-pink)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; line-height: 1.2; animation: nameGlow 3s ease-in-out infinite; }
 @keyframes nameGlow { 0%, 100% { filter: drop-shadow(0 2px 8px var(--shadow-color-1)); } 50% { filter: drop-shadow(0 2px 16px var(--shadow-color-2)); } }
 .profile-tagline { font-size: 1.2rem; color: var(--text-secondary); margin: 0.5rem 0 1.5rem; font-weight: 500; }
-.profile-bio { font-size: 1rem; color: var(--text-primary); line-height: 1.7; margin: 1rem 0; }
+.profile-bio {
+    font-size: 1rem;
+    color: var(--text-primary);
+    line-height: 1.7;
+    margin: 1rem 0;
+    white-space: pre-line; /* 保留换行符，使 \n 生效 */
+    text-align: left; /* 确保文本左对齐 */
+}
 
 /* 标签云 */
 .profile-tags { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 0.75rem; margin-bottom: 2rem; }

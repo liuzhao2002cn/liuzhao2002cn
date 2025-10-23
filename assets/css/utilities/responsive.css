@@ -86,11 +86,7 @@ table {
         z-index: 200;
         overflow-y: auto;
     }
-    
-    body.dark-mode .nav-menu {
-        background: #2d2d2d;
-    }
-    
+
     .nav-menu.active {
         right: 0;
     }

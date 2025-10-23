@@ -236,28 +236,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     
     // ========================================
-    // 7. 防止快速多次点击
+    // 7. 防止快速多次点击（通过 CSS transition 和状态检查处理）
     // ========================================
-    
-    let isAnimating = false;
-    const animationDuration = 300; // 与 CSS 过渡时间一致
-    
-    function debounceToggle(callback) {
-        if (!isAnimating) {
-            isAnimating = true;
-            callback();
-            setTimeout(() => {
-                isAnimating = false;
-            }, animationDuration);
-        }
-    }
-    
-    // 重新绑定事件（带防抖）
-    if (sidebarToggle) {
-        sidebarToggle.addEventListener('click', function() {
-            debounceToggle(toggleSidebar);
-        });
-    }
+
+    // 注意：侧边栏切换事件已经在上方绑定（第40行），
+    // CSS transition 会自动处理动画过渡，无需额外防抖
     
     
     // ========================================

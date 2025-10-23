@@ -654,9 +654,15 @@
         padding: 0.875rem 1rem;
     }
 
+    /* 修复移动端章节号和标题大小不平衡的问题 */
     .chapter-number {
-        min-width: 50px;
-        font-size: 0.8rem;
+        min-width: 65px;
+        font-size: 0.9rem; /* 从0.8rem增大到0.9rem */
+        font-weight: 600; /* 增加字重，使其更醒目 */
+    }
+
+    .chapter-title {
+        font-size: 0.95rem; /* 从1rem略微减小到0.95rem */
     }
 
     .chapter-content-page {

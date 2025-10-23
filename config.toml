@@ -69,7 +69,6 @@ canonifyURLs = true
   related_posts = true
   reading_time = true
   table_of_contents = true
-  dark_mode_toggle = true
   progress_bar = true
 [params.giscus]
   enable = true
