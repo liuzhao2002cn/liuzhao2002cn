@@ -1,15 +1,18 @@
 {{- $pages := where .Site.RegularPages "Type" "in" (slice "note" "opinion" "life" "books") -}}
-{{- $index := slice -}}
-{{- range $pages -}}
-  {{- $content := .Plain | truncate 500 -}}
-  {{- $entry := dict
-    "title" .Title
-    "url" .Permalink
-    "content" $content
-    "summary" (.Summary | plainify | truncate 200)
-    "section" .Section
-    "date" (.Date.Format "2006-01-02")
-  -}}
-  {{- $index = $index | append $entry -}}
-{{- end -}}
-{{- $index | jsonify -}}
+{
+  "pages": [
+    {{- range $index, $page := $pages -}}
+      {{- if $index }},{{ end -}}
+      {
+        "title": {{ $page.Title | jsonify }},
+        "url": {{ $page.Permalink | jsonify }},
+        "content": {{ ($page.Plain | truncate 500) | jsonify }},
+        "summary": {{ ($page.Summary | plainify | truncate 200) | jsonify }},
+        "section": {{ $page.Section | jsonify }},
+        "date": {{ ($page.Date.Format "2006-01-02") | jsonify }},
+        "tags": {{ ($page.Params.tags | default slice) | jsonify }},
+        "categories": {{ ($page.Params.categories | default slice) | jsonify }}
+      }
+    {{- end -}}
+  ]
+}
