@@ -24,9 +24,6 @@ canonifyURLs = true
   text = "诚之者，择善而固执之者也。"
   author = "《礼记·中庸》"
 [[params.quotes]]
-  text = "就算砍掉所有的鲜花，也无法阻挡春天的到来。"
-  author = "巴勃罗·聂鲁达"
-[[params.quotes]]
   text = "无穷的远方，无数的人们，都和我有关。"
   author = "鲁迅"
 [params.theme]
