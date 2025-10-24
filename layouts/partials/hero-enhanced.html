@@ -14,13 +14,6 @@
         <!-- 昵称 -->
         <h1 class="hero-name">{{ .Site.Params.displayName }}</h1>
 
-        <!-- 个人简介 -->
-        {{ with .Site.Params.bio }}
-        <div class="hero-bio">
-            <p>{{ . }}</p>
-        </div>
-        {{ end }}
-
         <!-- 格言 -->
         {{ with .Site.Params.quotes }}
         <div class="hero-quotes">
@@ -30,6 +23,13 @@
                 <cite class="quote-author">— {{ .author }}</cite>
             </blockquote>
             {{ end }}
+        </div>
+        {{ end }}
+
+         <!-- 个人简介 -->
+        {{ with .Site.Params.bio }}
+        <div class="hero-bio">
+            <p>{{ . }}</p>
         </div>
         {{ end }}
 
