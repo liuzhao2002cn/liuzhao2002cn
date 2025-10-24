@@ -29,7 +29,7 @@ canonifyURLs = true
   author = "《礼记·中庸》"
 [[params.quotes]]
   text = "无穷的远方，无数的人们，都和我有关。"
-  author = "鲁迅"
+  author = "鲁迅《且介亭杂文末集·这也是生活》"
 [params.theme]
   name = "肇自定义" 
   url = "https://github.com/liuzhao2002cn/liuzhao2002cn"
