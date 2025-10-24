@@ -19,7 +19,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.121.2 # 你可以根据需要更新 Hugo 版本
+      HUGO_VERSION: 0.121.2
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,7 +30,7 @@ jobs:
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: "${{ env.HUGO_VERSION }}"
-          extended: true # 必须！为了使用 Hugo Pipes (PostCSS)
+          extended: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
