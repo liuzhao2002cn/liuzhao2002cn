@@ -8,13 +8,12 @@ tags: ["哲学"]
 ---
 ---
 
-
-
 > **文章来源**：本文为 *God, the Gift, and Postmodernism* (Indiana Series in the Philosophy of Religion, Caputo, John D., Indiana University Press, 1999) 一书导言（1-19页）的翻译。
 >
 > **原作者**：约翰·D·卡普托、迈克尔·J·斯坎隆
 >
-> **初始发布日期**：2021-05-30
+> **初始发布日期**：2021-05-30（首发于豆瓣）
+> **最终修订日期**：2025-10-26
 
 ***
 
