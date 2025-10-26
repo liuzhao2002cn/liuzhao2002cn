@@ -1,6 +1,6 @@
 ---
 title: "为不可能申辩：宗教与后现代主义"
-date: 2025-04-08
+date: 2025-10-26
 author: "竱肇"
 original_author: "约翰·D·卡普托、迈克尔·J·斯坎隆"
 featured: true
