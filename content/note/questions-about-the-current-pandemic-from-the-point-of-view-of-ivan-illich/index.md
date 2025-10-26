@@ -4,8 +4,6 @@ date: 2025-04-08
 author: "竱肇"
 original_author: "大卫·凯利 David Cayley（2020/04/08）"
 featured: true
-readingTime: 10
-categories: ["note", "书评"]
 tags: ["哲学"]
 ---
 
