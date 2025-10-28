@@ -763,6 +763,38 @@
         margin: 0 0.75rem;
     }
 
+    .chapter-text h2 {
+        font-size: 1.625rem;
+        margin-top: 3rem;
+        margin-bottom: 1.75rem;
+    }
+
+    .chapter-text h3 {
+        font-size: 1.375rem;
+        margin-top: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .chapter-text h4 {
+        font-size: 1.125rem;
+        margin-top: 2rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .chapter-text blockquote {
+        padding: 1.5rem 1.75rem;
+        margin: 2.5rem 0;
+    }
+
+    .chapter-text blockquote p {
+        padding-left: 1.5rem;
+    }
+
+    .chapter-text pre code {
+        padding: 1.5rem;
+        font-size: 0.875em;
+    }
+
     .chapter-navigation {
         flex-direction: column;
     }
@@ -929,6 +961,33 @@
         background-origin: border-box;
         background-clip: padding-box, border-box;
         margin: 0 0.75rem;
+    }
+
+    .chapter-text h2 {
+        font-size: 1.375rem;
+        margin-top: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .chapter-text h3 {
+        font-size: 1.125rem;
+        margin-top: 2rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .chapter-text h4 {
+        font-size: 1rem;
+        margin-top: 1.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .chapter-text blockquote {
+        padding: 1.25rem 1.5rem;
+    }
+
+    .chapter-text ul,
+    .chapter-text ol {
+        padding-left: 1.75rem;
     }
 
     .breadcrumb {
