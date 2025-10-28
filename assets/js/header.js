@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         sidebarOverlay.classList.remove('active');
         sidebarMenu.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = ''; 
+    }
     
     // 切换侧边栏
     function toggleSidebar() {
