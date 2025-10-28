@@ -235,8 +235,8 @@
    内容分类展示区 - 增强版样式
    =================================== */
 .content-sections-enhanced {
-    padding: 15rem 2rem 6rem;
-    margin-top: 15rem;
+    padding: 3rem 2rem 6rem;
+    margin-top: 3rem;
     background: transparent;
 }
 
@@ -511,7 +511,7 @@
 @media (max-width: 768px) {
     .content-sections-enhanced {
         padding: 4rem 1.5rem;
-        margin-top: 8rem;
+        margin-top: 2rem;
     }
 
     .sections-header {
@@ -572,7 +572,7 @@
 @media (max-width: 480px) {
     .content-sections-enhanced {
         padding: 3rem 1rem;
-        margin-top: 5rem;
+        margin-top: 2rem;
     }
 
     .sections-main-title {

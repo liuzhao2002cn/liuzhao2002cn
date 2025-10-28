@@ -857,7 +857,7 @@
 
     .book-detail-info h1,
     .book-detail-title {
-        font-size: 1.375rem;
+        font-size: 1rem;
         margin-bottom: 1.5rem;
     }
 
@@ -916,7 +916,7 @@
     }
 
     .chapter-title {
-        font-size: 0.65rem;
+        font-size: 1rem;
         line-height: 1.5;
     }
 
@@ -960,7 +960,7 @@
             linear-gradient(135deg, #5BCEFA, #FFFFFF, #F5A9B8);
         background-origin: border-box;
         background-clip: padding-box, border-box;
-        margin: 0 0.75rem;
+        margin: 0.01rem;
     }
 
     .chapter-text h2 {
