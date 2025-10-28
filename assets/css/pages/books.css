@@ -330,6 +330,7 @@
 
 .chapter-link {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding: 1.25rem 1.75rem;
@@ -476,6 +477,7 @@
 }
 
 .chapter-text {
+    position: relative;
     font-size: 1.05rem;
     line-height: 1.9;
     color: #333;
@@ -486,12 +488,17 @@
     padding: 2.5rem 5rem;
     box-shadow: 0 8px 32px rgba(245, 169, 184, 0.15),
                 0 4px 16px rgba(91, 206, 250, 0.1);
-    border: 2px solid transparent;
-    background-image:
-        linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)),
-        linear-gradient(135deg, #5BCEFA, #FFFFFF, #F5A9B8);
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
+}
+
+/* 使用伪元素实现渐变边框，不影响盒模型 */
+.chapter-text::before {
+    content: '';
+    position: absolute;
+    inset: -2px;  /* 负值让边框显示在外围，2px = 边框宽度 */
+    border-radius: 26px;  /* 比主元素大2px以匹配 */
+    background: linear-gradient(135deg, #5BCEFA, #FFFFFF, #F5A9B8);
+    z-index: -1;
+    pointer-events: none;  /* 不阻挡内容点击 */
 }
 
 .chapter-text p {
@@ -754,13 +761,11 @@
         border-radius: 20px;
         box-shadow: 0 6px 24px rgba(245, 169, 184, 0.18),
                     0 3px 12px rgba(91, 206, 250, 0.12);
-        border: 2px solid transparent;
-        background-image:
-            linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
-            linear-gradient(135deg, #5BCEFA, #FFFFFF, #F5A9B8);
-        background-origin: border-box;
-        background-clip: padding-box, border-box;
-        margin: 0 0.75rem;
+        margin: 0;  /* 移除外边距，依靠父容器padding */
+    }
+
+    .chapter-text::before {
+        border-radius: 22px;  /* 匹配主元素的20px + 2px */
     }
 
     .chapter-text h2 {
@@ -954,13 +959,12 @@
         border-radius: 16px;
         box-shadow: 0 4px 20px rgba(245, 169, 184, 0.2),
                     0 2px 10px rgba(91, 206, 250, 0.15);
-        border: 1.5px solid transparent;
-        background-image:
-            linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)),
-            linear-gradient(135deg, #5BCEFA, #FFFFFF, #F5A9B8);
-        background-origin: border-box;
-        background-clip: padding-box, border-box;
-        margin: 0.01rem;
+        margin: 0;  /* 移除外边距，依靠父容器padding */
+    }
+
+    .chapter-text::before {
+        inset: -1.5px;  /* 480px的边框更细 */
+        border-radius: 17.5px;  /* 匹配主元素的16px + 1.5px */
     }
 
     .chapter-text h2 {
