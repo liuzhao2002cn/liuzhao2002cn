@@ -232,96 +232,241 @@
 }
 
 /* ===================================
-   内容分类卡片区样式
+   内容分类展示区 - 增强版样式
    =================================== */
-.content-sections {
-    padding: 4rem 2rem;
+.content-sections-enhanced {
+    padding: 6rem 2rem;
     background: linear-gradient(to bottom, #f8fafc, #ffffff);
 }
 
-.sections-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    max-width: 900px;
-    margin: 0 auto;
+.sections-header {
+    text-align: center;
+    margin-bottom: 4rem;
 }
 
-.section-card {
-    position: relative;
-    background: white;
-    border-radius: 20px;
-    padding: 2rem 2.5rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: hidden;
-    border: 2px solid transparent;
-}
-
-/* 为每个卡片设置不同的粉蓝白渐变边框 */
-.section-card:nth-child(1) {
-    background: linear-gradient(white, white) padding-box,
-                linear-gradient(135deg, #F5A9B8, #FFFFFF) border-box;
-}
-
-.section-card:nth-child(2) {
-    background: linear-gradient(white, white) padding-box,
-                linear-gradient(135deg, #5BCEFA, #F5A9B8) border-box;
-}
-
-.section-card:nth-child(3) {
-    background: linear-gradient(white, white) padding-box,
-                linear-gradient(135deg, #FFFFFF, #5BCEFA) border-box;
-}
-
-.section-card:nth-child(4) {
-    background: linear-gradient(white, white) padding-box,
-                linear-gradient(135deg, #F5A9B8, #5BCEFA) border-box;
-}
-
-.section-card:hover {
-    transform: translateX(10px);
-    box-shadow: 0 8px 35px rgba(245, 169, 184, 0.25),
-                0 4px 20px rgba(91, 206, 250, 0.15);
-}
-
-.card-content {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
-.card-icon {
-    font-size: 3.5rem;
-    flex-shrink: 0;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
-}
-
-.card-title {
-    font-size: 1.75rem;
-    font-weight: 700;
-    margin: 0 0 0.5rem 0;
+.sections-main-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0 0 1rem;
     background: linear-gradient(135deg, #F5A9B8, #5BCEFA);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-.card-description {
+.sections-subtitle {
+    font-size: 1.125rem;
+    color: #64748b;
+    margin: 0;
+}
+
+.sections-grid-enhanced {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-card-enhanced {
+    position: relative;
+    background: white;
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    border: 2px solid transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 为每个卡片设置不同的粉蓝白渐变边框 */
+.section-card-enhanced:nth-child(1) {
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(135deg, #F5A9B8, #FFFFFF, #5BCEFA) border-box;
+}
+
+.section-card-enhanced:nth-child(2) {
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(135deg, #5BCEFA, #FFFFFF, #F5A9B8) border-box;
+}
+
+.section-card-enhanced:nth-child(3) {
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(135deg, #F5A9B8, #5BCEFA, #FFFFFF) border-box;
+}
+
+.section-card-enhanced:nth-child(4) {
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(135deg, #5BCEFA, #F5A9B8, #FFFFFF) border-box;
+}
+
+.section-card-enhanced:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 50px rgba(245, 169, 184, 0.2),
+                0 8px 25px rgba(91, 206, 250, 0.15);
+}
+
+/* 卡片头部 */
+.card-header-enhanced {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid rgba(245, 169, 184, 0.1);
+}
+
+.card-icon-large {
+    font-size: 4rem;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+    flex-shrink: 0;
+}
+
+.card-header-text {
+    flex: 1;
+}
+
+.card-title-enhanced {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem;
+    background: linear-gradient(135deg, #F5A9B8, #5BCEFA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.card-subtitle-enhanced {
     font-size: 1rem;
     color: #64748b;
-    margin: 0 0 0.5rem 0;
+    margin: 0;
     line-height: 1.6;
 }
 
-.card-meta {
-    font-size: 0.95rem;
+.card-count {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #F5A9B8, #5BCEFA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.count-label {
+    font-size: 1rem;
+    margin-left: 0.25rem;
+    opacity: 0.7;
+}
+
+/* 卡片主体 */
+.card-body-enhanced {
+    flex: 1;
+    margin-bottom: 2rem;
+}
+
+.recent-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.recent-item {
+    padding: 0;
+}
+
+.recent-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg,
+        rgba(245, 169, 184, 0.03),
+        rgba(91, 206, 250, 0.03));
+    border-radius: 12px;
+    text-decoration: none;
+    color: #334155;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(245, 169, 184, 0.1);
+    gap: 1rem;
+}
+
+.recent-link:hover {
+    background: linear-gradient(135deg,
+        rgba(245, 169, 184, 0.1),
+        rgba(91, 206, 250, 0.1));
+    transform: translateX(5px);
+    border-color: rgba(245, 169, 184, 0.3);
+}
+
+.recent-title {
+    flex: 1;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recent-date {
+    font-size: 0.8125rem;
     color: #94a3b8;
-    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.empty-hint {
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.9375rem;
+    padding: 2rem 0;
+    margin: 0;
+}
+
+/* 卡片底部 */
+.card-footer-enhanced {
+    padding-top: 1.5rem;
+    border-top: 2px solid rgba(245, 169, 184, 0.1);
+}
+
+.view-more-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    background: linear-gradient(135deg,
+        rgba(245, 169, 184, 0.08),
+        rgba(91, 206, 250, 0.08));
+    border-radius: 12px;
+    text-decoration: none;
+    color: #334155;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid rgba(245, 169, 184, 0.2);
+}
+
+.view-more-btn:hover {
+    background: linear-gradient(135deg, #F5A9B8, #5BCEFA);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 169, 184, 0.3);
+    border-color: transparent;
+}
+
+.view-more-btn .arrow {
+    transition: transform 0.3s ease;
+}
+
+.view-more-btn:hover .arrow {
+    transform: translateX(5px);
 }
 
 .card-hover-effect {
@@ -331,66 +476,165 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg,
-        rgba(245, 169, 184, 0.05),
-        rgba(255, 255, 255, 0.03),
-        rgba(91, 206, 250, 0.05));
+        rgba(245, 169, 184, 0.03),
+        rgba(255, 255, 255, 0.02),
+        rgba(91, 206, 250, 0.03));
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none;
 }
 
-.section-card:hover .card-hover-effect {
+.section-card-enhanced:hover .card-hover-effect {
     opacity: 1;
 }
 
+/* 响应式设计 */
+@media (max-width: 1024px) {
+    .sections-grid-enhanced {
+        gap: 2rem;
+    }
+
+    .section-card-enhanced {
+        padding: 2.5rem;
+    }
+
+    .card-title-enhanced {
+        font-size: 1.75rem;
+    }
+
+    .card-icon-large {
+        font-size: 3.5rem;
+    }
+}
+
 @media (max-width: 768px) {
-    .content-sections {
-        padding: 3rem 1.5rem;
+    .content-sections-enhanced {
+        padding: 4rem 1.5rem;
     }
 
-    .sections-grid {
-        gap: 1.25rem;
+    .sections-header {
+        margin-bottom: 3rem;
     }
 
-    .section-card {
-        padding: 1.75rem 2rem;
+    .sections-main-title {
+        font-size: 2.25rem;
     }
 
-    .card-content {
-        gap: 1.5rem;
+    .sections-subtitle {
+        font-size: 1rem;
     }
 
-    .card-icon {
+    .sections-grid-enhanced {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .section-card-enhanced {
+        padding: 2.25rem 2rem;
+    }
+
+    .card-header-enhanced {
+        margin-bottom: 1.75rem;
+        padding-bottom: 1.75rem;
+    }
+
+    .card-icon-large {
         font-size: 3rem;
     }
 
-    .card-title {
+    .card-title-enhanced {
         font-size: 1.5rem;
     }
 
-    .card-description {
-        font-size: 0.95rem;
+    .card-subtitle-enhanced {
+        font-size: 0.9375rem;
+    }
+
+    .card-count {
+        font-size: 2.5rem;
+    }
+
+    .recent-link {
+        padding: 0.875rem 1rem;
+    }
+
+    .recent-title {
+        font-size: 0.875rem;
+    }
+
+    .recent-date {
+        font-size: 0.75rem;
     }
 }
 
 @media (max-width: 480px) {
-    .section-card {
-        padding: 1.5rem;
+    .content-sections-enhanced {
+        padding: 3rem 1rem;
     }
 
-    .card-content {
-        gap: 1.25rem;
+    .sections-main-title {
+        font-size: 1.875rem;
     }
 
-    .card-icon {
+    .sections-subtitle {
+        font-size: 0.9375rem;
+    }
+
+    .sections-grid-enhanced {
+        gap: 1.5rem;
+    }
+
+    .section-card-enhanced {
+        padding: 2rem 1.5rem;
+    }
+
+    .card-header-enhanced {
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .card-icon-large {
         font-size: 2.5rem;
     }
 
-    .card-title {
-        font-size: 1.3rem;
+    .card-title-enhanced {
+        font-size: 1.25rem;
     }
 
-    .card-description {
-        font-size: 0.9rem;
+    .card-subtitle-enhanced {
+        font-size: 0.875rem;
+    }
+
+    .card-count {
+        font-size: 2rem;
+        width: 100%;
+        text-align: left;
+    }
+
+    .recent-list {
+        gap: 0.75rem;
+    }
+
+    .recent-link {
+        padding: 0.75rem 0.875rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.375rem;
+    }
+
+    .recent-title {
+        font-size: 0.8125rem;
+        white-space: normal;
+    }
+
+    .recent-date {
+        font-size: 0.6875rem;
+    }
+
+    .view-more-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.875rem;
     }
 }

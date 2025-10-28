@@ -86,44 +86,154 @@
     </div>
 </section>
 
-<!-- 内容分类卡片区 -->
-<section id="content-sections" class="content-sections">
-    <div class="sections-grid">
-        <a href="/note/" class="section-card">
-            <div class="card-content">
-                <div class="card-icon">📚</div>
-                <h3 class="card-title">读书笔记</h3>
-                <p class="card-description">阅读思考与知识沉淀</p>
-                <div class="card-meta"><span>{{ len $notePages }} 篇</span></div>
+<!-- 内容分类展示区 - 增强版 -->
+<section id="content-sections" class="content-sections-enhanced">
+    <div class="container">
+        <div class="sections-header">
+            <h2 class="sections-main-title">内容分类</h2>
+            <p class="sections-subtitle">探索不同主题的思考与记录</p>
+        </div>
+
+        <div class="sections-grid-enhanced">
+            <!-- 读书笔记 -->
+            <div class="section-card-enhanced">
+                <div class="card-header-enhanced">
+                    <div class="card-icon-large">📚</div>
+                    <div class="card-header-text">
+                        <h3 class="card-title-enhanced">读书笔记</h3>
+                        <p class="card-subtitle-enhanced">阅读思考与知识沉淀</p>
+                    </div>
+                    <div class="card-count">{{ len $notePages }}<span class="count-label">篇</span></div>
+                </div>
+                <div class="card-body-enhanced">
+                    {{ if gt (len $notePages) 0 }}
+                    <ul class="recent-list">
+                        {{ range first 3 $notePages }}
+                        <li class="recent-item">
+                            <a href="{{ .Permalink }}" class="recent-link">
+                                <span class="recent-title">{{ .Title }}</span>
+                                <span class="recent-date">{{ .Date.Format "01-02" }}</span>
+                            </a>
+                        </li>
+                        {{ end }}
+                    </ul>
+                    {{ else }}
+                    <p class="empty-hint">暂无内容</p>
+                    {{ end }}
+                </div>
+                <div class="card-footer-enhanced">
+                    <a href="/note/" class="view-more-btn">
+                        <span>查看全部</span>
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+                <div class="card-hover-effect"></div>
             </div>
-            <div class="card-hover-effect"></div>
-        </a>
-        <a href="/opinion/" class="section-card">
-            <div class="card-content">
-                <div class="card-icon">🎨</div>
-                <h3 class="card-title">个人评论</h3>
-                <p class="card-description">独立思考与观点表达</p>
-                <div class="card-meta"><span>{{ len $opinionPages }} 篇</span></div>
+
+            <!-- 个人评论 -->
+            <div class="section-card-enhanced">
+                <div class="card-header-enhanced">
+                    <div class="card-icon-large">🎨</div>
+                    <div class="card-header-text">
+                        <h3 class="card-title-enhanced">个人评论</h3>
+                        <p class="card-subtitle-enhanced">独立思考与观点表达</p>
+                    </div>
+                    <div class="card-count">{{ len $opinionPages }}<span class="count-label">篇</span></div>
+                </div>
+                <div class="card-body-enhanced">
+                    {{ if gt (len $opinionPages) 0 }}
+                    <ul class="recent-list">
+                        {{ range first 3 $opinionPages }}
+                        <li class="recent-item">
+                            <a href="{{ .Permalink }}" class="recent-link">
+                                <span class="recent-title">{{ .Title }}</span>
+                                <span class="recent-date">{{ .Date.Format "01-02" }}</span>
+                            </a>
+                        </li>
+                        {{ end }}
+                    </ul>
+                    {{ else }}
+                    <p class="empty-hint">暂无内容</p>
+                    {{ end }}
+                </div>
+                <div class="card-footer-enhanced">
+                    <a href="/opinion/" class="view-more-btn">
+                        <span>查看全部</span>
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+                <div class="card-hover-effect"></div>
             </div>
-            <div class="card-hover-effect"></div>
-        </a>
-        <a href="/books/" class="section-card">
-            <div class="card-content">
-                <div class="card-icon">📖</div>
-                <h3 class="card-title">我的书籍</h3>
-                <p class="card-description">翻译作品与原创书籍</p>
-                <div class="card-meta"><span>{{ len $bookPages }} 本</span></div>
+
+            <!-- 我的书籍 -->
+            <div class="section-card-enhanced">
+                <div class="card-header-enhanced">
+                    <div class="card-icon-large">📖</div>
+                    <div class="card-header-text">
+                        <h3 class="card-title-enhanced">我的书籍</h3>
+                        <p class="card-subtitle-enhanced">翻译作品与原创书籍</p>
+                    </div>
+                    <div class="card-count">{{ len $bookPages }}<span class="count-label">本</span></div>
+                </div>
+                <div class="card-body-enhanced">
+                    {{ if gt (len $bookPages) 0 }}
+                    <ul class="recent-list">
+                        {{ range first 3 $bookPages }}
+                        <li class="recent-item">
+                            <a href="{{ .Permalink }}" class="recent-link">
+                                <span class="recent-title">{{ .Title }}</span>
+                                <span class="recent-date">{{ .Date.Format "01-02" }}</span>
+                            </a>
+                        </li>
+                        {{ end }}
+                    </ul>
+                    {{ else }}
+                    <p class="empty-hint">暂无内容</p>
+                    {{ end }}
+                </div>
+                <div class="card-footer-enhanced">
+                    <a href="/books/" class="view-more-btn">
+                        <span>查看全部</span>
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+                <div class="card-hover-effect"></div>
             </div>
-            <div class="card-hover-effect"></div>
-        </a>
-        <a href="/life/" class="section-card">
-            <div class="card-content">
-                <div class="card-icon">🌍</div>
-                <h3 class="card-title">见闻感受</h3>
-                <p class="card-description">生活体验与情感记录</p>
-                <div class="card-meta"><span>{{ len $lifePages }} 篇</span></div>
+
+            <!-- 见闻感受 -->
+            <div class="section-card-enhanced">
+                <div class="card-header-enhanced">
+                    <div class="card-icon-large">🌍</div>
+                    <div class="card-header-text">
+                        <h3 class="card-title-enhanced">见闻感受</h3>
+                        <p class="card-subtitle-enhanced">生活体验与情感记录</p>
+                    </div>
+                    <div class="card-count">{{ len $lifePages }}<span class="count-label">篇</span></div>
+                </div>
+                <div class="card-body-enhanced">
+                    {{ if gt (len $lifePages) 0 }}
+                    <ul class="recent-list">
+                        {{ range first 3 $lifePages }}
+                        <li class="recent-item">
+                            <a href="{{ .Permalink }}" class="recent-link">
+                                <span class="recent-title">{{ .Title }}</span>
+                                <span class="recent-date">{{ .Date.Format "01-02" }}</span>
+                            </a>
+                        </li>
+                        {{ end }}
+                    </ul>
+                    {{ else }}
+                    <p class="empty-hint">暂无内容</p>
+                    {{ end }}
+                </div>
+                <div class="card-footer-enhanced">
+                    <a href="/life/" class="view-more-btn">
+                        <span>查看全部</span>
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+                <div class="card-hover-effect"></div>
             </div>
-            <div class="card-hover-effect"></div>
-        </a>
+        </div>
     </div>
 </section>
