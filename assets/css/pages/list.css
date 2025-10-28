@@ -359,7 +359,11 @@
 }
 
 .tag-more {
-    background: #f1f5f9;
+    background: linear-gradient(135deg,
+        rgba(245, 169, 184, 0.12),
+        rgba(91, 206, 250, 0.12),
+        rgba(255, 255, 255, 0.95)
+    );
     color: #64748b;
     padding: 0.375rem 0.75rem;
     border-radius: 12px;
@@ -417,8 +421,12 @@
 .pagination .disabled .pagination-link {
     color: #cbd5e1;
     pointer-events: none;
-    background: #f8fafc;
-    border-color: #f1f5f9;
+    background: linear-gradient(135deg,
+        rgba(245, 169, 184, 0.05),
+        rgba(91, 206, 250, 0.05),
+        rgba(255, 255, 255, 0.98)
+    );
+    border-color: rgba(245, 169, 184, 0.2);
 }
 
 /* ====== 空状态 ====== */
