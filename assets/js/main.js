@@ -115,47 +115,9 @@ function initializeNavbar() {
 
 
 /**
- * 初始化页面增强功能，如网站运行时间和外部链接处理
+ * 初始化页面增强功能，如外部链接处理
  */
 function initializePageEnhancements() {
-    // --- 网站运行时长计算 ---
-    const daysEl = document.getElementById('days');
-    const hoursEl = document.getElementById('hours');
-    const minutesEl = document.getElementById('minutes');
-    const secondsEl = document.getElementById('seconds');
-
-    if (daysEl && hoursEl && minutesEl && secondsEl) {
-        // 使用本地时间，月份从0开始（9代表10月）
-        const launchDate = new Date(2025, 9, 18, 0, 0, 0, 0);
-
-        const updateRuntime = () => {
-            const now = new Date();
-            const diff = now - launchDate;
-
-            // 如果差值为负数（网站还未上线），显示0
-            if (diff < 0) {
-                daysEl.textContent = '0';
-                hoursEl.textContent = '00';
-                minutesEl.textContent = '00';
-                secondsEl.textContent = '00';
-                return;
-            }
-
-            const days = Math.floor(diff / 86400000); // 1000 * 60 * 60 * 24
-            const hours = Math.floor((diff % 86400000) / 3600000); // 1000 * 60 * 60
-            const minutes = Math.floor((diff % 3600000) / 60000); // 1000 * 60
-            const seconds = Math.floor((diff % 60000) / 1000);
-
-            daysEl.textContent = days;
-            hoursEl.textContent = hours.toString().padStart(2, '0');
-            minutesEl.textContent = minutes.toString().padStart(2, '0');
-            secondsEl.textContent = seconds.toString().padStart(2, '0');
-        };
-
-        updateRuntime(); // 立即执行一次
-        setInterval(updateRuntime, 1000); // 每秒更新
-    }
-
     // --- 为外部链接添加 rel="noopener noreferrer" ---
     document.querySelectorAll('a[target="_blank"]').forEach(link => {
         link.setAttribute('rel', 'noopener noreferrer');

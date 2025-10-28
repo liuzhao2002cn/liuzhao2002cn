@@ -33,10 +33,10 @@
                 </p>
                 <p class="runtime" id="runtime">
                     <span class="runtime-icon">⏱️</span>
-                    网站已运行 <span id="days">0</span> 天 <span id="hours">0</span> 时 <span id="minutes">0</span> 分 <span id="seconds">0</span> 秒
+                    网站已运行 <span id="runtime-days">0</span> 天 <span id="runtime-hours">00</span> 时 <span id="runtime-minutes">00</span> 分 <span id="runtime-seconds">00</span> 秒
                 </p>
             </div>
-            
+
             <div class="powered-by">
                 感谢 <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> 技术提供驱动支持
                 {{ with .Site.Params.theme }}
@@ -47,6 +47,50 @@
         </div>
     </div>
 </footer>
+<script>
+// 网站运行时间计数器 - 内联版本确保立即执行
+(function() {
+    function updateRuntime() {
+        const daysEl = document.getElementById('runtime-days');
+        const hoursEl = document.getElementById('runtime-hours');
+        const minutesEl = document.getElementById('runtime-minutes');
+        const secondsEl = document.getElementById('runtime-seconds');
+
+        if (!daysEl || !hoursEl || !minutesEl || !secondsEl) {
+            console.error('Runtime elements not found');
+            return;
+        }
+
+        // 网站上线时间：2025年10月18日 00:00:00
+        const launchDate = new Date(2025, 9, 18, 0, 0, 0, 0);
+        const now = new Date();
+        const diff = now - launchDate;
+
+        if (diff < 0) {
+            daysEl.textContent = '0';
+            hoursEl.textContent = '00';
+            minutesEl.textContent = '00';
+            secondsEl.textContent = '00';
+            return;
+        }
+
+        const days = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+
+        daysEl.textContent = days;
+        hoursEl.textContent = hours.toString().padStart(2, '0');
+        minutesEl.textContent = minutes.toString().padStart(2, '0');
+        secondsEl.textContent = seconds.toString().padStart(2, '0');
+    }
+
+    // 立即执行一次
+    updateRuntime();
+    // 每秒更新
+    setInterval(updateRuntime, 1000);
+})();
+</script>
 {{ $herojs := resources.Get "js/hero-enhanced.js" }}
 {{ if hugo.IsProduction }}{{ $herojs = $herojs | minify | fingerprint }}{{ end }}
 {{ if $herojs }}
