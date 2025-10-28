@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
         sidebarMenu.classList.remove('first-load');
         sidebarOverlay.classList.remove('first-load');
     }, 500);
-};
+});
 
 
 // ========================================
