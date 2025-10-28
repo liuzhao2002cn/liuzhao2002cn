@@ -57,10 +57,6 @@ canonifyURLs = true
     name = "📖 书籍"
     url = "/books/"
     weight = 5
-  [[menu.main]]
-    name = "📥 下载"
-    url = "/downloads/"
-    weight = 6
 [outputs]
   home = ["HTML", "JSON"]
   page = ["HTML"]
