@@ -1,7 +1,7 @@
 // ========================================
 // DOM 元素缓存
 // ========================================
-const DOM = {
+const HeroDOM = {
     statsSection: null,
     stats: null,
     particlesContainer: null,
@@ -15,15 +15,15 @@ const DOM = {
 
 // 初始化 DOM 缓存
 function initDOMCache() {
-    DOM.statsSection = document.querySelector('.profile-stats');
-    DOM.stats = document.querySelectorAll('.stat-value');
-    DOM.particlesContainer = document.getElementById('hero-particles');
-    DOM.scrollIndicator = document.querySelector('.scroll-indicator');
-    DOM.profileCard = document.querySelector('.profile-card');
-    DOM.heroSection = document.querySelector('.hero-card-section');
-    DOM.avatarImage = document.querySelector('.avatar-image');
-    DOM.profileName = document.querySelector('.profile-name');
-    DOM.tags = document.querySelectorAll('.tag');
+    HeroDOM.statsSection = document.querySelector('.profile-stats');
+    HeroDOM.stats = document.querySelectorAll('.stat-value');
+    HeroDOM.particlesContainer = document.getElementById('hero-particles');
+    HeroDOM.scrollIndicator = document.querySelector('.scroll-indicator');
+    HeroDOM.profileCard = document.querySelector('.profile-card');
+    HeroDOM.heroSection = document.querySelector('.hero-card-section');
+    HeroDOM.avatarImage = document.querySelector('.avatar-image');
+    HeroDOM.profileName = document.querySelector('.profile-name');
+    HeroDOM.tags = document.querySelectorAll('.tag');
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // 禁用所有动画
         document.body.classList.add('reduce-motion');
         // 移除粒子效果
-        if (DOM.particlesContainer) {
-            DOM.particlesContainer.style.display = 'none';
+        if (HeroDOM.particlesContainer) {
+            HeroDOM.particlesContainer.style.display = 'none';
         }
         return; // 提前返回，不执行动画
     }
@@ -48,9 +48,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========================================
 
     function animateStats() {
-        if (!DOM.stats || DOM.stats.length === 0) return;
+        if (!HeroDOM.stats || HeroDOM.stats.length === 0) return;
 
-        DOM.stats.forEach(stat => {
+        HeroDOM.stats.forEach(stat => {
             const target = parseInt(stat.getAttribute('data-target'));
             const duration = 2000; // 2秒
             const step = target / (duration / 16); // 60fps
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // 使用 Intersection Observer 在元素可见时触发动画
-    if (DOM.statsSection) {
+    if (HeroDOM.statsSection) {
         const observerOptions = {
             threshold: 0.5,
             rootMargin: '0px'
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }, observerOptions);
 
-        observer.observe(DOM.statsSection);
+        observer.observe(HeroDOM.statsSection);
     }
     
     
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========================================
 
     function initParticles() {
-        if (!DOM.particlesContainer) return;
+        if (!HeroDOM.particlesContainer) return;
         
         // 检查是否有 particles.js 库
         if (typeof particlesJS !== 'undefined') {
@@ -187,8 +187,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // 3. 平滑滚动到内容区
     // ========================================
 
-    if (DOM.scrollIndicator) {
-        DOM.scrollIndicator.addEventListener('click', function(e) {
+    if (HeroDOM.scrollIndicator) {
+        HeroDOM.scrollIndicator.addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.querySelector('#content') || document.querySelector('main');
             if (target) {
@@ -205,16 +205,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // 4. 卡片视差效果（鼠标跟随）
     // ========================================
 
-    if (DOM.profileCard && DOM.heroSection && window.innerWidth > 768) {
+    if (HeroDOM.profileCard && HeroDOM.heroSection && window.innerWidth > 768) {
         let mouseMoveRAF;
 
-        DOM.heroSection.addEventListener('mousemove', function(e) {
+        HeroDOM.heroSection.addEventListener('mousemove', function(e) {
             if (mouseMoveRAF) {
                 window.cancelAnimationFrame(mouseMoveRAF);
             }
 
             mouseMoveRAF = window.requestAnimationFrame(() => {
-                const rect = DOM.heroSection.getBoundingClientRect();
+                const rect = HeroDOM.heroSection.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
 
@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const rotateX = deltaY * 5; // 最大旋转5度
                 const rotateY = deltaX * 5;
 
-                DOM.profileCard.style.transform = `
+                HeroDOM.profileCard.style.transform = `
                     perspective(1000px)
                     rotateX(${-rotateX}deg)
                     rotateY(${rotateY}deg)
@@ -236,11 +236,11 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }, { passive: true });
 
-        DOM.heroSection.addEventListener('mouseleave', function() {
+        HeroDOM.heroSection.addEventListener('mouseleave', function() {
             if (mouseMoveRAF) {
                 window.cancelAnimationFrame(mouseMoveRAF);
             }
-            DOM.profileCard.style.transform = '';
+            HeroDOM.profileCard.style.transform = '';
         });
     }
     
@@ -249,14 +249,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // 5. 头像加载动画
     // ========================================
 
-    if (DOM.avatarImage) {
-        DOM.avatarImage.addEventListener('load', function() {
+    if (HeroDOM.avatarImage) {
+        HeroDOM.avatarImage.addEventListener('load', function() {
             this.classList.add('loaded');
         });
 
         // 如果图片已经加载（从缓存）
-        if (DOM.avatarImage.complete) {
-            DOM.avatarImage.classList.add('loaded');
+        if (HeroDOM.avatarImage.complete) {
+            HeroDOM.avatarImage.classList.add('loaded');
         }
     }
     
@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========================================
 
     function addRainbowEffect() {
-        if (!DOM.profileName) return;
+        if (!HeroDOM.profileName) return;
 
         // 添加额外的动画类
         setInterval(() => {
@@ -274,9 +274,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const randomColor1 = colors[Math.floor(Math.random() * colors.length)];
             const randomColor2 = colors[Math.floor(Math.random() * colors.length)];
 
-            DOM.profileName.style.background = `linear-gradient(135deg, ${randomColor1}, ${randomColor2})`;
-            DOM.profileName.style.backgroundClip = 'text';
-            DOM.profileName.style.webkitBackgroundClip = 'text';
+            HeroDOM.profileName.style.background = `linear-gradient(135deg, ${randomColor1}, ${randomColor2})`;
+            HeroDOM.profileName.style.backgroundClip = 'text';
+            HeroDOM.profileName.style.webkitBackgroundClip = 'text';
         }, 3000);
     }
 
@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========================================
 
     function randomizeTagColors() {
-        if (!DOM.tags || DOM.tags.length === 0) return;
+        if (!HeroDOM.tags || HeroDOM.tags.length === 0) return;
 
         const colors = [
             { bg: 'rgba(229, 128, 205, 0.1)', border: 'rgba(229, 128, 205, 0.3)', text: '#e580cd' },
@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
             { bg: 'rgba(255, 182, 232, 0.1)', border: 'rgba(255, 182, 232, 0.3)', text: '#ffb6e8' }
         ];
 
-        DOM.tags.forEach(tag => {
+        HeroDOM.tags.forEach(tag => {
             const color = colors[Math.floor(Math.random() * colors.length)];
             tag.style.background = `linear-gradient(135deg, ${color.bg}, ${color.bg})`;
             tag.style.borderColor = color.border;
@@ -316,8 +316,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // 取消注释以启用调试
     /*
     console.log('Hero Card script loaded');
-    console.log('Profile card:', DOM.profileCard);
-    console.log('Stats section:', DOM.statsSection);
-    console.log('Avatar image:', DOM.avatarImage);
+    console.log('Profile card:', HeroDOM.profileCard);
+    console.log('Stats section:', HeroDOM.statsSection);
+    console.log('Avatar image:', HeroDOM.avatarImage);
     */
 });
