@@ -496,7 +496,11 @@
     position: absolute;
     inset: -2px;  /* 负值让边框显示在外围，2px = 边框宽度 */
     border-radius: 26px;  /* 比主元素大2px以匹配 */
-    background: linear-gradient(135deg, #5BCEFA, #FFFFFF, #F5A9B8);
+    background: linear-gradient(135deg,
+        rgba(91, 206, 250, 0.3),   /* 蓝色 - 降低透明度 */
+        rgba(255, 255, 255, 0.5),  /* 白色 */
+        rgba(245, 169, 184, 0.3)   /* 粉色 - 降低透明度 */
+    );
     z-index: -1;
     pointer-events: none;  /* 不阻挡内容点击 */
 }
