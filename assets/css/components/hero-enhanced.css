@@ -237,7 +237,7 @@
 .content-sections-enhanced {
     padding: 15rem 2rem 6rem;
     margin-top: 15rem;
-    background: linear-gradient(to bottom, #f8fafc, #ffffff);
+    background: transparent;
 }
 
 .sections-header {
