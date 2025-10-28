@@ -1,7 +1,9 @@
 {{- $notePages := where site.RegularPages "Section" "note" -}}
 {{- $opinionPages := where site.RegularPages "Section" "opinion" -}}
 {{- $lifePages := where site.RegularPages "Section" "life" -}}
-{{- $bookPages := where site.RegularPages "Section" "books" -}}
+{{- $bookPages := where site.Pages "Section" "books" -}}
+{{- $bookPages = where $bookPages "Kind" "section" -}}
+{{- $bookPages = where $bookPages "Title" "!=" "Books" -}}
 
 <!-- 英雄区 - 简洁版本 -->
 <section class="hero-section">
