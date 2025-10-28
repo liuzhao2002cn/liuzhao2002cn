@@ -706,7 +706,7 @@
     }
 
     .chapter-title {
-        font-size: 0.8125rem;
+        font-size: 0.7rem;
     }
 
     .chapter-content-page {
@@ -730,7 +730,8 @@
     /* 移动端粉蓝白毛玻璃背景框 - 增加内边距 */
     .chapter-text {
         font-size: 1.0625rem;
-        line-height: 1.85;
+        line-height: 1.9;
+        font-weight: 450;
         padding: 2.5rem 2rem;
         background: rgba(255, 255, 255, 0.9);
         backdrop-filter: blur(10px);
@@ -867,7 +868,7 @@
     }
 
     .chapter-title {
-        font-size: 0.75rem;
+        font-size: 0.65rem;
         line-height: 1.5;
     }
 
@@ -898,7 +899,7 @@
     /* 移动端小屏粉蓝白毛玻璃背景框 - 增加内边距 */
     .chapter-text {
         font-size: 1rem;
-        line-height: 1.8;
+        line-height: 1.85;
         padding: 2.25rem 1.75rem;
         background: rgba(255, 255, 255, 0.92);
         backdrop-filter: blur(8px);
