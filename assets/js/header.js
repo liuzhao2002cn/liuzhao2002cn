@@ -249,19 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
         sidebarMenu.classList.remove('first-load');
         sidebarOverlay.classList.remove('first-load');
     }, 500);
-    
-    
-    // ========================================
-    // 10. 调试信息（开发时使用）
-    // ========================================
-    
-    // 取消注释以启用调试
-    /*
-    console.log('Header script loaded');
-    console.log('Sidebar menu:', sidebarMenu);
-    console.log('Search overlay:', searchOverlay);
-    */
-});
+};
 
 
 // ========================================
