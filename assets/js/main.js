@@ -121,7 +121,7 @@ function initializePageEnhancements() {
     // --- 网站运行时长计算 ---
     const daysEl = document.getElementById('days');
     if (daysEl) {
-        const launchDate = new Date('2025-10-18'); // 你的网站上线日期
+        const launchDate = new Date('2024-10-18'); // 你的网站上线日期
         const hoursEl = document.getElementById('hours');
         const minutesEl = document.getElementById('minutes');
         const secondsEl = document.getElementById('seconds');

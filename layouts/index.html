@@ -1,35 +1,4 @@
 {{ define "main" }}
 {{ partial "hero-enhanced.html" . }}
-<!-- 最新文章 -->
-<section class="recent-posts">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">
-                <span class="title-icon">⏳</span>
-                <span class="title-text">最新发布</span>
-                <span class="title-decoration"></span>
-            </h2>
-            <p class="section-subtitle">最近更新的文章列表</p>
-        </div>
-        
-        <ul class="recent-post-list">
-            {{ $pages := .Site.RegularPages }}
-            {{ range first 10 $pages }}
-            <li class="recent-post-item">
-                <a href="{{ .Permalink }}" class="recent-post-link">
-                    <div class="recent-post-main">
-                        <span class="recent-post-indicator"></span>
-                        <span class="recent-post-title">{{ .Title }}</span>
-                    </div>
-                    <div class="recent-post-info">
-                        <span class="recent-post-category">{{ .Section }}</span>
-                        <span class="recent-post-date">{{ .Date.Format "Jan 2" }}</span>
-                    </div>
-                </a>
-            </li>
-            {{ end }}
-        </ul>
-    </div>
-</section>
 {{ partial "downloads-section.html" . }}
 {{ end }}
