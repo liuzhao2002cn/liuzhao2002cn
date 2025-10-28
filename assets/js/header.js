@@ -23,8 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         sidebarMenu.classList.remove('active');
         sidebarOverlay.classList.remove('active');
         sidebarMenu.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = ''; // 恢复滚动
-    }
+        document.body.style.overflow = ''; 
     
     // 切换侧边栏
     function toggleSidebar() {
