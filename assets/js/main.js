@@ -1,7 +1,7 @@
 // ========================================
 // DOM 元素缓存
 // ========================================
-const DOM = {
+const NavDOM = {
     mobileMenuToggle: null,
     navMenu: null,
     navOverlay: null,
@@ -50,57 +50,57 @@ document.addEventListener("DOMContentLoaded", function() {
  */
 function initializeNavbar() {
     // 缓存 DOM 元素
-    DOM.mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    DOM.navMenu = document.querySelector('.nav-menu');
-    DOM.navOverlay = document.getElementById('navOverlay');
-    DOM.header = document.querySelector('.site-header');
-    DOM.progressBar = document.getElementById('readingProgress');
-    DOM.navLinks = document.querySelectorAll('.nav-link');
+    NavDOM.mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    NavDOM.navMenu = document.querySelector('.nav-menu');
+    NavDOM.navOverlay = document.getElementById('navOverlay');
+    NavDOM.header = document.querySelector('.site-header');
+    NavDOM.progressBar = document.getElementById('readingProgress');
+    NavDOM.navLinks = document.querySelectorAll('.nav-link');
 
     // --- 移动端菜单切换 ---
-    if (DOM.mobileMenuToggle && DOM.navMenu && DOM.navOverlay) {
+    if (NavDOM.mobileMenuToggle && NavDOM.navMenu && NavDOM.navOverlay) {
         const toggleMobileMenu = () => {
-            const isActive = DOM.mobileMenuToggle.classList.toggle('active');
-            DOM.navMenu.classList.toggle('active');
-            DOM.navOverlay.classList.toggle('active');
+            const isActive = NavDOM.mobileMenuToggle.classList.toggle('active');
+            NavDOM.navMenu.classList.toggle('active');
+            NavDOM.navOverlay.classList.toggle('active');
             document.body.style.overflow = isActive ? 'hidden' : '';
         };
 
         const closeMobileMenu = () => {
-            DOM.mobileMenuToggle.classList.remove('active');
-            DOM.navMenu.classList.remove('active');
-            DOM.navOverlay.classList.remove('active');
+            NavDOM.mobileMenuToggle.classList.remove('active');
+            NavDOM.navMenu.classList.remove('active');
+            NavDOM.navOverlay.classList.remove('active');
             document.body.style.overflow = '';
         };
 
-        DOM.mobileMenuToggle.addEventListener('click', toggleMobileMenu);
-        DOM.navOverlay.addEventListener('click', closeMobileMenu);
+        NavDOM.mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+        NavDOM.navOverlay.addEventListener('click', closeMobileMenu);
 
         // 使用缓存的 navLinks
-        DOM.navLinks.forEach(link => {
+        NavDOM.navLinks.forEach(link => {
             link.addEventListener('click', closeMobileMenu);
         });
     }
 
     // --- 滚动效果和阅读进度条 ---
-    if (DOM.header || DOM.progressBar) {
+    if (NavDOM.header || NavDOM.progressBar) {
         let scrollRAF;
         const handleScroll = () => {
             const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
             // Header 阴影
-            if (DOM.header) {
-                DOM.header.classList.toggle('scrolled', currentScroll > 50);
+            if (NavDOM.header) {
+                NavDOM.header.classList.toggle('scrolled', currentScroll > 50);
             }
 
             // 阅读进度条
-            if (DOM.progressBar) {
+            if (NavDOM.progressBar) {
                 const windowHeight = window.innerHeight;
                 const documentHeight = document.documentElement.scrollHeight;
                 const trackLength = documentHeight - windowHeight;
                 // 避免 trackLength 为0时除以0
                 const progress = trackLength > 0 ? (currentScroll / trackLength) * 100 : 0;
-                DOM.progressBar.style.width = `${progress}%`;
+                NavDOM.progressBar.style.width = `${progress}%`;
             }
         };
 
