@@ -1,5 +1,5 @@
 ---
-title: ""政治经济学批判"的全球化"
+title: "“政治经济学批判”的全球化"
 date: 2025-10-24  
 book_author: "Jan Hoff"
 translator: "竱肇"
