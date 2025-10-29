@@ -431,8 +431,3 @@
         font-size: 0.9375rem;
     }
 }
-
-/* ====== 平滑滚动 ====== */
-html {
-    scroll-behavior: smooth;
-}
