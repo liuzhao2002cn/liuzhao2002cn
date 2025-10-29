@@ -248,7 +248,8 @@
 .sections-main-title {
     font-size: 3rem;
     font-weight: 800;
-    margin: 0 0 1rem;
+    margin: 0 0 2rem;
+    margin-top: 3rem; 
     background: linear-gradient(135deg, #F5A9B8, #5BCEFA);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
