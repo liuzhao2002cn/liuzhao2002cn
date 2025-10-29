@@ -1,18 +1,16 @@
 {{- $pages := where .Site.RegularPages "Type" "in" (slice "note" "opinion" "life" "books") -}}
-{
-  "pages": [
-    {{- range $index, $page := $pages -}}
-      {{- if $index }},{{ end -}}
-      {
-        "title": {{ $page.Title | jsonify }},
-        "url": {{ $page.Permalink | jsonify }},
-        "content": {{ ($page.Plain | truncate 500) | jsonify }},
-        "summary": {{ ($page.Summary | plainify | truncate 200) | jsonify }},
-        "section": {{ $page.Section | jsonify }},
-        "date": {{ ($page.Date.Format "2006-01-02") | jsonify }},
-        "tags": {{ ($page.Params.tags | default slice) | jsonify }},
-        "categories": {{ ($page.Params.categories | default slice) | jsonify }}
-      }
-    {{- end -}}
-  ]
-}
+[
+  {{- range $index, $page := $pages -}}
+    {{- if $index }},{{ end -}}
+    {
+      "title": {{ $page.Title | jsonify }},
+      "url": {{ $page.Permalink | jsonify }},
+      "content": {{ ($page.Plain | truncate 500) | jsonify }},
+      "summary": {{ ($page.Summary | plainify | truncate 200) | jsonify }},
+      "section": {{ $page.Section | jsonify }},
+      "date": {{ ($page.Date.Format "2006-01-02") | jsonify }},
+      "tags": {{ ($page.Params.tags | default slice) | jsonify }},
+      "categories": {{ ($page.Params.categories | default slice) | jsonify }}
+    }
+  {{- end -}}
+]
