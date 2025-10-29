@@ -534,22 +534,27 @@ document.addEventListener('DOMContentLoaded', function() {
         searchTimeout = setTimeout(performSearch, 300);
     });
 
-    // 搜索索引缓存
-    let searchIndex = null;
-
-    // 加载搜索索引
-    async function loadSearchIndex() {
-        if (searchIndex) return searchIndex;
-
-        try {
-            const response = await fetch("{{ "index.json" | relURL }}");
-            if (!response.ok) throw new Error('Failed to load search index');
-            searchIndex = await response.json();
-            return searchIndex;
-        } catch (error) {
-            console.error('加载搜索索引失败:', error);
-            throw error;
+    // 搜索索引 - 直接嵌入，不需要额外请求
+    const searchIndex = [
+        {{- $pages := where .Site.RegularPages "Type" "in" (slice "note" "opinion" "life" "books") -}}
+        {{- range $index, $page := $pages -}}
+        {{- if $index }},{{ end -}}
+        {
+            title: {{ $page.Title | jsonify }},
+            url: {{ $page.Permalink | jsonify }},
+            content: {{ ($page.Plain | truncate 500) | jsonify }},
+            summary: {{ ($page.Summary | plainify | truncate 200) | jsonify }},
+            section: {{ $page.Section | jsonify }},
+            date: {{ ($page.Date.Format "2006-01-02") | jsonify }},
+            tags: {{ ($page.Params.tags | default slice) | jsonify }},
+            categories: {{ ($page.Params.categories | default slice) | jsonify }}
         }
+        {{- end -}}
+    ];
+
+    // 加载搜索索引（同步返回）
+    async function loadSearchIndex() {
+        return searchIndex;
     }
 
     // 执行搜索
@@ -647,30 +652,50 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="search-status">
                     <div class="status-icon">😔</div>
                     <p class="status-text">未找到相关内容</p>
+                    <p style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">尝试使用不同的关键词</p>
                 </div>
             `;
             return;
         }
 
-        const html = items.map(item => {
-            const title = item.title || '无标题';
-            const excerpt = item.summary || item.content?.substring(0, 150) || '暂无摘要';
+        const query = input.value.trim();
+        const html = items.slice(0, 20).map(item => {
+            const title = highlightText(item.title || '无标题', query);
+            const excerpt = highlightText(item.summary || item.content?.substring(0, 150) || '暂无摘要', query);
             const category = item.section || '';
 
             return `
                 <a href="${item.url}" class="search-result-item">
                     <span class="result-category">${getCategoryName(category)}</span>
                     <h3 class="result-title">${title}</h3>
-                    <p class="result-excerpt">${excerpt}</p>
+                    <p class="result-excerpt">${excerpt}...</p>
                     <div class="result-meta">
-                        <span>📅 ${item.date || ''}</span>
-                        <span style="margin-left: 1rem;">🔗 ${item.url}</span>
+                        <span>📅 ${item.date || '未知日期'}</span>
                     </div>
                 </a>
             `;
         }).join('');
 
-        results.innerHTML = html;
+        const total = items.length;
+        const showing = Math.min(20, total);
+        const countInfo = total > 20 ?
+            `<div style="text-align: center; padding: 1rem; color: #888; font-size: 0.9rem;">
+                显示前 ${showing} 条，共找到 ${total} 条结果
+            </div>` : '';
+
+        results.innerHTML = html + countInfo;
+    }
+
+    // 高亮匹配文本
+    function highlightText(text, query) {
+        if (!query || !text) return text;
+        const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+        return text.replace(regex, '<mark>$1</mark>');
+    }
+
+    // 转义正则特殊字符
+    function escapeRegex(str) {
+        return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
     function getCategoryName(category) {
