@@ -1,10 +1,6 @@
 /* assets/css/utilities/responsive.css */
 
 /* 全局防溢出设置 */
-* {
-    box-sizing: border-box;
-}
-
 html {
     overflow-x: hidden;
 }
@@ -232,150 +228,29 @@ table {
         font-size: 0.9rem;
     }
 
-    /* 书籍网格 */
-    .books-grid,
-    .articles-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        padding: 0 0.5rem;
-    }
-
-    /* 书籍卡片 */
-    .book-card,
-    .article-card {
-        max-width: 100%;
-        margin: 0 auto;
-    }
-
-    /* 探索网格 */
+    /* 通用网格 */
+    .articles-grid,
     .explore-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
         padding: 0 0.5rem;
     }
 
+    .article-card,
     .explore-card {
         max-width: 100%;
-    }
-
-    /* 书籍详情头部 */
-    .book-detail-header {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 1.5rem 1rem;
-    }
-
-    .book-cover-section {
-        max-width: 250px;
         margin: 0 auto;
     }
 
-    .book-detail-title {
-        font-size: 1.75rem;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-    }
-
-    /* 信息行 */
-    .info-row {
-        flex-direction: column;
-        gap: 0.5rem;
-        align-items: flex-start;
-    }
-
-    .info-label {
-        min-width: auto;
-    }
-
-    .info-value {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-    }
-
-    /* 章节容器 */
-    .chapter-container {
-        padding: 1.5rem 1rem;
-        max-width: 100%;
-    }
-
-    .chapter-title {
-        font-size: 1.75rem;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-    }
-
-    .chapter-content {
-        padding: 2rem 1rem;
-        font-size: 1rem;
-        line-height: 1.8;
-        max-width: 100%;
-        overflow-x: hidden;
-    }
-
-    /* 章节导航 */
-    .chapter-navigation {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .nav-button {
-        justify-self: stretch !important;
-    }
-
-    .nav-link {
-        min-width: auto;
-        max-width: 100%;
-    }
-
-    .nav-title {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-    }
-
-    /* 面包屑导航 */
-    .breadcrumb-nav {
-        font-size: 0.85rem;
-        padding: 0.75rem 0.5rem;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-
     /* 元信息 */
-    .meta-primary,
-    .chapter-meta {
+    .meta-primary {
         flex-wrap: wrap;
         gap: 0.75rem;
-    }
-
-    /* 内容区域 */
-    .book-summary-section,
-    .book-content-section,
-    .book-chapters-section {
-        padding: 1.5rem 1rem;
-        max-width: 100%;
     }
 
     .content-wrapper {
         max-width: 100%;
         margin: 0 auto;
-    }
-
-    /* 章节列表 */
-    .chapter-link {
-        flex-direction: raw;
-        align-items: flex-start;
-        gap: 0.75rem;
-        padding: 1rem;
-        font-size: 0.8rem;
-    }
-
-    .chapter-title {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-    }
-
-    .chapter-arrow {
-        align-self: flex-end;
     }
 }
 @media (min-width: 768px) {
@@ -438,67 +313,35 @@ table {
         right: -100%;
         padding: 4rem 1rem 2rem;
     }
-    
+
     .page-title {
         font-size: 1.5rem;
     }
-    
+
     .post-title {
         font-size: 1.6rem;
     }
-    
+
     .hero-tagline {
         font-size: 1rem;
     }
-    
+
     .section-title {
         font-size: 1.5rem;
     }
 
-    .book-detail-title,
-    .chapter-title {
-        font-size: 0.9rem;
-    }
-
     /* 更小的内边距 */
-    .list-container,
-    .books-container,
-    .book-detail-container,
-    .chapter-container {
+    .list-container {
         padding: 1rem 0.5rem;
     }
 
-    .book-summary-section,
-    .book-content-section,
-    .book-chapters-section,
-    .chapter-content {
-        padding: 1rem 0.75rem;
-    }
-
-    /* 更紧凑的章节导航 */
-    .chapter-navigation {
-        gap: 0.75rem;
-    }
-
-    .chapter-link {
-        padding: 0.75rem;
-    }
-
     /* 更紧凑的卡片 */
-    .book-card,
     .article-card {
         margin: 0;
     }
 
-    .book-info,
     .article-content {
         padding: 1rem;
-    }
-
-    /* 面包屑更紧凑 */
-    .breadcrumb-nav {
-        padding: 0.5rem;
-        font-size: 0.8rem;
     }
 
     /* 减小图标大小 */

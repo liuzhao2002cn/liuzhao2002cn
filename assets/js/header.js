@@ -103,22 +103,25 @@ document.addEventListener('DOMContentLoaded', function() {
     
     
     // ========================================
-    // 3. 滚动时头部样式变化
+    // 3. 滚动时头部样式变化和阅读进度条
     // ========================================
-    
+
     const header = document.querySelector('.site-header');
+    const progressBar = document.getElementById('readingProgress');
     let lastScrollTop = 0;
     let scrollThreshold = 50;
-    
+
     function handleScroll() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
+
         // 添加滚动后的阴影效果
         if (scrollTop > scrollThreshold) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
+
+        // 头部隐藏/显示效果
         if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
             // 向下滚动
             header.style.transform = 'translateY(-100%)';
@@ -127,8 +130,17 @@ document.addEventListener('DOMContentLoaded', function() {
             header.style.transform = 'translateY(0)';
         }
         lastScrollTop = scrollTop;
+
+        // 阅读进度条
+        if (progressBar) {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const trackLength = documentHeight - windowHeight;
+            const progress = trackLength > 0 ? (scrollTop / trackLength) * 100 : 0;
+            progressBar.style.width = `${progress}%`;
+        }
     }
-    
+
     // 使用节流优化滚动性能
     let scrollTimeout;
     window.addEventListener('scroll', function() {
@@ -136,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
             window.cancelAnimationFrame(scrollTimeout);
         }
         scrollTimeout = window.requestAnimationFrame(handleScroll);
-    });
+    }, { passive: true });
     
     
     // ========================================
