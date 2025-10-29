@@ -12,11 +12,11 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
 <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary | plainify | truncate 160 }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-<link rel="icon" type="image/x-icon" href="{{ "static/favicon.ico" | absURL }}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ "static/favicon-32x32.png" | absURL }}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ "static/favicon-16x16.png" | absURL }}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ "static/apple-touch-icon.png" | absURL }}">
-<link rel="manifest" href="{{ "static/site.webmanifest" | absURL }}">
+<link rel="icon" type="image/x-icon" href="{{ "favicon.ico" | absURL }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | absURL }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | absURL }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | absURL }}">
+<link rel="manifest" href="{{ "site.webmanifest" | absURL }}">
 <meta name="theme-color" content="#a3d8f4">
 <!-- 字体CDN加载 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
