@@ -466,9 +466,9 @@
     padding: 4rem 3.5rem;
     border-radius: 32px;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
-    background: linear-gradient(135deg, 
-        rgba(236， 72， 153, 0.02) 0%, 
-        rgba(108， 99, 255， 0.02) 100%);
+    background: linear-gradient(135deg,
+        rgba(236, 72, 153, 0.02) 0%,
+        rgba(108, 99, 255, 0.02) 100%);
     border: 1px solid rgba(236, 72, 153, 0.08);
 }
 
@@ -476,9 +476,9 @@
     padding: 4rem 3.5rem;
     border-radius: 32px;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
-    background: linear-gradient(135deg, 
-        rgba(108， 99， 255, 0.02) 0%, 
-        rgba(236， 72， 153, 0.02) 100%);
+    background: linear-gradient(135deg,
+        rgba(108, 99, 255, 0.02) 0%,
+        rgba(236, 72, 153, 0.02) 100%);
     border: 1px solid rgba(108, 99, 255, 0.08);
 }
 
@@ -521,7 +521,7 @@
 /* 文章网格 */
 .post-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit， minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2.5rem;
     margin-bottom: 3rem;
 }
