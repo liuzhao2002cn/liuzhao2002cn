@@ -1,20 +1,10 @@
 ---
 title: "枪杆子里面出政权？巴基斯坦的毛主义辩论"
-original_title: "From the Barrel of a Gun? Maoist Debates in Pakistan"
+date: 2026-05-02
+publishDate: 2025-03-14
 author: "诺曼·G·阿里 (Noaman G. Ali)"
-date: 2025-03-05
-source: "Jamhoor"
-issue: "第9期"
-type: "Essay"
-region: "Pakistan"
-tags:
-  - 政治/历史
-  - 巴基斯坦
-  - 毛主义
-  - 武装斗争
-  - 民族解放
-  - 工农党(MKP)
-description: "在20世纪70年代，工农党（Mazdoor Kisan Party）就武装斗争和选举政治的战略进行了辩论——这些辩论为今天提供了至关重要的教训。"
+translator: "-"
+description: ""在20世纪70年代，工农党（Mazdoor Kisan Party）就武装斗争和选举政治的战略进行了辩论——这些辩论为今天提供了至关重要的教训。"
 ---
 
 *[查看原图] 插图：Jamhoor*
