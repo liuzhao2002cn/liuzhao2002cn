@@ -4,7 +4,7 @@ date: 2026-05-02
 publishDate: 2025-03-14
 author: "诺曼·G·阿里 (Noaman G. Ali)"
 translator: "-"
-description: ""在20世纪70年代，工农党（Mazdoor Kisan Party）就武装斗争和选举政治的战略进行了辩论——这些辩论为今天提供了至关重要的教训。"
+description: "在20世纪70年代，工农党（Mazdoor Kisan Party）就武装斗争和选举政治的战略进行了辩论——这些辩论为今天提供了至关重要的教训。"
 ---
 
 *[查看原图] 插图：Jamhoor*
