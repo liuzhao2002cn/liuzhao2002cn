@@ -60,9 +60,15 @@ J.Moufawad-Paul就曾经主张，八十年代才是人们所称的毛派（别�
 
 然而毛泽东去世后，情况却变的大不一样。
 
-![《China since Mao》（Vol. 30, No. 3: July-August 1978）|540](https://monthlyreviewarchives.org/public/journals/1/cover_issue_331_en_US.jpg "《China since Mao》（Vol. 30, No. 3: July-August 1978）")
+<figure>
+  <img src="IMG_20260905_185908.jpg" alt="书籍封面">
+  <figcaption style="font-size: 0.8em; text-align: center; color: #888;">
+左侧：《China since Mao》（Vol. 30, No. 3: July-August 1978）
+右侧：《The Great Reversal: The Privatization of China, 1978–1989》
+</figcaption>
+</figure>
 
-上图为1978年美国《Monthly Review》杂志专号《China since Mao》（Vol. 30, No. 3: July-August 1978），整个专号就只在谈一件事：**毛泽东去世后的中国，正在经历一场其追随者们尚未完全理解的深刻断裂。** 
+上图左为1978年美国《Monthly Review》杂志专号《China since Mao》，整个专号就只在谈一件事：**毛泽东去世后的中国，正在经历一场其追随者们尚未完全理解的深刻断裂。** 
 
 Charles Bettelheim 以冷峻的马克思主义政治经济学分析、敏锐的问题意识和观察能力，记录了从“继续革命”到“拨乱反正”的断裂性转向过程——那绝对不是简单的政策调整，而是整个国家机器与革命遗产之间的结构性脱钩。专号中 Bettelheim 的两篇文章，尤其是其第二篇《The Great Leap Backward》（中译为《大跃退》，这篇文章甚至部分可以说是结构了中国自己的早期毛派的关键文献之一）逐层拆解了一种完全不同的政治逻辑如何开始主导中国：生产力取代生产关系成为核心范畴，“四个现代化”悄然替换了“以阶级斗争为纲”，市场机制被重新引入社会主义经济体制。对于《每月评论》的读者——主要是社会主义者——来说，这份专号传递了的消息是如此的令人不安和沮丧。后来到1989年-1990年，因为众所周知的事情的触动，进步作家、农业专家 William Hinton 最终撰写了《The Great Reversal: The Privatization of China, 1978–1989》（上图右），可以说是对这种深刻断裂的认识的全面分析和最终总结。
 
