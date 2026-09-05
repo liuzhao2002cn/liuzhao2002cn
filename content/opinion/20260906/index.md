@@ -12,6 +12,15 @@ author: "竱肇"
 >
 >——张承志《心灵史》
 
+>一位共和派的资产阶级数年前曾正确言道：“失败者没有历史。”那么，我们就来打破这种不公吧（..）。蒙蔽历史的时代已该终结。从今往后，在失败的幸存者中，总有人会直面刽子手和诽谤者，斥责他们：你们在撒谎！也会向心存善意的人们宣告：我们就是这样的人，我们做过什么，我们追求什么。正是出于这些考虑，这位**为伟大而暂时受挫的事业**而战的战士才提笔著述。他将尽力阐明1871年的公社是什么、做了什么、向往什么；但他同样要揭露那些不共戴天的敌人是什么、做过什么、又图谋什么。
+>
+>A republican bourgeois wrote rightly a few years ago:"The defeated have no history." Let us break, then, with this iniquity (..). The time to deceive history is over. From now on, among the survivors of the defeat, there will always be someone who says to the faces of the executioners and the slanderers: You have lied! And to tell men of good faith: This is what we are, what we have done and what we wanted. These are the considerations that made a soldier of this great, momentarily defeated cause take up his pen. He will try to say what the Commune of 1871 was, what it did and what it wanted; but he will also say what its implacable enemies are, what they did and what they want (Malon, 1871: 5-6 and 9).
+>
+>——*Benoit Malon 《The Third Defeat of the French Proletariat》 (1871)（第5—6页及第9页）*
+
+---
+
+
 
 北京时间（东八区时间）1976年9月9日0时10分，毛泽东同志永远的停止了他个人的思想与实践之旅，距今已经正好整50年过去。当然，严格来说现在是2026年9月5日，还差那么不几天。
 
@@ -77,7 +86,7 @@ Charles Bettelheim 以冷峻的马克思主义政治经济学分析、敏锐的�
 
 可以说整个1980年代和1990年代，全世界左翼都在一种普遍的忧郁消化这种不安与晕眩。但这正是关键所在——当毛泽东去世、当中国自身的政治走向开始与毛泽东晚年的激进实验背道而驰时，毛派突然发现被迫面对一个认识论危机：
 
-如果中国不再是“真正的社会主义”，背叛了“毛泽东的道路”，那么首先，“毛泽东的道路”究竟意味着什么？恰恰这种背景，反而是思想得以彻底产生的条件——只有当一种政治实践已经失败，它才第一次完整地成为一个理论问题。
+如果中国不再是“真正的社会主义”，背叛了“毛泽东的道路”，那么首先，“毛泽东的道路”究竟意味着什么？恰恰这种背景，反而是思想得以彻底产生的条件——只有当一种政治实践已经过去，它才第一次完整地成为一个理论问题。举个例子，当巴黎公社还在战斗的时候，整个第一国际充斥着的几乎都是战斗性但辩护性为主的文字。只有当巴黎公社失败以后，马克思才带着极大的悲痛，提笔写就了不朽的《法兰西内战》。
 
 毛泽东活着的时候，“毛泽东思想”首先是一种正在进行的政治实践，而不是一种已经完成的思想体系。无论是继续革命、反官僚主义，还是对社会主义条件下阶级斗争的强调，本身都仍然嵌在一个真实存在的社会主义制度内部。它们面对的是“社会主义如何继续”的问题。
 
