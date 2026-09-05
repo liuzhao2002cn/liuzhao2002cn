@@ -126,7 +126,6 @@ Charles Bettelheim 以冷峻的马克思主义政治经济学分析、敏锐的�
 
 >已逝之事，勾勒并召唤的也许正是未来之人。
 
-[^1]:这段话的法语原文，因为太长了附录于文后：
->peut-être, depuis la révolution russe d'octobre 1917, peut-être même depuis les grands mouvements révolutionnaires européens de 1848, c'est-à-dire depuis soixante ans ou, si vous voulez, depuis cent vingt ans, que c'est la première fois qu'il n'y a plus sur la terre un seul point d'où pourrait jaillir la lumière d'une espérance. Il n'existe plus d'orientation.（......）
->
->Pour la première fois, la gauche, face à ce qui vient de se passer en Chine, toute cette pensée de la gauche européenne, cette pensée européenne révolutionnaire qui avait ses points de référence dans le monde entier et les élaborait d'une manière déterminée, donc une pensée qui s'orientait sur des choses qui se situaient en dehors d'elles-mêmes, cette pensée a perdu les repères historiques qu'elle trouvait auparavant dans d'autres parties du monde. Elle a perdu ses points d'appui concrets.
+
+
+[^1]:这段话的法语原文，因为太长了附录于文后：peut-être, depuis la révolution russe d'octobre 1917, peut-être même depuis les grands mouvements révolutionnaires européens de 1848, c'est-à-dire depuis soixante ans ou, si vous voulez, depuis cent vingt ans, que c'est la première fois qu'il n'y a plus sur la terre un seul point d'où pourrait jaillir la lumière d'une espérance. Il n'existe plus d'orientation.（......）Pour la première fois, la gauche, face à ce qui vient de se passer en Chine, toute cette pensée de la gauche européenne, cette pensée européenne révolutionnaire qui avait ses points de référence dans le monde entier et les élaborait d'une manière déterminée, donc une pensée qui s'orientait sur des choses qui se situaient en dehors d'elles-mêmes, cette pensée a perdu les repères historiques qu'elle trouvait auparavant dans d'autres parties du monde. Elle a perdu ses points d'appui concrets.
