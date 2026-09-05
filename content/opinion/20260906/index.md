@@ -16,7 +16,7 @@ author: "竱肇"
 >
 >A republican bourgeois wrote rightly a few years ago:"The defeated have no history." Let us break, then, with this iniquity (..). The time to deceive history is over. From now on, among the survivors of the defeat, there will always be someone who says to the faces of the executioners and the slanderers: You have lied! And to tell men of good faith: This is what we are, what we have done and what we wanted. These are the considerations that made a soldier of this great, momentarily defeated cause take up his pen. He will try to say what the Commune of 1871 was, what it did and what it wanted; but he will also say what its implacable enemies are, what they did and what they want (Malon, 1871: 5-6 and 9).
 >
->——*Benoit Malon 《The Third Defeat of the French Proletariat》 (1871)（第5—6页及第9页）*
+>——Benoit Malon 《The Third Defeat of the French Proletariat（法兰西无产阶级的第三次败北）》 (1871)（第5—6页及第9页）
 
 ---
 
