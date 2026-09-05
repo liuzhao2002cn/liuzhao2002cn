@@ -1,9 +1,12 @@
 ---
-title: "而今迈步从头越——写在败北五十周年之际"
+title: "而今迈步从头越——写在毛泽东逝世五十周年之际"
 date: 2026-09-05
 publishDate: 2026-09-05
 author: "竱肇"
 ---
+
+### 一、败北后的再出发
+
 
 >一位共和派的资产阶级数年前曾正确言道：“失败者没有历史。”那么，我们就来打破这种不公吧（..）。蒙蔽历史的时代已该终结。从今往后，在失败的幸存者中，总有人会直面刽子手和诽谤者，斥责他们：你们在撒谎！也会向心存善意的人们宣告：我们就是这样的人，我们做过什么，我们追求什么。正是出于这些考虑，这位**为伟大而暂时受挫的事业**而战的战士才提笔著述。他将尽力阐明1871年的公社是什么、做了什么、向往什么；但他同样要揭露那些不共戴天的敌人是什么、做过什么、又图谋什么。
 >
@@ -14,8 +17,6 @@ author: "竱肇"
 >——张承志《心灵史》
 
 ---
-
-
 
 北京时间（东八区时间）1976年9月9日0时10分，毛泽东同志永远的停止了他个人的思想与实践之旅，距今已经正好整50年过去。当然，严格来说现在是2026年9月5日，还差那么不几天。
 
@@ -28,7 +29,7 @@ author: "竱肇"
 
 >现在或许可以说［伴随着毛泽东的逝世，以及“中国的热月反动”的发生——注］，自1917年俄国十月革命以来的60年，或者如果你愿意的话，可以说甚至自1848年欧洲各大革命运动以来的120年里，寰宇之内首次再也没有任何一个地方能让希望之光从中迸发。**方向已不复存在**。（……）
 >
->面对中国刚刚发生的一切，整个左翼阵营——欧洲左翼的全部思想，那种曾几何时在世界各地都拥有其参照点、并以确定的方式对其加以阐发的欧洲革命思想，那种因而通过自身之外的事物来确定方向的思想，失去了它此前在世界其他地方所能找到的历史坐标。它失去了具体的**依凭**。而这是**历史首次**。
+>面对中国刚刚发生的一切，整个左翼阵营——欧洲左翼的全部思想，那种曾几何时在世界各地都拥有其参照点、并以确定的方式对其加以阐发的欧洲革命思想，那种因而通过自身之外的事物来确定方向的思想，失去了它此前在世界其他地方所能找到的历史坐标。它失去了具体的**依凭**。而这是**历史首次**。[^1]
 >
 >——Michel Foucault, « La torture, c’est la raison »（1977），这篇访谈被收录在 《Dits et écrits（III）》中（本段系笔者自译）
 
@@ -55,7 +56,9 @@ Michel Foucault 直接使用了“方向已不复存在”（Il n'existe plus d'
 
 有趣的是，恰恰是正因为如此，毛泽东的影响不止没有随着他的肉身死亡而停止，甚至可以说，它从1976年以后才真正进入了历史。
 
-J.Moufawad-Paul就曾经主张，八十年代才是人们所称的毛派（别管是叫做毛泽东思想、毛泽东主义、Maoism还是Marxism-Leninism-Maoism、马列毛）真正形成的时期。他甚至挑衅性的（但恰恰基于历史考证的）提出：
+举个例子，J.Moufawad-Paul就曾经在他的多篇文章和访谈里均不厌其烦的主张，1988年-1993年才是人们所称的毛派（别管是叫做毛泽东思想、毛泽东主义、Maoism还是Marxism-Leninism-Maoism、马列毛）真正彻底形成的时期。当然笔者自己不会推到这么往后，对我来说，是更宽泛的1976年-1989年。
+
+这是什么意思？
 
 在毛泽东活着的时候，并没有当下所谓的毛主义，那时全世界当然都有毛泽东的崇敬者，甚至已经有Maoist/Maoism这样的词汇，但这些词汇本身往往是论战性的且他称化的，无论是毛泽东本人，还是从欧洲、亚洲、非洲到美洲以毛泽东为榜样的崇敬者，他们普遍都并不觉得自己在实践的是一种明确的“Maoism”，相反，他们是“在追随毛泽东的脚步”实践“反修正主义的、反官僚主义、意图防止资本主义复辟的真正马克思主义”。
 
@@ -95,6 +98,8 @@ Charles Bettelheim 以冷峻的马克思主义政治经济学分析、敏锐的�
 
 ***
 
+### 二、迟来的理解
+
 >那是**一七九三年的法国**，革命涌动的时代，到处是枪声、火焰与阴谋，里面说，**这些悲剧由巨人开始，而被侏儒结束**。我合上书，透过纱窗，抬眼望去是**一九九八年的铁西区**（……）
 >
 > ——*班宇《空中道路》（收录在短篇集《冬泳》中，上海三联［2018］）*
@@ -120,3 +125,8 @@ Charles Bettelheim 以冷峻的马克思主义政治经济学分析、敏锐的�
 戴锦华也在后面更加系统的评价《钢的琴》的文章《〈钢的琴〉——阶级，或因父之名》（《天下》杂志2012年第2期）最后部分以这一句话收尾：
 
 >已逝之事，勾勒并召唤的也许正是未来之人。
+
+[^1]:这段话的法语原文，因为太长了附录于文后：
+>peut-être, depuis la révolution russe d'octobre 1917, peut-être même depuis les grands mouvements révolutionnaires européens de 1848, c'est-à-dire depuis soixante ans ou, si vous voulez, depuis cent vingt ans, que c'est la première fois qu'il n'y a plus sur la terre un seul point d'où pourrait jaillir la lumière d'une espérance. Il n'existe plus d'orientation.（......）
+>
+>Pour la première fois, la gauche, face à ce qui vient de se passer en Chine, toute cette pensée de la gauche européenne, cette pensée européenne révolutionnaire qui avait ses points de référence dans le monde entier et les élaborait d'une manière déterminée, donc une pensée qui s'orientait sur des choses qui se situaient en dehors d'elles-mêmes, cette pensée a perdu les repères historiques qu'elle trouvait auparavant dans d'autres parties du monde. Elle a perdu ses points d'appui concrets.
