@@ -5,6 +5,11 @@ publishDate: 2026-09-05
 author: "竱肇"
 ---
 
+<figure>
+  <img src="IMG_20260319_023434.jpg" alt="解放报19760910">
+  <figcaption style="font-size: 0.8em; text-align: center; color: #888;">图为1976年9月10日法国《解放报》（Libération）关于毛泽东逝世的特刊“Spécial Mao”头版——《东方红，太阳落》。风格极为鲜明。照片左侧以中文写了“东方红，太阳落”六个中文大字，法语“L'Orient est rouge, le soleil se couche.”则仅以一行小字标出。</figcaption>
+</figure>
+
 ### 一、败北后的再出发
 
 
@@ -19,11 +24,6 @@ author: "竱肇"
 ---
 
 北京时间（东八区时间）1976年9月9日0时10分，毛泽东同志永远的停止了他个人的思想与实践之旅，距今已经正好整50年过去。当然，严格来说现在是2026年9月5日，还差那么不几天。
-
-<figure>
-  <img src="IMG_20260319_023434.jpg" alt="解放报19760910">
-  <figcaption style="font-size: 0.8em; text-align: center; color: #888;">图为1976年9月10日法国《解放报》（Libération）关于毛泽东逝世的特刊“Spécial Mao”头版——《东方红，太阳落》。风格极为鲜明。照片左侧以中文写了“东方红，太阳落”六个中文大字，法语“L'Orient est rouge, le soleil se couche.”则仅以一行小字标出。</figcaption>
-</figure>
 
 关于此，Michel Foucault曾经有一段非常有名的话。1977年他在接受一家德国学刊的访谈时，直接了当说道：
 
