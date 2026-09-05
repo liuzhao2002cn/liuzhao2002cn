@@ -14,9 +14,7 @@ author: "竱肇"
 
 >一位共和派的资产阶级数年前曾正确言道：“失败者没有历史。”那么，我们就来打破这种不公吧（..）。蒙蔽历史的时代已该终结。从今往后，在失败的幸存者中，总有人会直面刽子手和诽谤者，斥责他们：你们在撒谎！也会向心存善意的人们宣告：我们就是这样的人，我们做过什么，我们追求什么。正是出于这些考虑，这位**为伟大而暂时受挫的事业**而战的战士才提笔著述。他将尽力阐明1871年的公社是什么、做了什么、向往什么；但他同样要揭露那些不共戴天的敌人是什么、做过什么、又图谋什么。
 >
->A republican bourgeois wrote rightly a few years ago:"The defeated have no history." Let us break, then, with this iniquity (..). The time to deceive history is over. From now on, among the survivors of the defeat, there will always be someone who says to the faces of the executioners and the slanderers: You have lied! And to tell men of good faith: This is what we are, what we have done and what we wanted. These are the considerations that made a soldier of this great, momentarily defeated cause take up his pen. He will try to say what the Commune of 1871 was, what it did and what it wanted; but he will also say what its implacable enemies are, what they did and what they want (Malon, 1871: 5-6 and 9).
->
->——Benoit Malon 《The Third Defeat of the French Proletariat（法兰西无产阶级的第三次败北）》 (1871)（第5—6页及第9页）
+>——Benoit Malon 《法兰西无产阶级的第三次败北》 (1871)（《La troisième défaite du prolétariat français》，本段系笔者转译自英文本）
 
 ---
 
