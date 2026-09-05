@@ -4,17 +4,14 @@ date: 2026-09-05
 publishDate: 2026-09-05
 author: "竱肇"
 ---
->我只能這樣説：不管革命失敗有多少次，但是我總希望中國的革命能成功，所以便不能不這樣奮鬥。
->
->——孙中山（1924）
-
->我是伟大的60年代的一个儿子，背负着它的感动与沉重，脚上心中刺满了荆棘。那个时代的败北，那个时代的意义，使我和远在地球各个角落的同志一样，要竭尽一生求索，找到一条自我批判与正义继承的道路。
->
->——张承志《心灵史》
 
 >一位共和派的资产阶级数年前曾正确言道：“失败者没有历史。”那么，我们就来打破这种不公吧（..）。蒙蔽历史的时代已该终结。从今往后，在失败的幸存者中，总有人会直面刽子手和诽谤者，斥责他们：你们在撒谎！也会向心存善意的人们宣告：我们就是这样的人，我们做过什么，我们追求什么。正是出于这些考虑，这位**为伟大而暂时受挫的事业**而战的战士才提笔著述。他将尽力阐明1871年的公社是什么、做了什么、向往什么；但他同样要揭露那些不共戴天的敌人是什么、做过什么、又图谋什么。
 >
 >——Benoit Malon 《法兰西无产阶级的第三次败北》 (1871)（《La troisième défaite du prolétariat français》，本段系笔者转译自英文本）
+
+>我是伟大的60年代的一个儿子，背负着它的感动与沉重，脚上心中刺满了荆棘。那个时代的败北，那个时代的意义，使我和远在地球各个角落的同志一样，要竭尽一生求索，找到一条自我批判与正义继承的道路。
+>
+>——张承志《心灵史》
 
 ---
 
@@ -33,11 +30,7 @@ author: "竱肇"
 >
 >面对中国刚刚发生的一切，整个左翼阵营——欧洲左翼的全部思想，那种曾几何时在世界各地都拥有其参照点、并以确定的方式对其加以阐发的欧洲革命思想，那种因而通过自身之外的事物来确定方向的思想，失去了它此前在世界其他地方所能找到的历史坐标。它失去了具体的**依凭**。而这是**历史首次**。
 >
->peut-être, depuis la révolution russe d'octobre 1917, peut-être même depuis les grands mouvements révolutionnaires européens de 1848, c'est-à-dire depuis soixante ans ou, si vous voulez, depuis cent vingt ans, que c'est la première fois qu'il n'y a plus sur la terre un seul point d'où pourrait jaillir la lumière d'une espérance. Il n'existe plus d'orientation.（......）
->
->Pour la première fois, la gauche, face à ce qui vient de se passer en Chine, toute cette pensée de la gauche européenne, cette pensée européenne révolutionnaire qui avait ses points de référence dans le monde entier et les élaborait d'une manière déterminée, donc une pensée qui s'orientait sur des choses qui se situaient en dehors d'elles-mêmes, cette pensée a perdu les repères historiques qu'elle trouvait auparavant dans d'autres parties du monde. Elle a perdu ses points d'appui concrets.
->
->——*Michel Foucault, « La torture, c’est la raison »（1977），这篇访谈被收录在 《Dits et écrits（III）》中*
+>——Michel Foucault, « La torture, c’est la raison »（1977），这篇访谈被收录在 《Dits et écrits（III）》中（本段系笔者自译）
 
 Michel Foucault 直接使用了“方向已不复存在”（Il n'existe plus d'orientation）这种表述。有趣的是，方向（orientation）一词在法语中可以部分的理解为某种双关语，因为该词内含“东方”（orient）——日出东方，以此明方向。既是“失向”，更是“失东”——仿佛二十世纪赖以自我理解的那套方向学（左与右、东与西、革命与秩序、启蒙与反启蒙）在“太阳落”那一刻突然崩溃。
 
